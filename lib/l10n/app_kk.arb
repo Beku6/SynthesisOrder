@@ -1,0 +1,1858 @@
+{
+    "@@locale":  "kk",
+    "app_name":  "Synor",
+    "@app_name":  {
+                      "description":  "Localized text for \u0027app_name\u0027."
+                  },
+    "branding_from":  "from",
+    "@branding_from":  {
+                           "description":  "Localized text for \u0027branding_from\u0027."
+                       },
+    "common_languageEnglish":  "English",
+    "@common_languageEnglish":  {
+                                    "description":  "Localized text for \u0027common_languageEnglish\u0027."
+                                },
+    "common_languageRussian":  "Русский",
+    "@common_languageRussian":  {
+                                    "description":  "Localized text for \u0027common_languageRussian\u0027."
+                                },
+    "common_languageKazakh":  "Қазақша",
+    "@common_languageKazakh":  {
+                                   "description":  "Localized text for \u0027common_languageKazakh\u0027."
+                               },
+    "schedule_weekLessonCount":  "{count, plural, one{# сабақ} other{# сабақ}}",
+    "@schedule_weekLessonCount":  {
+                                      "placeholders":  {
+                                                           "count":  {
+                                                                         "type":  "int"
+                                                                     }
+                                                       },
+                                      "description":  "Localized text for \u0027schedule_weekLessonCount\u0027."
+                                  },
+    "common_skip":  "Өткізіп жіберу",
+    "@common_skip":  {
+                         "description":  "Localized text for \u0027common_skip\u0027."
+                     },
+    "common_continue":  "Жалғастыру",
+    "@common_continue":  {
+                             "description":  "Localized text for \u0027common_continue\u0027."
+                         },
+    "common_getStarted":  "Жұмысты бастау",
+    "@common_getStarted":  {
+                               "description":  "Localized text for \u0027common_getStarted\u0027."
+                           },
+    "common_or":  "немесе",
+    "@common_or":  {
+                       "description":  "Localized text for \u0027common_or\u0027."
+                   },
+    "common_close":  "Жабу",
+    "@common_close":  {
+                          "description":  "Localized text for \u0027common_close\u0027."
+                      },
+    "common_upload":  "Жүктеп салу",
+    "@common_upload":  {
+                           "description":  "Localized text for \u0027common_upload\u0027."
+                       },
+    "common_viewAll":  "Барлығын көру",
+    "@common_viewAll":  {
+                            "description":  "Localized text for \u0027common_viewAll\u0027."
+                        },
+    "common_tryAgain":  "Қайталап көріңіз",
+    "@common_tryAgain":  {
+                             "description":  "Localized text for \u0027common_tryAgain\u0027."
+                         },
+    "common_success":  "Сәттілік",
+    "@common_success":  {
+                            "description":  "Localized text for \u0027common_success\u0027."
+                        },
+    "auth_onboardingTitle1":  "Сіздің академиялық өміріңіз, соңында ұйымдастырылды.",
+    "@auth_onboardingTitle1":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle1\u0027."
+                               },
+    "auth_onboardingSubtitle1":  "Synor кестеңізді, тапсырмаларды, еске салғыштарды және оқу ағынын бір жерде сақтайды.",
+    "@auth_onboardingSubtitle1":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle1\u0027."
+                                  },
+    "auth_onboardingTitle2":  "Кесте, оқу және тәртіп — бір ағында.",
+    "@auth_onboardingTitle2":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle2\u0027."
+                               },
+    "auth_onboardingSubtitle2":  "Табысқа жету үшін қажет нәрсенің бәрі біркелкі біріктірілген.",
+    "@auth_onboardingSubtitle2":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle2\u0027."
+                                  },
+    "auth_onboardingTitle3":  "Аз хаос. Көбірек бақылау.",
+    "@auth_onboardingTitle3":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle3\u0027."
+                               },
+    "auth_onboardingSubtitle3":  "Маңызды нәрсеге назар аударыңыз. Қалғанын шешеміз.",
+    "@auth_onboardingSubtitle3":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle3\u0027."
+                                  },
+    "auth_welcomeBack":  "Қайтадан қош келдіңіз",
+    "@auth_welcomeBack":  {
+                              "description":  "Localized text for \u0027auth_welcomeBack\u0027."
+                          },
+    "auth_signInSubtitle":  "Кестеге, оқу хабына және смарт режимге кіру үшін жүйеге кіріңіз.",
+    "@auth_signInSubtitle":  {
+                                 "description":  "Localized text for \u0027auth_signInSubtitle\u0027."
+                             },
+    "auth_studentIdOrEmail":  "Студенттік ID / Электрондық пошта",
+    "@auth_studentIdOrEmail":  {
+                                   "description":  "Localized text for \u0027auth_studentIdOrEmail\u0027."
+                               },
+    "auth_password":  "Құпия сөз",
+    "@auth_password":  {
+                           "description":  "Localized text for \u0027auth_password\u0027."
+                       },
+    "auth_forgotPassword":  "Құпия сөзді ұмыттыңыз ба?",
+    "@auth_forgotPassword":  {
+                                 "description":  "Localized text for \u0027auth_forgotPassword\u0027."
+                             },
+    "auth_signingIn":  "Жүйеге кіру...",
+    "@auth_signingIn":  {
+                            "description":  "Localized text for \u0027auth_signingIn\u0027."
+                        },
+    "auth_signIn":  "Жүйеге кіру",
+    "@auth_signIn":  {
+                         "description":  "Localized text for \u0027auth_signIn\u0027."
+                     },
+    "auth_connecting":  "Қосылуда...",
+    "@auth_connecting":  {
+                             "description":  "Localized text for \u0027auth_connecting\u0027."
+                         },
+    "auth_continueWithGoogle":  "Google арқылы жалғастырыңыз",
+    "@auth_continueWithGoogle":  {
+                                     "description":  "Localized text for \u0027auth_continueWithGoogle\u0027."
+                                 },
+    "auth_newHere":  "Жаңадан келдіңіз бе?",
+    "@auth_newHere":  {
+                          "description":  "Localized text for \u0027auth_newHere\u0027."
+                      },
+    "auth_createAccount":  "Тіркелгі жасау",
+    "@auth_createAccount":  {
+                                "description":  "Localized text for \u0027auth_createAccount\u0027."
+                            },
+    "auth_createAccountTitle":  "Тіркелгіңізді жасаңыз",
+    "@auth_createAccountTitle":  {
+                                     "description":  "Localized text for \u0027auth_createAccountTitle\u0027."
+                                 },
+    "auth_identitySubtitle":  "Сіздің негізгі тұлғаңыздан бастайық.",
+    "@auth_identitySubtitle":  {
+                                   "description":  "Localized text for \u0027auth_identitySubtitle\u0027."
+                               },
+    "auth_roleStudent":  "студент",
+    "@auth_roleStudent":  {
+                              "description":  "Localized text for \u0027auth_roleStudent\u0027."
+                          },
+    "auth_roleTeacher":  "Мұғалім",
+    "@auth_roleTeacher":  {
+                              "description":  "Localized text for \u0027auth_roleTeacher\u0027."
+                          },
+    "auth_fullName":  "Толық аты-жөні",
+    "@auth_fullName":  {
+                           "description":  "Localized text for \u0027auth_fullName\u0027."
+                       },
+    "auth_emailAddress":  "Электрондық пошта мекенжайы",
+    "@auth_emailAddress":  {
+                               "description":  "Localized text for \u0027auth_emailAddress\u0027."
+                           },
+    "auth_createPassword":  "Құпия сөз жасау",
+    "@auth_createPassword":  {
+                                 "description":  "Localized text for \u0027auth_createPassword\u0027."
+                             },
+    "auth_academicSetupTitle":  "Академиялық баптау",
+    "@auth_academicSetupTitle":  {
+                                     "description":  "Localized text for \u0027auth_academicSetupTitle\u0027."
+                                 },
+    "auth_teachingSetupTitle":  "Оқытуды баптау",
+    "@auth_teachingSetupTitle":  {
+                                     "description":  "Localized text for \u0027auth_teachingSetupTitle\u0027."
+                                 },
+    "auth_academicSetupSubtitle":  "Қай жерде және не оқитыныңызды айтыңыз.",
+    "@auth_academicSetupSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_academicSetupSubtitle\u0027."
+                                    },
+    "auth_teachingSetupSubtitle":  "Қай жерде оқытатыныңызды және қай топты басқаратыныңызды айтыңыз.",
+    "@auth_teachingSetupSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_teachingSetupSubtitle\u0027."
+                                    },
+    "auth_university":  "Университет",
+    "@auth_university":  {
+                             "description":  "Localized text for \u0027auth_university\u0027."
+                         },
+    "auth_facultyDepartment":  "Факультет/кафедра",
+    "@auth_facultyDepartment":  {
+                                    "description":  "Localized text for \u0027auth_facultyDepartment\u0027."
+                                },
+    "auth_courseYear":  "Курс жылы",
+    "@auth_courseYear":  {
+                             "description":  "Localized text for \u0027auth_courseYear\u0027."
+                         },
+    "auth_group":  "Топ",
+    "@auth_group":  {
+                        "description":  "Localized text for \u0027auth_group\u0027."
+                    },
+    "auth_primaryGroup":  "Бастауыш топ",
+    "@auth_primaryGroup":  {
+                               "description":  "Localized text for \u0027auth_primaryGroup\u0027."
+                           },
+    "auth_personalizeTitle":  "Ағыныңызды жекелендіріңіз",
+    "@auth_personalizeTitle":  {
+                                   "description":  "Localized text for \u0027auth_personalizeTitle\u0027."
+                               },
+    "auth_personalizeSubtitle":  "Бұл Synor бағдарламасына кестеңізді, еске салғыштарды және оқу тәжірибеңізді жекелендіруге көмектеседі.",
+    "@auth_personalizeSubtitle":  {
+                                      "description":  "Localized text for \u0027auth_personalizeSubtitle\u0027."
+                                  },
+    "auth_campusPreferences":  "Кампус теңшелімдері",
+    "@auth_campusPreferences":  {
+                                    "description":  "Localized text for \u0027auth_campusPreferences\u0027."
+                                },
+    "auth_studyMode":  "Оқу режимі",
+    "@auth_studyMode":  {
+                            "description":  "Localized text for \u0027auth_studyMode\u0027."
+                        },
+    "auth_studyModeDeepFocus":  "Терең фокус",
+    "@auth_studyModeDeepFocus":  {
+                                     "description":  "Localized text for \u0027auth_studyModeDeepFocus\u0027."
+                                 },
+    "auth_studyModeFlexible":  "Икемді",
+    "@auth_studyModeFlexible":  {
+                                    "description":  "Localized text for \u0027auth_studyModeFlexible\u0027."
+                                },
+    "auth_smartFeaturesTitle":  "Смарт мүмкіндіктерді қосыңыз",
+    "@auth_smartFeaturesTitle":  {
+                                     "description":  "Localized text for \u0027auth_smartFeaturesTitle\u0027."
+                                 },
+    "auth_smartFeaturesSubtitle":  "Толық Synor тәжірибесін алу үшін оларды қосыңыз.",
+    "@auth_smartFeaturesSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_smartFeaturesSubtitle\u0027."
+                                    },
+    "auth_smartNotifications":  "Смарт хабарландырулар",
+    "@auth_smartNotifications":  {
+                                     "description":  "Localized text for \u0027auth_smartNotifications\u0027."
+                                 },
+    "auth_smartNotificationsSubtitle":  "Сабақтар мен тапсырмалар туралы ескертулер алыңыз",
+    "@auth_smartNotificationsSubtitle":  {
+                                             "description":  "Localized text for \u0027auth_smartNotificationsSubtitle\u0027."
+                                         },
+    "auth_calendarSync":  "Күнтізбені синхрондау",
+    "@auth_calendarSync":  {
+                               "description":  "Localized text for \u0027auth_calendarSync\u0027."
+                           },
+    "auth_calendarSyncSubtitle":  "Жеке күнтізбеңізді қосыңыз",
+    "@auth_calendarSyncSubtitle":  {
+                                       "description":  "Localized text for \u0027auth_calendarSyncSubtitle\u0027."
+                                   },
+    "auth_completing":  "Аяқталуда...",
+    "@auth_completing":  {
+                             "description":  "Localized text for \u0027auth_completing\u0027."
+                         },
+    "auth_completeSetup":  "Орнатуды аяқтаңыз",
+    "@auth_completeSetup":  {
+                                "description":  "Localized text for \u0027auth_completeSetup\u0027."
+                            },
+    "auth_validationEnterStudentEmailOrId":  "Студенттік электрондық поштаны немесе жеке куәлікті енгізіңіз.",
+    "@auth_validationEnterStudentEmailOrId":  {
+                                                  "description":  "Localized text for \u0027auth_validationEnterStudentEmailOrId\u0027."
+                                              },
+    "auth_validationValidEmail":  "Жарамды электрондық пошта мекенжайын енгізіңіз.",
+    "@auth_validationValidEmail":  {
+                                       "description":  "Localized text for \u0027auth_validationValidEmail\u0027."
+                                   },
+    "auth_validationEnterPassword":  "Құпия сөзіңізді енгізіңіз.",
+    "@auth_validationEnterPassword":  {
+                                          "description":  "Localized text for \u0027auth_validationEnterPassword\u0027."
+                                      },
+    "auth_validationPasswordLength":  "Құпия сөз кемінде 6 таңбадан тұруы керек.",
+    "@auth_validationPasswordLength":  {
+                                           "description":  "Localized text for \u0027auth_validationPasswordLength\u0027."
+                                       },
+    "auth_errorRestoreSession":  "Сеансты қалпына келтіру мүмкін емес. Қайталап көріңіз.",
+    "@auth_errorRestoreSession":  {
+                                      "description":  "Localized text for \u0027auth_errorRestoreSession\u0027."
+                                  },
+    "auth_errorSignInFailed":  "Жүйеге кіру сәтсіз аяқталды. Тіркелгі деректеріңізді тексеріңіз.",
+    "@auth_errorSignInFailed":  {
+                                    "description":  "Localized text for \u0027auth_errorSignInFailed\u0027."
+                                },
+    "auth_errorGoogleUnavailable":  "Google жүйесіне кіру дәл қазір қолжетімді емес.",
+    "@auth_errorGoogleUnavailable":  {
+                                         "description":  "Localized text for \u0027auth_errorGoogleUnavailable\u0027."
+                                     },
+    "auth_errorEnterEmailRecovery":  "Кіруді қалпына келтіру үшін алдымен электрондық поштаңызды енгізіңіз.",
+    "@auth_errorEnterEmailRecovery":  {
+                                          "description":  "Localized text for \u0027auth_errorEnterEmailRecovery\u0027."
+                                      },
+    "auth_errorSignUpVerification":  "Тіркелгі жасалды. Электрондық поштаңызды растау үшін {email} тексеріңіз, содан кейін жүйеге кіріңіз.",
+    "@auth_errorSignUpVerification":  {
+                                          "placeholders":  {
+                                                               "email":  {
+                                                                             "type":  "String"
+                                                                         }
+                                                           },
+                                          "description":  "Localized text for \u0027auth_errorSignUpVerification\u0027."
+                                      },
+    "auth_errorSignUpSessionNotReady":  "Тіркелгі жасалды, бірақ сеанс әлі дайын емес. Жүйеге кіріңіз.",
+    "@auth_errorSignUpSessionNotReady":  {
+                                             "description":  "Localized text for \u0027auth_errorSignUpSessionNotReady\u0027."
+                                         },
+    "auth_errorSignUpFailed":  "Тіркелу аяқталмады. Қайталап көріңіз.",
+    "@auth_errorSignUpFailed":  {
+                                    "description":  "Localized text for \u0027auth_errorSignUpFailed\u0027."
+                                },
+    "auth_signInFailedTitle":  "Жүйеге кіру сәтсіз аяқталды",
+    "@auth_signInFailedTitle":  {
+                                    "description":  "Localized text for \u0027auth_signInFailedTitle\u0027."
+                                },
+    "auth_googleUnavailableTitle":  "Google жүйесіне кіру мүмкін емес",
+    "@auth_googleUnavailableTitle":  {
+                                         "description":  "Localized text for \u0027auth_googleUnavailableTitle\u0027."
+                                     },
+    "auth_recoveryLinkSentTitle":  "Қалпына келтіру сілтемесі жіберілді",
+    "@auth_recoveryLinkSentTitle":  {
+                                        "description":  "Localized text for \u0027auth_recoveryLinkSentTitle\u0027."
+                                    },
+    "auth_signUpCompleteTitle":  "Тіркелу аяқталды",
+    "@auth_signUpCompleteTitle":  {
+                                      "description":  "Localized text for \u0027auth_signUpCompleteTitle\u0027."
+                                  },
+    "auth_signUpFailedTitle":  "Тіркелу сәтсіз аяқталды",
+    "@auth_signUpFailedTitle":  {
+                                    "description":  "Localized text for \u0027auth_signUpFailedTitle\u0027."
+                                },
+    "auth_campusMainBuilding":  "Бас ғимарат",
+    "@auth_campusMainBuilding":  {
+                                     "description":  "Localized text for \u0027auth_campusMainBuilding\u0027."
+                                 },
+    "auth_campusSouthCampus":  "Оңтүстік кампус",
+    "@auth_campusSouthCampus":  {
+                                    "description":  "Localized text for \u0027auth_campusSouthCampus\u0027."
+                                },
+    "auth_campusRemoteStudy":  "Қашықтықтан оқу",
+    "@auth_campusRemoteStudy":  {
+                                    "description":  "Localized text for \u0027auth_campusRemoteStudy\u0027."
+                                },
+    "home_searchPlaceholder":  "Іздеу...",
+    "@home_searchPlaceholder":  {
+                                    "description":  "Localized text for \u0027home_searchPlaceholder\u0027."
+                                },
+    "home_filterLessons":  "сабақтар",
+    "@home_filterLessons":  {
+                                "description":  "Localized text for \u0027home_filterLessons\u0027."
+                            },
+    "home_filterAll":  "барлығы",
+    "@home_filterAll":  {
+                            "description":  "Localized text for \u0027home_filterAll\u0027."
+                        },
+    "home_filterMissed":  "өткізіп алған",
+    "@home_filterMissed":  {
+                               "description":  "Localized text for \u0027home_filterMissed\u0027."
+                           },
+    "home_filterTomorrow":  "ертең",
+    "@home_filterTomorrow":  {
+                                 "description":  "Localized text for \u0027home_filterTomorrow\u0027."
+                             },
+    "home_emptyTitle":  "Көрсететін ештеңе жоқ",
+    "@home_emptyTitle":  {
+                             "description":  "Localized text for \u0027home_emptyTitle\u0027."
+                         },
+    "home_emptySearchMessage":  "Ағымдағы сүзгіде \"{query}\" сәйкес сабақ жоқ.",
+    "@home_emptySearchMessage":  {
+                                     "placeholders":  {
+                                                          "query":  {
+                                                                        "type":  "String"
+                                                                    }
+                                                      },
+                                     "description":  "Localized text for \u0027home_emptySearchMessage\u0027."
+                                 },
+    "home_emptyMissedMessage":  "Қазір өткізіп алған немесе орындалып жатқан сабақтар жоқ.",
+    "@home_emptyMissedMessage":  {
+                                     "description":  "Localized text for \u0027home_emptyMissedMessage\u0027."
+                                 },
+    "home_emptyTomorrowMessage":  "Ертеңгі күн анық көрінеді.",
+    "@home_emptyTomorrowMessage":  {
+                                       "description":  "Localized text for \u0027home_emptyTomorrowMessage\u0027."
+                                   },
+    "home_emptyDefaultMessage":  "Бұл көріністе сабақтар жоқ.",
+    "@home_emptyDefaultMessage":  {
+                                      "description":  "Localized text for \u0027home_emptyDefaultMessage\u0027."
+                                  },
+    "home_addStoryLabel":  "Сіздің әңгімелеріңіз",
+    "@home_addStoryLabel":  {
+                                "description":  "Localized text for \u0027home_addStoryLabel\u0027."
+                            },
+    "home_lightMode":  "Жарық режимі",
+    "@home_lightMode":  {
+                            "description":  "Localized text for \u0027home_lightMode\u0027."
+                        },
+    "home_darkMode":  "Қараңғы режим",
+    "@home_darkMode":  {
+                           "description":  "Localized text for \u0027home_darkMode\u0027."
+                       },
+    "lesson_actionAlert":  "Ескерту",
+    "@lesson_actionAlert":  {
+                                "description":  "Localized text for \u0027lesson_actionAlert\u0027."
+                            },
+    "lesson_actionNotes":  "Ескертпелер",
+    "@lesson_actionNotes":  {
+                                "description":  "Localized text for \u0027lesson_actionNotes\u0027."
+                            },
+    "lesson_actionMore":  "Көбірек",
+    "@lesson_actionMore":  {
+                               "description":  "Localized text for \u0027lesson_actionMore\u0027."
+                           },
+    "lesson_inProgress":  "Орындалуда",
+    "@lesson_inProgress":  {
+                               "description":  "Localized text for \u0027lesson_inProgress\u0027."
+                           },
+    "lesson_notesUnavailableTitle":  "Сабақ конспектілері әлі қосылмаған",
+    "@lesson_notesUnavailableTitle":  {
+                                          "description":  "Localized text for \u0027lesson_notesUnavailableTitle\u0027."
+                                      },
+    "lesson_notesUnavailableSubtitle":  "Ескертулер үшін сырғытыңыз немесе материалдар үшін Study Hub ашыңыз.",
+    "@lesson_notesUnavailableSubtitle":  {
+                                             "description":  "Localized text for \u0027lesson_notesUnavailableSubtitle\u0027."
+                                         },
+    "lesson_moreUnavailableTitle":  "Келесі кезеңге көбірек сабақ әрекеттері түседі",
+    "@lesson_moreUnavailableTitle":  {
+                                         "description":  "Localized text for \u0027lesson_moreUnavailableTitle\u0027."
+                                     },
+    "lesson_moreUnavailableSubtitle":  "Ағымдағы өндірістік жылтыратқыш ескертулер мен жоспарлауға бағытталған.",
+    "@lesson_moreUnavailableSubtitle":  {
+                                            "description":  "Localized text for \u0027lesson_moreUnavailableSubtitle\u0027."
+                                        },
+    "messages_title":  "Хабарламалар",
+    "@messages_title":  {
+                            "description":  "Localized text for \u0027messages_title\u0027."
+                        },
+    "messages_loadingTitle":  "Хабарлар жүктелуде",
+    "@messages_loadingTitle":  {
+                                   "description":  "Localized text for \u0027messages_loadingTitle\u0027."
+                               },
+    "messages_loadingMessage":  "Соңғы сөйлесулеріңіз дайындалуда...",
+    "@messages_loadingMessage":  {
+                                     "description":  "Localized text for \u0027messages_loadingMessage\u0027."
+                                 },
+    "schedule_title":  "Кесте",
+    "@schedule_title":  {
+                            "description":  "Localized text for \u0027schedule_title\u0027."
+                        },
+    "schedule_searchPlaceholder":  "Сабақтарды немесе оқиғаларды іздеңіз",
+    "@schedule_searchPlaceholder":  {
+                                        "description":  "Localized text for \u0027schedule_searchPlaceholder\u0027."
+                                    },
+    "schedule_modeDay":  "Күн",
+    "@schedule_modeDay":  {
+                              "description":  "Localized text for \u0027schedule_modeDay\u0027."
+                          },
+    "schedule_modeWeek":  "Апта",
+    "@schedule_modeWeek":  {
+                               "description":  "Localized text for \u0027schedule_modeWeek\u0027."
+                           },
+    "schedule_modeMonth":  "Ай",
+    "@schedule_modeMonth":  {
+                                "description":  "Localized text for \u0027schedule_modeMonth\u0027."
+                            },
+    "schedule_noLessonsTitle":  "Сабақ жоспарланбаған",
+    "@schedule_noLessonsTitle":  {
+                                     "description":  "Localized text for \u0027schedule_noLessonsTitle\u0027."
+                                 },
+    "schedule_noLessonsMessage":  "Бұл күн сіздің ағымдағы кестеңізде анық.",
+    "@schedule_noLessonsMessage":  {
+                                       "description":  "Localized text for \u0027schedule_noLessonsMessage\u0027."
+                                   },
+    "schedule_noLessonsForDay":  "Бұл күнге ешқандай сабақ жоспарланбаған.",
+    "@schedule_noLessonsForDay":  {
+                                      "description":  "Localized text for \u0027schedule_noLessonsForDay\u0027."
+                                  },
+    "schedule_upcoming":  "Алдағы",
+    "@schedule_upcoming":  {
+                               "description":  "Localized text for \u0027schedule_upcoming\u0027."
+                           },
+    "schedule_noMonthEvents":  "Осы айға жоспарланған іс-шаралар жоқ.",
+    "@schedule_noMonthEvents":  {
+                                    "description":  "Localized text for \u0027schedule_noMonthEvents\u0027."
+                                },
+    "teacher_dashboardTitle":  "Мұғалімнің бақылау тақтасы",
+    "@teacher_dashboardTitle":  {
+                                    "description":  "Localized text for \u0027teacher_dashboardTitle\u0027."
+                                },
+    "teacher_teachingSpace":  "Сіздің оқу орныңыз",
+    "@teacher_teachingSpace":  {
+                                   "description":  "Localized text for \u0027teacher_teachingSpace\u0027."
+                               },
+    "teacher_superAccess":  "Super Access",
+    "@teacher_superAccess":  {
+                                 "description":  "Localized text for \u0027teacher_superAccess\u0027."
+                             },
+    "teacher_teacher":  "Мұғалім",
+    "@teacher_teacher":  {
+                             "description":  "Localized text for \u0027teacher_teacher\u0027."
+                         },
+    "teacher_upcomingLessons":  "Алдағы сабақтар",
+    "@teacher_upcomingLessons":  {
+                                     "description":  "Localized text for \u0027teacher_upcomingLessons\u0027."
+                                 },
+    "teacher_materials":  "Материалдар",
+    "@teacher_materials":  {
+                               "description":  "Localized text for \u0027teacher_materials\u0027."
+                           },
+    "teacher_createLesson":  "Сабақ құру",
+    "@teacher_createLesson":  {
+                                  "description":  "Localized text for \u0027teacher_createLesson\u0027."
+                              },
+    "teacher_managedSchedule":  "Басқарылатын кесте",
+    "@teacher_managedSchedule":  {
+                                     "description":  "Localized text for \u0027teacher_managedSchedule\u0027."
+                                 },
+    "teacher_noLessonsTitle":  "Әлі сабақ жоқ",
+    "@teacher_noLessonsTitle":  {
+                                    "description":  "Localized text for \u0027teacher_noLessonsTitle\u0027."
+                                },
+    "teacher_noLessonsMessage":  "Кестені толтыруды бастау үшін бірінші сабағыңызды жасаңыз.",
+    "@teacher_noLessonsMessage":  {
+                                      "description":  "Localized text for \u0027teacher_noLessonsMessage\u0027."
+                                  },
+    "teacher_incompleteLessonTitle":  "Сабақ мәліметтері толық емес",
+    "@teacher_incompleteLessonTitle":  {
+                                           "description":  "Localized text for \u0027teacher_incompleteLessonTitle\u0027."
+                                       },
+    "teacher_incompleteLessonSubtitle":  "Тақырыпты, бөлмені, топты және жарамды уақыт ауқымын орнатыңыз.",
+    "@teacher_incompleteLessonSubtitle":  {
+                                              "description":  "Localized text for \u0027teacher_incompleteLessonSubtitle\u0027."
+                                          },
+    "teacher_lessonCreated":  "Сабақ құрылды",
+    "@teacher_lessonCreated":  {
+                                   "description":  "Localized text for \u0027teacher_lessonCreated\u0027."
+                               },
+    "teacher_lessonUpdated":  "Сабақ жаңартылды",
+    "@teacher_lessonUpdated":  {
+                                   "description":  "Localized text for \u0027teacher_lessonUpdated\u0027."
+                               },
+    "teacher_lessonSaveFailed":  "Сабақты сақтау мүмкін болмады",
+    "@teacher_lessonSaveFailed":  {
+                                      "description":  "Localized text for \u0027teacher_lessonSaveFailed\u0027."
+                                  },
+    "teacher_createLessonTitle":  "Сабақ құру",
+    "@teacher_createLessonTitle":  {
+                                       "description":  "Localized text for \u0027teacher_createLessonTitle\u0027."
+                                   },
+    "teacher_editLessonTitle":  "Сабақты өңдеу",
+    "@teacher_editLessonTitle":  {
+                                     "description":  "Localized text for \u0027teacher_editLessonTitle\u0027."
+                                 },
+    "teacher_subjectHint":  "Тақырып",
+    "@teacher_subjectHint":  {
+                                 "description":  "Localized text for \u0027teacher_subjectHint\u0027."
+                             },
+    "teacher_roomHint":  "Бөлме",
+    "@teacher_roomHint":  {
+                              "description":  "Localized text for \u0027teacher_roomHint\u0027."
+                          },
+    "teacher_selectGroup":  "Топты таңдаңыз",
+    "@teacher_selectGroup":  {
+                                 "description":  "Localized text for \u0027teacher_selectGroup\u0027."
+                             },
+    "teacher_start":  "Бастау",
+    "@teacher_start":  {
+                           "description":  "Localized text for \u0027teacher_start\u0027."
+                       },
+    "teacher_end":  "Аяқтау",
+    "@teacher_end":  {
+                         "description":  "Localized text for \u0027teacher_end\u0027."
+                     },
+    "teacher_saving":  "Сақталуда...",
+    "@teacher_saving":  {
+                            "description":  "Localized text for \u0027teacher_saving\u0027."
+                        },
+    "teacher_saveLesson":  "Сабақты сақтау",
+    "@teacher_saveLesson":  {
+                                "description":  "Localized text for \u0027teacher_saveLesson\u0027."
+                            },
+    "services_title":  "Қызметтер",
+    "@services_title":  {
+                            "description":  "Localized text for \u0027services_title\u0027."
+                        },
+    "services_searchPlaceholder":  "Қызметтерді іздеу...",
+    "@services_searchPlaceholder":  {
+                                        "description":  "Localized text for \u0027services_searchPlaceholder\u0027."
+                                    },
+    "services_noResults":  "\"{query}\" сәйкес қызметтер табылмады",
+    "@services_noResults":  {
+                                "placeholders":  {
+                                                     "query":  {
+                                                                   "type":  "String"
+                                                               }
+                                                 },
+                                "description":  "Localized text for \u0027services_noResults\u0027."
+                            },
+    "services_recentRequests":  "Соңғы сұраулар",
+    "@services_recentRequests":  {
+                                     "description":  "Localized text for \u0027services_recentRequests\u0027."
+                                 },
+    "services_availableToRequest":  "Сұраныс бойынша қол жетімді",
+    "@services_availableToRequest":  {
+                                         "description":  "Localized text for \u0027services_availableToRequest\u0027."
+                                     },
+    "services_documents":  "Құжаттар",
+    "@services_documents":  {
+                                "description":  "Localized text for \u0027services_documents\u0027."
+                            },
+    "services_documentsSubtitle":  "Сертификаттар мен анықтамалар",
+    "@services_documentsSubtitle":  {
+                                        "description":  "Localized text for \u0027services_documentsSubtitle\u0027."
+                                    },
+    "services_payments":  "Төлемдер",
+    "@services_payments":  {
+                               "description":  "Localized text for \u0027services_payments\u0027."
+                           },
+    "services_paymentsSubtitle":  "Оқу ақысы және жатақхана",
+    "@services_paymentsSubtitle":  {
+                                       "description":  "Localized text for \u0027services_paymentsSubtitle\u0027."
+                                   },
+    "services_housing":  "Тұрғын үй",
+    "@services_housing":  {
+                              "description":  "Localized text for \u0027services_housing\u0027."
+                          },
+    "services_housingSubtitle":  "Жатақхана сұраулары",
+    "@services_housingSubtitle":  {
+                                      "description":  "Localized text for \u0027services_housingSubtitle\u0027."
+                                  },
+    "services_support":  "Қолдау",
+    "@services_support":  {
+                              "description":  "Localized text for \u0027services_support\u0027."
+                          },
+    "services_supportSubtitle":  "IT және академиялық көмек",
+    "@services_supportSubtitle":  {
+                                      "description":  "Localized text for \u0027services_supportSubtitle\u0027."
+                                  },
+    "services_documentEnrollmentCertificate":  "Тіркелу куәлігі",
+    "@services_documentEnrollmentCertificate":  {
+                                                    "description":  "Localized text for \u0027services_documentEnrollmentCertificate\u0027."
+                                                },
+    "services_documentEnrollmentCertificateSubtitle":  "Студент мәртебесін растау",
+    "@services_documentEnrollmentCertificateSubtitle":  {
+                                                            "description":  "Localized text for \u0027services_documentEnrollmentCertificateSubtitle\u0027."
+                                                        },
+    "services_documentOfficialTranscript":  "Ресми транскрипт",
+    "@services_documentOfficialTranscript":  {
+                                                 "description":  "Localized text for \u0027services_documentOfficialTranscript\u0027."
+                                             },
+    "services_documentOfficialTranscriptSubtitle":  "Бағалары бар академиялық жазба",
+    "@services_documentOfficialTranscriptSubtitle":  {
+                                                         "description":  "Localized text for \u0027services_documentOfficialTranscriptSubtitle\u0027."
+                                                     },
+    "services_documentMilitaryDeferment":  "Әскери кейінге қалдыру",
+    "@services_documentMilitaryDeferment":  {
+                                                "description":  "Localized text for \u0027services_documentMilitaryDeferment\u0027."
+                                            },
+    "services_documentMilitaryDefermentSubtitle":  "Әскери қызметтен босату үшін",
+    "@services_documentMilitaryDefermentSubtitle":  {
+                                                        "description":  "Localized text for \u0027services_documentMilitaryDefermentSubtitle\u0027."
+                                                    },
+    "services_currentBalance":  "Ағымдағы баланс",
+    "@services_currentBalance":  {
+                                     "description":  "Localized text for \u0027services_currentBalance\u0027."
+                                 },
+    "services_allFeesPaid":  "Барлық төлемдер төленген",
+    "@services_allFeesPaid":  {
+                                  "description":  "Localized text for \u0027services_allFeesPaid\u0027."
+                              },
+    "services_upcomingFees":  "Алдағы төлемдер",
+    "@services_upcomingFees":  {
+                                   "description":  "Localized text for \u0027services_upcomingFees\u0027."
+                               },
+    "services_springSemester2026":  "Көктемгі семестр 2026",
+    "@services_springSemester2026":  {
+                                         "description":  "Localized text for \u0027services_springSemester2026\u0027."
+                                     },
+    "services_tuitionFee":  "Оқу ақысы",
+    "@services_tuitionFee":  {
+                                 "description":  "Localized text for \u0027services_tuitionFee\u0027."
+                             },
+    "services_dueIn45Days":  "Төлем мерзімі 45 күннен кейін (2026 жылдың 10 мамыры)",
+    "@services_dueIn45Days":  {
+                                  "description":  "Localized text for \u0027services_dueIn45Days\u0027."
+                              },
+    "services_payNow":  "Қазір төлеңіз",
+    "@services_payNow":  {
+                             "description":  "Localized text for \u0027services_payNow\u0027."
+                         },
+    "services_dormitoryTitle":  "№3 жатақхана",
+    "@services_dormitoryTitle":  {
+                                     "description":  "Localized text for \u0027services_dormitoryTitle\u0027."
+                                 },
+    "services_dormitoryRoom":  "412 бөлме • 4-қабат",
+    "@services_dormitoryRoom":  {
+                                    "description":  "Localized text for \u0027services_dormitoryRoom\u0027."
+                                },
+    "services_maintenanceRequest":  "Техникалық қызмет көрсету сұрауы",
+    "@services_maintenanceRequest":  {
+                                         "description":  "Localized text for \u0027services_maintenanceRequest\u0027."
+                                     },
+    "services_issueType":  "Мәселе түрі",
+    "@services_issueType":  {
+                                "description":  "Localized text for \u0027services_issueType\u0027."
+                            },
+    "services_issueTypePlumbing":  "Сантехника",
+    "@services_issueTypePlumbing":  {
+                                        "description":  "Localized text for \u0027services_issueTypePlumbing\u0027."
+                                    },
+    "services_issueTypeElectrical":  "Электрлік",
+    "@services_issueTypeElectrical":  {
+                                          "description":  "Localized text for \u0027services_issueTypeElectrical\u0027."
+                                      },
+    "services_issueTypeFurniture":  "Жиһаз",
+    "@services_issueTypeFurniture":  {
+                                         "description":  "Localized text for \u0027services_issueTypeFurniture\u0027."
+                                     },
+    "services_issueTypeOther":  "Басқа",
+    "@services_issueTypeOther":  {
+                                     "description":  "Localized text for \u0027services_issueTypeOther\u0027."
+                                 },
+    "services_description":  "Сипаттама",
+    "@services_description":  {
+                                  "description":  "Localized text for \u0027services_description\u0027."
+                              },
+    "services_describeIssue":  "Мәселені сипаттаңыз ...",
+    "@services_describeIssue":  {
+                                    "description":  "Localized text for \u0027services_describeIssue\u0027."
+                                },
+    "services_submitRequest":  "Сұраныс жіберу",
+    "@services_submitRequest":  {
+                                    "description":  "Localized text for \u0027services_submitRequest\u0027."
+                                },
+    "services_itHelpdesk":  "IT анықтамалық қызметі",
+    "@services_itHelpdesk":  {
+                                 "description":  "Localized text for \u0027services_itHelpdesk\u0027."
+                             },
+    "services_itHelpdeskSubtitle":  "Техникалық мәселелер",
+    "@services_itHelpdeskSubtitle":  {
+                                         "description":  "Localized text for \u0027services_itHelpdeskSubtitle\u0027."
+                                     },
+    "services_itHelpdeskRequest":  "АТ анықтамалық қызметінің сұрауы",
+    "@services_itHelpdeskRequest":  {
+                                        "description":  "Localized text for \u0027services_itHelpdeskRequest\u0027."
+                                    },
+    "services_academic":  "Академиялық",
+    "@services_academic":  {
+                               "description":  "Localized text for \u0027services_academic\u0027."
+                           },
+    "services_academicSubtitle":  "Кеңесші байланысы",
+    "@services_academicSubtitle":  {
+                                       "description":  "Localized text for \u0027services_academicSubtitle\u0027."
+                                   },
+    "services_academicAdvisorContact":  "Академиялық кеңесшімен байланыс",
+    "@services_academicAdvisorContact":  {
+                                             "description":  "Localized text for \u0027services_academicAdvisorContact\u0027."
+                                         },
+    "services_newTicket":  "Жаңа билет",
+    "@services_newTicket":  {
+                                "description":  "Localized text for \u0027services_newTicket\u0027."
+                            },
+    "services_subject":  "Тақырып",
+    "@services_subject":  {
+                              "description":  "Localized text for \u0027services_subject\u0027."
+                          },
+    "services_briefSummary":  "Қысқаша қорытынды...",
+    "@services_briefSummary":  {
+                                   "description":  "Localized text for \u0027services_briefSummary\u0027."
+                               },
+    "services_message":  "Хабарлама",
+    "@services_message":  {
+                              "description":  "Localized text for \u0027services_message\u0027."
+                          },
+    "services_howCanWeHelp":  "Сізге қалай көмектесе аламыз?",
+    "@services_howCanWeHelp":  {
+                                   "description":  "Localized text for \u0027services_howCanWeHelp\u0027."
+                               },
+    "services_sendMessage":  "Хабар жіберу",
+    "@services_sendMessage":  {
+                                  "description":  "Localized text for \u0027services_sendMessage\u0027."
+                              },
+    "services_allRequests":  "Барлық сұраулар",
+    "@services_allRequests":  {
+                                  "description":  "Localized text for \u0027services_allRequests\u0027."
+                              },
+    "services_status":  "Күй",
+    "@services_status":  {
+                             "description":  "Localized text for \u0027services_status\u0027."
+                         },
+    "services_date":  "Күн",
+    "@services_date":  {
+                           "description":  "Localized text for \u0027services_date\u0027."
+                       },
+    "request_statusReady":  "Дайын",
+    "@request_statusReady":  {
+                                 "description":  "Localized text for \u0027request_statusReady\u0027."
+                             },
+    "request_statusPending":  "Күтуде",
+    "@request_statusPending":  {
+                                   "description":  "Localized text for \u0027request_statusPending\u0027."
+                               },
+    "request_statusProcessing":  "Өңдеу",
+    "@request_statusProcessing":  {
+                                      "description":  "Localized text for \u0027request_statusProcessing\u0027."
+                                  },
+    "request_statusOpen":  "Ашық",
+    "@request_statusOpen":  {
+                                "description":  "Localized text for \u0027request_statusOpen\u0027."
+                            },
+    "request_statusInProgress":  "Орындалуда",
+    "@request_statusInProgress":  {
+                                      "description":  "Localized text for \u0027request_statusInProgress\u0027."
+                                  },
+    "services_loadingTitle":  "Жүктеу қызметтері",
+    "@services_loadingTitle":  {
+                                   "description":  "Localized text for \u0027services_loadingTitle\u0027."
+                               },
+    "services_loadingMessage":  "Студенттік қызметтер мен соңғы сұрауларды дайындау...",
+    "@services_loadingMessage":  {
+                                     "description":  "Localized text for \u0027services_loadingMessage\u0027."
+                                 },
+    "services_requestId":  "ID: REQ-{id}",
+    "@services_requestId":  {
+                                "placeholders":  {
+                                                     "id":  {
+                                                                "type":  "String"
+                                                            }
+                                                 },
+                                "description":  "Localized text for \u0027services_requestId\u0027."
+                            },
+    "services_successDocumentRequested":  "\"{title}\" құжатына сұрау сәтті жіберілді",
+    "@services_successDocumentRequested":  {
+                                               "placeholders":  {
+                                                                    "title":  {
+                                                                                  "type":  "String"
+                                                                              }
+                                                                },
+                                               "description":  "Localized text for \u0027services_successDocumentRequested\u0027."
+                                           },
+    "services_successPaymentInitiated":  "Төлем басталды",
+    "@services_successPaymentInitiated":  {
+                                              "description":  "Localized text for \u0027services_successPaymentInitiated\u0027."
+                                          },
+    "services_successMaintenanceSubmitted":  "Техникалық қызмет көрсету сұрауы жіберілді",
+    "@services_successMaintenanceSubmitted":  {
+                                                  "description":  "Localized text for \u0027services_successMaintenanceSubmitted\u0027."
+                                              },
+    "services_successSupportCreated":  "Қолдау билеті жасалды",
+    "@services_successSupportCreated":  {
+                                            "description":  "Localized text for \u0027services_successSupportCreated\u0027."
+                                        },
+    "profile_settings":  "Параметрлер",
+    "@profile_settings":  {
+                              "description":  "Localized text for \u0027profile_settings\u0027."
+                          },
+    "profile_preferences":  "Параметрлер",
+    "@profile_preferences":  {
+                                 "description":  "Localized text for \u0027profile_preferences\u0027."
+                             },
+    "profile_security":  "Қауіпсіздік",
+    "@profile_security":  {
+                              "description":  "Localized text for \u0027profile_security\u0027."
+                          },
+    "profile_privacySecurity":  "Құпиялық және қауіпсіздік",
+    "@profile_privacySecurity":  {
+                                     "description":  "Localized text for \u0027profile_privacySecurity\u0027."
+                                 },
+    "profile_darkMode":  "Қараңғы режим",
+    "@profile_darkMode":  {
+                              "description":  "Localized text for \u0027profile_darkMode\u0027."
+                          },
+    "profile_language":  "Тіл",
+    "@profile_language":  {
+                              "description":  "Localized text for \u0027profile_language\u0027."
+                          },
+    "profile_notifications":  "Хабарландырулар",
+    "@profile_notifications":  {
+                                   "description":  "Localized text for \u0027profile_notifications\u0027."
+                               },
+    "profile_passwordSecurity":  "Құпия сөз және қауіпсіздік",
+    "@profile_passwordSecurity":  {
+                                      "description":  "Localized text for \u0027profile_passwordSecurity\u0027."
+                                  },
+    "profile_privacySettings":  "Құпиялық параметрлері",
+    "@profile_privacySettings":  {
+                                     "description":  "Localized text for \u0027profile_privacySettings\u0027."
+                                 },
+    "profile_logOut":  "Шығу",
+    "@profile_logOut":  {
+                            "description":  "Localized text for \u0027profile_logOut\u0027."
+                        },
+    "profile_connected":  "Қосылды",
+    "@profile_connected":  {
+                               "description":  "Localized text for \u0027profile_connected\u0027."
+                           },
+    "profile_connect":  "Қосылу",
+    "@profile_connect":  {
+                             "description":  "Localized text for \u0027profile_connect\u0027."
+                         },
+    "profile_message":  "Хабарлама",
+    "@profile_message":  {
+                             "description":  "Localized text for \u0027profile_message\u0027."
+                         },
+    "profile_currentStatus":  "Ағымдағы күй",
+    "@profile_currentStatus":  {
+                                   "description":  "Localized text for \u0027profile_currentStatus\u0027."
+                               },
+    "profile_update":  "Жаңарту",
+    "@profile_update":  {
+                            "description":  "Localized text for \u0027profile_update\u0027."
+                        },
+    "profile_statusInLecture":  "ДӘРІСТЕ",
+    "@profile_statusInLecture":  {
+                                     "description":  "Localized text for \u0027profile_statusInLecture\u0027."
+                                 },
+    "profile_statusLeft":  "СОЛ",
+    "@profile_statusLeft":  {
+                                "description":  "Localized text for \u0027profile_statusLeft\u0027."
+                            },
+    "profile_statusCoffeeBreak":  "Кофе-брейк",
+    "@profile_statusCoffeeBreak":  {
+                                       "description":  "Localized text for \u0027profile_statusCoffeeBreak\u0027."
+                                   },
+    "profile_statusStudyGroup":  "Оқу тобын іздеуде",
+    "@profile_statusStudyGroup":  {
+                                      "description":  "Localized text for \u0027profile_statusStudyGroup\u0027."
+                                  },
+    "profile_statusSharingNotes":  "Жазбаларды бөлісу",
+    "@profile_statusSharingNotes":  {
+                                        "description":  "Localized text for \u0027profile_statusSharingNotes\u0027."
+                                    },
+    "profile_recentActivity":  "Соңғы әрекет",
+    "@profile_recentActivity":  {
+                                    "description":  "Localized text for \u0027profile_recentActivity\u0027."
+                                },
+    "profile_studentServices":  "Студенттерге қызмет көрсету",
+    "@profile_studentServices":  {
+                                     "description":  "Localized text for \u0027profile_studentServices\u0027."
+                                 },
+    "profile_servicesDocuments":  "Сертификаттар мен құжаттар",
+    "@profile_servicesDocuments":  {
+                                       "description":  "Localized text for \u0027profile_servicesDocuments\u0027."
+                                   },
+    "profile_servicesDocumentsSubtitle":  "Транскрипттер, оқу туралы куәліктер",
+    "@profile_servicesDocumentsSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_servicesDocumentsSubtitle\u0027."
+                                           },
+    "profile_servicesFinance":  "Қаржы және төлемдер",
+    "@profile_servicesFinance":  {
+                                     "description":  "Localized text for \u0027profile_servicesFinance\u0027."
+                                 },
+    "profile_servicesFinanceSubtitle":  "Оқу ақысы, жатақхана ақысы",
+    "@profile_servicesFinanceSubtitle":  {
+                                             "description":  "Localized text for \u0027profile_servicesFinanceSubtitle\u0027."
+                                         },
+    "profile_servicesHousing":  "Тұрғын үй және жатақхана",
+    "@profile_servicesHousing":  {
+                                     "description":  "Localized text for \u0027profile_servicesHousing\u0027."
+                                 },
+    "profile_servicesHousingSubtitle":  "Сұраныс, ережелер, мәртебе",
+    "@profile_servicesHousingSubtitle":  {
+                                             "description":  "Localized text for \u0027profile_servicesHousingSubtitle\u0027."
+                                         },
+    "profile_coverUploadFailed":  "Мұқабаны жүктеп салу сәтсіз аяқталды",
+    "@profile_coverUploadFailed":  {
+                                       "description":  "Localized text for \u0027profile_coverUploadFailed\u0027."
+                                   },
+    "profile_coverUploadFailedSubtitle":  "Таңдалған кескінді жүктеу мүмкін емес.",
+    "@profile_coverUploadFailedSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_coverUploadFailedSubtitle\u0027."
+                                           },
+    "profile_coverTooLarge":  "Кескін тым үлкен",
+    "@profile_coverTooLarge":  {
+                                   "description":  "Localized text for \u0027profile_coverTooLarge\u0027."
+                               },
+    "profile_coverTooLargeSubtitle":  "5 МБ төмен JPG, PNG немесе GIF таңдаңыз.",
+    "@profile_coverTooLargeSubtitle":  {
+                                           "description":  "Localized text for \u0027profile_coverTooLargeSubtitle\u0027."
+                                       },
+    "profile_coverUpdated":  "Мұқаба жаңартылды",
+    "@profile_coverUpdated":  {
+                                  "description":  "Localized text for \u0027profile_coverUpdated\u0027."
+                              },
+    "profile_profileLinkCopied":  "Профиль сілтемесі көшірілді",
+    "@profile_profileLinkCopied":  {
+                                       "description":  "Localized text for \u0027profile_profileLinkCopied\u0027."
+                                   },
+    "profile_profileCodeCopied":  "Профиль коды көшірілді",
+    "@profile_profileCodeCopied":  {
+                                       "description":  "Localized text for \u0027profile_profileCodeCopied\u0027."
+                                   },
+    "profile_profileCodeCopiedSubtitle":  "Кампус киоскіне немесе чатқа қоюға дайын.",
+    "@profile_profileCodeCopiedSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_profileCodeCopiedSubtitle\u0027."
+                                           },
+    "profile_connectionRequestSent":  "Қосылу сұрауы жіберілді",
+    "@profile_connectionRequestSent":  {
+                                           "description":  "Localized text for \u0027profile_connectionRequestSent\u0027."
+                                       },
+    "profile_connectionRequestRemoved":  "Қосылым сұрауы жойылды",
+    "@profile_connectionRequestRemoved":  {
+                                              "description":  "Localized text for \u0027profile_connectionRequestRemoved\u0027."
+                                          },
+    "profile_statusUpdated":  "Күй жаңартылды",
+    "@profile_statusUpdated":  {
+                                   "description":  "Localized text for \u0027profile_statusUpdated\u0027."
+                               },
+    "profile_statusUpdatedSubtitle":  "Белсенді оқу сигналы профиль картасында көрінеді.",
+    "@profile_statusUpdatedSubtitle":  {
+                                           "description":  "Localized text for \u0027profile_statusUpdatedSubtitle\u0027."
+                                       },
+    "profile_viewAll":  "Барлығын көру",
+    "@profile_viewAll":  {
+                             "description":  "Localized text for \u0027profile_viewAll\u0027."
+                         },
+    "profile_statusSubject":  "Мәліметтер базалары",
+    "@profile_statusSubject":  {
+                                   "description":  "Localized text for \u0027profile_statusSubject\u0027."
+                               },
+    "profile_statusRoom":  "В-204 бөлмесі",
+    "@profile_statusRoom":  {
+                                "description":  "Localized text for \u0027profile_statusRoom\u0027."
+                            },
+    "profile_recentSharedNotesTitle":  "Ортақ ескертпелер: Дерекқорлар",
+    "@profile_recentSharedNotesTitle":  {
+                                            "description":  "Localized text for \u0027profile_recentSharedNotesTitle\u0027."
+                                        },
+    "profile_recentSharedNotesSubtitle":  "Біз қарастырған барлық SQL сұраулары мен қалыпқа келтіру ережелерін құрастырдық.",
+    "@profile_recentSharedNotesSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_recentSharedNotesSubtitle\u0027."
+                                           },
+    "profile_recentJoinedGroupTitle":  "Оқу тобына қосылды",
+    "@profile_recentJoinedGroupTitle":  {
+                                            "description":  "Localized text for \u0027profile_recentJoinedGroupTitle\u0027."
+                                        },
+    "profile_recentJoinedGroupSubtitle":  "Жетілдірілген алгоритмдерге дайындық тобы",
+    "@profile_recentJoinedGroupSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_recentJoinedGroupSubtitle\u0027."
+                                           },
+    "profile_hoursAgo":  "{count} сағ бұрын",
+    "@profile_hoursAgo":  {
+                              "placeholders":  {
+                                                   "count":  {
+                                                                 "type":  "int"
+                                                             }
+                                               },
+                              "description":  "Localized text for \u0027profile_hoursAgo\u0027."
+                          },
+    "profile_yesterday":  "Кеше",
+    "@profile_yesterday":  {
+                               "description":  "Localized text for \u0027profile_yesterday\u0027."
+                           },
+    "profile_editCover":  "Мұқабаны өңдеу",
+    "@profile_editCover":  {
+                               "description":  "Localized text for \u0027profile_editCover\u0027."
+                           },
+    "profile_chooseFromTemplates":  "Үлгілерден таңдаңыз",
+    "@profile_chooseFromTemplates":  {
+                                         "description":  "Localized text for \u0027profile_chooseFromTemplates\u0027."
+                                     },
+    "profile_uploadFromDevice":  "Құрылғыдан жүктеп салу",
+    "@profile_uploadFromDevice":  {
+                                      "description":  "Localized text for \u0027profile_uploadFromDevice\u0027."
+                                  },
+    "profile_usingUploadedCover":  "Жүктеп салынған мұқабаны пайдалану",
+    "@profile_usingUploadedCover":  {
+                                        "description":  "Localized text for \u0027profile_usingUploadedCover\u0027."
+                                    },
+    "profile_replaceUploadedCover":  "Басқа суретпен ауыстыру үшін түртіңіз",
+    "@profile_replaceUploadedCover":  {
+                                          "description":  "Localized text for \u0027profile_replaceUploadedCover\u0027."
+                                      },
+    "profile_uploadRequirements":  "JPG, PNG немесе GIF (макс. 5 МБ)",
+    "@profile_uploadRequirements":  {
+                                        "description":  "Localized text for \u0027profile_uploadRequirements\u0027."
+                                    },
+    "profile_topStudent":  "Үздік 5% студент",
+    "@profile_topStudent":  {
+                                "description":  "Localized text for \u0027profile_topStudent\u0027."
+                            },
+    "profile_currentGpa":  "Ағымдағы GPA",
+    "@profile_currentGpa":  {
+                                "description":  "Localized text for \u0027profile_currentGpa\u0027."
+                            },
+    "profile_attendance":  "Қатысу",
+    "@profile_attendance":  {
+                                "description":  "Localized text for \u0027profile_attendance\u0027."
+                            },
+    "profile_languageChanged":  "Тіл жаңартылды",
+    "@profile_languageChanged":  {
+                                     "description":  "Localized text for \u0027profile_languageChanged\u0027."
+                                 },
+    "profile_languageChangedSubtitle":  "{language}",
+    "@profile_languageChangedSubtitle":  {
+                                             "placeholders":  {
+                                                                  "language":  {
+                                                                                   "type":  "String"
+                                                                               }
+                                                              },
+                                             "description":  "Localized text for \u0027profile_languageChangedSubtitle\u0027."
+                                         },
+    "teacher_superTeacher":  "Супер мұғалім",
+    "@teacher_superTeacher":  {
+                                  "description":  "Localized text for \u0027teacher_superTeacher\u0027."
+                              },
+    "teacher_lightMode":  "Жарық режимі",
+    "@teacher_lightMode":  {
+                               "description":  "Localized text for \u0027teacher_lightMode\u0027."
+                           },
+    "teacher_darkMode":  "Қараңғы режим",
+    "@teacher_darkMode":  {
+                              "description":  "Localized text for \u0027teacher_darkMode\u0027."
+                          },
+    "teacher_subjectLine":  "{date} • {time}",
+    "@teacher_subjectLine":  {
+                                 "placeholders":  {
+                                                      "date":  {
+                                                                   "type":  "String"
+                                                               },
+                                                      "time":  {
+                                                                   "type":  "String"
+                                                               }
+                                                  },
+                                 "description":  "Localized text for \u0027teacher_subjectLine\u0027."
+                             },
+    "alarm_title":  "Смарт дабыл",
+    "@alarm_title":  {
+                         "description":  "Localized text for \u0027alarm_title\u0027."
+                     },
+    "alarm_subtitle":  "Ешқашан сабақты немесе мерзімін жіберіп алмаңыз",
+    "@alarm_subtitle":  {
+                            "description":  "Localized text for \u0027alarm_subtitle\u0027."
+                        },
+    "alarm_modePersonal":  "Жеке",
+    "@alarm_modePersonal":  {
+                                "description":  "Localized text for \u0027alarm_modePersonal\u0027."
+                            },
+    "alarm_modeAcademic":  "Академиялық",
+    "@alarm_modeAcademic":  {
+                                "description":  "Localized text for \u0027alarm_modeAcademic\u0027."
+                            },
+    "alarm_alertType":  "Ескерту түрі",
+    "@alarm_alertType":  {
+                             "description":  "Localized text for \u0027alarm_alertType\u0027."
+                         },
+    "alarm_typeWakeUp":  "Оян",
+    "@alarm_typeWakeUp":  {
+                              "description":  "Localized text for \u0027alarm_typeWakeUp\u0027."
+                          },
+    "alarm_typeExamPrep":  "Емтиханға дайындық",
+    "@alarm_typeExamPrep":  {
+                                "description":  "Localized text for \u0027alarm_typeExamPrep\u0027."
+                            },
+    "alarm_typeAssignment":  "Тапсырма",
+    "@alarm_typeAssignment":  {
+                                  "description":  "Localized text for \u0027alarm_typeAssignment\u0027."
+                              },
+    "alarm_typeLecture":  "Дәріс",
+    "@alarm_typeLecture":  {
+                               "description":  "Localized text for \u0027alarm_typeLecture\u0027."
+                           },
+    "alarm_setAlarm":  "Дабыл орнату",
+    "@alarm_setAlarm":  {
+                            "description":  "Localized text for \u0027alarm_setAlarm\u0027."
+                        },
+    "alarm_setFor":  "{time} үшін дабыл орнатылды",
+    "@alarm_setFor":  {
+                          "placeholders":  {
+                                               "time":  {
+                                                            "type":  "String"
+                                                        }
+                                           },
+                          "description":  "Localized text for \u0027alarm_setFor\u0027."
+                      },
+    "alarm_activePersonal":  "Жеке дабыл қосулы.",
+    "@alarm_activePersonal":  {
+                                  "description":  "Localized text for \u0027alarm_activePersonal\u0027."
+                              },
+    "alarm_activeAcademic":  "Академиялық ескерту түрі: {type}",
+    "@alarm_activeAcademic":  {
+                                  "placeholders":  {
+                                                       "type":  {
+                                                                    "type":  "String"
+                                                                }
+                                                   },
+                                  "description":  "Localized text for \u0027alarm_activeAcademic\u0027."
+                              },
+    "quickAlert_title":  "Жылдам ескерту",
+    "@quickAlert_title":  {
+                              "description":  "Localized text for \u0027quickAlert_title\u0027."
+                          },
+    "quickAlert_suggestions":  "Ақылды ұсыныстар",
+    "@quickAlert_suggestions":  {
+                                    "description":  "Localized text for \u0027quickAlert_suggestions\u0027."
+                                },
+    "quickAlert_unavailable":  "Жылдам ескертулер қолжетімсіз.",
+    "@quickAlert_unavailable":  {
+                                    "description":  "Localized text for \u0027quickAlert_unavailable\u0027."
+                                },
+    "quickAlert_customTime":  "Арнаулы уақыт",
+    "@quickAlert_customTime":  {
+                                   "description":  "Localized text for \u0027quickAlert_customTime\u0027."
+                               },
+    "quickAlert_remove":  "Ескертуді жою",
+    "@quickAlert_remove":  {
+                               "description":  "Localized text for \u0027quickAlert_remove\u0027."
+                           },
+    "quickAlert_customPreset":  "45 мин бұрын",
+    "@quickAlert_customPreset":  {
+                                     "description":  "Localized text for \u0027quickAlert_customPreset\u0027."
+                                 },
+    "quickAlert_preset5Min":  "5 мин бұрын",
+    "@quickAlert_preset5Min":  {
+                                   "description":  "Localized text for \u0027quickAlert_preset5Min\u0027."
+                               },
+    "quickAlert_preset10Min":  "10 мин бұрын",
+    "@quickAlert_preset10Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset10Min\u0027."
+                                },
+    "quickAlert_preset20Min":  "20 мин бұрын",
+    "@quickAlert_preset20Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset20Min\u0027."
+                                },
+    "quickAlert_preset30Min":  "30 мин бұрын",
+    "@quickAlert_preset30Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset30Min\u0027."
+                                },
+    "quickAlert_preset1Hour":  "1 сағат бұрын",
+    "@quickAlert_preset1Hour":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset1Hour\u0027."
+                                },
+    "quickAlert_presetLeaveOnTime":  "Уақытында кетіңіз",
+    "@quickAlert_presetLeaveOnTime":  {
+                                          "description":  "Localized text for \u0027quickAlert_presetLeaveOnTime\u0027."
+                                      },
+    "quickAlert_presetWakeUpBeforeClass":  "Сабақ алдында ояту",
+    "@quickAlert_presetWakeUpBeforeClass":  {
+                                                "description":  "Localized text for \u0027quickAlert_presetWakeUpBeforeClass\u0027."
+                                            },
+    "shell_loadingWorkspaceTitle":  "Жұмыс кеңістігі жүктелуде",
+    "@shell_loadingWorkspaceTitle":  {
+                                         "description":  "Localized text for \u0027shell_loadingWorkspaceTitle\u0027."
+                                     },
+    "shell_loadingWorkspaceMessage":  "Рөліңіз бен рұқсаттарыңыз қалпына келтірілуде...",
+    "@shell_loadingWorkspaceMessage":  {
+                                           "description":  "Localized text for \u0027shell_loadingWorkspaceMessage\u0027."
+                                       },
+    "shell_loadingScheduleTitle":  "Жүктеу кестесі",
+    "@shell_loadingScheduleTitle":  {
+                                        "description":  "Localized text for \u0027shell_loadingScheduleTitle\u0027."
+                                    },
+    "shell_loadingScheduleMessage":  "Сабақтар мен жылдам ескертулерді дайындау...",
+    "@shell_loadingScheduleMessage":  {
+                                          "description":  "Localized text for \u0027shell_loadingScheduleMessage\u0027."
+                                      },
+    "shell_loadingProfileTitle":  "Профиль жүктелуде",
+    "@shell_loadingProfileTitle":  {
+                                       "description":  "Localized text for \u0027shell_loadingProfileTitle\u0027."
+                                   },
+    "shell_loadingProfileMessage":  "Студенттік профиль дайындалуда...",
+    "@shell_loadingProfileMessage":  {
+                                         "description":  "Localized text for \u0027shell_loadingProfileMessage\u0027."
+                                     },
+    "studies_title":  "Оқу орталығы",
+    "@studies_title":  {
+                           "description":  "Localized text for \u0027studies_title\u0027."
+                       },
+    "studies_searchTitle":  "Оқу іздеу",
+    "@studies_searchTitle":  {
+                                 "description":  "Localized text for \u0027studies_searchTitle\u0027."
+                             },
+    "studies_searchSubtitle":  "Зерттеу ауқымындағы іздеу келесі кезеңде осы статикалық экспорттан тыс кеңейеді.",
+    "@studies_searchSubtitle":  {
+                                    "description":  "Localized text for \u0027studies_searchSubtitle\u0027."
+                                },
+    "studies_syncedLessons":  "{count} синхрондалған сабақ",
+    "@studies_syncedLessons":  {
+                                   "placeholders":  {
+                                                        "count":  {
+                                                                      "type":  "int"
+                                                                  }
+                                                    },
+                                   "description":  "Localized text for \u0027studies_syncedLessons\u0027."
+                               },
+    "studies_materialsAvailable":  "{count} материал қолжетімді",
+    "@studies_materialsAvailable":  {
+                                        "placeholders":  {
+                                                             "count":  {
+                                                                           "type":  "int"
+                                                                       }
+                                                         },
+                                        "description":  "Localized text for \u0027studies_materialsAvailable\u0027."
+                                    },
+    "studies_syncingLessons":  "Сабақтарды синхрондау",
+    "@studies_syncingLessons":  {
+                                    "description":  "Localized text for \u0027studies_syncingLessons\u0027."
+                                },
+    "studies_syncingMaterials":  "Материалдарды синхрондау",
+    "@studies_syncingMaterials":  {
+                                      "description":  "Localized text for \u0027studies_syncingMaterials\u0027."
+                                  },
+    "studies_modeToday":  "Бүгін",
+    "@studies_modeToday":  {
+                               "description":  "Localized text for \u0027studies_modeToday\u0027."
+                           },
+    "studies_modeStudy":  "Оқу",
+    "@studies_modeStudy":  {
+                               "description":  "Localized text for \u0027studies_modeStudy\u0027."
+                           },
+    "studies_modeExams":  "Емтихандар",
+    "@studies_modeExams":  {
+                               "description":  "Localized text for \u0027studies_modeExams\u0027."
+                           },
+    "studies_materials":  "Материалдар",
+    "@studies_materials":  {
+                               "description":  "Localized text for \u0027studies_materials\u0027."
+                           },
+    "studies_noLessonsAvailable":  "Сабақтар жоқ",
+    "@studies_noLessonsAvailable":  {
+                                        "description":  "Localized text for \u0027studies_noLessonsAvailable\u0027."
+                                    },
+    "studies_noLessonsAvailableSubtitle":  "Материалдарды жүктеп салмас бұрын сабақ жасаңыз.",
+    "@studies_noLessonsAvailableSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_noLessonsAvailableSubtitle\u0027."
+                                            },
+    "studies_upload":  "Жүктеп салу",
+    "@studies_upload":  {
+                            "description":  "Localized text for \u0027studies_upload\u0027."
+                        },
+    "studies_noMaterialsTeacherTitle":  "Жүктеп салынған материалдар әлі жоқ",
+    "@studies_noMaterialsTeacherTitle":  {
+                                             "description":  "Localized text for \u0027studies_noMaterialsTeacherTitle\u0027."
+                                         },
+    "studies_noMaterialsTeacherMessage":  "Study Hub толтыру үшін бірінші сабақ ресурсын жүктеп салыңыз.",
+    "@studies_noMaterialsTeacherMessage":  {
+                                               "description":  "Localized text for \u0027studies_noMaterialsTeacherMessage\u0027."
+                                           },
+    "studies_noMaterialsStudentTitle":  "Әзірге материалдар жоқ",
+    "@studies_noMaterialsStudentTitle":  {
+                                             "description":  "Localized text for \u0027studies_noMaterialsStudentTitle\u0027."
+                                         },
+    "studies_noMaterialsStudentMessage":  "Мұғалімдеріңіз бөліскен материалдар осы жерде пайда болады.",
+    "@studies_noMaterialsStudentMessage":  {
+                                               "description":  "Localized text for \u0027studies_noMaterialsStudentMessage\u0027."
+                                           },
+    "studies_materialsUnavailable":  "Материалдар қолжетімсіз",
+    "@studies_materialsUnavailable":  {
+                                          "description":  "Localized text for \u0027studies_materialsUnavailable\u0027."
+                                      },
+    "studies_continueStudying":  "Оқуды жалғастыр",
+    "@studies_continueStudying":  {
+                                      "description":  "Localized text for \u0027studies_continueStudying\u0027."
+                                  },
+    "studies_assignments":  "Тапсырмалар",
+    "@studies_assignments":  {
+                                 "description":  "Localized text for \u0027studies_assignments\u0027."
+                             },
+    "studies_seeAll":  "Барлығын көру",
+    "@studies_seeAll":  {
+                            "description":  "Localized text for \u0027studies_seeAll\u0027."
+                        },
+    "studies_overdue":  "Мерзімі өткен",
+    "@studies_overdue":  {
+                             "description":  "Localized text for \u0027studies_overdue\u0027."
+                         },
+    "studies_inProgress":  "Орындалуда",
+    "@studies_inProgress":  {
+                                "description":  "Localized text for \u0027studies_inProgress\u0027."
+                            },
+    "studies_dueInDays":  "Төлеу мерзімі {count} күннен кейін",
+    "@studies_dueInDays":  {
+                               "placeholders":  {
+                                                    "count":  {
+                                                                  "type":  "int"
+                                                              }
+                                                },
+                               "description":  "Localized text for \u0027studies_dueInDays\u0027."
+                           },
+    "studies_subjects":  "Тақырыптар",
+    "@studies_subjects":  {
+                              "description":  "Localized text for \u0027studies_subjects\u0027."
+                          },
+    "studies_priorityToday":  "Бүгінгі басымдық",
+    "@studies_priorityToday":  {
+                                   "description":  "Localized text for \u0027studies_priorityToday\u0027."
+                               },
+    "studies_continueWorking":  "Жұмысты жалғастыру",
+    "@studies_continueWorking":  {
+                                     "description":  "Localized text for \u0027studies_continueWorking\u0027."
+                                 },
+    "studies_todayClasses":  "Бүгінгі сабақтар",
+    "@studies_todayClasses":  {
+                                  "description":  "Localized text for \u0027studies_todayClasses\u0027."
+                              },
+    "studies_upcomingExams":  "Алдағы емтихандар",
+    "@studies_upcomingExams":  {
+                                   "description":  "Localized text for \u0027studies_upcomingExams\u0027."
+                               },
+    "studies_midterm":  "Аралық бақылау",
+    "@studies_midterm":  {
+                             "description":  "Localized text for \u0027studies_midterm\u0027."
+                         },
+    "studies_inDays":  "{count} күннен кейін",
+    "@studies_inDays":  {
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "type":  "int"
+                                                           }
+                                             },
+                            "description":  "Localized text for \u0027studies_inDays\u0027."
+                        },
+    "studies_aiWeakTopicsReview":  "AI әлсіз тақырыптарды шолу",
+    "@studies_aiWeakTopicsReview":  {
+                                        "description":  "Localized text for \u0027studies_aiWeakTopicsReview\u0027."
+                                    },
+    "studies_invalidMaterialLink":  "Жарамсыз материал сілтемесі",
+    "@studies_invalidMaterialLink":  {
+                                         "description":  "Localized text for \u0027studies_invalidMaterialLink\u0027."
+                                     },
+    "studies_couldNotOpenMaterial":  "Материалды ашу мүмкін болмады",
+    "@studies_couldNotOpenMaterial":  {
+                                          "description":  "Localized text for \u0027studies_couldNotOpenMaterial\u0027."
+                                      },
+    "studies_uploadFailed":  "Жүктеп салу сәтсіз аяқталды",
+    "@studies_uploadFailed":  {
+                                  "description":  "Localized text for \u0027studies_uploadFailed\u0027."
+                              },
+    "studies_uploadFailedSubtitle":  "Таңдалған файлды жүктеу мүмкін емес.",
+    "@studies_uploadFailedSubtitle":  {
+                                          "description":  "Localized text for \u0027studies_uploadFailedSubtitle\u0027."
+                                      },
+    "studies_materialIncomplete":  "Материалдық мәліметтер толық емес",
+    "@studies_materialIncomplete":  {
+                                        "description":  "Localized text for \u0027studies_materialIncomplete\u0027."
+                                    },
+    "studies_materialIncompleteSubtitle":  "Сабақты таңдаңыз, файлды таңдаңыз және тақырып қосыңыз.",
+    "@studies_materialIncompleteSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_materialIncompleteSubtitle\u0027."
+                                            },
+    "studies_materialUploaded":  "Материал жүктеп салынды",
+    "@studies_materialUploaded":  {
+                                      "description":  "Localized text for \u0027studies_materialUploaded\u0027."
+                                  },
+    "studies_uploadMaterial":  "Материалды жүктеп салу",
+    "@studies_uploadMaterial":  {
+                                    "description":  "Localized text for \u0027studies_uploadMaterial\u0027."
+                                },
+    "studies_materialTitle":  "Материал атауы",
+    "@studies_materialTitle":  {
+                                   "description":  "Localized text for \u0027studies_materialTitle\u0027."
+                               },
+    "studies_selectLesson":  "Сабақты таңдау",
+    "@studies_selectLesson":  {
+                                  "description":  "Localized text for \u0027studies_selectLesson\u0027."
+                              },
+    "studies_chooseFile":  "Файлды таңдаңыз",
+    "@studies_chooseFile":  {
+                                "description":  "Localized text for \u0027studies_chooseFile\u0027."
+                            },
+    "studies_uploading":  "Жүктеп салынуда...",
+    "@studies_uploading":  {
+                               "description":  "Localized text for \u0027studies_uploading\u0027."
+                           },
+    "studies_continueCardMathTitle":  "Жетілдірілген математика",
+    "@studies_continueCardMathTitle":  {
+                                           "description":  "Localized text for \u0027studies_continueCardMathTitle\u0027."
+                                       },
+    "studies_continueCardMathSubtitle":  "2 жаңа ескертпе • Тексеру қажет",
+    "@studies_continueCardMathSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_continueCardMathSubtitle\u0027."
+                                          },
+    "studies_continueCardPhysicsTitle":  "Физика",
+    "@studies_continueCardPhysicsTitle":  {
+                                              "description":  "Localized text for \u0027studies_continueCardPhysicsTitle\u0027."
+                                          },
+    "studies_continueCardPhysicsSubtitle":  "1 жаңа файл • 4-тарау",
+    "@studies_continueCardPhysicsSubtitle":  {
+                                                 "description":  "Localized text for \u0027studies_continueCardPhysicsSubtitle\u0027."
+                                             },
+    "studies_continueCardProgrammingTitle":  "Бағдарламалау",
+    "@studies_continueCardProgrammingTitle":  {
+                                                  "description":  "Localized text for \u0027studies_continueCardProgrammingTitle\u0027."
+                                              },
+    "studies_continueCardProgrammingSubtitle":  "Дәріс жазу",
+    "@studies_continueCardProgrammingSubtitle":  {
+                                                     "description":  "Localized text for \u0027studies_continueCardProgrammingSubtitle\u0027."
+                                                 },
+    "studies_assignmentCalculusTitle":  "Есеп 3-тапсырма",
+    "@studies_assignmentCalculusTitle":  {
+                                             "description":  "Localized text for \u0027studies_assignmentCalculusTitle\u0027."
+                                         },
+    "studies_assignmentCalculusSubtitle":  "Жетілдірілген математика",
+    "@studies_assignmentCalculusSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_assignmentCalculusSubtitle\u0027."
+                                            },
+    "studies_assignmentPythonTitle":  "Python жобасы",
+    "@studies_assignmentPythonTitle":  {
+                                           "description":  "Localized text for \u0027studies_assignmentPythonTitle\u0027."
+                                       },
+    "studies_assignmentPythonSubtitle":  "Веб бағдарламалау",
+    "@studies_assignmentPythonSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_assignmentPythonSubtitle\u0027."
+                                          },
+    "studies_subjectProgrammingFundamentals":  "Бағдарламалау негіздері",
+    "@studies_subjectProgrammingFundamentals":  {
+                                                    "description":  "Localized text for \u0027studies_subjectProgrammingFundamentals\u0027."
+                                                },
+    "studies_subjectProfessorUrazimbetov":  "Уразимбетов М.",
+    "@studies_subjectProfessorUrazimbetov":  {
+                                                 "description":  "Localized text for \u0027studies_subjectProfessorUrazimbetov\u0027."
+                                             },
+    "studies_subjectAiSummaryAvailable":  "AI қорытындысы қолжетімді",
+    "@studies_subjectAiSummaryAvailable":  {
+                                               "description":  "Localized text for \u0027studies_subjectAiSummaryAvailable\u0027."
+                                           },
+    "studies_subjectNextTomorrow0900":  "Келесі: Ертең 09:00",
+    "@studies_subjectNextTomorrow0900":  {
+                                             "description":  "Localized text for \u0027studies_subjectNextTomorrow0900\u0027."
+                                         },
+    "studies_subjectFiveMaterials":  "5 материал",
+    "@studies_subjectFiveMaterials":  {
+                                          "description":  "Localized text for \u0027studies_subjectFiveMaterials\u0027."
+                                      },
+    "studies_subjectTwoAssignments":  "2 тапсырма",
+    "@studies_subjectTwoAssignments":  {
+                                           "description":  "Localized text for \u0027studies_subjectTwoAssignments\u0027."
+                                       },
+    "studies_subjectDatabaseManagement":  "Мәліметтер қорын басқару",
+    "@studies_subjectDatabaseManagement":  {
+                                               "description":  "Localized text for \u0027studies_subjectDatabaseManagement\u0027."
+                                           },
+    "studies_subjectProfessorNurlan":  "Нұрлан Қ.",
+    "@studies_subjectProfessorNurlan":  {
+                                            "description":  "Localized text for \u0027studies_subjectProfessorNurlan\u0027."
+                                        },
+    "studies_subjectTwoWeakTopics":  "Қарау үшін 2 әлсіз тақырып",
+    "@studies_subjectTwoWeakTopics":  {
+                                          "description":  "Localized text for \u0027studies_subjectTwoWeakTopics\u0027."
+                                      },
+    "studies_subjectNextToday1000":  "Келесі: Бүгін 10:00",
+    "@studies_subjectNextToday1000":  {
+                                          "description":  "Localized text for \u0027studies_subjectNextToday1000\u0027."
+                                      },
+    "studies_subjectThreeMaterials":  "3 материал",
+    "@studies_subjectThreeMaterials":  {
+                                           "description":  "Localized text for \u0027studies_subjectThreeMaterials\u0027."
+                                       },
+    "studies_subjectOneAssignment":  "1 тапсырма",
+    "@studies_subjectOneAssignment":  {
+                                          "description":  "Localized text for \u0027studies_subjectOneAssignment\u0027."
+                                      },
+    "studies_priorityCalculusTitle":  "Есеп 3-тапсырма",
+    "@studies_priorityCalculusTitle":  {
+                                           "description":  "Localized text for \u0027studies_priorityCalculusTitle\u0027."
+                                       },
+    "studies_priorityCalculusSubtitle":  "Бүгін түнде 23:59-да болады. Сіз тапсырмалардың 60% орындадыңыз.",
+    "@studies_priorityCalculusSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_priorityCalculusSubtitle\u0027."
+                                          },
+    "studies_priorityCalculusMeta":  "Жетілдірілген математика • Бүгін түнде 23:59-да аяқталады",
+    "@studies_priorityCalculusMeta":  {
+                                          "description":  "Localized text for \u0027studies_priorityCalculusMeta\u0027."
+                                      },
+    "studies_todayClassWebProgrammingTitle":  "Веб бағдарламалау",
+    "@studies_todayClassWebProgrammingTitle":  {
+                                                   "description":  "Localized text for \u0027studies_todayClassWebProgrammingTitle\u0027."
+                                               },
+    "studies_todayClassWebProgrammingSubtitle":  "Төле би №86 • Уразымбетов М.",
+    "@studies_todayClassWebProgrammingSubtitle":  {
+                                                      "description":  "Localized text for \u0027studies_todayClassWebProgrammingSubtitle\u0027."
+                                                  },
+    "studies_todayClassDatabaseManagementTitle":  "Мәліметтер қорын басқару",
+    "@studies_todayClassDatabaseManagementTitle":  {
+                                                       "description":  "Localized text for \u0027studies_todayClassDatabaseManagementTitle\u0027."
+                                                   },
+    "studies_todayClassDatabaseManagementSubtitle":  "Онлайн • Нұрлан Қ.",
+    "@studies_todayClassDatabaseManagementSubtitle":  {
+                                                          "description":  "Localized text for \u0027studies_todayClassDatabaseManagementSubtitle\u0027."
+                                                      },
+    "studies_examAdvancedMathTitle":  "Жетілдірілген математика",
+    "@studies_examAdvancedMathTitle":  {
+                                           "description":  "Localized text for \u0027studies_examAdvancedMathTitle\u0027."
+                                       },
+    "studies_examCoverage":  "1-4 тарауларды қамтиды. Калькулятор әкел.",
+    "@studies_examCoverage":  {
+                                  "description":  "Localized text for \u0027studies_examCoverage\u0027."
+                              },
+    "studies_readyPercent":  "40% дайын",
+    "@studies_readyPercent":  {
+                                  "description":  "Localized text for \u0027studies_readyPercent\u0027."
+                              },
+    "studies_weakTopicIntegralsTitle":  "Интегралдар",
+    "@studies_weakTopicIntegralsTitle":  {
+                                             "description":  "Localized text for \u0027studies_weakTopicIntegralsTitle\u0027."
+                                         },
+    "studies_weakTopicIntegralsSubtitle":  "Математика • 3 қате",
+    "@studies_weakTopicIntegralsSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_weakTopicIntegralsSubtitle\u0027."
+                                            },
+    "studies_weakTopicSqlJoinsTitle":  "SQL қосылымдары",
+    "@studies_weakTopicSqlJoinsTitle":  {
+                                            "description":  "Localized text for \u0027studies_weakTopicSqlJoinsTitle\u0027."
+                                        },
+    "studies_weakTopicSqlJoinsSubtitle":  "Деректер базасы • 2 қате",
+    "@studies_weakTopicSqlJoinsSubtitle":  {
+                                               "description":  "Localized text for \u0027studies_weakTopicSqlJoinsSubtitle\u0027."
+                                           },
+    "common_online":  "Онлайн",
+    "@common_online":  {
+                           "description":  "Localized text for \u0027common_online\u0027."
+                       },
+    "common_justNow":  "Дәл қазір",
+    "@common_justNow":  {
+                            "description":  "Localized text for \u0027common_justNow\u0027."
+                        },
+    "common_mondayShort":  "дүйсенбі",
+    "@common_mondayShort":  {
+                                "description":  "Localized text for \u0027common_mondayShort\u0027."
+                            },
+    "lesson_subjectPhysicsLab":  "Физика зертханасы",
+    "@lesson_subjectPhysicsLab":  {
+                                      "description":  "Localized text for \u0027lesson_subjectPhysicsLab\u0027."
+                                  },
+    "lesson_subjectWebProgrammingPython":  "Веб бағдарламалау және Python",
+    "@lesson_subjectWebProgrammingPython":  {
+                                                "description":  "Localized text for \u0027lesson_subjectWebProgrammingPython\u0027."
+                                            },
+    "lesson_subjectAlgorithmsMathematics":  "Алгоритм және математика",
+    "@lesson_subjectAlgorithmsMathematics":  {
+                                                 "description":  "Localized text for \u0027lesson_subjectAlgorithmsMathematics\u0027."
+                                             },
+    "lesson_subjectDatabaseManagementSystems":  "Мәліметтер қорын басқару жүйелері",
+    "@lesson_subjectDatabaseManagementSystems":  {
+                                                     "description":  "Localized text for \u0027lesson_subjectDatabaseManagementSystems\u0027."
+                                                 },
+    "lesson_locationMainBuildingRoom201":  "Бас ғимарат, 201-кабинет",
+    "@lesson_locationMainBuildingRoom201":  {
+                                                "description":  "Localized text for \u0027lesson_locationMainBuildingRoom201\u0027."
+                                            },
+    "lesson_locationToleBi86":  "Төле би №86",
+    "@lesson_locationToleBi86":  {
+                                     "description":  "Localized text for \u0027lesson_locationToleBi86\u0027."
+                                 },
+    "lesson_locationKazybekBi30":  "Қазыбек би №30",
+    "@lesson_locationKazybekBi30":  {
+                                        "description":  "Localized text for \u0027lesson_locationKazybekBi30\u0027."
+                                    },
+    "lesson_teacherProfessorIvanov":  "Иванов проф",
+    "@lesson_teacherProfessorIvanov":  {
+                                           "description":  "Localized text for \u0027lesson_teacherProfessorIvanov\u0027."
+                                       },
+    "messages_senderUniversityAdmin":  "Университет әкімшісі",
+    "@messages_senderUniversityAdmin":  {
+                                            "description":  "Localized text for \u0027messages_senderUniversityAdmin\u0027."
+                                        },
+    "messages_previewProjectMeeting":  "Эй, біз әлі жоба үшін кездесеміз бе?",
+    "@messages_previewProjectMeeting":  {
+                                            "description":  "Localized text for \u0027messages_previewProjectMeeting\u0027."
+                                        },
+    "messages_previewThanksNotes":  "Жазбаларыңызға рахмет!",
+    "@messages_previewThanksNotes":  {
+                                         "description":  "Localized text for \u0027messages_previewThanksNotes\u0027."
+                                     },
+    "messages_previewScheduleUpdated":  "Кестеңіз жаңартылды.",
+    "@messages_previewScheduleUpdated":  {
+                                             "description":  "Localized text for \u0027messages_previewScheduleUpdated\u0027."
+                                         },
+    "profile_programSoftwareEngineering":  "Бағдарламалық қамтамасыз ету инженериясы",
+    "@profile_programSoftwareEngineering":  {
+                                                "description":  "Localized text for \u0027profile_programSoftwareEngineering\u0027."
+                                            },
+    "profile_programStudentSchedule":  "Студенттік кесте",
+    "@profile_programStudentSchedule":  {
+                                            "description":  "Localized text for \u0027profile_programStudentSchedule\u0027."
+                                        },
+    "profile_programTeachingStaff":  "Педагогикалық қызметкерлер",
+    "@profile_programTeachingStaff":  {
+                                          "description":  "Localized text for \u0027profile_programTeachingStaff\u0027."
+                                      },
+    "profile_yearSecond":  "2-ші жыл",
+    "@profile_yearSecond":  {
+                                "description":  "Localized text for \u0027profile_yearSecond\u0027."
+                            },
+    "profile_yearStudent":  "студент",
+    "@profile_yearStudent":  {
+                                 "description":  "Localized text for \u0027profile_yearStudent\u0027."
+                             },
+    "profile_yearTeacher":  "Мұғалім",
+    "@profile_yearTeacher":  {
+                                 "description":  "Localized text for \u0027profile_yearTeacher\u0027."
+                             },
+    "profile_defaultBio":  "Frontend, AI және құрылыс заттарына құмар. Әрқашан хакатонға дайын болыңыз!",
+    "@profile_defaultBio":  {
+                                "description":  "Localized text for \u0027profile_defaultBio\u0027."
+                            },
+    "profile_liveStudentBio":  "Тікелей кестелерге, еске салғыштарға және ортақ материалдарға қосылған студенттер ағыны.",
+    "@profile_liveStudentBio":  {
+                                    "description":  "Localized text for \u0027profile_liveStudentBio\u0027."
+                                },
+    "profile_liveTeacherBio":  "Мұғалімнің бақылау тақтасы сіздің тікелей сабақтарыңыз бен материалдарыңызға қосылған.",
+    "@profile_liveTeacherBio":  {
+                                    "description":  "Localized text for \u0027profile_liveTeacherBio\u0027."
+                                },
+    "profile_liveSuperTeacherBio":  "Толық кестені басқару мүмкіндігі бар супер мұғалім.",
+    "@profile_liveSuperTeacherBio":  {
+                                         "description":  "Localized text for \u0027profile_liveSuperTeacherBio\u0027."
+                                     },
+    "profile_groupNotAssigned":  "Топ тағайындалмаған",
+    "@profile_groupNotAssigned":  {
+                                      "description":  "Localized text for \u0027profile_groupNotAssigned\u0027."
+                                  },
+    "profile_coverTemplateCampus":  "Кампус",
+    "@profile_coverTemplateCampus":  {
+                                         "description":  "Localized text for \u0027profile_coverTemplateCampus\u0027."
+                                     },
+    "profile_coverTemplateLibrary":  "Кітапхана",
+    "@profile_coverTemplateLibrary":  {
+                                          "description":  "Localized text for \u0027profile_coverTemplateLibrary\u0027."
+                                      },
+    "profile_coverTemplateGraduation":  "Бітіру",
+    "@profile_coverTemplateGraduation":  {
+                                             "description":  "Localized text for \u0027profile_coverTemplateGraduation\u0027."
+                                         },
+    "profile_coverTemplateArchitecture":  "Архитектура",
+    "@profile_coverTemplateArchitecture":  {
+                                               "description":  "Localized text for \u0027profile_coverTemplateArchitecture\u0027."
+                                           },
+    "profile_coverTemplateAbstractTech":  "Реферат техникасы",
+    "@profile_coverTemplateAbstractTech":  {
+                                               "description":  "Localized text for \u0027profile_coverTemplateAbstractTech\u0027."
+                                           },
+    "profile_coverTemplateScience":  "Ғылым",
+    "@profile_coverTemplateScience":  {
+                                          "description":  "Localized text for \u0027profile_coverTemplateScience\u0027."
+                                      },
+    "services_requestMaintenancePrefix":  "Техникалық қызмет көрсету: {issueType}",
+    "@services_requestMaintenancePrefix":  {
+                                               "placeholders":  {
+                                                                    "issueType":  {
+                                                                                      "type":  "String"
+                                                                                  }
+                                                                },
+                                               "description":  "Localized text for \u0027services_requestMaintenancePrefix\u0027."
+                                           },
+    "services_requestSupportPrefix":  "Қолдау: {subject}",
+    "@services_requestSupportPrefix":  {
+                                           "placeholders":  {
+                                                                "subject":  {
+                                                                                "type":  "String"
+                                                                            }
+                                                            },
+                                           "description":  "Localized text for \u0027services_requestSupportPrefix\u0027."
+                                       },
+    "services_requestEnrollmentCertificate":  "Тіркелу куәлігі",
+    "@services_requestEnrollmentCertificate":  {
+                                                   "description":  "Localized text for \u0027services_requestEnrollmentCertificate\u0027."
+                                               },
+    "services_requestDormitoryRepair":  "Жатақхананы жөндеу",
+    "@services_requestDormitoryRepair":  {
+                                             "description":  "Localized text for \u0027services_requestDormitoryRepair\u0027."
+                                         },
+    "services_requestTuitionFeePayment":  "Оқу ақысын төлеу",
+    "@services_requestTuitionFeePayment":  {
+                                               "description":  "Localized text for \u0027services_requestTuitionFeePayment\u0027."
+                                           },
+    "services_requestDescriptionVisaApplication":  "Визаға өтініш беру сұралды.",
+    "@services_requestDescriptionVisaApplication":  {
+                                                        "description":  "Localized text for \u0027services_requestDescriptionVisaApplication\u0027."
+                                                    },
+    "services_requestDescriptionLeakingPipe":  "Жуынатын бөлмеде ағып жатқан құбыр.",
+    "@services_requestDescriptionLeakingPipe":  {
+                                                    "description":  "Localized text for \u0027services_requestDescriptionLeakingPipe\u0027."
+                                                },
+    "services_requestDescriptionViaSynorServices":  "Synor қызметтері арқылы сұралған.",
+    "@services_requestDescriptionViaSynorServices":  {
+                                                         "description":  "Localized text for \u0027services_requestDescriptionViaSynorServices\u0027."
+                                                     },
+    "services_requestDescriptionPaymentSpring2026":  "2026 жылдың көктемгі семестріне 450 000 ₸ төлем.",
+    "@services_requestDescriptionPaymentSpring2026":  {
+                                                          "description":  "Localized text for \u0027services_requestDescriptionPaymentSpring2026\u0027."
+                                                      },
+    "services_requestDormitoryRoom412":  "№3 жатақхана, 412 бөлме. {description}",
+    "@services_requestDormitoryRoom412":  {
+                                              "placeholders":  {
+                                                                   "description":  {
+                                                                                       "type":  "String"
+                                                                                   }
+                                                               },
+                                              "description":  "Localized text for \u0027services_requestDormitoryRoom412\u0027."
+                                          },
+    "services_dateOct12":  "12 қазан",
+    "@services_dateOct12":  {
+                                "description":  "Localized text for \u0027services_dateOct12\u0027."
+                            },
+    "services_dateOct10":  "10 қазан",
+    "@services_dateOct10":  {
+                                "description":  "Localized text for \u0027services_dateOct10\u0027."
+                            },
+    "services_zeroBalanceAmount":  "0 ₸",
+    "@services_zeroBalanceAmount":  {
+                                        "description":  "Localized text for \u0027services_zeroBalanceAmount\u0027."
+                                    },
+    "services_tuitionAmount":  "450 000 ₸",
+    "@services_tuitionAmount":  {
+                                    "description":  "Localized text for \u0027services_tuitionAmount\u0027."
+                                },
+    "error_authenticatedUserRequired":  "Аутентификацияланған пайдаланушы қажет.",
+    "@error_authenticatedUserRequired":  {
+                                             "description":  "Localized text for \u0027error_authenticatedUserRequired\u0027."
+                                         },
+    "error_authenticatedProfileRequired":  "Аутентификацияланған пайдаланушы профилі қажет.",
+    "@error_authenticatedProfileRequired":  {
+                                                "description":  "Localized text for \u0027error_authenticatedProfileRequired\u0027."
+                                            },
+    "error_lessonIdRequired":  "Жаңартулар үшін сабақ идентификаторы қажет.",
+    "@error_lessonIdRequired":  {
+                                    "description":  "Localized text for \u0027error_lessonIdRequired\u0027."
+                                },
+    "error_lessonEditPermission":  "Бұл сабақты өңдеуге рұқсатыңыз жоқ.",
+    "@error_lessonEditPermission":  {
+                                        "description":  "Localized text for \u0027error_lessonEditPermission\u0027."
+                                    },
+    "error_onlyTeachersManageLessons":  "Сабақтарды тек мұғалімдер басқара алады.",
+    "@error_onlyTeachersManageLessons":  {
+                                             "description":  "Localized text for \u0027error_onlyTeachersManageLessons\u0027."
+                                         },
+    "error_onlyTeachersUploadMaterials":  "Материалдарды тек мұғалімдер жүктей алады.",
+    "@error_onlyTeachersUploadMaterials":  {
+                                               "description":  "Localized text for \u0027error_onlyTeachersUploadMaterials\u0027."
+                                           },
+    "error_onlyUploadManagedLessons":  "Сіз басқаратын сабақтарға арналған материалдарды ғана жүктей аласыз.",
+    "@error_onlyUploadManagedLessons":  {
+                                            "description":  "Localized text for \u0027error_onlyUploadManagedLessons\u0027."
+                                        },
+    "error_missingSupabaseConfig":  "Supabase конфигурациясы жоқ. Қолданбаны SUPABASE_URL және SUPABASE_ANON_KEY арқылы іске қосыңыз.",
+    "@error_missingSupabaseConfig":  {
+                                         "description":  "Localized text for \u0027error_missingSupabaseConfig\u0027."
+                                     },
+    "async_loadingTitle":  "Жүктелуде",
+    "@async_loadingTitle":  {
+                                "description":  "Localized text for \u0027async_loadingTitle\u0027."
+                            },
+    "async_loadingMessage":  "Деректеріңіз дайындалуда...",
+    "@async_loadingMessage":  {
+                                  "description":  "Localized text for \u0027async_loadingMessage\u0027."
+                              },
+    "async_errorTitle":  "Бірдеңе дұрыс болмады",
+    "@async_errorTitle":  {
+                              "description":  "Localized text for \u0027async_errorTitle\u0027."
+                          },
+    "notifications_title": "Хабарландырулар",
+    "notifications_markAllAsRead": "Бәрін оқылған деп белгілеу",
+    "notifications_empty": "Әзірге хабарландырулар жоқ",
+    "alarm_repeat": "Қайталау",
+    "alarm_snooze": "Қайталау сигналы",
+    "alarm_label": "Атауы",
+    "alarm_everyDay": "Күн сайын",
+    "alarm_once": "Бір рет",
+    "alarm_weekdays": "Жұмыс күндері",
+    "alarm_weekends": "Демалыс күндері",
+    "alarm_delete": "Будильникті жою",
+    "alarm_save": "Сақтау",
+    "alarm_add": "Будильник қосу",
+    "alarm_edit": "Өзгерту"
+}

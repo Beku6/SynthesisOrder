@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../shared/data/mock_data.dart';
+import '../../../core/async/synor_async_state_view.dart';
+import '../../../l10n/l10n.dart';
 import '../../../shared/widgets/synor_widgets.dart';
+import '../application/messages_controller.dart';
+import '../../../app/router/app_route_controller.dart';
 
-class MessagesScreen extends StatelessWidget {
+class MessagesScreen extends ConsumerWidget {
   const MessagesScreen({super.key, required this.onBack});
 
   final VoidCallback onBack;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final messagesAsync = ref.watch(messagesProvider);
+    final router = ref.read(appRouteControllerProvider);
     return Column(
       children: [
         Container(
@@ -41,7 +47,7 @@ class MessagesScreen extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               Text(
-                'Messages',
+                context.l10n.messages_title,
                 style: TextStyle(
                   color: synorPrimaryText(context),
                   fontSize: 18,
@@ -52,13 +58,23 @@ class MessagesScreen extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView.separated(
-            padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
-            itemCount: SynorMockData.messages.length,
-            separatorBuilder: (_, _) => const SizedBox(height: 16),
-            itemBuilder: (context, index) {
-              return MessageTile(preview: SynorMockData.messages[index]);
-            },
+          child: SynorAsyncStateView(
+            value: messagesAsync,
+            loadingTitle: context.l10n.messages_loadingTitle,
+            loadingMessage: context.l10n.messages_loadingMessage,
+            onRetry: () => ref.invalidate(messagesProvider),
+            data: (messages) => ListView.separated(
+              padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
+              itemCount: messages.length,
+              separatorBuilder: (_, _) => const SizedBox(height: 16),
+              itemBuilder: (context, index) {
+                final preview = messages[index];
+                return MessageTile(
+                  preview: preview,
+                  onTap: () => router.goToChatRoom(preview.roomId),
+                );
+              },
+            ),
           ),
         ),
       ],

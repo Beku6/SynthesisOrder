@@ -7,6 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app/router/app_route_controller.dart';
 import '../../../app/theme/synor_design_tokens.dart';
 import '../../../core/async/synor_async_state_view.dart';
+import '../../../l10n/app_localization_x.dart';
+import '../../../l10n/l10n.dart';
 import '../../../shared/models/app_models.dart';
 import '../../../shared/widgets/synor_widgets.dart';
 import '../application/services_controller.dart';
@@ -58,6 +60,18 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
   EdgeInsets _contentPadding({double top = 24}) {
     final keyboardInset = MediaQuery.viewInsetsOf(context).bottom;
     return EdgeInsets.fromLTRB(24, top, 24, 132 + keyboardInset);
+  }
+
+  List<ServiceCategoryData> _localizedFilteredCategories(ServicesState state) {
+    final query = state.searchQuery.trim().toLowerCase();
+    if (query.isEmpty) {
+      return state.categories;
+    }
+    return state.categories.where((service) {
+      final title = context.l10n.serviceTitle(service.id).toLowerCase();
+      final subtitle = context.l10n.serviceSubtitle(service.id).toLowerCase();
+      return title.contains(query) || subtitle.contains(query);
+    }).toList();
   }
 
   Widget _buildSubScreen({
@@ -126,16 +140,19 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
   Widget _buildMainView(ServicesState state) {
     final router = ref.read(appRouteControllerProvider);
     final controller = ref.read(servicesControllerProvider.notifier);
-    final services = state.filteredCategories;
+    final services = _localizedFilteredCategories(state);
 
     return ListView(
       key: const ValueKey(ServiceView.main),
       padding: _contentPadding(top: 48),
       children: [
-        Text('Services', style: Theme.of(context).textTheme.headlineSmall),
+        Text(
+          context.l10n.services_title,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         const SizedBox(height: 16),
         SynorSearchField(
-          hintText: 'Search services...',
+          hintText: context.l10n.services_searchPlaceholder,
           prefixIcon: LucideIcons.search,
           onChanged: controller.setSearchQuery,
         ),
@@ -153,8 +170,8 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
           itemBuilder: (context, index) {
             final service = services[index];
             return ServiceCard(
-              title: service.title,
-              subtitle: service.subtitle,
+              title: context.l10n.serviceTitle(service.id),
+              subtitle: context.l10n.serviceSubtitle(service.id),
               color: service.color,
               icon: _serviceIcon(service.id),
               onTap: () => router.goToServiceView(service.id),
@@ -165,7 +182,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
           const SizedBox(height: 20),
           Center(
             child: Text(
-              'No services found matching "${state.searchQuery}"',
+              context.l10n.services_noResults(state.searchQuery),
               style: TextStyle(color: synorSecondaryText(context)),
             ),
           ),
@@ -175,7 +192,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
           children: [
             Expanded(
               child: Text(
-                'Recent Requests',
+                context.l10n.services_recentRequests,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
@@ -184,7 +201,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
             PressableScale(
               onTap: () => router.goToServiceView(ServiceView.allRequests),
               child: Text(
-                'View All',
+                context.l10n.common_viewAll,
                 style: TextStyle(
                   color: synorIsDark(context)
                       ? SynorColors.indigo400
@@ -213,19 +230,31 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
 
   Widget _buildDocumentsView(ServicesState state) {
     final controller = ref.read(servicesControllerProvider.notifier);
-    const documents = [
-      ('Enrollment Certificate', 'Proof of student status'),
-      ('Official Transcript', 'Academic record with grades'),
-      ('Military Deferment', 'For military service exemption'),
+    final documents = [
+      (
+        'request.enrollmentCertificate',
+        context.l10n.services_documentEnrollmentCertificate,
+        context.l10n.services_documentEnrollmentCertificateSubtitle,
+      ),
+      (
+        'request.officialTranscript',
+        context.l10n.services_documentOfficialTranscript,
+        context.l10n.services_documentOfficialTranscriptSubtitle,
+      ),
+      (
+        'request.militaryDeferment',
+        context.l10n.services_documentMilitaryDeferment,
+        context.l10n.services_documentMilitaryDefermentSubtitle,
+      ),
     ];
 
     return _buildSubScreen(
       state: state,
-      title: 'Documents',
+      title: context.l10n.services_documents,
       child: ListView(
         padding: _contentPadding(),
         children: [
-          const _SectionCaption(label: 'Available to request'),
+          _SectionCaption(label: context.l10n.services_availableToRequest),
           const SizedBox(height: 16),
           ...documents.map(
             (document) => Padding(
@@ -243,7 +272,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            document.$1,
+                            document.$2,
                             style: TextStyle(
                               color: synorPrimaryText(context),
                               fontWeight: FontWeight.w600,
@@ -251,7 +280,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            document.$2,
+                            document.$3,
                             style: TextStyle(
                               color: synorSecondaryText(context),
                               fontSize: 12,
@@ -290,7 +319,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     final controller = ref.read(servicesControllerProvider.notifier);
     return _buildSubScreen(
       state: state,
-      title: 'Payments',
+      title: context.l10n.services_payments,
       child: ListView(
         padding: _contentPadding(),
         children: [
@@ -325,16 +354,16 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Current Balance',
+                      Text(
+                        context.l10n.services_currentBalance,
                         style: TextStyle(
                           color: SynorColors.emerald50,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        '0 в‚ё',
+                      Text(
+                        context.l10n.services_zeroBalanceAmount,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
@@ -352,17 +381,17 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                           color: Colors.white.withValues(alpha: 0.18),
                           borderRadius: BorderRadius.circular(999),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(
+                            const Icon(
                               LucideIcons.circle_check_big,
                               size: 16,
                               color: Colors.white,
                             ),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Text(
-                              'All fees paid',
+                              context.l10n.services_allFeesPaid,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
@@ -378,7 +407,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
             ),
           ),
           const SizedBox(height: 28),
-          const _SectionCaption(label: 'Upcoming fees'),
+          _SectionCaption(label: context.l10n.services_upcomingFees),
           const SizedBox(height: 16),
           SynorGlassPanel(
             radius: SynorRadii.card,
@@ -393,7 +422,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Spring Semester 2026',
+                            context.l10n.services_springSemester2026,
                             style: TextStyle(
                               color: synorPrimaryText(context),
                               fontWeight: FontWeight.w600,
@@ -401,7 +430,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            'Tuition Fee',
+                            context.l10n.services_tuitionFee,
                             style: TextStyle(
                               color: synorSecondaryText(context),
                             ),
@@ -410,7 +439,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                       ),
                     ),
                     Text(
-                      '450,000 в‚ё',
+                      context.l10n.services_tuitionAmount,
                       style: TextStyle(
                         color: synorPrimaryText(context),
                         fontWeight: FontWeight.w700,
@@ -438,7 +467,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'Due in 45 days (May 10, 2026)',
+                        context.l10n.services_dueIn45Days,
                         style: TextStyle(
                           color: synorIsDark(context)
                               ? SynorColors.amber400
@@ -464,7 +493,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'Pay Now',
+                        context.l10n.services_payNow,
                         style: TextStyle(
                           color: synorIsDark(context)
                               ? Colors.black
@@ -488,7 +517,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
 
     return _buildSubScreen(
       state: state,
-      title: 'Housing',
+      title: context.l10n.services_housing,
       child: ListView(
         padding: _contentPadding(),
         children: [
@@ -520,7 +549,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Dormitory #3',
+                        context.l10n.services_dormitoryTitle,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -531,7 +560,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Room 412 вЂў Floor 4',
+                        context.l10n.services_dormitoryRoom,
                         style: TextStyle(color: synorSecondaryText(context)),
                       ),
                     ],
@@ -541,7 +570,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
             ),
           ),
           const SizedBox(height: 28),
-          const _SectionCaption(label: 'Maintenance request'),
+          _SectionCaption(label: context.l10n.services_maintenanceRequest),
           const SizedBox(height: 16),
           SynorGlassPanel(
             radius: SynorRadii.card,
@@ -549,7 +578,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Issue Type',
+                  context.l10n.services_issueType,
                   style: TextStyle(
                     color: synorPrimaryText(context),
                     fontWeight: FontWeight.w600,
@@ -588,22 +617,28 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
-                        items: const [
+                        items: [
                           DropdownMenuItem(
-                            value: 'Plumbing',
-                            child: Text('Plumbing'),
+                            value: 'services.issue.plumbing',
+                            child: Text(
+                              context.l10n.services_issueTypePlumbing,
+                            ),
                           ),
                           DropdownMenuItem(
-                            value: 'Electrical',
-                            child: Text('Electrical'),
+                            value: 'services.issue.electrical',
+                            child: Text(
+                              context.l10n.services_issueTypeElectrical,
+                            ),
                           ),
                           DropdownMenuItem(
-                            value: 'Furniture',
-                            child: Text('Furniture'),
+                            value: 'services.issue.furniture',
+                            child: Text(
+                              context.l10n.services_issueTypeFurniture,
+                            ),
                           ),
                           DropdownMenuItem(
-                            value: 'Other',
-                            child: Text('Other'),
+                            value: 'services.issue.other',
+                            child: Text(context.l10n.services_issueTypeOther),
                           ),
                         ],
                         onChanged: (value) {
@@ -616,7 +651,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                 ),
                 const SizedBox(height: 18),
                 Text(
-                  'Description',
+                  context.l10n.services_description,
                   style: TextStyle(
                     color: synorPrimaryText(context),
                     fontWeight: FontWeight.w600,
@@ -630,8 +665,8 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     minLines: 3,
                     maxLines: 3,
                     onChanged: controller.setHousingDescription,
-                    decoration: const InputDecoration(
-                      hintText: 'Describe the issue...',
+                    decoration: InputDecoration(
+                      hintText: context.l10n.services_describeIssue,
                     ),
                   ),
                 ),
@@ -649,7 +684,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                         color: SynorColors.indigo600,
                         borderRadius: BorderRadius.circular(14),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -660,7 +695,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                             ),
                             SizedBox(width: 8),
                             Text(
-                              'Submit Request',
+                              context.l10n.services_submitRequest,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
@@ -685,7 +720,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
 
     return _buildSubScreen(
       state: state,
-      title: 'Support',
+      title: context.l10n.services_support,
       child: ListView(
         padding: _contentPadding(),
         children: [
@@ -693,30 +728,31 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
             children: [
               Expanded(
                 child: _SupportShortcut(
-                  title: 'IT Helpdesk',
-                  subtitle: 'Tech issues',
+                  title: context.l10n.services_itHelpdesk,
+                  subtitle: context.l10n.services_itHelpdeskSubtitle,
                   color: SynorColors.indigo500,
                   icon: LucideIcons.circle_question_mark,
-                  onTap: () =>
-                      controller.applySupportShortcut('IT Helpdesk Request'),
+                  onTap: () => controller.applySupportShortcut(
+                    context.l10n.services_itHelpdeskRequest,
+                  ),
                 ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: _SupportShortcut(
-                  title: 'Academic',
-                  subtitle: 'Advisor contact',
+                  title: context.l10n.services_academic,
+                  subtitle: context.l10n.services_academicSubtitle,
                   color: SynorColors.rose500,
                   icon: LucideIcons.circle_alert,
                   onTap: () => controller.applySupportShortcut(
-                    'Academic Advisor Contact',
+                    context.l10n.services_academicAdvisorContact,
                   ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 28),
-          const _SectionCaption(label: 'New ticket'),
+          _SectionCaption(label: context.l10n.services_newTicket),
           const SizedBox(height: 16),
           SynorGlassPanel(
             radius: SynorRadii.card,
@@ -724,7 +760,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Subject',
+                  context.l10n.services_subject,
                   style: TextStyle(
                     color: synorPrimaryText(context),
                     fontWeight: FontWeight.w600,
@@ -736,14 +772,14 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                   child: TextField(
                     controller: _supportSubjectController,
                     onChanged: controller.setSupportSubject,
-                    decoration: const InputDecoration(
-                      hintText: 'Brief summary...',
+                    decoration: InputDecoration(
+                      hintText: context.l10n.services_briefSummary,
                     ),
                   ),
                 ),
                 const SizedBox(height: 18),
                 Text(
-                  'Message',
+                  context.l10n.services_message,
                   style: TextStyle(
                     color: synorPrimaryText(context),
                     fontWeight: FontWeight.w600,
@@ -757,8 +793,8 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     minLines: 4,
                     maxLines: 4,
                     onChanged: controller.setSupportMessage,
-                    decoration: const InputDecoration(
-                      hintText: 'How can we help you?',
+                    decoration: InputDecoration(
+                      hintText: context.l10n.services_howCanWeHelp,
                     ),
                   ),
                 ),
@@ -780,7 +816,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          'Send Message',
+                          context.l10n.services_sendMessage,
                           style: TextStyle(
                             color: synorIsDark(context)
                                 ? Colors.black
@@ -804,7 +840,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     final controller = ref.read(servicesControllerProvider.notifier);
     return _buildSubScreen(
       state: state,
-      title: 'All Requests',
+      title: context.l10n.services_allRequests,
       child: ListView(
         padding: _contentPadding(),
         children: [
@@ -848,8 +884,8 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
 
     return SynorAsyncStateView<ServicesState>(
       value: servicesAsync,
-      loadingTitle: 'Loading services',
-      loadingMessage: 'Preparing student services and recent requests...',
+      loadingTitle: context.l10n.services_loadingTitle,
+      loadingMessage: context.l10n.services_loadingMessage,
       loadingBuilder: (_) => const SynorServicesLoadingSkeleton(),
       onRetry: () => ref.invalidate(servicesControllerProvider),
       data: (state) => Stack(
@@ -905,7 +941,12 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                 child: state.successMessage != null
                     ? KeyedSubtree(
                         key: ValueKey(state.successMessage),
-                        child: _SuccessModal(message: state.successMessage!),
+                        child: _SuccessModal(
+                          message: _resolveServicesMessage(
+                            context,
+                            state.successMessage!,
+                          ),
+                        ),
                       )
                     : const SizedBox.shrink(
                         key: ValueKey('success-modal-hidden'),
@@ -1076,7 +1117,9 @@ class _RequestDetailsSheet extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            request.title,
+                            context.l10n.serviceRequestTitleLabel(
+                              request.title,
+                            ),
                             style: TextStyle(
                               color: synorPrimaryText(context),
                               fontSize: 20,
@@ -1085,7 +1128,9 @@ class _RequestDetailsSheet extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            'ID: REQ-${request.id.toString().padLeft(5, '0')}',
+                            context.l10n.services_requestId(
+                              request.id.toString().padLeft(5, '0'),
+                            ),
                             style: TextStyle(
                               color: synorSecondaryText(context),
                               fontSize: 13,
@@ -1098,13 +1143,13 @@ class _RequestDetailsSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 28),
                 _RequestInfoRow(
-                  label: 'Status',
+                  label: context.l10n.services_status,
                   trailing: RequestStatusBadge(status: request.status),
                 ),
                 _RequestInfoRow(
-                  label: 'Date',
+                  label: context.l10n.services_date,
                   trailing: Text(
-                    request.date,
+                    context.l10n.serviceRequestDateLabel(request.date),
                     style: TextStyle(
                       color: synorPrimaryText(context),
                       fontWeight: FontWeight.w600,
@@ -1113,7 +1158,7 @@ class _RequestDetailsSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Description',
+                  context.l10n.services_description,
                   style: TextStyle(
                     color: synorSecondaryText(context),
                     fontSize: 13,
@@ -1121,7 +1166,9 @@ class _RequestDetailsSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  request.description,
+                  context.l10n.serviceRequestDescriptionLabel(
+                    request.description ?? '',
+                  ),
                   style: TextStyle(
                     color: synorPrimaryText(context),
                     height: 1.5,
@@ -1141,7 +1188,7 @@ class _RequestDetailsSheet extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        'Close',
+                        context.l10n.common_close,
                         style: TextStyle(
                           color: synorPrimaryText(context),
                           fontWeight: FontWeight.w700,
@@ -1237,7 +1284,7 @@ class _SuccessModal extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Success',
+                    context.l10n.common_success,
                     style: TextStyle(
                       color: synorPrimaryText(context),
                       fontSize: 20,
@@ -1261,4 +1308,27 @@ class _SuccessModal extends StatelessWidget {
       ),
     );
   }
+}
+
+String _resolveServicesMessage(BuildContext context, String message) {
+  final l10n = context.l10n;
+  if (message == 'services.success.paymentInitiated') {
+    return l10n.services_successPaymentInitiated;
+  }
+  if (message == 'services.success.maintenanceSubmitted') {
+    return l10n.services_successMaintenanceSubmitted;
+  }
+  if (message == 'services.success.supportCreated') {
+    return l10n.services_successSupportCreated;
+  }
+  if (message.startsWith('services.success.documentRequested:')) {
+    final title = message.replaceFirst(
+      'services.success.documentRequested:',
+      '',
+    );
+    return l10n.services_successDocumentRequested(
+      l10n.serviceRequestTitleLabel(title),
+    );
+  }
+  return message;
 }

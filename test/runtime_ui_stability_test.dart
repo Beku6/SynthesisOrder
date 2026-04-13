@@ -58,6 +58,9 @@ void main() {
       );
       expect(hostBox.size.width, synorWidePhoneViewportSize.width);
 
+      container.read(appRouteControllerProvider).goToTab(ShellTab.home);
+      await settleSynorTransitions(tester);
+
       expect(
         tester.getSize(find.byType(SynorSearchField)).width,
         greaterThan(300),
@@ -128,6 +131,8 @@ void main() {
       final container = await pumpSignedInSynorApp(tester);
 
       expect(find.byType(SynorApp), findsOneWidget);
+      container.read(appRouteControllerProvider).goToTab(ShellTab.home);
+      await settleSynorTransitions(tester);
       expect(textFieldWithHint('Search...'), findsOneWidget);
 
       await tester.enterText(textFieldWithHint('Search...'), 'Computer');
@@ -175,7 +180,7 @@ void main() {
     (tester) async {
       final container = await pumpSignInSynorApp(tester);
 
-      container.read(appSessionControllerProvider.notifier).signIn();
+      container.read(appSessionControllerProvider.notifier).signIn('test-user');
       await tester.pump();
 
       expect(
@@ -189,6 +194,8 @@ void main() {
       );
 
       expect(find.byKey(const ValueKey('synor-shell-skeleton')), findsNothing);
+      container.read(appRouteControllerProvider).goToTab(ShellTab.home);
+      await settleSynorTransitions(tester);
       expect(find.byType(SynorSearchField), findsOneWidget);
       expect(tester.takeException(), isNull);
     },
@@ -217,7 +224,9 @@ void main() {
   testWidgets('toast feedback renders as a top-floating replacement banner', (
     tester,
   ) async {
-    await pumpSignedInSynorApp(tester);
+    final container = await pumpSignedInSynorApp(tester);
+    container.read(appRouteControllerProvider).goToTab(ShellTab.home);
+    await settleSynorTransitions(tester);
 
     final context = tester.element(find.byType(SynorSearchField));
     showSynorToast(

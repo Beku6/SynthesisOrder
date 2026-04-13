@@ -1,0 +1,1858 @@
+{
+    "@@locale":  "en",
+    "app_name":  "Synor",
+    "@app_name":  {
+                      "description":  "Localized text for \u0027app_name\u0027."
+                  },
+    "branding_from":  "from",
+    "@branding_from":  {
+                           "description":  "Localized text for \u0027branding_from\u0027."
+                       },
+    "common_skip":  "Skip",
+    "@common_skip":  {
+                         "description":  "Localized text for \u0027common_skip\u0027."
+                     },
+    "common_continue":  "Continue",
+    "@common_continue":  {
+                             "description":  "Localized text for \u0027common_continue\u0027."
+                         },
+    "common_getStarted":  "Get Started",
+    "@common_getStarted":  {
+                               "description":  "Localized text for \u0027common_getStarted\u0027."
+                           },
+    "common_or":  "or",
+    "@common_or":  {
+                       "description":  "Localized text for \u0027common_or\u0027."
+                   },
+    "common_close":  "Close",
+    "@common_close":  {
+                          "description":  "Localized text for \u0027common_close\u0027."
+                      },
+    "common_upload":  "Upload",
+    "@common_upload":  {
+                           "description":  "Localized text for \u0027common_upload\u0027."
+                       },
+    "common_viewAll":  "View All",
+    "@common_viewAll":  {
+                            "description":  "Localized text for \u0027common_viewAll\u0027."
+                        },
+    "common_tryAgain":  "Try Again",
+    "@common_tryAgain":  {
+                             "description":  "Localized text for \u0027common_tryAgain\u0027."
+                         },
+    "common_success":  "Success",
+    "@common_success":  {
+                            "description":  "Localized text for \u0027common_success\u0027."
+                        },
+    "common_languageEnglish":  "English",
+    "@common_languageEnglish":  {
+                                    "description":  "Localized text for \u0027common_languageEnglish\u0027."
+                                },
+    "common_languageRussian":  "Русский",
+    "@common_languageRussian":  {
+                                    "description":  "Localized text for \u0027common_languageRussian\u0027."
+                                },
+    "common_languageKazakh":  "Қазақша",
+    "@common_languageKazakh":  {
+                                   "description":  "Localized text for \u0027common_languageKazakh\u0027."
+                               },
+    "auth_onboardingTitle1":  "Your academic life, finally organized.",
+    "@auth_onboardingTitle1":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle1\u0027."
+                               },
+    "auth_onboardingSubtitle1":  "Synor keeps your schedule, tasks, reminders, and study flow in one place.",
+    "@auth_onboardingSubtitle1":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle1\u0027."
+                                  },
+    "auth_onboardingTitle2":  "Schedule, study, and routine — in one flow.",
+    "@auth_onboardingTitle2":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle2\u0027."
+                               },
+    "auth_onboardingSubtitle2":  "Everything you need to succeed, seamlessly integrated.",
+    "@auth_onboardingSubtitle2":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle2\u0027."
+                                  },
+    "auth_onboardingTitle3":  "Less chaos. More control.",
+    "@auth_onboardingTitle3":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle3\u0027."
+                               },
+    "auth_onboardingSubtitle3":  "Focus on what matters. We\u0027ll handle the rest.",
+    "@auth_onboardingSubtitle3":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle3\u0027."
+                                  },
+    "auth_welcomeBack":  "Welcome back",
+    "@auth_welcomeBack":  {
+                              "description":  "Localized text for \u0027auth_welcomeBack\u0027."
+                          },
+    "auth_signInSubtitle":  "Sign in to access your schedule, study hub, and smart routine.",
+    "@auth_signInSubtitle":  {
+                                 "description":  "Localized text for \u0027auth_signInSubtitle\u0027."
+                             },
+    "auth_studentIdOrEmail":  "Student ID / Email",
+    "@auth_studentIdOrEmail":  {
+                                   "description":  "Localized text for \u0027auth_studentIdOrEmail\u0027."
+                               },
+    "auth_password":  "Password",
+    "@auth_password":  {
+                           "description":  "Localized text for \u0027auth_password\u0027."
+                       },
+    "auth_forgotPassword":  "Forgot password?",
+    "@auth_forgotPassword":  {
+                                 "description":  "Localized text for \u0027auth_forgotPassword\u0027."
+                             },
+    "auth_signingIn":  "Signing In...",
+    "@auth_signingIn":  {
+                            "description":  "Localized text for \u0027auth_signingIn\u0027."
+                        },
+    "auth_signIn":  "Sign In",
+    "@auth_signIn":  {
+                         "description":  "Localized text for \u0027auth_signIn\u0027."
+                     },
+    "auth_connecting":  "Connecting...",
+    "@auth_connecting":  {
+                             "description":  "Localized text for \u0027auth_connecting\u0027."
+                         },
+    "auth_continueWithGoogle":  "Continue with Google",
+    "@auth_continueWithGoogle":  {
+                                     "description":  "Localized text for \u0027auth_continueWithGoogle\u0027."
+                                 },
+    "auth_newHere":  "New here?",
+    "@auth_newHere":  {
+                          "description":  "Localized text for \u0027auth_newHere\u0027."
+                      },
+    "auth_createAccount":  "Create account",
+    "@auth_createAccount":  {
+                                "description":  "Localized text for \u0027auth_createAccount\u0027."
+                            },
+    "auth_createAccountTitle":  "Create your account",
+    "@auth_createAccountTitle":  {
+                                     "description":  "Localized text for \u0027auth_createAccountTitle\u0027."
+                                 },
+    "auth_identitySubtitle":  "Let\u0027s start with your basic identity.",
+    "@auth_identitySubtitle":  {
+                                   "description":  "Localized text for \u0027auth_identitySubtitle\u0027."
+                               },
+    "auth_roleStudent":  "Student",
+    "@auth_roleStudent":  {
+                              "description":  "Localized text for \u0027auth_roleStudent\u0027."
+                          },
+    "auth_roleTeacher":  "Teacher",
+    "@auth_roleTeacher":  {
+                              "description":  "Localized text for \u0027auth_roleTeacher\u0027."
+                          },
+    "auth_fullName":  "Full Name",
+    "@auth_fullName":  {
+                           "description":  "Localized text for \u0027auth_fullName\u0027."
+                       },
+    "auth_emailAddress":  "Email Address",
+    "@auth_emailAddress":  {
+                               "description":  "Localized text for \u0027auth_emailAddress\u0027."
+                           },
+    "auth_createPassword":  "Create Password",
+    "@auth_createPassword":  {
+                                 "description":  "Localized text for \u0027auth_createPassword\u0027."
+                             },
+    "auth_academicSetupTitle":  "Academic setup",
+    "@auth_academicSetupTitle":  {
+                                     "description":  "Localized text for \u0027auth_academicSetupTitle\u0027."
+                                 },
+    "auth_teachingSetupTitle":  "Teaching setup",
+    "@auth_teachingSetupTitle":  {
+                                     "description":  "Localized text for \u0027auth_teachingSetupTitle\u0027."
+                                 },
+    "auth_academicSetupSubtitle":  "Tell us where and what you study.",
+    "@auth_academicSetupSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_academicSetupSubtitle\u0027."
+                                    },
+    "auth_teachingSetupSubtitle":  "Tell us where you teach and which group you manage.",
+    "@auth_teachingSetupSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_teachingSetupSubtitle\u0027."
+                                    },
+    "auth_university":  "University",
+    "@auth_university":  {
+                             "description":  "Localized text for \u0027auth_university\u0027."
+                         },
+    "auth_facultyDepartment":  "Faculty / Department",
+    "@auth_facultyDepartment":  {
+                                    "description":  "Localized text for \u0027auth_facultyDepartment\u0027."
+                                },
+    "auth_courseYear":  "Course Year",
+    "@auth_courseYear":  {
+                             "description":  "Localized text for \u0027auth_courseYear\u0027."
+                         },
+    "auth_group":  "Group",
+    "@auth_group":  {
+                        "description":  "Localized text for \u0027auth_group\u0027."
+                    },
+    "auth_primaryGroup":  "Primary Group",
+    "@auth_primaryGroup":  {
+                               "description":  "Localized text for \u0027auth_primaryGroup\u0027."
+                           },
+    "auth_personalizeTitle":  "Personalize your flow",
+    "@auth_personalizeTitle":  {
+                                   "description":  "Localized text for \u0027auth_personalizeTitle\u0027."
+                               },
+    "auth_personalizeSubtitle":  "This helps Synor personalize your schedule, reminders, and study experience.",
+    "@auth_personalizeSubtitle":  {
+                                      "description":  "Localized text for \u0027auth_personalizeSubtitle\u0027."
+                                  },
+    "auth_campusPreferences":  "Campus Preferences",
+    "@auth_campusPreferences":  {
+                                    "description":  "Localized text for \u0027auth_campusPreferences\u0027."
+                                },
+    "auth_studyMode":  "Study Mode",
+    "@auth_studyMode":  {
+                            "description":  "Localized text for \u0027auth_studyMode\u0027."
+                        },
+    "auth_studyModeDeepFocus":  "Deep Focus",
+    "@auth_studyModeDeepFocus":  {
+                                     "description":  "Localized text for \u0027auth_studyModeDeepFocus\u0027."
+                                 },
+    "auth_studyModeFlexible":  "Flexible",
+    "@auth_studyModeFlexible":  {
+                                    "description":  "Localized text for \u0027auth_studyModeFlexible\u0027."
+                                },
+    "auth_smartFeaturesTitle":  "Turn on smart features",
+    "@auth_smartFeaturesTitle":  {
+                                     "description":  "Localized text for \u0027auth_smartFeaturesTitle\u0027."
+                                 },
+    "auth_smartFeaturesSubtitle":  "Enable these to get the full Synor experience.",
+    "@auth_smartFeaturesSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_smartFeaturesSubtitle\u0027."
+                                    },
+    "auth_smartNotifications":  "Smart Notifications",
+    "@auth_smartNotifications":  {
+                                     "description":  "Localized text for \u0027auth_smartNotifications\u0027."
+                                 },
+    "auth_smartNotificationsSubtitle":  "Get alerts for classes \u0026 tasks",
+    "@auth_smartNotificationsSubtitle":  {
+                                             "description":  "Localized text for \u0027auth_smartNotificationsSubtitle\u0027."
+                                         },
+    "auth_calendarSync":  "Calendar Sync",
+    "@auth_calendarSync":  {
+                               "description":  "Localized text for \u0027auth_calendarSync\u0027."
+                           },
+    "auth_calendarSyncSubtitle":  "Connect your personal calendar",
+    "@auth_calendarSyncSubtitle":  {
+                                       "description":  "Localized text for \u0027auth_calendarSyncSubtitle\u0027."
+                                   },
+    "auth_completing":  "Completing...",
+    "@auth_completing":  {
+                             "description":  "Localized text for \u0027auth_completing\u0027."
+                         },
+    "auth_completeSetup":  "Complete Setup",
+    "@auth_completeSetup":  {
+                                "description":  "Localized text for \u0027auth_completeSetup\u0027."
+                            },
+    "auth_validationEnterStudentEmailOrId":  "Enter your student email or ID.",
+    "@auth_validationEnterStudentEmailOrId":  {
+                                                  "description":  "Localized text for \u0027auth_validationEnterStudentEmailOrId\u0027."
+                                              },
+    "auth_validationValidEmail":  "Enter a valid email address.",
+    "@auth_validationValidEmail":  {
+                                       "description":  "Localized text for \u0027auth_validationValidEmail\u0027."
+                                   },
+    "auth_validationEnterPassword":  "Enter your password.",
+    "@auth_validationEnterPassword":  {
+                                          "description":  "Localized text for \u0027auth_validationEnterPassword\u0027."
+                                      },
+    "auth_validationPasswordLength":  "Password must be at least 6 characters.",
+    "@auth_validationPasswordLength":  {
+                                           "description":  "Localized text for \u0027auth_validationPasswordLength\u0027."
+                                       },
+    "auth_errorRestoreSession":  "Unable to restore your session. Please try again.",
+    "@auth_errorRestoreSession":  {
+                                      "description":  "Localized text for \u0027auth_errorRestoreSession\u0027."
+                                  },
+    "auth_errorSignInFailed":  "Sign in failed. Please check your credentials.",
+    "@auth_errorSignInFailed":  {
+                                    "description":  "Localized text for \u0027auth_errorSignInFailed\u0027."
+                                },
+    "auth_errorGoogleUnavailable":  "Google sign in is not available right now.",
+    "@auth_errorGoogleUnavailable":  {
+                                         "description":  "Localized text for \u0027auth_errorGoogleUnavailable\u0027."
+                                     },
+    "auth_errorEnterEmailRecovery":  "Enter your email first to recover access.",
+    "@auth_errorEnterEmailRecovery":  {
+                                          "description":  "Localized text for \u0027auth_errorEnterEmailRecovery\u0027."
+                                      },
+    "auth_errorSignUpVerification":  "Account created. Check {email} to verify your email, then sign in.",
+    "@auth_errorSignUpVerification":  {
+                                          "placeholders":  {
+                                                               "email":  {
+                                                                             "type":  "String"
+                                                                         }
+                                                           },
+                                          "description":  "Localized text for \u0027auth_errorSignUpVerification\u0027."
+                                      },
+    "auth_errorSignUpSessionNotReady":  "Account created, but the session is not ready yet. Please sign in.",
+    "@auth_errorSignUpSessionNotReady":  {
+                                             "description":  "Localized text for \u0027auth_errorSignUpSessionNotReady\u0027."
+                                         },
+    "auth_errorSignUpFailed":  "Could not complete sign up. Please try again.",
+    "@auth_errorSignUpFailed":  {
+                                    "description":  "Localized text for \u0027auth_errorSignUpFailed\u0027."
+                                },
+    "auth_signInFailedTitle":  "Sign in failed",
+    "@auth_signInFailedTitle":  {
+                                    "description":  "Localized text for \u0027auth_signInFailedTitle\u0027."
+                                },
+    "auth_googleUnavailableTitle":  "Google sign in unavailable",
+    "@auth_googleUnavailableTitle":  {
+                                         "description":  "Localized text for \u0027auth_googleUnavailableTitle\u0027."
+                                     },
+    "auth_recoveryLinkSentTitle":  "Recovery link sent",
+    "@auth_recoveryLinkSentTitle":  {
+                                        "description":  "Localized text for \u0027auth_recoveryLinkSentTitle\u0027."
+                                    },
+    "auth_signUpCompleteTitle":  "Sign up complete",
+    "@auth_signUpCompleteTitle":  {
+                                      "description":  "Localized text for \u0027auth_signUpCompleteTitle\u0027."
+                                  },
+    "auth_signUpFailedTitle":  "Sign up failed",
+    "@auth_signUpFailedTitle":  {
+                                    "description":  "Localized text for \u0027auth_signUpFailedTitle\u0027."
+                                },
+    "auth_campusMainBuilding":  "Main Building",
+    "@auth_campusMainBuilding":  {
+                                     "description":  "Localized text for \u0027auth_campusMainBuilding\u0027."
+                                 },
+    "auth_campusSouthCampus":  "South Campus",
+    "@auth_campusSouthCampus":  {
+                                    "description":  "Localized text for \u0027auth_campusSouthCampus\u0027."
+                                },
+    "auth_campusRemoteStudy":  "Remote Study",
+    "@auth_campusRemoteStudy":  {
+                                    "description":  "Localized text for \u0027auth_campusRemoteStudy\u0027."
+                                },
+    "home_searchPlaceholder":  "Search...",
+    "@home_searchPlaceholder":  {
+                                    "description":  "Localized text for \u0027home_searchPlaceholder\u0027."
+                                },
+    "home_filterLessons":  "lessons",
+    "@home_filterLessons":  {
+                                "description":  "Localized text for \u0027home_filterLessons\u0027."
+                            },
+    "home_filterAll":  "all",
+    "@home_filterAll":  {
+                            "description":  "Localized text for \u0027home_filterAll\u0027."
+                        },
+    "home_filterMissed":  "missed",
+    "@home_filterMissed":  {
+                               "description":  "Localized text for \u0027home_filterMissed\u0027."
+                           },
+    "home_filterTomorrow":  "tomorrow",
+    "@home_filterTomorrow":  {
+                                 "description":  "Localized text for \u0027home_filterTomorrow\u0027."
+                             },
+    "home_emptyTitle":  "Nothing to show",
+    "@home_emptyTitle":  {
+                             "description":  "Localized text for \u0027home_emptyTitle\u0027."
+                         },
+    "home_emptySearchMessage":  "No lessons match \"{query}\" in the current filter.",
+    "@home_emptySearchMessage":  {
+                                     "placeholders":  {
+                                                          "query":  {
+                                                                        "type":  "String"
+                                                                    }
+                                                      },
+                                     "description":  "Localized text for \u0027home_emptySearchMessage\u0027."
+                                 },
+    "home_emptyMissedMessage":  "No missed or in-progress lessons right now.",
+    "@home_emptyMissedMessage":  {
+                                     "description":  "Localized text for \u0027home_emptyMissedMessage\u0027."
+                                 },
+    "home_emptyTomorrowMessage":  "Tomorrow looks clear for now.",
+    "@home_emptyTomorrowMessage":  {
+                                       "description":  "Localized text for \u0027home_emptyTomorrowMessage\u0027."
+                                   },
+    "home_emptyDefaultMessage":  "No lessons available in this view.",
+    "@home_emptyDefaultMessage":  {
+                                      "description":  "Localized text for \u0027home_emptyDefaultMessage\u0027."
+                                  },
+    "home_addStoryLabel":  "Your stories",
+    "@home_addStoryLabel":  {
+                                "description":  "Localized text for \u0027home_addStoryLabel\u0027."
+                            },
+    "home_lightMode":  "Light Mode",
+    "@home_lightMode":  {
+                            "description":  "Localized text for \u0027home_lightMode\u0027."
+                        },
+    "home_darkMode":  "Dark Mode",
+    "@home_darkMode":  {
+                           "description":  "Localized text for \u0027home_darkMode\u0027."
+                       },
+    "lesson_actionAlert":  "Alert",
+    "@lesson_actionAlert":  {
+                                "description":  "Localized text for \u0027lesson_actionAlert\u0027."
+                            },
+    "lesson_actionNotes":  "Notes",
+    "@lesson_actionNotes":  {
+                                "description":  "Localized text for \u0027lesson_actionNotes\u0027."
+                            },
+    "lesson_actionMore":  "More",
+    "@lesson_actionMore":  {
+                               "description":  "Localized text for \u0027lesson_actionMore\u0027."
+                           },
+    "lesson_inProgress":  "In progress",
+    "@lesson_inProgress":  {
+                               "description":  "Localized text for \u0027lesson_inProgress\u0027."
+                           },
+    "lesson_notesUnavailableTitle":  "Lesson notes are not attached yet",
+    "@lesson_notesUnavailableTitle":  {
+                                          "description":  "Localized text for \u0027lesson_notesUnavailableTitle\u0027."
+                                      },
+    "lesson_notesUnavailableSubtitle":  "Swipe for alerts, or open the Study Hub for materials.",
+    "@lesson_notesUnavailableSubtitle":  {
+                                             "description":  "Localized text for \u0027lesson_notesUnavailableSubtitle\u0027."
+                                         },
+    "lesson_moreUnavailableTitle":  "More lesson actions land in the next phase",
+    "@lesson_moreUnavailableTitle":  {
+                                         "description":  "Localized text for \u0027lesson_moreUnavailableTitle\u0027."
+                                     },
+    "lesson_moreUnavailableSubtitle":  "Current production polish is focused on alerts and scheduling.",
+    "@lesson_moreUnavailableSubtitle":  {
+                                            "description":  "Localized text for \u0027lesson_moreUnavailableSubtitle\u0027."
+                                        },
+    "messages_title":  "Messages",
+    "@messages_title":  {
+                            "description":  "Localized text for \u0027messages_title\u0027."
+                        },
+    "messages_loadingTitle":  "Loading messages",
+    "@messages_loadingTitle":  {
+                                   "description":  "Localized text for \u0027messages_loadingTitle\u0027."
+                               },
+    "messages_loadingMessage":  "Preparing your recent conversations...",
+    "@messages_loadingMessage":  {
+                                     "description":  "Localized text for \u0027messages_loadingMessage\u0027."
+                                 },
+    "schedule_title":  "Schedule",
+    "@schedule_title":  {
+                            "description":  "Localized text for \u0027schedule_title\u0027."
+                        },
+    "schedule_searchPlaceholder":  "Search lessons or events",
+    "@schedule_searchPlaceholder":  {
+                                        "description":  "Localized text for \u0027schedule_searchPlaceholder\u0027."
+                                    },
+    "schedule_modeDay":  "Day",
+    "@schedule_modeDay":  {
+                              "description":  "Localized text for \u0027schedule_modeDay\u0027."
+                          },
+    "schedule_modeWeek":  "Week",
+    "@schedule_modeWeek":  {
+                               "description":  "Localized text for \u0027schedule_modeWeek\u0027."
+                           },
+    "schedule_modeMonth":  "Month",
+    "@schedule_modeMonth":  {
+                                "description":  "Localized text for \u0027schedule_modeMonth\u0027."
+                            },
+    "schedule_noLessonsTitle":  "No lessons scheduled",
+    "@schedule_noLessonsTitle":  {
+                                     "description":  "Localized text for \u0027schedule_noLessonsTitle\u0027."
+                                 },
+    "schedule_noLessonsMessage":  "This day is clear in your current schedule.",
+    "@schedule_noLessonsMessage":  {
+                                       "description":  "Localized text for \u0027schedule_noLessonsMessage\u0027."
+                                   },
+    "schedule_noLessonsForDay":  "No lessons planned for this day.",
+    "@schedule_noLessonsForDay":  {
+                                      "description":  "Localized text for \u0027schedule_noLessonsForDay\u0027."
+                                  },
+    "schedule_upcoming":  "Upcoming",
+    "@schedule_upcoming":  {
+                               "description":  "Localized text for \u0027schedule_upcoming\u0027."
+                           },
+    "schedule_noMonthEvents":  "No events scheduled for this month.",
+    "@schedule_noMonthEvents":  {
+                                    "description":  "Localized text for \u0027schedule_noMonthEvents\u0027."
+                                },
+    "schedule_weekLessonCount":  "{count, plural, one{# lesson} other{# lessons}}",
+    "@schedule_weekLessonCount":  {
+                                      "placeholders":  {
+                                                           "count":  {
+                                                                         "type":  "int"
+                                                                     }
+                                                       },
+                                      "description":  "Localized text for \u0027schedule_weekLessonCount\u0027."
+                                  },
+    "teacher_dashboardTitle":  "Teacher Dashboard",
+    "@teacher_dashboardTitle":  {
+                                    "description":  "Localized text for \u0027teacher_dashboardTitle\u0027."
+                                },
+    "teacher_teachingSpace":  "Your teaching space",
+    "@teacher_teachingSpace":  {
+                                   "description":  "Localized text for \u0027teacher_teachingSpace\u0027."
+                               },
+    "teacher_superAccess":  "Super Access",
+    "@teacher_superAccess":  {
+                                 "description":  "Localized text for \u0027teacher_superAccess\u0027."
+                             },
+    "teacher_teacher":  "Teacher",
+    "@teacher_teacher":  {
+                             "description":  "Localized text for \u0027teacher_teacher\u0027."
+                         },
+    "teacher_upcomingLessons":  "Upcoming Lessons",
+    "@teacher_upcomingLessons":  {
+                                     "description":  "Localized text for \u0027teacher_upcomingLessons\u0027."
+                                 },
+    "teacher_materials":  "Materials",
+    "@teacher_materials":  {
+                               "description":  "Localized text for \u0027teacher_materials\u0027."
+                           },
+    "teacher_createLesson":  "Create Lesson",
+    "@teacher_createLesson":  {
+                                  "description":  "Localized text for \u0027teacher_createLesson\u0027."
+                              },
+    "teacher_managedSchedule":  "Managed schedule",
+    "@teacher_managedSchedule":  {
+                                     "description":  "Localized text for \u0027teacher_managedSchedule\u0027."
+                                 },
+    "teacher_noLessonsTitle":  "No lessons yet",
+    "@teacher_noLessonsTitle":  {
+                                    "description":  "Localized text for \u0027teacher_noLessonsTitle\u0027."
+                                },
+    "teacher_noLessonsMessage":  "Create your first lesson to start filling the schedule.",
+    "@teacher_noLessonsMessage":  {
+                                      "description":  "Localized text for \u0027teacher_noLessonsMessage\u0027."
+                                  },
+    "teacher_incompleteLessonTitle":  "Lesson details are incomplete",
+    "@teacher_incompleteLessonTitle":  {
+                                           "description":  "Localized text for \u0027teacher_incompleteLessonTitle\u0027."
+                                       },
+    "teacher_incompleteLessonSubtitle":  "Set subject, room, group, and a valid time range.",
+    "@teacher_incompleteLessonSubtitle":  {
+                                              "description":  "Localized text for \u0027teacher_incompleteLessonSubtitle\u0027."
+                                          },
+    "teacher_lessonCreated":  "Lesson created",
+    "@teacher_lessonCreated":  {
+                                   "description":  "Localized text for \u0027teacher_lessonCreated\u0027."
+                               },
+    "teacher_lessonUpdated":  "Lesson updated",
+    "@teacher_lessonUpdated":  {
+                                   "description":  "Localized text for \u0027teacher_lessonUpdated\u0027."
+                               },
+    "teacher_lessonSaveFailed":  "Could not save lesson",
+    "@teacher_lessonSaveFailed":  {
+                                      "description":  "Localized text for \u0027teacher_lessonSaveFailed\u0027."
+                                  },
+    "teacher_createLessonTitle":  "Create Lesson",
+    "@teacher_createLessonTitle":  {
+                                       "description":  "Localized text for \u0027teacher_createLessonTitle\u0027."
+                                   },
+    "teacher_editLessonTitle":  "Edit Lesson",
+    "@teacher_editLessonTitle":  {
+                                     "description":  "Localized text for \u0027teacher_editLessonTitle\u0027."
+                                 },
+    "teacher_subjectHint":  "Subject",
+    "@teacher_subjectHint":  {
+                                 "description":  "Localized text for \u0027teacher_subjectHint\u0027."
+                             },
+    "teacher_roomHint":  "Room",
+    "@teacher_roomHint":  {
+                              "description":  "Localized text for \u0027teacher_roomHint\u0027."
+                          },
+    "teacher_selectGroup":  "Select group",
+    "@teacher_selectGroup":  {
+                                 "description":  "Localized text for \u0027teacher_selectGroup\u0027."
+                             },
+    "teacher_start":  "Start",
+    "@teacher_start":  {
+                           "description":  "Localized text for \u0027teacher_start\u0027."
+                       },
+    "teacher_end":  "End",
+    "@teacher_end":  {
+                         "description":  "Localized text for \u0027teacher_end\u0027."
+                     },
+    "teacher_saving":  "Saving...",
+    "@teacher_saving":  {
+                            "description":  "Localized text for \u0027teacher_saving\u0027."
+                        },
+    "teacher_saveLesson":  "Save Lesson",
+    "@teacher_saveLesson":  {
+                                "description":  "Localized text for \u0027teacher_saveLesson\u0027."
+                            },
+    "services_title":  "Services",
+    "@services_title":  {
+                            "description":  "Localized text for \u0027services_title\u0027."
+                        },
+    "services_searchPlaceholder":  "Search services...",
+    "@services_searchPlaceholder":  {
+                                        "description":  "Localized text for \u0027services_searchPlaceholder\u0027."
+                                    },
+    "services_noResults":  "No services found matching \"{query}\"",
+    "@services_noResults":  {
+                                "placeholders":  {
+                                                     "query":  {
+                                                                   "type":  "String"
+                                                               }
+                                                 },
+                                "description":  "Localized text for \u0027services_noResults\u0027."
+                            },
+    "services_recentRequests":  "Recent Requests",
+    "@services_recentRequests":  {
+                                     "description":  "Localized text for \u0027services_recentRequests\u0027."
+                                 },
+    "services_availableToRequest":  "Available to request",
+    "@services_availableToRequest":  {
+                                         "description":  "Localized text for \u0027services_availableToRequest\u0027."
+                                     },
+    "services_documents":  "Documents",
+    "@services_documents":  {
+                                "description":  "Localized text for \u0027services_documents\u0027."
+                            },
+    "services_documentsSubtitle":  "Certificates \u0026 references",
+    "@services_documentsSubtitle":  {
+                                        "description":  "Localized text for \u0027services_documentsSubtitle\u0027."
+                                    },
+    "services_payments":  "Payments",
+    "@services_payments":  {
+                               "description":  "Localized text for \u0027services_payments\u0027."
+                           },
+    "services_paymentsSubtitle":  "Tuition \u0026 dormitory",
+    "@services_paymentsSubtitle":  {
+                                       "description":  "Localized text for \u0027services_paymentsSubtitle\u0027."
+                                   },
+    "services_housing":  "Housing",
+    "@services_housing":  {
+                              "description":  "Localized text for \u0027services_housing\u0027."
+                          },
+    "services_housingSubtitle":  "Dormitory requests",
+    "@services_housingSubtitle":  {
+                                      "description":  "Localized text for \u0027services_housingSubtitle\u0027."
+                                  },
+    "services_support":  "Support",
+    "@services_support":  {
+                              "description":  "Localized text for \u0027services_support\u0027."
+                          },
+    "services_supportSubtitle":  "IT \u0026 Academic help",
+    "@services_supportSubtitle":  {
+                                      "description":  "Localized text for \u0027services_supportSubtitle\u0027."
+                                  },
+    "services_documentEnrollmentCertificate":  "Enrollment Certificate",
+    "@services_documentEnrollmentCertificate":  {
+                                                    "description":  "Localized text for \u0027services_documentEnrollmentCertificate\u0027."
+                                                },
+    "services_documentEnrollmentCertificateSubtitle":  "Proof of student status",
+    "@services_documentEnrollmentCertificateSubtitle":  {
+                                                            "description":  "Localized text for \u0027services_documentEnrollmentCertificateSubtitle\u0027."
+                                                        },
+    "services_documentOfficialTranscript":  "Official Transcript",
+    "@services_documentOfficialTranscript":  {
+                                                 "description":  "Localized text for \u0027services_documentOfficialTranscript\u0027."
+                                             },
+    "services_documentOfficialTranscriptSubtitle":  "Academic record with grades",
+    "@services_documentOfficialTranscriptSubtitle":  {
+                                                         "description":  "Localized text for \u0027services_documentOfficialTranscriptSubtitle\u0027."
+                                                     },
+    "services_documentMilitaryDeferment":  "Military Deferment",
+    "@services_documentMilitaryDeferment":  {
+                                                "description":  "Localized text for \u0027services_documentMilitaryDeferment\u0027."
+                                            },
+    "services_documentMilitaryDefermentSubtitle":  "For military service exemption",
+    "@services_documentMilitaryDefermentSubtitle":  {
+                                                        "description":  "Localized text for \u0027services_documentMilitaryDefermentSubtitle\u0027."
+                                                    },
+    "services_currentBalance":  "Current Balance",
+    "@services_currentBalance":  {
+                                     "description":  "Localized text for \u0027services_currentBalance\u0027."
+                                 },
+    "services_allFeesPaid":  "All fees paid",
+    "@services_allFeesPaid":  {
+                                  "description":  "Localized text for \u0027services_allFeesPaid\u0027."
+                              },
+    "services_upcomingFees":  "Upcoming fees",
+    "@services_upcomingFees":  {
+                                   "description":  "Localized text for \u0027services_upcomingFees\u0027."
+                               },
+    "services_springSemester2026":  "Spring Semester 2026",
+    "@services_springSemester2026":  {
+                                         "description":  "Localized text for \u0027services_springSemester2026\u0027."
+                                     },
+    "services_tuitionFee":  "Tuition Fee",
+    "@services_tuitionFee":  {
+                                 "description":  "Localized text for \u0027services_tuitionFee\u0027."
+                             },
+    "services_dueIn45Days":  "Due in 45 days (May 10, 2026)",
+    "@services_dueIn45Days":  {
+                                  "description":  "Localized text for \u0027services_dueIn45Days\u0027."
+                              },
+    "services_payNow":  "Pay Now",
+    "@services_payNow":  {
+                             "description":  "Localized text for \u0027services_payNow\u0027."
+                         },
+    "services_dormitoryTitle":  "Dormitory #3",
+    "@services_dormitoryTitle":  {
+                                     "description":  "Localized text for \u0027services_dormitoryTitle\u0027."
+                                 },
+    "services_dormitoryRoom":  "Room 412 • Floor 4",
+    "@services_dormitoryRoom":  {
+                                    "description":  "Localized text for \u0027services_dormitoryRoom\u0027."
+                                },
+    "services_maintenanceRequest":  "Maintenance request",
+    "@services_maintenanceRequest":  {
+                                         "description":  "Localized text for \u0027services_maintenanceRequest\u0027."
+                                     },
+    "services_issueType":  "Issue Type",
+    "@services_issueType":  {
+                                "description":  "Localized text for \u0027services_issueType\u0027."
+                            },
+    "services_issueTypePlumbing":  "Plumbing",
+    "@services_issueTypePlumbing":  {
+                                        "description":  "Localized text for \u0027services_issueTypePlumbing\u0027."
+                                    },
+    "services_issueTypeElectrical":  "Electrical",
+    "@services_issueTypeElectrical":  {
+                                          "description":  "Localized text for \u0027services_issueTypeElectrical\u0027."
+                                      },
+    "services_issueTypeFurniture":  "Furniture",
+    "@services_issueTypeFurniture":  {
+                                         "description":  "Localized text for \u0027services_issueTypeFurniture\u0027."
+                                     },
+    "services_issueTypeOther":  "Other",
+    "@services_issueTypeOther":  {
+                                     "description":  "Localized text for \u0027services_issueTypeOther\u0027."
+                                 },
+    "services_description":  "Description",
+    "@services_description":  {
+                                  "description":  "Localized text for \u0027services_description\u0027."
+                              },
+    "services_describeIssue":  "Describe the issue...",
+    "@services_describeIssue":  {
+                                    "description":  "Localized text for \u0027services_describeIssue\u0027."
+                                },
+    "services_submitRequest":  "Submit Request",
+    "@services_submitRequest":  {
+                                    "description":  "Localized text for \u0027services_submitRequest\u0027."
+                                },
+    "services_itHelpdesk":  "IT Helpdesk",
+    "@services_itHelpdesk":  {
+                                 "description":  "Localized text for \u0027services_itHelpdesk\u0027."
+                             },
+    "services_itHelpdeskSubtitle":  "Tech issues",
+    "@services_itHelpdeskSubtitle":  {
+                                         "description":  "Localized text for \u0027services_itHelpdeskSubtitle\u0027."
+                                     },
+    "services_itHelpdeskRequest":  "IT Helpdesk Request",
+    "@services_itHelpdeskRequest":  {
+                                        "description":  "Localized text for \u0027services_itHelpdeskRequest\u0027."
+                                    },
+    "services_academic":  "Academic",
+    "@services_academic":  {
+                               "description":  "Localized text for \u0027services_academic\u0027."
+                           },
+    "services_academicSubtitle":  "Advisor contact",
+    "@services_academicSubtitle":  {
+                                       "description":  "Localized text for \u0027services_academicSubtitle\u0027."
+                                   },
+    "services_academicAdvisorContact":  "Academic Advisor Contact",
+    "@services_academicAdvisorContact":  {
+                                             "description":  "Localized text for \u0027services_academicAdvisorContact\u0027."
+                                         },
+    "services_newTicket":  "New ticket",
+    "@services_newTicket":  {
+                                "description":  "Localized text for \u0027services_newTicket\u0027."
+                            },
+    "services_subject":  "Subject",
+    "@services_subject":  {
+                              "description":  "Localized text for \u0027services_subject\u0027."
+                          },
+    "services_briefSummary":  "Brief summary...",
+    "@services_briefSummary":  {
+                                   "description":  "Localized text for \u0027services_briefSummary\u0027."
+                               },
+    "services_message":  "Message",
+    "@services_message":  {
+                              "description":  "Localized text for \u0027services_message\u0027."
+                          },
+    "services_howCanWeHelp":  "How can we help you?",
+    "@services_howCanWeHelp":  {
+                                   "description":  "Localized text for \u0027services_howCanWeHelp\u0027."
+                               },
+    "services_sendMessage":  "Send Message",
+    "@services_sendMessage":  {
+                                  "description":  "Localized text for \u0027services_sendMessage\u0027."
+                              },
+    "services_allRequests":  "All Requests",
+    "@services_allRequests":  {
+                                  "description":  "Localized text for \u0027services_allRequests\u0027."
+                              },
+    "services_status":  "Status",
+    "@services_status":  {
+                             "description":  "Localized text for \u0027services_status\u0027."
+                         },
+    "services_date":  "Date",
+    "@services_date":  {
+                           "description":  "Localized text for \u0027services_date\u0027."
+                       },
+    "request_statusReady":  "Ready",
+    "@request_statusReady":  {
+                                 "description":  "Localized text for \u0027request_statusReady\u0027."
+                             },
+    "request_statusPending":  "Pending",
+    "@request_statusPending":  {
+                                   "description":  "Localized text for \u0027request_statusPending\u0027."
+                               },
+    "request_statusProcessing":  "Processing",
+    "@request_statusProcessing":  {
+                                      "description":  "Localized text for \u0027request_statusProcessing\u0027."
+                                  },
+    "request_statusOpen":  "Open",
+    "@request_statusOpen":  {
+                                "description":  "Localized text for \u0027request_statusOpen\u0027."
+                            },
+    "request_statusInProgress":  "In Progress",
+    "@request_statusInProgress":  {
+                                      "description":  "Localized text for \u0027request_statusInProgress\u0027."
+                                  },
+    "services_loadingTitle":  "Loading services",
+    "@services_loadingTitle":  {
+                                   "description":  "Localized text for \u0027services_loadingTitle\u0027."
+                               },
+    "services_loadingMessage":  "Preparing student services and recent requests...",
+    "@services_loadingMessage":  {
+                                     "description":  "Localized text for \u0027services_loadingMessage\u0027."
+                                 },
+    "services_requestId":  "ID: REQ-{id}",
+    "@services_requestId":  {
+                                "placeholders":  {
+                                                     "id":  {
+                                                                "type":  "String"
+                                                            }
+                                                 },
+                                "description":  "Localized text for \u0027services_requestId\u0027."
+                            },
+    "services_successDocumentRequested":  "{title} requested successfully",
+    "@services_successDocumentRequested":  {
+                                               "placeholders":  {
+                                                                    "title":  {
+                                                                                  "type":  "String"
+                                                                              }
+                                                                },
+                                               "description":  "Localized text for \u0027services_successDocumentRequested\u0027."
+                                           },
+    "services_successPaymentInitiated":  "Payment initiated",
+    "@services_successPaymentInitiated":  {
+                                              "description":  "Localized text for \u0027services_successPaymentInitiated\u0027."
+                                          },
+    "services_successMaintenanceSubmitted":  "Maintenance request submitted",
+    "@services_successMaintenanceSubmitted":  {
+                                                  "description":  "Localized text for \u0027services_successMaintenanceSubmitted\u0027."
+                                              },
+    "services_successSupportCreated":  "Support ticket created",
+    "@services_successSupportCreated":  {
+                                            "description":  "Localized text for \u0027services_successSupportCreated\u0027."
+                                        },
+    "profile_settings":  "Settings",
+    "@profile_settings":  {
+                              "description":  "Localized text for \u0027profile_settings\u0027."
+                          },
+    "profile_preferences":  "Preferences",
+    "@profile_preferences":  {
+                                 "description":  "Localized text for \u0027profile_preferences\u0027."
+                             },
+    "profile_security":  "Security",
+    "@profile_security":  {
+                              "description":  "Localized text for \u0027profile_security\u0027."
+                          },
+    "profile_privacySecurity":  "Privacy \u0026 Security",
+    "@profile_privacySecurity":  {
+                                     "description":  "Localized text for \u0027profile_privacySecurity\u0027."
+                                 },
+    "profile_darkMode":  "Dark Mode",
+    "@profile_darkMode":  {
+                              "description":  "Localized text for \u0027profile_darkMode\u0027."
+                          },
+    "profile_language":  "Language",
+    "@profile_language":  {
+                              "description":  "Localized text for \u0027profile_language\u0027."
+                          },
+    "profile_notifications":  "Notifications",
+    "@profile_notifications":  {
+                                   "description":  "Localized text for \u0027profile_notifications\u0027."
+                               },
+    "profile_passwordSecurity":  "Password \u0026 Security",
+    "@profile_passwordSecurity":  {
+                                      "description":  "Localized text for \u0027profile_passwordSecurity\u0027."
+                                  },
+    "profile_privacySettings":  "Privacy Settings",
+    "@profile_privacySettings":  {
+                                     "description":  "Localized text for \u0027profile_privacySettings\u0027."
+                                 },
+    "profile_logOut":  "Log Out",
+    "@profile_logOut":  {
+                            "description":  "Localized text for \u0027profile_logOut\u0027."
+                        },
+    "profile_connected":  "Connected",
+    "@profile_connected":  {
+                               "description":  "Localized text for \u0027profile_connected\u0027."
+                           },
+    "profile_connect":  "Connect",
+    "@profile_connect":  {
+                             "description":  "Localized text for \u0027profile_connect\u0027."
+                         },
+    "profile_message":  "Message",
+    "@profile_message":  {
+                             "description":  "Localized text for \u0027profile_message\u0027."
+                         },
+    "profile_currentStatus":  "Current Status",
+    "@profile_currentStatus":  {
+                                   "description":  "Localized text for \u0027profile_currentStatus\u0027."
+                               },
+    "profile_update":  "Update",
+    "@profile_update":  {
+                            "description":  "Localized text for \u0027profile_update\u0027."
+                        },
+    "profile_statusInLecture":  "IN LECTURE",
+    "@profile_statusInLecture":  {
+                                     "description":  "Localized text for \u0027profile_statusInLecture\u0027."
+                                 },
+    "profile_statusLeft":  "LEFT",
+    "@profile_statusLeft":  {
+                                "description":  "Localized text for \u0027profile_statusLeft\u0027."
+                            },
+    "profile_statusCoffeeBreak":  "Coffee break",
+    "@profile_statusCoffeeBreak":  {
+                                       "description":  "Localized text for \u0027profile_statusCoffeeBreak\u0027."
+                                   },
+    "profile_statusStudyGroup":  "Looking for study group",
+    "@profile_statusStudyGroup":  {
+                                      "description":  "Localized text for \u0027profile_statusStudyGroup\u0027."
+                                  },
+    "profile_statusSharingNotes":  "Sharing notes",
+    "@profile_statusSharingNotes":  {
+                                        "description":  "Localized text for \u0027profile_statusSharingNotes\u0027."
+                                    },
+    "profile_recentActivity":  "Recent Activity",
+    "@profile_recentActivity":  {
+                                    "description":  "Localized text for \u0027profile_recentActivity\u0027."
+                                },
+    "profile_studentServices":  "Student Services",
+    "@profile_studentServices":  {
+                                     "description":  "Localized text for \u0027profile_studentServices\u0027."
+                                 },
+    "profile_servicesDocuments":  "Certificates \u0026 Documents",
+    "@profile_servicesDocuments":  {
+                                       "description":  "Localized text for \u0027profile_servicesDocuments\u0027."
+                                   },
+    "profile_servicesDocumentsSubtitle":  "Transcripts, study certificates",
+    "@profile_servicesDocumentsSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_servicesDocumentsSubtitle\u0027."
+                                           },
+    "profile_servicesFinance":  "Finance \u0026 Payments",
+    "@profile_servicesFinance":  {
+                                     "description":  "Localized text for \u0027profile_servicesFinance\u0027."
+                                 },
+    "profile_servicesFinanceSubtitle":  "Tuition, dormitory fees",
+    "@profile_servicesFinanceSubtitle":  {
+                                             "description":  "Localized text for \u0027profile_servicesFinanceSubtitle\u0027."
+                                         },
+    "profile_servicesHousing":  "Housing \u0026 Dormitory",
+    "@profile_servicesHousing":  {
+                                     "description":  "Localized text for \u0027profile_servicesHousing\u0027."
+                                 },
+    "profile_servicesHousingSubtitle":  "Requests, rules, status",
+    "@profile_servicesHousingSubtitle":  {
+                                             "description":  "Localized text for \u0027profile_servicesHousingSubtitle\u0027."
+                                         },
+    "profile_coverUploadFailed":  "Cover upload failed",
+    "@profile_coverUploadFailed":  {
+                                       "description":  "Localized text for \u0027profile_coverUploadFailed\u0027."
+                                   },
+    "profile_coverUploadFailedSubtitle":  "The selected image could not be loaded.",
+    "@profile_coverUploadFailedSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_coverUploadFailedSubtitle\u0027."
+                                           },
+    "profile_coverTooLarge":  "Image is too large",
+    "@profile_coverTooLarge":  {
+                                   "description":  "Localized text for \u0027profile_coverTooLarge\u0027."
+                               },
+    "profile_coverTooLargeSubtitle":  "Choose a JPG, PNG, or GIF under 5MB.",
+    "@profile_coverTooLargeSubtitle":  {
+                                           "description":  "Localized text for \u0027profile_coverTooLargeSubtitle\u0027."
+                                       },
+    "profile_coverUpdated":  "Cover updated",
+    "@profile_coverUpdated":  {
+                                  "description":  "Localized text for \u0027profile_coverUpdated\u0027."
+                              },
+    "profile_profileLinkCopied":  "Profile link copied",
+    "@profile_profileLinkCopied":  {
+                                       "description":  "Localized text for \u0027profile_profileLinkCopied\u0027."
+                                   },
+    "profile_profileCodeCopied":  "Profile code copied",
+    "@profile_profileCodeCopied":  {
+                                       "description":  "Localized text for \u0027profile_profileCodeCopied\u0027."
+                                   },
+    "profile_profileCodeCopiedSubtitle":  "Ready to paste into a campus kiosk or chat.",
+    "@profile_profileCodeCopiedSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_profileCodeCopiedSubtitle\u0027."
+                                           },
+    "profile_connectionRequestSent":  "Connection request sent",
+    "@profile_connectionRequestSent":  {
+                                           "description":  "Localized text for \u0027profile_connectionRequestSent\u0027."
+                                       },
+    "profile_connectionRequestRemoved":  "Connection request removed",
+    "@profile_connectionRequestRemoved":  {
+                                              "description":  "Localized text for \u0027profile_connectionRequestRemoved\u0027."
+                                          },
+    "profile_statusUpdated":  "Status updated",
+    "@profile_statusUpdated":  {
+                                   "description":  "Localized text for \u0027profile_statusUpdated\u0027."
+                               },
+    "profile_statusUpdatedSubtitle":  "Your active study signal stays visible on the profile card.",
+    "@profile_statusUpdatedSubtitle":  {
+                                           "description":  "Localized text for \u0027profile_statusUpdatedSubtitle\u0027."
+                                       },
+    "profile_viewAll":  "View All",
+    "@profile_viewAll":  {
+                             "description":  "Localized text for \u0027profile_viewAll\u0027."
+                         },
+    "profile_statusSubject":  "Databases",
+    "@profile_statusSubject":  {
+                                   "description":  "Localized text for \u0027profile_statusSubject\u0027."
+                               },
+    "profile_statusRoom":  "Room B-204",
+    "@profile_statusRoom":  {
+                                "description":  "Localized text for \u0027profile_statusRoom\u0027."
+                            },
+    "profile_recentSharedNotesTitle":  "Shared Notes: Databases",
+    "@profile_recentSharedNotesTitle":  {
+                                            "description":  "Localized text for \u0027profile_recentSharedNotesTitle\u0027."
+                                        },
+    "profile_recentSharedNotesSubtitle":  "Compiled all the SQL queries and normalization rules we covered.",
+    "@profile_recentSharedNotesSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_recentSharedNotesSubtitle\u0027."
+                                           },
+    "profile_recentJoinedGroupTitle":  "Joined Study Group",
+    "@profile_recentJoinedGroupTitle":  {
+                                            "description":  "Localized text for \u0027profile_recentJoinedGroupTitle\u0027."
+                                        },
+    "profile_recentJoinedGroupSubtitle":  "Advanced Algorithms Prep Group",
+    "@profile_recentJoinedGroupSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_recentJoinedGroupSubtitle\u0027."
+                                           },
+    "profile_hoursAgo":  "{count}h ago",
+    "@profile_hoursAgo":  {
+                              "placeholders":  {
+                                                   "count":  {
+                                                                 "type":  "int"
+                                                             }
+                                               },
+                              "description":  "Localized text for \u0027profile_hoursAgo\u0027."
+                          },
+    "profile_yesterday":  "Yesterday",
+    "@profile_yesterday":  {
+                               "description":  "Localized text for \u0027profile_yesterday\u0027."
+                           },
+    "profile_editCover":  "Edit Cover",
+    "@profile_editCover":  {
+                               "description":  "Localized text for \u0027profile_editCover\u0027."
+                           },
+    "profile_chooseFromTemplates":  "Choose from templates",
+    "@profile_chooseFromTemplates":  {
+                                         "description":  "Localized text for \u0027profile_chooseFromTemplates\u0027."
+                                     },
+    "profile_uploadFromDevice":  "Upload from device",
+    "@profile_uploadFromDevice":  {
+                                      "description":  "Localized text for \u0027profile_uploadFromDevice\u0027."
+                                  },
+    "profile_usingUploadedCover":  "Using uploaded cover",
+    "@profile_usingUploadedCover":  {
+                                        "description":  "Localized text for \u0027profile_usingUploadedCover\u0027."
+                                    },
+    "profile_replaceUploadedCover":  "Tap to replace with another image",
+    "@profile_replaceUploadedCover":  {
+                                          "description":  "Localized text for \u0027profile_replaceUploadedCover\u0027."
+                                      },
+    "profile_uploadRequirements":  "JPG, PNG or GIF (max. 5MB)",
+    "@profile_uploadRequirements":  {
+                                        "description":  "Localized text for \u0027profile_uploadRequirements\u0027."
+                                    },
+    "profile_topStudent":  "Top 5% Student",
+    "@profile_topStudent":  {
+                                "description":  "Localized text for \u0027profile_topStudent\u0027."
+                            },
+    "profile_currentGpa":  "Current GPA",
+    "@profile_currentGpa":  {
+                                "description":  "Localized text for \u0027profile_currentGpa\u0027."
+                            },
+    "profile_attendance":  "Attendance",
+    "@profile_attendance":  {
+                                "description":  "Localized text for \u0027profile_attendance\u0027."
+                            },
+    "profile_languageChanged":  "Language updated",
+    "@profile_languageChanged":  {
+                                     "description":  "Localized text for \u0027profile_languageChanged\u0027."
+                                 },
+    "profile_languageChangedSubtitle":  "{language}",
+    "@profile_languageChangedSubtitle":  {
+                                             "placeholders":  {
+                                                                  "language":  {
+                                                                                   "type":  "String"
+                                                                               }
+                                                              },
+                                             "description":  "Localized text for \u0027profile_languageChangedSubtitle\u0027."
+                                         },
+    "teacher_superTeacher":  "Super Teacher",
+    "@teacher_superTeacher":  {
+                                  "description":  "Localized text for \u0027teacher_superTeacher\u0027."
+                              },
+    "teacher_lightMode":  "Light Mode",
+    "@teacher_lightMode":  {
+                               "description":  "Localized text for \u0027teacher_lightMode\u0027."
+                           },
+    "teacher_darkMode":  "Dark Mode",
+    "@teacher_darkMode":  {
+                              "description":  "Localized text for \u0027teacher_darkMode\u0027."
+                          },
+    "teacher_subjectLine":  "{date} • {time}",
+    "@teacher_subjectLine":  {
+                                 "placeholders":  {
+                                                      "date":  {
+                                                                   "type":  "String"
+                                                               },
+                                                      "time":  {
+                                                                   "type":  "String"
+                                                               }
+                                                  },
+                                 "description":  "Localized text for \u0027teacher_subjectLine\u0027."
+                             },
+    "alarm_title":  "Smart Alarm",
+    "@alarm_title":  {
+                         "description":  "Localized text for \u0027alarm_title\u0027."
+                     },
+    "alarm_subtitle":  "Never miss a class or deadline",
+    "@alarm_subtitle":  {
+                            "description":  "Localized text for \u0027alarm_subtitle\u0027."
+                        },
+    "alarm_modePersonal":  "Personal",
+    "@alarm_modePersonal":  {
+                                "description":  "Localized text for \u0027alarm_modePersonal\u0027."
+                            },
+    "alarm_modeAcademic":  "Academic",
+    "@alarm_modeAcademic":  {
+                                "description":  "Localized text for \u0027alarm_modeAcademic\u0027."
+                            },
+    "alarm_alertType":  "Alert Type",
+    "@alarm_alertType":  {
+                             "description":  "Localized text for \u0027alarm_alertType\u0027."
+                         },
+    "alarm_typeWakeUp":  "Wake up",
+    "@alarm_typeWakeUp":  {
+                              "description":  "Localized text for \u0027alarm_typeWakeUp\u0027."
+                          },
+    "alarm_typeExamPrep":  "Exam prep",
+    "@alarm_typeExamPrep":  {
+                                "description":  "Localized text for \u0027alarm_typeExamPrep\u0027."
+                            },
+    "alarm_typeAssignment":  "Assignment",
+    "@alarm_typeAssignment":  {
+                                  "description":  "Localized text for \u0027alarm_typeAssignment\u0027."
+                              },
+    "alarm_typeLecture":  "Lecture",
+    "@alarm_typeLecture":  {
+                               "description":  "Localized text for \u0027alarm_typeLecture\u0027."
+                           },
+    "alarm_setAlarm":  "Set Alarm",
+    "@alarm_setAlarm":  {
+                            "description":  "Localized text for \u0027alarm_setAlarm\u0027."
+                        },
+    "alarm_setFor":  "Alarm set for {time}",
+    "@alarm_setFor":  {
+                          "placeholders":  {
+                                               "time":  {
+                                                            "type":  "String"
+                                                        }
+                                           },
+                          "description":  "Localized text for \u0027alarm_setFor\u0027."
+                      },
+    "alarm_activePersonal":  "Personal alarm is active.",
+    "@alarm_activePersonal":  {
+                                  "description":  "Localized text for \u0027alarm_activePersonal\u0027."
+                              },
+    "alarm_activeAcademic":  "Academic alert type: {type}",
+    "@alarm_activeAcademic":  {
+                                  "placeholders":  {
+                                                       "type":  {
+                                                                    "type":  "String"
+                                                                }
+                                                   },
+                                  "description":  "Localized text for \u0027alarm_activeAcademic\u0027."
+                              },
+    "quickAlert_title":  "Quick Alert",
+    "@quickAlert_title":  {
+                              "description":  "Localized text for \u0027quickAlert_title\u0027."
+                          },
+    "quickAlert_suggestions":  "Smart Suggestions",
+    "@quickAlert_suggestions":  {
+                                    "description":  "Localized text for \u0027quickAlert_suggestions\u0027."
+                                },
+    "quickAlert_unavailable":  "Quick alerts are unavailable.",
+    "@quickAlert_unavailable":  {
+                                    "description":  "Localized text for \u0027quickAlert_unavailable\u0027."
+                                },
+    "quickAlert_customTime":  "Custom Time",
+    "@quickAlert_customTime":  {
+                                   "description":  "Localized text for \u0027quickAlert_customTime\u0027."
+                               },
+    "quickAlert_remove":  "Remove Alert",
+    "@quickAlert_remove":  {
+                               "description":  "Localized text for \u0027quickAlert_remove\u0027."
+                           },
+    "quickAlert_customPreset":  "45 min before",
+    "@quickAlert_customPreset":  {
+                                     "description":  "Localized text for \u0027quickAlert_customPreset\u0027."
+                                 },
+    "quickAlert_preset5Min":  "5 min before",
+    "@quickAlert_preset5Min":  {
+                                   "description":  "Localized text for \u0027quickAlert_preset5Min\u0027."
+                               },
+    "quickAlert_preset10Min":  "10 min before",
+    "@quickAlert_preset10Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset10Min\u0027."
+                                },
+    "quickAlert_preset20Min":  "20 min before",
+    "@quickAlert_preset20Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset20Min\u0027."
+                                },
+    "quickAlert_preset30Min":  "30 min before",
+    "@quickAlert_preset30Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset30Min\u0027."
+                                },
+    "quickAlert_preset1Hour":  "1 hour before",
+    "@quickAlert_preset1Hour":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset1Hour\u0027."
+                                },
+    "quickAlert_presetLeaveOnTime":  "Leave on time",
+    "@quickAlert_presetLeaveOnTime":  {
+                                          "description":  "Localized text for \u0027quickAlert_presetLeaveOnTime\u0027."
+                                      },
+    "quickAlert_presetWakeUpBeforeClass":  "Wake up before class",
+    "@quickAlert_presetWakeUpBeforeClass":  {
+                                                "description":  "Localized text for \u0027quickAlert_presetWakeUpBeforeClass\u0027."
+                                            },
+    "shell_loadingWorkspaceTitle":  "Loading workspace",
+    "@shell_loadingWorkspaceTitle":  {
+                                         "description":  "Localized text for \u0027shell_loadingWorkspaceTitle\u0027."
+                                     },
+    "shell_loadingWorkspaceMessage":  "Restoring your role and permissions...",
+    "@shell_loadingWorkspaceMessage":  {
+                                           "description":  "Localized text for \u0027shell_loadingWorkspaceMessage\u0027."
+                                       },
+    "shell_loadingScheduleTitle":  "Loading schedule",
+    "@shell_loadingScheduleTitle":  {
+                                        "description":  "Localized text for \u0027shell_loadingScheduleTitle\u0027."
+                                    },
+    "shell_loadingScheduleMessage":  "Preparing lessons and quick alerts...",
+    "@shell_loadingScheduleMessage":  {
+                                          "description":  "Localized text for \u0027shell_loadingScheduleMessage\u0027."
+                                      },
+    "shell_loadingProfileTitle":  "Loading profile",
+    "@shell_loadingProfileTitle":  {
+                                       "description":  "Localized text for \u0027shell_loadingProfileTitle\u0027."
+                                   },
+    "shell_loadingProfileMessage":  "Preparing your student profile...",
+    "@shell_loadingProfileMessage":  {
+                                         "description":  "Localized text for \u0027shell_loadingProfileMessage\u0027."
+                                     },
+    "studies_title":  "Study Hub",
+    "@studies_title":  {
+                           "description":  "Localized text for \u0027studies_title\u0027."
+                       },
+    "studies_searchTitle":  "Study search",
+    "@studies_searchTitle":  {
+                                 "description":  "Localized text for \u0027studies_searchTitle\u0027."
+                             },
+    "studies_searchSubtitle":  "Study-wide search will expand beyond this static export in the next phase.",
+    "@studies_searchSubtitle":  {
+                                    "description":  "Localized text for \u0027studies_searchSubtitle\u0027."
+                                },
+    "studies_syncedLessons":  "{count} synced lessons",
+    "@studies_syncedLessons":  {
+                                   "placeholders":  {
+                                                        "count":  {
+                                                                      "type":  "int"
+                                                                  }
+                                                    },
+                                   "description":  "Localized text for \u0027studies_syncedLessons\u0027."
+                               },
+    "studies_materialsAvailable":  "{count} materials available",
+    "@studies_materialsAvailable":  {
+                                        "placeholders":  {
+                                                             "count":  {
+                                                                           "type":  "int"
+                                                                       }
+                                                         },
+                                        "description":  "Localized text for \u0027studies_materialsAvailable\u0027."
+                                    },
+    "studies_syncingLessons":  "Syncing lessons",
+    "@studies_syncingLessons":  {
+                                    "description":  "Localized text for \u0027studies_syncingLessons\u0027."
+                                },
+    "studies_syncingMaterials":  "Syncing materials",
+    "@studies_syncingMaterials":  {
+                                      "description":  "Localized text for \u0027studies_syncingMaterials\u0027."
+                                  },
+    "studies_modeToday":  "Today",
+    "@studies_modeToday":  {
+                               "description":  "Localized text for \u0027studies_modeToday\u0027."
+                           },
+    "studies_modeStudy":  "Study",
+    "@studies_modeStudy":  {
+                               "description":  "Localized text for \u0027studies_modeStudy\u0027."
+                           },
+    "studies_modeExams":  "Exams",
+    "@studies_modeExams":  {
+                               "description":  "Localized text for \u0027studies_modeExams\u0027."
+                           },
+    "studies_materials":  "Materials",
+    "@studies_materials":  {
+                               "description":  "Localized text for \u0027studies_materials\u0027."
+                           },
+    "studies_noLessonsAvailable":  "No lessons available",
+    "@studies_noLessonsAvailable":  {
+                                        "description":  "Localized text for \u0027studies_noLessonsAvailable\u0027."
+                                    },
+    "studies_noLessonsAvailableSubtitle":  "Create a lesson before uploading materials.",
+    "@studies_noLessonsAvailableSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_noLessonsAvailableSubtitle\u0027."
+                                            },
+    "studies_upload":  "Upload",
+    "@studies_upload":  {
+                            "description":  "Localized text for \u0027studies_upload\u0027."
+                        },
+    "studies_noMaterialsTeacherTitle":  "No materials uploaded yet",
+    "@studies_noMaterialsTeacherTitle":  {
+                                             "description":  "Localized text for \u0027studies_noMaterialsTeacherTitle\u0027."
+                                         },
+    "studies_noMaterialsTeacherMessage":  "Upload the first lesson resource to populate Study Hub.",
+    "@studies_noMaterialsTeacherMessage":  {
+                                               "description":  "Localized text for \u0027studies_noMaterialsTeacherMessage\u0027."
+                                           },
+    "studies_noMaterialsStudentTitle":  "No materials available yet",
+    "@studies_noMaterialsStudentTitle":  {
+                                             "description":  "Localized text for \u0027studies_noMaterialsStudentTitle\u0027."
+                                         },
+    "studies_noMaterialsStudentMessage":  "Materials shared by your teachers will appear here.",
+    "@studies_noMaterialsStudentMessage":  {
+                                               "description":  "Localized text for \u0027studies_noMaterialsStudentMessage\u0027."
+                                           },
+    "studies_materialsUnavailable":  "Materials are unavailable",
+    "@studies_materialsUnavailable":  {
+                                          "description":  "Localized text for \u0027studies_materialsUnavailable\u0027."
+                                      },
+    "studies_continueStudying":  "Continue studying",
+    "@studies_continueStudying":  {
+                                      "description":  "Localized text for \u0027studies_continueStudying\u0027."
+                                  },
+    "studies_assignments":  "Assignments",
+    "@studies_assignments":  {
+                                 "description":  "Localized text for \u0027studies_assignments\u0027."
+                             },
+    "studies_seeAll":  "See all",
+    "@studies_seeAll":  {
+                            "description":  "Localized text for \u0027studies_seeAll\u0027."
+                        },
+    "studies_overdue":  "Overdue",
+    "@studies_overdue":  {
+                             "description":  "Localized text for \u0027studies_overdue\u0027."
+                         },
+    "studies_inProgress":  "In Progress",
+    "@studies_inProgress":  {
+                                "description":  "Localized text for \u0027studies_inProgress\u0027."
+                            },
+    "studies_dueInDays":  "Due in {count} days",
+    "@studies_dueInDays":  {
+                               "placeholders":  {
+                                                    "count":  {
+                                                                  "type":  "int"
+                                                              }
+                                                },
+                               "description":  "Localized text for \u0027studies_dueInDays\u0027."
+                           },
+    "studies_subjects":  "Subjects",
+    "@studies_subjects":  {
+                              "description":  "Localized text for \u0027studies_subjects\u0027."
+                          },
+    "studies_priorityToday":  "Priority for Today",
+    "@studies_priorityToday":  {
+                                   "description":  "Localized text for \u0027studies_priorityToday\u0027."
+                               },
+    "studies_continueWorking":  "Continue Working",
+    "@studies_continueWorking":  {
+                                     "description":  "Localized text for \u0027studies_continueWorking\u0027."
+                                 },
+    "studies_todayClasses":  "Today\u0027s Classes",
+    "@studies_todayClasses":  {
+                                  "description":  "Localized text for \u0027studies_todayClasses\u0027."
+                              },
+    "studies_upcomingExams":  "Upcoming Exams",
+    "@studies_upcomingExams":  {
+                                   "description":  "Localized text for \u0027studies_upcomingExams\u0027."
+                               },
+    "studies_midterm":  "Midterm",
+    "@studies_midterm":  {
+                             "description":  "Localized text for \u0027studies_midterm\u0027."
+                         },
+    "studies_inDays":  "In {count} days",
+    "@studies_inDays":  {
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "type":  "int"
+                                                           }
+                                             },
+                            "description":  "Localized text for \u0027studies_inDays\u0027."
+                        },
+    "studies_aiWeakTopicsReview":  "AI Weak Topics Review",
+    "@studies_aiWeakTopicsReview":  {
+                                        "description":  "Localized text for \u0027studies_aiWeakTopicsReview\u0027."
+                                    },
+    "studies_invalidMaterialLink":  "Invalid material link",
+    "@studies_invalidMaterialLink":  {
+                                         "description":  "Localized text for \u0027studies_invalidMaterialLink\u0027."
+                                     },
+    "studies_couldNotOpenMaterial":  "Could not open material",
+    "@studies_couldNotOpenMaterial":  {
+                                          "description":  "Localized text for \u0027studies_couldNotOpenMaterial\u0027."
+                                      },
+    "studies_uploadFailed":  "Upload failed",
+    "@studies_uploadFailed":  {
+                                  "description":  "Localized text for \u0027studies_uploadFailed\u0027."
+                              },
+    "studies_uploadFailedSubtitle":  "The selected file could not be loaded.",
+    "@studies_uploadFailedSubtitle":  {
+                                          "description":  "Localized text for \u0027studies_uploadFailedSubtitle\u0027."
+                                      },
+    "studies_materialIncomplete":  "Material details are incomplete",
+    "@studies_materialIncomplete":  {
+                                        "description":  "Localized text for \u0027studies_materialIncomplete\u0027."
+                                    },
+    "studies_materialIncompleteSubtitle":  "Select a lesson, choose a file, and add a title.",
+    "@studies_materialIncompleteSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_materialIncompleteSubtitle\u0027."
+                                            },
+    "studies_materialUploaded":  "Material uploaded",
+    "@studies_materialUploaded":  {
+                                      "description":  "Localized text for \u0027studies_materialUploaded\u0027."
+                                  },
+    "studies_uploadMaterial":  "Upload Material",
+    "@studies_uploadMaterial":  {
+                                    "description":  "Localized text for \u0027studies_uploadMaterial\u0027."
+                                },
+    "studies_materialTitle":  "Material title",
+    "@studies_materialTitle":  {
+                                   "description":  "Localized text for \u0027studies_materialTitle\u0027."
+                               },
+    "studies_selectLesson":  "Select lesson",
+    "@studies_selectLesson":  {
+                                  "description":  "Localized text for \u0027studies_selectLesson\u0027."
+                              },
+    "studies_chooseFile":  "Choose file",
+    "@studies_chooseFile":  {
+                                "description":  "Localized text for \u0027studies_chooseFile\u0027."
+                            },
+    "studies_uploading":  "Uploading...",
+    "@studies_uploading":  {
+                               "description":  "Localized text for \u0027studies_uploading\u0027."
+                           },
+    "studies_continueCardMathTitle":  "Advanced Math",
+    "@studies_continueCardMathTitle":  {
+                                           "description":  "Localized text for \u0027studies_continueCardMathTitle\u0027."
+                                       },
+    "studies_continueCardMathSubtitle":  "2 new notes • Review needed",
+    "@studies_continueCardMathSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_continueCardMathSubtitle\u0027."
+                                          },
+    "studies_continueCardPhysicsTitle":  "Physics",
+    "@studies_continueCardPhysicsTitle":  {
+                                              "description":  "Localized text for \u0027studies_continueCardPhysicsTitle\u0027."
+                                          },
+    "studies_continueCardPhysicsSubtitle":  "1 new file • Chapter 4",
+    "@studies_continueCardPhysicsSubtitle":  {
+                                                 "description":  "Localized text for \u0027studies_continueCardPhysicsSubtitle\u0027."
+                                             },
+    "studies_continueCardProgrammingTitle":  "Programming",
+    "@studies_continueCardProgrammingTitle":  {
+                                                  "description":  "Localized text for \u0027studies_continueCardProgrammingTitle\u0027."
+                                              },
+    "studies_continueCardProgrammingSubtitle":  "Lecture recording",
+    "@studies_continueCardProgrammingSubtitle":  {
+                                                     "description":  "Localized text for \u0027studies_continueCardProgrammingSubtitle\u0027."
+                                                 },
+    "studies_assignmentCalculusTitle":  "Calculus Assignment 3",
+    "@studies_assignmentCalculusTitle":  {
+                                             "description":  "Localized text for \u0027studies_assignmentCalculusTitle\u0027."
+                                         },
+    "studies_assignmentCalculusSubtitle":  "Advanced Mathematics",
+    "@studies_assignmentCalculusSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_assignmentCalculusSubtitle\u0027."
+                                            },
+    "studies_assignmentPythonTitle":  "Python Project",
+    "@studies_assignmentPythonTitle":  {
+                                           "description":  "Localized text for \u0027studies_assignmentPythonTitle\u0027."
+                                       },
+    "studies_assignmentPythonSubtitle":  "Web Programming",
+    "@studies_assignmentPythonSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_assignmentPythonSubtitle\u0027."
+                                          },
+    "studies_subjectProgrammingFundamentals":  "Programming Fundamentals",
+    "@studies_subjectProgrammingFundamentals":  {
+                                                    "description":  "Localized text for \u0027studies_subjectProgrammingFundamentals\u0027."
+                                                },
+    "studies_subjectProfessorUrazimbetov":  "Prof. Urazimbetov M.",
+    "@studies_subjectProfessorUrazimbetov":  {
+                                                 "description":  "Localized text for \u0027studies_subjectProfessorUrazimbetov\u0027."
+                                             },
+    "studies_subjectAiSummaryAvailable":  "AI summary available",
+    "@studies_subjectAiSummaryAvailable":  {
+                                               "description":  "Localized text for \u0027studies_subjectAiSummaryAvailable\u0027."
+                                           },
+    "studies_subjectNextTomorrow0900":  "Next: Tomorrow 09:00",
+    "@studies_subjectNextTomorrow0900":  {
+                                             "description":  "Localized text for \u0027studies_subjectNextTomorrow0900\u0027."
+                                         },
+    "studies_subjectFiveMaterials":  "5 materials",
+    "@studies_subjectFiveMaterials":  {
+                                          "description":  "Localized text for \u0027studies_subjectFiveMaterials\u0027."
+                                      },
+    "studies_subjectTwoAssignments":  "2 assignments",
+    "@studies_subjectTwoAssignments":  {
+                                           "description":  "Localized text for \u0027studies_subjectTwoAssignments\u0027."
+                                       },
+    "studies_subjectDatabaseManagement":  "Database Management",
+    "@studies_subjectDatabaseManagement":  {
+                                               "description":  "Localized text for \u0027studies_subjectDatabaseManagement\u0027."
+                                           },
+    "studies_subjectProfessorNurlan":  "Nurlan K.",
+    "@studies_subjectProfessorNurlan":  {
+                                            "description":  "Localized text for \u0027studies_subjectProfessorNurlan\u0027."
+                                        },
+    "studies_subjectTwoWeakTopics":  "2 weak topics to review",
+    "@studies_subjectTwoWeakTopics":  {
+                                          "description":  "Localized text for \u0027studies_subjectTwoWeakTopics\u0027."
+                                      },
+    "studies_subjectNextToday1000":  "Next: Today 10:00",
+    "@studies_subjectNextToday1000":  {
+                                          "description":  "Localized text for \u0027studies_subjectNextToday1000\u0027."
+                                      },
+    "studies_subjectThreeMaterials":  "3 materials",
+    "@studies_subjectThreeMaterials":  {
+                                           "description":  "Localized text for \u0027studies_subjectThreeMaterials\u0027."
+                                       },
+    "studies_subjectOneAssignment":  "1 assignment",
+    "@studies_subjectOneAssignment":  {
+                                          "description":  "Localized text for \u0027studies_subjectOneAssignment\u0027."
+                                      },
+    "studies_priorityCalculusTitle":  "Calculus Assignment 3",
+    "@studies_priorityCalculusTitle":  {
+                                           "description":  "Localized text for \u0027studies_priorityCalculusTitle\u0027."
+                                       },
+    "studies_priorityCalculusSubtitle":  "Due tonight at 23:59. You have completed 60% of the tasks.",
+    "@studies_priorityCalculusSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_priorityCalculusSubtitle\u0027."
+                                          },
+    "studies_priorityCalculusMeta":  "Advanced Mathematics • Due tonight at 23:59",
+    "@studies_priorityCalculusMeta":  {
+                                          "description":  "Localized text for \u0027studies_priorityCalculusMeta\u0027."
+                                      },
+    "studies_todayClassWebProgrammingTitle":  "Web Programming",
+    "@studies_todayClassWebProgrammingTitle":  {
+                                                   "description":  "Localized text for \u0027studies_todayClassWebProgrammingTitle\u0027."
+                                               },
+    "studies_todayClassWebProgrammingSubtitle":  "Tole bi №86 • Urazimbetov M.",
+    "@studies_todayClassWebProgrammingSubtitle":  {
+                                                      "description":  "Localized text for \u0027studies_todayClassWebProgrammingSubtitle\u0027."
+                                                  },
+    "studies_todayClassDatabaseManagementTitle":  "Database Management",
+    "@studies_todayClassDatabaseManagementTitle":  {
+                                                       "description":  "Localized text for \u0027studies_todayClassDatabaseManagementTitle\u0027."
+                                                   },
+    "studies_todayClassDatabaseManagementSubtitle":  "Online • Nurlan K.",
+    "@studies_todayClassDatabaseManagementSubtitle":  {
+                                                          "description":  "Localized text for \u0027studies_todayClassDatabaseManagementSubtitle\u0027."
+                                                      },
+    "studies_examAdvancedMathTitle":  "Advanced Mathematics",
+    "@studies_examAdvancedMathTitle":  {
+                                           "description":  "Localized text for \u0027studies_examAdvancedMathTitle\u0027."
+                                       },
+    "studies_examCoverage":  "Covers Chapters 1-4. Bring calculator.",
+    "@studies_examCoverage":  {
+                                  "description":  "Localized text for \u0027studies_examCoverage\u0027."
+                              },
+    "studies_readyPercent":  "40% ready",
+    "@studies_readyPercent":  {
+                                  "description":  "Localized text for \u0027studies_readyPercent\u0027."
+                              },
+    "studies_weakTopicIntegralsTitle":  "Integrals",
+    "@studies_weakTopicIntegralsTitle":  {
+                                             "description":  "Localized text for \u0027studies_weakTopicIntegralsTitle\u0027."
+                                         },
+    "studies_weakTopicIntegralsSubtitle":  "Math • 3 mistakes",
+    "@studies_weakTopicIntegralsSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_weakTopicIntegralsSubtitle\u0027."
+                                            },
+    "studies_weakTopicSqlJoinsTitle":  "SQL Joins",
+    "@studies_weakTopicSqlJoinsTitle":  {
+                                            "description":  "Localized text for \u0027studies_weakTopicSqlJoinsTitle\u0027."
+                                        },
+    "studies_weakTopicSqlJoinsSubtitle":  "Databases • 2 mistakes",
+    "@studies_weakTopicSqlJoinsSubtitle":  {
+                                               "description":  "Localized text for \u0027studies_weakTopicSqlJoinsSubtitle\u0027."
+                                           },
+    "common_online":  "Online",
+    "@common_online":  {
+                           "description":  "Localized text for \u0027common_online\u0027."
+                       },
+    "common_justNow":  "Just now",
+    "@common_justNow":  {
+                            "description":  "Localized text for \u0027common_justNow\u0027."
+                        },
+    "common_mondayShort":  "Mon",
+    "@common_mondayShort":  {
+                                "description":  "Localized text for \u0027common_mondayShort\u0027."
+                            },
+    "lesson_subjectPhysicsLab":  "Physics Lab",
+    "@lesson_subjectPhysicsLab":  {
+                                      "description":  "Localized text for \u0027lesson_subjectPhysicsLab\u0027."
+                                  },
+    "lesson_subjectWebProgrammingPython":  "Web Programming and Python",
+    "@lesson_subjectWebProgrammingPython":  {
+                                                "description":  "Localized text for \u0027lesson_subjectWebProgrammingPython\u0027."
+                                            },
+    "lesson_subjectAlgorithmsMathematics":  "Algorithms and Mathematics",
+    "@lesson_subjectAlgorithmsMathematics":  {
+                                                 "description":  "Localized text for \u0027lesson_subjectAlgorithmsMathematics\u0027."
+                                             },
+    "lesson_subjectDatabaseManagementSystems":  "Database Management Systems",
+    "@lesson_subjectDatabaseManagementSystems":  {
+                                                     "description":  "Localized text for \u0027lesson_subjectDatabaseManagementSystems\u0027."
+                                                 },
+    "lesson_locationMainBuildingRoom201":  "Main Building, Room 201",
+    "@lesson_locationMainBuildingRoom201":  {
+                                                "description":  "Localized text for \u0027lesson_locationMainBuildingRoom201\u0027."
+                                            },
+    "lesson_locationToleBi86":  "Tole bi №86",
+    "@lesson_locationToleBi86":  {
+                                     "description":  "Localized text for \u0027lesson_locationToleBi86\u0027."
+                                 },
+    "lesson_locationKazybekBi30":  "Kazybek bi №30",
+    "@lesson_locationKazybekBi30":  {
+                                        "description":  "Localized text for \u0027lesson_locationKazybekBi30\u0027."
+                                    },
+    "lesson_teacherProfessorIvanov":  "Prof. Ivanov",
+    "@lesson_teacherProfessorIvanov":  {
+                                           "description":  "Localized text for \u0027lesson_teacherProfessorIvanov\u0027."
+                                       },
+    "messages_senderUniversityAdmin":  "University Admin",
+    "@messages_senderUniversityAdmin":  {
+                                            "description":  "Localized text for \u0027messages_senderUniversityAdmin\u0027."
+                                        },
+    "messages_previewProjectMeeting":  "Hey, are we still meeting for the project?",
+    "@messages_previewProjectMeeting":  {
+                                            "description":  "Localized text for \u0027messages_previewProjectMeeting\u0027."
+                                        },
+    "messages_previewThanksNotes":  "Thanks for the notes!",
+    "@messages_previewThanksNotes":  {
+                                         "description":  "Localized text for \u0027messages_previewThanksNotes\u0027."
+                                     },
+    "messages_previewScheduleUpdated":  "Your schedule has been updated.",
+    "@messages_previewScheduleUpdated":  {
+                                             "description":  "Localized text for \u0027messages_previewScheduleUpdated\u0027."
+                                         },
+    "profile_programSoftwareEngineering":  "Software Engineering",
+    "@profile_programSoftwareEngineering":  {
+                                                "description":  "Localized text for \u0027profile_programSoftwareEngineering\u0027."
+                                            },
+    "profile_programStudentSchedule":  "Student Schedule",
+    "@profile_programStudentSchedule":  {
+                                            "description":  "Localized text for \u0027profile_programStudentSchedule\u0027."
+                                        },
+    "profile_programTeachingStaff":  "Teaching Staff",
+    "@profile_programTeachingStaff":  {
+                                          "description":  "Localized text for \u0027profile_programTeachingStaff\u0027."
+                                      },
+    "profile_yearSecond":  "2nd Year",
+    "@profile_yearSecond":  {
+                                "description":  "Localized text for \u0027profile_yearSecond\u0027."
+                            },
+    "profile_yearStudent":  "Student",
+    "@profile_yearStudent":  {
+                                 "description":  "Localized text for \u0027profile_yearStudent\u0027."
+                             },
+    "profile_yearTeacher":  "Teacher",
+    "@profile_yearTeacher":  {
+                                 "description":  "Localized text for \u0027profile_yearTeacher\u0027."
+                             },
+    "profile_defaultBio":  "Passionate about Frontend, AI, and building things. Always up for a hackathon!",
+    "@profile_defaultBio":  {
+                                "description":  "Localized text for \u0027profile_defaultBio\u0027."
+                            },
+    "profile_liveStudentBio":  "Student flow connected to live schedules, reminders, and shared materials.",
+    "@profile_liveStudentBio":  {
+                                    "description":  "Localized text for \u0027profile_liveStudentBio\u0027."
+                                },
+    "profile_liveTeacherBio":  "Teacher dashboard connected to your live classes and materials.",
+    "@profile_liveTeacherBio":  {
+                                    "description":  "Localized text for \u0027profile_liveTeacherBio\u0027."
+                                },
+    "profile_liveSuperTeacherBio":  "Super teacher with full schedule management access.",
+    "@profile_liveSuperTeacherBio":  {
+                                         "description":  "Localized text for \u0027profile_liveSuperTeacherBio\u0027."
+                                     },
+    "profile_groupNotAssigned":  "No group assigned",
+    "@profile_groupNotAssigned":  {
+                                      "description":  "Localized text for \u0027profile_groupNotAssigned\u0027."
+                                  },
+    "profile_coverTemplateCampus":  "Campus",
+    "@profile_coverTemplateCampus":  {
+                                         "description":  "Localized text for \u0027profile_coverTemplateCampus\u0027."
+                                     },
+    "profile_coverTemplateLibrary":  "Library",
+    "@profile_coverTemplateLibrary":  {
+                                          "description":  "Localized text for \u0027profile_coverTemplateLibrary\u0027."
+                                      },
+    "profile_coverTemplateGraduation":  "Graduation",
+    "@profile_coverTemplateGraduation":  {
+                                             "description":  "Localized text for \u0027profile_coverTemplateGraduation\u0027."
+                                         },
+    "profile_coverTemplateArchitecture":  "Architecture",
+    "@profile_coverTemplateArchitecture":  {
+                                               "description":  "Localized text for \u0027profile_coverTemplateArchitecture\u0027."
+                                           },
+    "profile_coverTemplateAbstractTech":  "Abstract Tech",
+    "@profile_coverTemplateAbstractTech":  {
+                                               "description":  "Localized text for \u0027profile_coverTemplateAbstractTech\u0027."
+                                           },
+    "profile_coverTemplateScience":  "Science",
+    "@profile_coverTemplateScience":  {
+                                          "description":  "Localized text for \u0027profile_coverTemplateScience\u0027."
+                                      },
+    "services_requestMaintenancePrefix":  "Maintenance: {issueType}",
+    "@services_requestMaintenancePrefix":  {
+                                               "placeholders":  {
+                                                                    "issueType":  {
+                                                                                      "type":  "String"
+                                                                                  }
+                                                                },
+                                               "description":  "Localized text for \u0027services_requestMaintenancePrefix\u0027."
+                                           },
+    "services_requestSupportPrefix":  "Support: {subject}",
+    "@services_requestSupportPrefix":  {
+                                           "placeholders":  {
+                                                                "subject":  {
+                                                                                "type":  "String"
+                                                                            }
+                                                            },
+                                           "description":  "Localized text for \u0027services_requestSupportPrefix\u0027."
+                                       },
+    "services_requestEnrollmentCertificate":  "Enrollment Certificate",
+    "@services_requestEnrollmentCertificate":  {
+                                                   "description":  "Localized text for \u0027services_requestEnrollmentCertificate\u0027."
+                                               },
+    "services_requestDormitoryRepair":  "Dormitory Repair",
+    "@services_requestDormitoryRepair":  {
+                                             "description":  "Localized text for \u0027services_requestDormitoryRepair\u0027."
+                                         },
+    "services_requestTuitionFeePayment":  "Tuition Fee Payment",
+    "@services_requestTuitionFeePayment":  {
+                                               "description":  "Localized text for \u0027services_requestTuitionFeePayment\u0027."
+                                           },
+    "services_requestDescriptionVisaApplication":  "Requested for visa application.",
+    "@services_requestDescriptionVisaApplication":  {
+                                                        "description":  "Localized text for \u0027services_requestDescriptionVisaApplication\u0027."
+                                                    },
+    "services_requestDescriptionLeakingPipe":  "Leaking pipe in bathroom.",
+    "@services_requestDescriptionLeakingPipe":  {
+                                                    "description":  "Localized text for \u0027services_requestDescriptionLeakingPipe\u0027."
+                                                },
+    "services_requestDescriptionViaSynorServices":  "Requested via Synor Services.",
+    "@services_requestDescriptionViaSynorServices":  {
+                                                         "description":  "Localized text for \u0027services_requestDescriptionViaSynorServices\u0027."
+                                                     },
+    "services_requestDescriptionPaymentSpring2026":  "Payment of 450,000 ₸ for Spring Semester 2026.",
+    "@services_requestDescriptionPaymentSpring2026":  {
+                                                          "description":  "Localized text for \u0027services_requestDescriptionPaymentSpring2026\u0027."
+                                                      },
+    "services_requestDormitoryRoom412":  "Dormitory #3, Room 412. {description}",
+    "@services_requestDormitoryRoom412":  {
+                                              "placeholders":  {
+                                                                   "description":  {
+                                                                                       "type":  "String"
+                                                                                   }
+                                                               },
+                                              "description":  "Localized text for \u0027services_requestDormitoryRoom412\u0027."
+                                          },
+    "services_dateOct12":  "Oct 12",
+    "@services_dateOct12":  {
+                                "description":  "Localized text for \u0027services_dateOct12\u0027."
+                            },
+    "services_dateOct10":  "Oct 10",
+    "@services_dateOct10":  {
+                                "description":  "Localized text for \u0027services_dateOct10\u0027."
+                            },
+    "services_zeroBalanceAmount":  "0 ₸",
+    "@services_zeroBalanceAmount":  {
+                                        "description":  "Localized text for \u0027services_zeroBalanceAmount\u0027."
+                                    },
+    "services_tuitionAmount":  "450,000 ₸",
+    "@services_tuitionAmount":  {
+                                    "description":  "Localized text for \u0027services_tuitionAmount\u0027."
+                                },
+    "error_authenticatedUserRequired":  "An authenticated user is required.",
+    "@error_authenticatedUserRequired":  {
+                                             "description":  "Localized text for \u0027error_authenticatedUserRequired\u0027."
+                                         },
+    "error_authenticatedProfileRequired":  "An authenticated user profile is required.",
+    "@error_authenticatedProfileRequired":  {
+                                                "description":  "Localized text for \u0027error_authenticatedProfileRequired\u0027."
+                                            },
+    "error_lessonIdRequired":  "Lesson ID is required for updates.",
+    "@error_lessonIdRequired":  {
+                                    "description":  "Localized text for \u0027error_lessonIdRequired\u0027."
+                                },
+    "error_lessonEditPermission":  "You do not have permission to edit this lesson.",
+    "@error_lessonEditPermission":  {
+                                        "description":  "Localized text for \u0027error_lessonEditPermission\u0027."
+                                    },
+    "error_onlyTeachersManageLessons":  "Only teachers can manage lessons.",
+    "@error_onlyTeachersManageLessons":  {
+                                             "description":  "Localized text for \u0027error_onlyTeachersManageLessons\u0027."
+                                         },
+    "error_onlyTeachersUploadMaterials":  "Only teachers can upload materials.",
+    "@error_onlyTeachersUploadMaterials":  {
+                                               "description":  "Localized text for \u0027error_onlyTeachersUploadMaterials\u0027."
+                                           },
+    "error_onlyUploadManagedLessons":  "You can only upload materials for lessons you manage.",
+    "@error_onlyUploadManagedLessons":  {
+                                            "description":  "Localized text for \u0027error_onlyUploadManagedLessons\u0027."
+                                        },
+    "error_missingSupabaseConfig":  "Missing Supabase configuration. Run the app with SUPABASE_URL and SUPABASE_ANON_KEY.",
+    "@error_missingSupabaseConfig":  {
+                                         "description":  "Localized text for \u0027error_missingSupabaseConfig\u0027."
+                                     },
+    "async_loadingTitle":  "Loading",
+    "@async_loadingTitle":  {
+                                "description":  "Localized text for \u0027async_loadingTitle\u0027."
+                            },
+    "async_loadingMessage":  "Preparing your data...",
+    "@async_loadingMessage":  {
+                                  "description":  "Localized text for \u0027async_loadingMessage\u0027."
+                              },
+    "async_errorTitle":  "Something went wrong",
+    "@async_errorTitle":  {
+                              "description":  "Localized text for \u0027async_errorTitle\u0027."
+                          },
+    "notifications_title": "Notifications",
+    "notifications_markAllAsRead": "Mark all as read",
+    "notifications_empty": "No notifications yet",
+    "alarm_repeat": "Repeat",
+    "alarm_snooze": "Snooze",
+    "alarm_label": "Label",
+    "alarm_everyDay": "Every day",
+    "alarm_once": "Once",
+    "alarm_weekdays": "Weekdays",
+    "alarm_weekends": "Weekends",
+    "alarm_delete": "Delete Alarm",
+    "alarm_save": "Save Alarm",
+    "alarm_add": "Add Alarm",
+    "alarm_edit": "Edit Alarm"
+}

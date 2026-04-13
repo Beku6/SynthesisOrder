@@ -2,12 +2,17 @@ import 'dart:typed_data';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/persistence/shared_preferences_provider.dart';
 import '../../../shared/models/app_models.dart';
-import '../data/in_memory_profile_repository.dart';
+import '../../users/application/current_user_controller.dart';
+import '../data/supabase_profile_repository.dart';
 import '../domain/profile_repository.dart';
 
 final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
-  return InMemoryProfileRepository();
+  return SupabaseProfileRepository(
+    userRepository: ref.watch(userRepositoryProvider),
+    preferences: ref.watch(sharedPreferencesProvider),
+  );
 });
 
 final profileControllerProvider =
@@ -19,7 +24,10 @@ class ProfileController extends AsyncNotifier<ProfileData> {
   ProfileRepository get _repository => ref.read(profileRepositoryProvider);
 
   @override
-  Future<ProfileData> build() => _repository.fetchProfile();
+  Future<ProfileData> build() async {
+    await ref.watch(currentUserControllerProvider.future);
+    return _repository.fetchProfile();
+  }
 
   Future<void> reload() async {
     state = const AsyncLoading();
@@ -34,5 +42,9 @@ class ProfileController extends AsyncNotifier<ProfileData> {
 
   Future<void> updateCustomCover(Uint8List bytes) async {
     state = await AsyncValue.guard(() => _repository.updateCustomCover(bytes));
+  }
+
+  Future<void> updateBio(String bio) async {
+    state = await AsyncValue.guard(() => _repository.updateBio(bio));
   }
 }

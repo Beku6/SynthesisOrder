@@ -594,13 +594,17 @@ class SynorSearchField extends StatelessWidget {
     required this.hintText,
     this.controller,
     this.onChanged,
+    this.onTap,
     this.prefixIcon,
+    this.readOnly = false,
   });
 
   final String hintText;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
+  final VoidCallback? onTap;
   final IconData? prefixIcon;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -623,6 +627,8 @@ class SynorSearchField extends StatelessWidget {
         child: TextField(
           controller: controller,
           onChanged: onChanged,
+          onTap: onTap,
+          readOnly: readOnly,
           style: TextStyle(color: synorPrimaryText(context), fontSize: 14),
           decoration: InputDecoration(
             filled: false,
@@ -826,10 +832,10 @@ class SynorIconActionButton extends StatelessWidget {
 }
 
 class PressableScale extends StatefulWidget {
-  const PressableScale({super.key, required this.child, required this.onTap});
+  const PressableScale({super.key, required this.child, this.onTap});
 
   final Widget child;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   State<PressableScale> createState() => _PressableScaleState();
@@ -853,6 +859,7 @@ class _PressableScaleState extends State<PressableScale> {
       onTapCancel: () => _setPressed(false),
       onTapUp: (_) => _setPressed(false),
       onTap: widget.onTap,
+      behavior: HitTestBehavior.opaque,
       child: AnimatedScale(
         duration: const Duration(milliseconds: 120),
         scale: _pressed ? 0.98 : 1,

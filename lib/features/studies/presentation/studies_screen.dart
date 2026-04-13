@@ -1,11 +1,25 @@
+import 'dart:typed_data';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/theme/synor_design_tokens.dart';
+import '../../../l10n/app_localization_x.dart';
+import '../../../l10n/l10n.dart';
+import '../../lessons/application/lesson_controller.dart';
+import '../../materials/application/materials_controller.dart';
+import '../../materials/domain/material_models.dart';
+import '../../users/application/current_user_controller.dart';
+import '../../users/domain/user_models.dart';
 import '../../../shared/models/app_models.dart';
 import '../../../shared/widgets/synor_widgets.dart';
+import '../application/studies_controller.dart';
+import '../domain/studies_models.dart';
 
-class StudiesScreen extends StatelessWidget {
+class StudiesScreen extends ConsumerWidget {
   const StudiesScreen({
     super.key,
     required this.mode,
@@ -18,20 +32,38 @@ class StudiesScreen extends StatelessWidget {
   final ValueChanged<StudyMode> onModeChanged;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final materialsAsync = ref.watch(materialsControllerProvider);
+    final currentUserAsync = ref.watch(currentUserControllerProvider);
+    final lessonsAsync = ref.watch(lessonControllerProvider);
+    final lessonSummary = lessonsAsync.maybeWhen(
+      data: (lessons) => context.l10n.studies_syncedLessons(lessons.length),
+      orElse: () => context.l10n.studies_syncingLessons,
+    );
+    final materialSummary = materialsAsync.maybeWhen(
+      data: (materials) =>
+          context.l10n.studies_materialsAvailable(materials.length),
+      orElse: () => context.l10n.studies_syncingMaterials,
+    );
+    final assignmentsAsync = ref.watch(assignmentsProvider);
+    final examsAsync = ref.watch(examsProvider);
+
     return ListView(
       padding: const EdgeInsets.fromLTRB(_pageInset, 48, _pageInset, 132),
       children: [
         Row(
           children: [
-            Text('Study Hub', style: Theme.of(context).textTheme.headlineSmall),
+            Text(
+              context.l10n.studies_title,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
             const Spacer(),
             SynorIconActionButton(
               icon: LucideIcons.search,
               onTap: () => _showStudyToast(
                 context,
-                'Study search',
-                'Study-wide search will expand beyond this static export in the next phase.',
+                context.l10n.studies_searchTitle,
+                context.l10n.studies_searchSubtitle,
                 LucideIcons.search,
                 SynorColors.indigo500,
               ),
@@ -42,7 +74,7 @@ class StudiesScreen extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          '3 assignments this week • 2 unread materials',
+          '$lessonSummary • $materialSummary',
           style: TextStyle(color: synorSecondaryText(context)),
         ),
         const SizedBox(height: 24),
@@ -50,11 +82,7 @@ class StudiesScreen extends StatelessWidget {
           values: StudyMode.values,
           selected: mode,
           compact: true,
-          labelBuilder: (value) => switch (value) {
-            StudyMode.today => 'Today',
-            StudyMode.study => 'Study',
-            StudyMode.exams => 'Exams',
-          },
+          labelBuilder: context.l10n.studyModeLabel,
           onChanged: onModeChanged,
         ),
         const SizedBox(height: 24),
@@ -68,9 +96,18 @@ class StudiesScreen extends StatelessWidget {
             begin: const Offset(0, 0.02),
           ),
           child: switch (mode) {
-            StudyMode.study => const _StudyModeContent(key: ValueKey('study')),
+            StudyMode.study => _StudyModeContent(
+              key: const ValueKey('study'),
+              currentUserAsync: currentUserAsync,
+              materialsAsync: materialsAsync,
+              lessonsAsync: lessonsAsync,
+              assignmentsAsync: assignmentsAsync,
+            ),
             StudyMode.today => const _TodayModeContent(key: ValueKey('today')),
-            StudyMode.exams => const _ExamsModeContent(key: ValueKey('exams')),
+            StudyMode.exams => _ExamsModeContent(
+              key: const ValueKey('exams'),
+              examsAsync: examsAsync,
+            ),
           },
         ),
       ],
@@ -79,499 +116,587 @@ class StudiesScreen extends StatelessWidget {
 }
 
 class _StudyModeContent extends StatelessWidget {
-  const _StudyModeContent({super.key});
+  const _StudyModeContent({
+    super.key,
+    required this.currentUserAsync,
+    required this.materialsAsync,
+    required this.lessonsAsync,
+    required this.assignmentsAsync,
+  });
+
+  final AsyncValue<SynorUser?> currentUserAsync;
+  final AsyncValue<List<LessonMaterial>> materialsAsync;
+  final AsyncValue<List<Lesson>> lessonsAsync;
+  final AsyncValue<List<Assignment>> assignmentsAsync;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      key: ValueKey('study-mode-content'),
+    final lessons = lessonsAsync.maybeWhen(
+      data: (items) => items,
+      orElse: () => const <Lesson>[],
+    );
+    return Column(
+      key: const ValueKey('study-mode-content'),
       children: [
-        _ContinueStudyingSection(),
-        SizedBox(height: 28),
-        _AssignmentsSection(),
-        SizedBox(height: 28),
-        _SubjectsSection(),
+        _MaterialsSection(
+          currentUserAsync: currentUserAsync,
+          materialsAsync: materialsAsync,
+          lessonsAsync: lessonsAsync,
+        ),
+        const SizedBox(height: 28),
+        _ContinueStudyingSection(lessons: lessons),
+        const SizedBox(height: 28),
+        _AssignmentsSection(assignmentsAsync: assignmentsAsync),
+        const SizedBox(height: 28),
+        _SubjectsSection(lessons: lessons),
       ],
     );
   }
 }
 
-class _TodayModeContent extends StatelessWidget {
+class _TodayModeContent extends ConsumerWidget {
   const _TodayModeContent({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Column(
-      key: ValueKey('today-mode-content'),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lessonsAsync = ref.watch(lessonControllerProvider);
+    final lessons = lessonsAsync.maybeWhen(
+      data: (items) => items,
+      orElse: () => const <Lesson>[],
+    );
+    final today = DateTime.now();
+    final todayLessons = lessons.where((l) {
+      final s = l.startTime;
+      if (s == null) return false;
+      return s.year == today.year && s.month == today.month && s.day == today.day;
+    }).toList();
+
+    return Column(
+      key: const ValueKey('today-mode-content'),
       children: [
-        _TodayPrioritySection(),
-        SizedBox(height: 28),
-        _TodayClassesSection(),
+        _TodayPrioritySection(todayLessons: todayLessons),
+        const SizedBox(height: 28),
+        _TodayClassesSection(todayLessons: todayLessons),
       ],
     );
   }
 }
 
 class _ExamsModeContent extends StatelessWidget {
-  const _ExamsModeContent({super.key});
+  const _ExamsModeContent({super.key, required this.examsAsync});
+
+  final AsyncValue<List<Exam>> examsAsync;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      key: ValueKey('exams-mode-content'),
-      children: [_ExamsSection(), SizedBox(height: 28), _WeakTopicsSection()],
+    return Column(
+      key: const ValueKey('exams-mode-content'),
+      children: [
+        _ExamsSection(examsAsync: examsAsync), 
+        const SizedBox(height: 28), 
+        const _WeakTopicsSection()
+      ],
+    );
+  }
+}
+
+class _MaterialsSection extends ConsumerWidget {
+  const _MaterialsSection({
+    required this.currentUserAsync,
+    required this.materialsAsync,
+    required this.lessonsAsync,
+  });
+
+  final AsyncValue<SynorUser?> currentUserAsync;
+  final AsyncValue<List<LessonMaterial>> materialsAsync;
+  final AsyncValue<List<Lesson>> lessonsAsync;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = currentUserAsync.maybeWhen(
+      data: (user) => user,
+      orElse: () => null,
+    );
+    final lessons = lessonsAsync.maybeWhen(
+      data: (items) => items,
+      orElse: () => const <Lesson>[],
+    );
+    final canUpload = currentUser?.canManageLessons ?? false;
+
+    Future<void> openUploadSheet() async {
+      if (lessons.isEmpty) {
+        showSynorToast(
+          context,
+          message: context.l10n.studies_noLessonsAvailable,
+          subtitle: context.l10n.studies_noLessonsAvailableSubtitle,
+          icon: LucideIcons.circle_alert,
+          accentColor: SynorColors.amber500,
+        );
+        return;
+      }
+      await showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => _MaterialUploadSheet(lessons: lessons),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              context.l10n.studies_materials,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const Spacer(),
+            if (canUpload)
+              PressableScale(
+                onTap: openUploadSheet,
+                child: Text(
+                  context.l10n.studies_upload,
+                  style: TextStyle(
+                    color: synorIsDark(context)
+                        ? SynorColors.indigo300
+                        : SynorColors.indigo600,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        materialsAsync.when(
+          data: (materials) {
+            if (materials.isEmpty) {
+              return SynorInlineStateCard(
+                icon: canUpload
+                    ? LucideIcons.file_plus
+                    : LucideIcons.file_search,
+                title: canUpload
+                    ? context.l10n.studies_noMaterialsTeacherTitle
+                    : context.l10n.studies_noMaterialsStudentTitle,
+                message: canUpload
+                    ? context.l10n.studies_noMaterialsTeacherMessage
+                    : context.l10n.studies_noMaterialsStudentMessage,
+                accentColor: SynorColors.indigo500,
+              );
+            }
+
+            final visibleItems = materials.take(3).toList();
+            return Column(
+              children: visibleItems
+                  .map(
+                    (material) => Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: _MaterialTile(material: material),
+                    ),
+                  )
+                  .toList(),
+            );
+          },
+          loading: () => const Column(
+            children: [
+              _MaterialSkeletonTile(),
+              SizedBox(height: 12),
+              _MaterialSkeletonTile(),
+            ],
+          ),
+          error: (error, _) => SynorInlineStateCard(
+            icon: LucideIcons.circle_alert,
+            title: context.l10n.studies_materialsUnavailable,
+            message: context.l10n.appErrorLabel('$error'),
+            accentColor: SynorColors.rose500,
+          ),
+        ),
+      ],
     );
   }
 }
 
 class _ContinueStudyingSection extends StatelessWidget {
-  const _ContinueStudyingSection();
+  const _ContinueStudyingSection({required this.lessons});
+
+  final List<Lesson> lessons;
+
+  @override
+  Widget build(BuildContext context) {
+    // Derive unique subjects, preserving first-seen order.
+    final seen = <String>{};
+    final unique = lessons
+        .where((l) => seen.add(l.title))
+        .take(3)
+        .toList();
+
+    final colors = [SynorColors.indigo500, SynorColors.rose500, SynorColors.emerald500];
+    final icons = [LucideIcons.book_open, LucideIcons.file_text, LucideIcons.circle_play];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.l10n.studies_continueStudying,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        const SizedBox(height: 16),
+        if (unique.isEmpty)
+          SynorInlineStateCard(
+            icon: LucideIcons.book_marked,
+            title: 'No subjects yet',
+            message: 'Your schedule will appear here once lessons are added.',
+            accentColor: SynorColors.indigo500,
+          )
+        else
+          SynorHorizontalViewportBleed(
+            height: 132,
+            horizontalInset: StudiesScreen._pageInset,
+            child: SizedBox(
+              height: 132,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: StudiesScreen._pageInset,
+                ),
+                scrollDirection: Axis.horizontal,
+                itemCount: unique.length,
+                separatorBuilder: (context, index) => const SizedBox(width: 16),
+                itemBuilder: (context, index) {
+                  final lesson = unique[index];
+                  final color = colors[index % colors.length];
+                  final icon = icons[index % icons.length];
+                  final nextLabel = lesson.startTime != null
+                      ? context.l10n.teacher_subjectLine(
+                          synorNumericDate(context, lesson.startTime!),
+                          synorClock(context, lesson.startTime!),
+                        )
+                      : '';
+                  return SizedBox(
+                    width: 200,
+                    child: PressableScale(
+                      onTap: () {},
+                      child: SynorGlassPanel(
+                        radius: SynorRadii.card,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: color.withValues(
+                                  alpha: synorIsDark(context) ? 0.12 : 0.1,
+                                ),
+                              ),
+                              child: Icon(icon, color: color, size: 20),
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              context.l10n.lessonTitleLabel(lesson.title),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: synorPrimaryText(context),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              nextLabel,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: synorSecondaryText(context),
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+
+class _AssignmentsSection extends StatelessWidget {
+  const _AssignmentsSection({required this.assignmentsAsync});
+
+  final AsyncValue<List<Assignment>> assignmentsAsync;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Continue studying',
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        _SectionHeader(title: context.l10n.studies_assignments),
         const SizedBox(height: 16),
-        SynorHorizontalViewportBleed(
-          height: 132,
-          horizontalInset: StudiesScreen._pageInset,
-          child: SizedBox(
-            height: 132,
-            child: ListView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: StudiesScreen._pageInset,
-              ),
-              scrollDirection: Axis.horizontal,
-              children: const [
-                _MiniStudyCard(
-                  icon: LucideIcons.book_open,
-                  color: SynorColors.indigo500,
-                  title: 'Advanced Math',
-                  subtitle: '2 new notes • Review needed',
-                ),
-                SizedBox(width: 16),
-                _MiniStudyCard(
-                  icon: LucideIcons.file_text,
-                  color: SynorColors.rose500,
-                  title: 'Physics',
-                  subtitle: '1 new file • Chapter 4',
-                ),
-                SizedBox(width: 16),
-                _MiniStudyCard(
-                  icon: LucideIcons.circle_play,
-                  color: SynorColors.emerald500,
-                  title: 'Programming',
-                  subtitle: 'Lecture recording',
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _MiniStudyCard extends StatelessWidget {
-  const _MiniStudyCard({
-    required this.icon,
-    required this.color,
-    required this.title,
-    required this.subtitle,
-  });
-
-  final IconData icon;
-  final Color color;
-  final String title;
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 200,
-      child: PressableScale(
-        onTap: () => _showStudyToast(context, title, subtitle, icon, color),
-        child: SynorGlassPanel(
-          radius: SynorRadii.card,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: color.withValues(
-                    alpha: synorIsDark(context) ? 0.12 : 0.1,
-                  ),
-                ),
-                child: Icon(icon, color: color, size: 20),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                title,
-                style: TextStyle(
-                  color: synorPrimaryText(context),
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                subtitle,
-                style: TextStyle(
-                  color: synorSecondaryText(context),
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _AssignmentsSection extends StatelessWidget {
-  const _AssignmentsSection();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        _SectionHeader(title: 'Assignments', actionLabel: 'See all'),
-        SizedBox(height: 16),
-        _AssignmentCard(
-          pillLabel: 'Overdue',
-          pillColor: SynorColors.rose500,
-          meta: 'Yesterday',
-          metaIcon: LucideIcons.circle_alert,
-          metaColor: SynorColors.rose500,
-          title: 'Calculus Assignment 3',
-          subtitle: 'Advanced Mathematics',
-        ),
-        SizedBox(height: 12),
-        _AssignmentCard(
-          pillLabel: 'In Progress',
-          pillColor: SynorColors.indigo500,
-          meta: 'Due in 2 days',
-          metaColor: SynorColors.slate500,
-          title: 'Python Project',
-          subtitle: 'Web Programming',
-        ),
-      ],
-    );
-  }
-}
-
-class _AssignmentCard extends StatelessWidget {
-  const _AssignmentCard({
-    required this.pillLabel,
-    required this.pillColor,
-    required this.meta,
-    required this.title,
-    required this.subtitle,
-    this.metaIcon,
-    this.metaColor,
-  });
-
-  final String pillLabel;
-  final Color pillColor;
-  final String meta;
-  final String title;
-  final String subtitle;
-  final IconData? metaIcon;
-  final Color? metaColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return SynorGlassPanel(
-      radius: SynorRadii.card,
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    SynorStatusChip(
-                      label: pillLabel,
-                      backgroundColor: pillColor.withValues(
-                        alpha: synorIsDark(context) ? 0.12 : 0.1,
-                      ),
-                      foregroundColor: pillColor,
-                      borderColor: pillColor.withValues(
-                        alpha: synorIsDark(context) ? 0.25 : 0.16,
-                      ),
-                      compact: true,
-                    ),
-                    const SizedBox(width: 8),
-                    Row(
-                      children: [
-                        if (metaIcon != null) ...[
-                          Icon(
-                            metaIcon,
-                            size: 14,
-                            color: metaColor ?? pillColor,
-                          ),
-                          const SizedBox(width: 4),
-                        ],
-                        Text(
-                          meta,
-                          style: TextStyle(
-                            color: metaColor ?? pillColor,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: synorPrimaryText(context),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    color: synorSecondaryText(context),
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 16),
-          SynorIconActionButton(
-            icon: LucideIcons.chevron_right,
-            onTap: () => _showStudyToast(
-              context,
-              title,
-              subtitle,
-              LucideIcons.file_text,
-              pillColor,
-            ),
-            size: 20,
-            buttonSize: 40,
-            radius: 12,
-            backgroundColor: synorIsDark(context)
-                ? SynorColors.white5
-                : SynorColors.slate50,
-            borderColor: synorIsDark(context)
-                ? SynorColors.white5
-                : SynorColors.slate200,
-            foregroundColor: synorIsDark(context)
-                ? SynorColors.neutral300
-                : SynorColors.slate600,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SubjectsSection extends StatelessWidget {
-  const _SubjectsSection();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text(
-          'Subjects',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(height: 16),
-        _SubjectCard(
-          title: 'Programming Fundamentals',
-          professor: 'Prof. Urazimbetov M.',
-          grade: 'A',
-          gradeColor: SynorColors.indigo500,
-          footer: 'AI summary available',
-          footerIcon: LucideIcons.sparkles,
-          footerColor: SynorColors.emerald500,
-          nextLabel: 'Next: Tomorrow 09:00',
-          materialsCount: '5 materials',
-          assignmentsCount: '2 assignments',
-        ),
-        SizedBox(height: 12),
-        _SubjectCard(
-          title: 'Database Management',
-          professor: 'Nurlan K.',
-          grade: 'A-',
-          gradeColor: SynorColors.emerald500,
-          footer: '2 weak topics to review',
-          footerIcon: LucideIcons.brain,
-          footerColor: SynorColors.slate500,
-          nextLabel: 'Next: Today 10:00',
-          materialsCount: '3 materials',
-          assignmentsCount: '1 assignment',
-        ),
-      ],
-    );
-  }
-}
-
-class _SubjectCard extends StatelessWidget {
-  const _SubjectCard({
-    required this.title,
-    required this.professor,
-    required this.grade,
-    required this.gradeColor,
-    required this.footer,
-    required this.footerIcon,
-    required this.footerColor,
-    required this.nextLabel,
-    required this.materialsCount,
-    required this.assignmentsCount,
-  });
-
-  final String title;
-  final String professor;
-  final String grade;
-  final Color gradeColor;
-  final String footer;
-  final IconData footerIcon;
-  final Color footerColor;
-  final String nextLabel;
-  final String materialsCount;
-  final String assignmentsCount;
-
-  @override
-  Widget build(BuildContext context) {
-    return PressableScale(
-      onTap: () => _showStudyToast(
-        context,
-        title,
-        '$professor • $materialsCount • $assignmentsCount',
-        LucideIcons.book_open,
-        gradeColor,
-      ),
-      child: SynorGlassPanel(
-        radius: SynorRadii.cardLarge,
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+        assignmentsAsync.when(
+          data: (assignments) {
+            if (assignments.isEmpty) {
+              return SynorInlineStateCard(
+                icon: LucideIcons.circle_check_big,
+                title: 'No pending assignments',
+                message: 'You have no assignments due at the moment.',
+                accentColor: SynorColors.indigo500,
+              );
+            }
+            return Column(
+              children: assignments.map((assignment) => Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: SynorGlassPanel(
+                  radius: SynorRadii.card,
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
                     children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          color: synorPrimaryText(context),
-                          fontWeight: FontWeight.w600,
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: synorIsDark(context)
+                              ? SynorColors.indigo500.withValues(alpha: 0.12)
+                              : SynorColors.indigo50,
+                        ),
+                        child: Icon(
+                          LucideIcons.file_text,
+                          color: synorIsDark(context)
+                              ? SynorColors.indigo300
+                              : SynorColors.indigo600,
+                          size: 20,
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        professor,
-                        style: TextStyle(color: synorSecondaryText(context)),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              assignment.title,
+                              style: TextStyle(
+                                color: synorPrimaryText(context),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              context.l10n.lessonTitleLabel(assignment.lessonTitle),
+                              style: TextStyle(color: synorSecondaryText(context)),
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              'Due: ${synorNumericDate(context, assignment.deadline)}',
+                              style: TextStyle(
+                                color: SynorColors.rose500,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: gradeColor.withValues(
-                      alpha: synorIsDark(context) ? 0.12 : 0.1,
-                    ),
-                    border: Border.all(
-                      color: gradeColor.withValues(
-                        alpha: synorIsDark(context) ? 0.25 : 0.16,
-                      ),
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      grade,
-                      style: TextStyle(
-                        color: gradeColor,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                _MetaItem(icon: LucideIcons.file_text, label: materialsCount),
-                const SizedBox(width: 16),
-                _MetaItem(
-                  icon: LucideIcons.circle_check_big,
-                  label: assignmentsCount,
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Divider(
-              color: synorIsDark(context)
-                  ? SynorColors.white5
-                  : SynorColors.slate100,
-              height: 1,
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Icon(footerIcon, size: 16, color: footerColor),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    footer,
-                    style: TextStyle(
-                      color: footerColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                Text(
-                  nextLabel,
-                  style: TextStyle(
-                    color: synorSecondaryText(context),
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ],
+              )).toList(),
+            );
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (e, st) => SynorInlineStateCard(
+            icon: LucideIcons.circle_alert,
+            title: 'Error loading assignments',
+            message: e.toString(),
+            accentColor: SynorColors.rose500,
+          ),
         ),
-      ),
+      ],
     );
   }
 }
 
-class _TodayPrioritySection extends StatelessWidget {
-  const _TodayPrioritySection();
+
+class _SubjectsSection extends StatelessWidget {
+  const _SubjectsSection({required this.lessons});
+
+  final List<Lesson> lessons;
 
   @override
   Widget build(BuildContext context) {
+    // Group lessons by title to derive unique subjects.
+    final subjectMap = <String, List<Lesson>>{};
+    for (final lesson in lessons) {
+      subjectMap.putIfAbsent(lesson.title, () => []).add(lesson);
+    }
+
+    if (subjectMap.isEmpty) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            context.l10n.studies_subjects,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: 16),
+          SynorInlineStateCard(
+            icon: LucideIcons.library_big,
+            title: 'No subjects yet',
+            message: 'Subjects appear here once lessons are scheduled.',
+            accentColor: SynorColors.slate500,
+          ),
+        ],
+      );
+    }
+
+    final colors = [SynorColors.indigo500, SynorColors.emerald500, SynorColors.rose500, SynorColors.amber500];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Priority for Today',
+          context.l10n.studies_subjects,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(height: 16),
+        ...subjectMap.entries.toList().asMap().entries.map((entry) {
+          final index = entry.key;
+          final title = entry.value.key;
+          final group = entry.value.value;
+          final teacher = group.first.teacher;
+          final color = colors[index % colors.length];
+          final nextLesson = group
+              .where((l) => l.startTime != null)
+              .toList()
+            ..sort((a, b) => a.startTime!.compareTo(b.startTime!));
+          final nextLabel = nextLesson.isNotEmpty && nextLesson.first.startTime != null
+              ? context.l10n.teacher_subjectLine(
+                  synorNumericDate(context, nextLesson.first.startTime!),
+                  synorClock(context, nextLesson.first.startTime!),
+                )
+              : '';
+
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: PressableScale(
+              onTap: () {},
+              child: SynorGlassPanel(
+                radius: SynorRadii.cardLarge,
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                context.l10n.lessonTitleLabel(title),
+                                style: TextStyle(
+                                  color: synorPrimaryText(context),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                teacher,
+                                style: TextStyle(color: synorSecondaryText(context)),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: color.withValues(alpha: synorIsDark(context) ? 0.12 : 0.1),
+                            border: Border.all(color: color.withValues(alpha: synorIsDark(context) ? 0.25 : 0.16)),
+                          ),
+                          child: Center(
+                            child: Icon(LucideIcons.book_open, color: color, size: 18),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        _MetaItem(
+                          icon: LucideIcons.calendar,
+                          label: '${group.length} lesson${group.length == 1 ? '' : 's'}',
+                        ),
+                      ],
+                    ),
+                    if (nextLabel.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      Divider(
+                        color: synorIsDark(context) ? SynorColors.white5 : SynorColors.slate100,
+                        height: 1,
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: [
+                          Icon(LucideIcons.clock, size: 16, color: color),
+                          const SizedBox(width: 8),
+                          Text(
+                            'Next: $nextLabel',
+                            style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          );
+        }),
+      ],
+    );
+  }
+}
+
+
+class _TodayPrioritySection extends StatelessWidget {
+  const _TodayPrioritySection({required this.todayLessons});
+
+  final List<Lesson> todayLessons;
+
+  @override
+  Widget build(BuildContext context) {
+    if (todayLessons.isEmpty) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            context.l10n.studies_priorityToday,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 16),
+          SynorInlineStateCard(
+            icon: LucideIcons.sun,
+            title: 'No classes today',
+            message: 'Enjoy your free day! Your next class will appear here.',
+            accentColor: SynorColors.emerald500,
+          ),
+        ],
+      );
+    }
+
+    final next = todayLessons.first;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.l10n.studies_priorityToday,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 16),
@@ -587,53 +712,25 @@ class _TodayPrioritySection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                children: const [
-                  Icon(
-                    LucideIcons.circle_alert,
-                    color: SynorColors.indigo500,
-                    size: 20,
-                  ),
-                  SizedBox(width: 12),
-                  Text(
-                    'Calculus Assignment 3',
-                    style: TextStyle(
-                      color: SynorColors.indigo500,
-                      fontWeight: FontWeight.w600,
+                children: [
+                  const Icon(LucideIcons.clock, color: SynorColors.indigo500, size: 20),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      context.l10n.lessonTitleLabel(next.title),
+                      style: const TextStyle(
+                        color: SynorColors.indigo500,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 12),
-              const Text(
-                'Due tonight at 23:59. You have completed 60% of the tasks.',
-                style: TextStyle(color: SynorColors.indigo400, fontSize: 14),
-              ),
-              const SizedBox(height: 16),
-              PressableScale(
-                onTap: () => _showStudyToast(
-                  context,
-                  'Calculus Assignment 3',
-                  'Advanced Mathematics • Due tonight at 23:59',
-                  LucideIcons.circle_alert,
-                  SynorColors.indigo500,
-                ),
-                child: Container(
-                  width: double.infinity,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: SynorColors.indigo600,
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Continue Working',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
+              Text(
+                '${context.l10n.lessonLocationLabel(next.location)} • '
+                '${next.startTime != null ? synorClock(context, next.startTime!) : ''}',
+                style: const TextStyle(color: SynorColors.indigo400, fontSize: 14),
               ),
             ],
           ),
@@ -644,31 +741,46 @@ class _TodayPrioritySection extends StatelessWidget {
 }
 
 class _TodayClassesSection extends StatelessWidget {
-  const _TodayClassesSection();
+  const _TodayClassesSection({required this.todayLessons});
+
+  final List<Lesson> todayLessons;
 
   @override
   Widget build(BuildContext context) {
+    final colors = [SynorColors.rose500, SynorColors.emerald500, SynorColors.indigo500, SynorColors.amber500];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Text(
-          'Today\'s Classes',
+          context.l10n.studies_todayClasses,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
-        SizedBox(height: 16),
-        _TodayClassTile(
-          time: '15:00',
-          title: 'Web Programming',
-          subtitle: 'Tole bi №86 • Urazimbetov M.',
-          color: SynorColors.rose500,
-        ),
-        SizedBox(height: 12),
-        _TodayClassTile(
-          time: '17:00',
-          title: 'Database Management',
-          subtitle: 'Online • Nurlan K.',
-          color: SynorColors.emerald500,
-        ),
+        const SizedBox(height: 16),
+        if (todayLessons.isEmpty)
+          SynorInlineStateCard(
+            icon: LucideIcons.calendar_x,
+            title: 'No classes today',
+            message: 'Your schedule is clear for today.',
+            accentColor: SynorColors.slate500,
+          )
+        else
+          ...todayLessons.asMap().entries.map((entry) {
+            final index = entry.key;
+            final lesson = entry.value;
+            final color = colors[index % colors.length];
+            final timeLabel = lesson.startTime != null
+                ? synorClock(context, lesson.startTime!)
+                : '--:--';
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: _TodayClassTile(
+                time: timeLabel,
+                title: context.l10n.lessonTitleLabel(lesson.title),
+                subtitle: context.l10n.lessonLocationLabel(lesson.location),
+                color: color,
+              ),
+            );
+          }),
       ],
     );
   }
@@ -741,107 +853,97 @@ class _TodayClassTile extends StatelessWidget {
   }
 }
 
+// _ExamsSection implementation
 class _ExamsSection extends StatelessWidget {
-  const _ExamsSection();
+  const _ExamsSection({required this.examsAsync});
+
+  final AsyncValue<List<Exam>> examsAsync;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Upcoming Exams', style: Theme.of(context).textTheme.titleLarge),
+        Text(
+          context.l10n.studies_upcomingExams,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         const SizedBox(height: 16),
-        SynorGlassPanel(
-          radius: SynorRadii.card,
-          borderColor: synorIsDark(context)
-              ? SynorColors.rose500.withValues(alpha: 0.3)
-              : SynorColors.rose200,
-          child: Stack(
-            children: [
-              Positioned(
-                right: -16,
-                top: -16,
-                child: Container(
-                  width: 96,
-                  height: 96,
-                  decoration: BoxDecoration(
-                    color: SynorColors.rose500.withValues(alpha: 0.1),
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(999),
-                    ),
+        examsAsync.when(
+          data: (exams) {
+            if (exams.isEmpty) {
+              return _ComingSoonCard(
+                icon: LucideIcons.graduation_cap,
+                message: 'No upcoming exams.',
+                accentColor: SynorColors.rose500,
+              );
+            }
+            return Column(
+              children: exams.map((exam) => Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: SynorGlassPanel(
+                  radius: SynorRadii.card,
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: synorIsDark(context)
+                              ? SynorColors.rose500.withValues(alpha: 0.12)
+                              : SynorColors.rose50,
+                        ),
+                        child: Icon(
+                          LucideIcons.graduation_cap,
+                          color: synorIsDark(context)
+                              ? SynorColors.rose300
+                              : SynorColors.rose600,
+                          size: 20,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              exam.title,
+                              style: TextStyle(
+                                color: synorPrimaryText(context),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              '${context.l10n.lessonTitleLabel(exam.lessonTitle)} • ${exam.type.toUpperCase()}',
+                              style: TextStyle(color: synorSecondaryText(context)),
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              '${synorNumericDate(context, exam.examDate)} at ${synorClock(context, exam.examDate)} • ${exam.location}',
+                              style: TextStyle(
+                                color: synorSecondaryText(context),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      SynorStatusChip(
-                        label: 'Midterm',
-                        backgroundColor: synorIsDark(context)
-                            ? SynorColors.rose500.withValues(alpha: 0.2)
-                            : SynorColors.rose100,
-                        foregroundColor: synorIsDark(context)
-                            ? SynorColors.rose300
-                            : SynorColors.rose700,
-                        compact: true,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'In 3 days',
-                        style: TextStyle(
-                          color: synorSecondaryText(context),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'Advanced Mathematics',
-                    style: TextStyle(
-                      color: synorPrimaryText(context),
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'Covers Chapters 1-4. Bring calculator.',
-                    style: TextStyle(color: synorSecondaryText(context)),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(999),
-                          child: LinearProgressIndicator(
-                            value: 0.4,
-                            minHeight: 8,
-                            backgroundColor: synorIsDark(context)
-                                ? SynorColors.white10
-                                : SynorColors.slate100,
-                            valueColor: const AlwaysStoppedAnimation(
-                              SynorColors.rose500,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        '40% ready',
-                        style: TextStyle(
-                          color: synorSecondaryText(context),
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+              )).toList(),
+            );
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (e, st) => SynorInlineStateCard(
+            icon: LucideIcons.circle_alert,
+            title: 'Error loading exams',
+            message: e.toString(),
+            accentColor: SynorColors.rose500,
           ),
         ),
       ],
@@ -849,6 +951,7 @@ class _ExamsSection extends StatelessWidget {
   }
 }
 
+// _WeakTopicsSection — coming soon, no real backend data yet.
 class _WeakTopicsSection extends StatelessWidget {
   const _WeakTopicsSection();
 
@@ -858,81 +961,466 @@ class _WeakTopicsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'AI Weak Topics Review',
+          context.l10n.studies_aiWeakTopicsReview,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 16),
-        Row(
-          children: const [
-            Expanded(
-              child: _WeakTopicTile(
-                title: 'Integrals',
-                subtitle: 'Math • 3 mistakes',
-                color: SynorColors.indigo500,
-              ),
-            ),
-            SizedBox(width: 12),
-            Expanded(
-              child: _WeakTopicTile(
-                title: 'SQL Joins',
-                subtitle: 'Databases • 2 mistakes',
-                color: SynorColors.emerald500,
-              ),
-            ),
-          ],
+        _ComingSoonCard(
+          icon: LucideIcons.brain,
+          message: 'AI-powered weak topic analysis is coming soon.',
+          accentColor: SynorColors.indigo500,
         ),
       ],
     );
   }
 }
 
-class _WeakTopicTile extends StatelessWidget {
-  const _WeakTopicTile({
-    required this.title,
-    required this.subtitle,
-    required this.color,
+/// Reusable honest placeholder card for unimplemented features.
+class _ComingSoonCard extends StatelessWidget {
+  const _ComingSoonCard({
+    required this.icon,
+    required this.message,
+    required this.accentColor,
   });
 
-  final String title;
-  final String subtitle;
-  final Color color;
+  final IconData icon;
+  final String message;
+  final Color accentColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return SynorInlineStateCard(
+      icon: icon,
+      title: 'Coming Soon',
+      message: message,
+      accentColor: accentColor,
+    );
+  }
+}
+
+
+class _MaterialTile extends StatelessWidget {
+  const _MaterialTile({required this.material});
+
+  final LessonMaterial material;
+
+  Future<void> _openMaterial(BuildContext context) async {
+    final uri = Uri.tryParse(material.fileUrl);
+    if (uri == null) {
+      showSynorToast(
+        context,
+        message: context.l10n.studies_invalidMaterialLink,
+        subtitle: material.title,
+        icon: LucideIcons.circle_alert,
+        accentColor: SynorColors.rose500,
+      );
+      return;
+    }
+
+    final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (!context.mounted) {
+      return;
+    }
+    if (!launched) {
+      showSynorToast(
+        context,
+        message: context.l10n.studies_couldNotOpenMaterial,
+        subtitle: material.title,
+        icon: LucideIcons.circle_alert,
+        accentColor: SynorColors.rose500,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return PressableScale(
-      onTap: () =>
-          _showStudyToast(context, title, subtitle, LucideIcons.brain, color),
+      onTap: () => _openMaterial(context),
       child: SynorGlassPanel(
-        radius: SynorRadii.xxl,
+        radius: SynorRadii.card,
         padding: const EdgeInsets.all(16),
-        backgroundColor: synorIsDark(context)
-            ? SynorColors.white5
-            : Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Icon(LucideIcons.brain, color: color, size: 24),
-            const SizedBox(height: 12),
-            Text(
-              title,
-              style: TextStyle(
-                color: synorPrimaryText(context),
-                fontWeight: FontWeight.w600,
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: synorIsDark(context)
+                    ? SynorColors.indigo500.withValues(alpha: 0.12)
+                    : SynorColors.indigo50,
+              ),
+              child: Icon(
+                LucideIcons.file_text,
+                color: synorIsDark(context)
+                    ? SynorColors.indigo300
+                    : SynorColors.indigo600,
+                size: 20,
               ),
             ),
-            const SizedBox(height: 4),
-            Text(
-              subtitle,
-              style: TextStyle(
-                color: synorSecondaryText(context),
-                fontSize: 12,
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    material.title,
+                    style: TextStyle(
+                      color: synorPrimaryText(context),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    context.l10n.lessonTitleLabel(material.lessonTitle),
+                    style: TextStyle(color: synorSecondaryText(context)),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    _formatMaterialTimestamp(material.createdAt),
+                    style: TextStyle(
+                      color: synorSecondaryText(context),
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
               ),
+            ),
+            const SizedBox(width: 12),
+            SynorIconActionButton(
+              icon: LucideIcons.download,
+              onTap: () => _openMaterial(context),
+              buttonSize: 40,
+              radius: 14,
             ),
           ],
         ),
       ),
     );
   }
+}
+
+class _MaterialSkeletonTile extends StatelessWidget {
+  const _MaterialSkeletonTile();
+
+  @override
+  Widget build(BuildContext context) {
+    return SynorGlassPanel(
+      radius: SynorRadii.card,
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: synorIsDark(context)
+                  ? SynorColors.white10
+                  : SynorColors.slate100,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 14,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: synorIsDark(context)
+                        ? SynorColors.white10
+                        : SynorColors.slate100,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  height: 12,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    color: synorIsDark(context)
+                        ? SynorColors.white8
+                        : SynorColors.slate100,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MaterialUploadSheet extends ConsumerStatefulWidget {
+  const _MaterialUploadSheet({required this.lessons});
+
+  final List<Lesson> lessons;
+
+  @override
+  ConsumerState<_MaterialUploadSheet> createState() =>
+      _MaterialUploadSheetState();
+}
+
+class _MaterialUploadSheetState extends ConsumerState<_MaterialUploadSheet> {
+  final TextEditingController _titleController = TextEditingController();
+
+  int? _selectedLessonId;
+  Uint8List? _fileBytes;
+  String? _fileName;
+  bool _isSubmitting = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedLessonId = widget.lessons.isEmpty ? null : widget.lessons.first.id;
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _pickFile() async {
+    final result = await FilePicker.platform.pickFiles(withData: true);
+    if (!mounted || result == null || result.files.isEmpty) {
+      return;
+    }
+    final file = result.files.single;
+    if (file.bytes == null || file.bytes!.isEmpty) {
+      showSynorToast(
+        context,
+        message: context.l10n.studies_uploadFailed,
+        subtitle: context.l10n.studies_uploadFailedSubtitle,
+        icon: LucideIcons.circle_alert,
+        accentColor: SynorColors.rose500,
+      );
+      return;
+    }
+    setState(() {
+      _fileBytes = file.bytes;
+      _fileName = file.name;
+      _titleController.text = _titleController.text.trim().isEmpty
+          ? file.name
+          : _titleController.text;
+    });
+  }
+
+  Future<void> _submit() async {
+    if (_selectedLessonId == null ||
+        _fileBytes == null ||
+        _fileName == null ||
+        _titleController.text.trim().isEmpty) {
+      showSynorToast(
+        context,
+        message: context.l10n.studies_materialIncomplete,
+        subtitle: context.l10n.studies_materialIncompleteSubtitle,
+        icon: LucideIcons.circle_alert,
+        accentColor: SynorColors.rose500,
+      );
+      return;
+    }
+
+    setState(() {
+      _isSubmitting = true;
+    });
+
+    try {
+      await ref
+          .read(materialsControllerProvider.notifier)
+          .uploadMaterial(
+            MaterialUploadDraft(
+              lessonId: _selectedLessonId!,
+              title: _titleController.text.trim(),
+              fileName: _fileName!,
+              bytes: _fileBytes!,
+            ),
+          );
+      if (!mounted) {
+        return;
+      }
+      Navigator.of(context).pop();
+      showSynorToast(
+        context,
+        message: context.l10n.studies_materialUploaded,
+        subtitle: _titleController.text.trim(),
+        icon: LucideIcons.badge_check,
+        accentColor: SynorColors.emerald500,
+      );
+    } catch (error) {
+      if (!mounted) {
+        return;
+      }
+      showSynorToast(
+        context,
+        message: context.l10n.studies_uploadFailed,
+        subtitle: context.l10n.appErrorLabel('$error'),
+        icon: LucideIcons.circle_alert,
+        accentColor: SynorColors.rose500,
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isSubmitting = false;
+        });
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: const SynorModalScrim(),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Material(
+            color: synorIsDark(context)
+                ? SynorColors.deepBlack
+                : SynorColors.lightBackground,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+            child: SafeArea(
+              top: false,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                  24,
+                  20,
+                  24,
+                  24 + MediaQuery.viewInsetsOf(context).bottom,
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Center(child: SynorBottomSheetHandle()),
+                      Text(
+                        context.l10n.studies_uploadMaterial,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const SizedBox(height: 18),
+                      SynorSearchField(
+                        controller: _titleController,
+                        hintText: context.l10n.studies_materialTitle,
+                        prefixIcon: LucideIcons.file_text,
+                      ),
+                      const SizedBox(height: 12),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        decoration: BoxDecoration(
+                          color: synorIsDark(context)
+                              ? SynorColors.white5
+                              : Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: synorIsDark(context)
+                                ? SynorColors.white10
+                                : SynorColors.slate200,
+                          ),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<int>(
+                            value: _selectedLessonId,
+                            isExpanded: true,
+                            dropdownColor: synorIsDark(context)
+                                ? SynorColors.deepBlack
+                                : Colors.white,
+                            hint: Text(context.l10n.studies_selectLesson),
+                            items: widget.lessons
+                                .map(
+                                  (lesson) => DropdownMenuItem<int>(
+                                    value: lesson.id,
+                                    child: Text(
+                                      context.l10n.lessonTitleLabel(
+                                        lesson.title,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedLessonId = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      PressableScale(
+                        onTap: _pickFile,
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: synorIsDark(context)
+                                ? SynorColors.white5
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: synorIsDark(context)
+                                  ? SynorColors.white10
+                                  : SynorColors.slate200,
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                LucideIcons.upload,
+                                color: synorIsDark(context)
+                                    ? SynorColors.indigo300
+                                    : SynorColors.indigo600,
+                                size: 18,
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Text(
+                                  _fileName ?? context.l10n.studies_chooseFile,
+                                  style: TextStyle(
+                                    color: _fileName == null
+                                        ? synorSecondaryText(context)
+                                        : synorPrimaryText(context),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 18),
+                      SynorPrimaryButton(
+                        label: _isSubmitting
+                            ? context.l10n.studies_uploading
+                            : context.l10n.studies_upload,
+                        icon: LucideIcons.badge_check,
+                        onTap: _isSubmitting ? () {} : _submit,
+                        height: 52,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+String _formatMaterialTimestamp(DateTime value) {
+  final day = value.day.toString().padLeft(2, '0');
+  final month = value.month.toString().padLeft(2, '0');
+  final year = value.year;
+  return '$day.$month.$year';
 }
 
 void _showStudyToast(
@@ -973,29 +1461,12 @@ class _MetaItem extends StatelessWidget {
 }
 
 class _SectionHeader extends StatelessWidget {
-  const _SectionHeader({required this.title, this.actionLabel});
+  const _SectionHeader({required this.title});
 
   final String title;
-  final String? actionLabel;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(title, style: Theme.of(context).textTheme.titleLarge),
-        const Spacer(),
-        if (actionLabel != null)
-          Text(
-            actionLabel!,
-            style: TextStyle(
-              color: synorIsDark(context)
-                  ? SynorColors.indigo400
-                  : SynorColors.indigo600,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-      ],
-    );
+    return Text(title, style: Theme.of(context).textTheme.titleLarge);
   }
 }

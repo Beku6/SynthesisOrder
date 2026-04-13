@@ -18,4 +18,8 @@ abstract class RemindersRepository {
   Future<void> saveAlarmConfiguration(AlarmConfiguration configuration);
 
   Future<void> saveAlarmDraft(AlarmScheduleDraft draft);
+
+  List<SavedAlarm> fetchSavedAlarms();
+
+  Future<void> saveSavedAlarms(List<SavedAlarm> alarms);
 }

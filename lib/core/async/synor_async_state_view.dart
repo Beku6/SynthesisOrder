@@ -3,6 +3,8 @@ import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/theme/synor_design_tokens.dart';
+import '../../l10n/app_localization_x.dart';
+import '../../l10n/l10n.dart';
 import '../../shared/widgets/synor_widgets.dart';
 
 class SynorAsyncStateView<T> extends StatelessWidget {
@@ -10,23 +12,24 @@ class SynorAsyncStateView<T> extends StatelessWidget {
     super.key,
     required this.value,
     required this.data,
-    this.loadingTitle = 'Loading',
-    this.loadingMessage = 'Preparing your data...',
-    this.errorTitle = 'Something went wrong',
+    this.loadingTitle,
+    this.loadingMessage,
+    this.errorTitle,
     this.loadingBuilder,
     this.onRetry,
   });
 
   final AsyncValue<T> value;
   final Widget Function(T data) data;
-  final String loadingTitle;
-  final String loadingMessage;
-  final String errorTitle;
+  final String? loadingTitle;
+  final String? loadingMessage;
+  final String? errorTitle;
   final WidgetBuilder? loadingBuilder;
   final VoidCallback? onRetry;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return value.when(
       data: data,
       loading: () =>
@@ -36,8 +39,8 @@ class SynorAsyncStateView<T> extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               child: SynorInlineStateCard(
                 icon: LucideIcons.loader_circle,
-                title: loadingTitle,
-                message: loadingMessage,
+                title: loadingTitle ?? l10n.async_loadingTitle,
+                message: loadingMessage ?? l10n.async_loadingMessage,
                 accentColor: SynorColors.indigo500,
               ),
             ),
@@ -50,8 +53,8 @@ class SynorAsyncStateView<T> extends StatelessWidget {
             children: [
               SynorInlineStateCard(
                 icon: LucideIcons.circle_alert,
-                title: errorTitle,
-                message: '$error',
+                title: errorTitle ?? l10n.async_errorTitle,
+                message: l10n.appErrorLabel('$error'),
                 accentColor: SynorColors.rose500,
               ),
               if (onRetry != null) ...[
@@ -59,7 +62,7 @@ class SynorAsyncStateView<T> extends StatelessWidget {
                 SizedBox(
                   width: 220,
                   child: SynorPrimaryButton(
-                    label: 'Try Again',
+                    label: l10n.common_tryAgain,
                     icon: LucideIcons.refresh_cw,
                     onTap: onRetry!,
                   ),

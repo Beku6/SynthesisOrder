@@ -1,13 +1,21 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../shared/models/app_models.dart';
+
+final notificationSchedulerProvider = Provider<NotificationScheduler>((ref) {
+  // This will be overridden in main.dart with the real implementation
+  return NoopNotificationScheduler();
+});
 
 class AlarmScheduleDraft {
   const AlarmScheduleDraft({
+    required this.id,
     required this.mode,
     required this.hours,
     required this.minutes,
     required this.label,
   });
 
+  final String id;
   final AlarmMode mode;
   final int hours;
   final int minutes;

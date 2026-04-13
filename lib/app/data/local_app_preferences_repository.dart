@@ -9,11 +9,15 @@ class LocalAppPreferencesRepository implements AppPreferencesRepository {
   final SharedPreferences _preferences;
 
   static const _themeModeKey = 'app.theme_mode';
+  static const _localeCodeKey = 'app.locale_code';
   static const _onboardingCompletedKey = 'app.onboarding_completed';
 
   @override
   bool readOnboardingCompleted() =>
       _preferences.getBool(_onboardingCompletedKey) ?? false;
+
+  @override
+  String? readLocaleCode() => _preferences.getString(_localeCodeKey);
 
   @override
   ThemeMode readThemeMode() {
@@ -28,6 +32,11 @@ class LocalAppPreferencesRepository implements AppPreferencesRepository {
   @override
   Future<void> writeOnboardingCompleted(bool value) async {
     await _preferences.setBool(_onboardingCompletedKey, value);
+  }
+
+  @override
+  Future<void> writeLocaleCode(String code) async {
+    await _preferences.setString(_localeCodeKey, code);
   }
 
   @override

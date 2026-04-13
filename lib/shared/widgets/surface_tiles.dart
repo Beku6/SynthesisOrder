@@ -4,22 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 
 import '../../app/theme/synor_design_tokens.dart';
+import '../../l10n/app_localization_x.dart';
+import '../../l10n/l10n.dart';
 import '../models/app_models.dart';
 import 'base_layout.dart';
 
 class StoryCard extends StatelessWidget {
-  const StoryCard({super.key, required this.story});
+  const StoryCard({super.key, required this.story, this.onTap});
 
-  static const double dimension = 105;
-  static const double outerRadius = 24;
+  static const double dimension = 112; // Increased slightly for better look
+  static const double outerRadius = 26;
   static const double outerBorderWidth = 3;
-  static const double innerInset = 3;
+  static const double innerInset = 4;
   static const double innerRadius = outerRadius - innerInset;
 
   final StoryItem story;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
+    return PressableScale(
+      onTap: onTap,
+      child: _buildCard(context),
+    );
+  }
+
+  Widget _buildCard(BuildContext context) {
     final isDark = synorIsDark(context);
     final glow = switch (story.borderColor) {
       SynorColors.purple600 =>
@@ -49,8 +59,13 @@ class StoryCard extends StatelessWidget {
         curve: SynorMotion.themeCurve,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(outerRadius),
-          border: Border.all(color: story.borderColor, width: outerBorderWidth),
-          boxShadow: glow,
+          border: Border.all(
+            color: story.isAddStory || story.hasUnviewed
+                ? story.borderColor
+                : (isDark ? SynorColors.white10 : SynorColors.slate200),
+            width: outerBorderWidth,
+          ),
+          boxShadow: (story.isAddStory || story.hasUnviewed) ? glow : null,
         ),
         child: Padding(
           padding: const EdgeInsets.all(innerInset),
@@ -176,7 +191,9 @@ class StoryCard extends StatelessWidget {
                               letterSpacing: 0.1,
                             ),
                             child: Text(
-                              story.name,
+                              story.isAddStory
+                                  ? context.l10n.home_addStoryLabel
+                                  : story.name,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -298,7 +315,7 @@ class RequestTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    request.title,
+                    context.l10n.serviceRequestTitleLabel(request.title),
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: synorPrimaryText(context),
@@ -308,7 +325,7 @@ class RequestTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Requested on ${request.date}',
+                    '${context.l10n.services_date}: ${context.l10n.serviceRequestDateLabel(request.date)}',
                     style: TextStyle(
                       color: synorSecondaryText(context),
                       fontSize: 12,
@@ -371,13 +388,7 @@ class RequestStatusBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(999),
       ),
       child: Text(
-        switch (status) {
-          RequestStatus.ready => 'Ready',
-          RequestStatus.pending => 'Pending',
-          RequestStatus.processing => 'Processing',
-          RequestStatus.open => 'Open',
-          RequestStatus.inProgress => 'In Progress',
-        },
+        context.l10n.requestStatusLabel(status),
         style: TextStyle(
           color: foreground,
           fontSize: 12,
@@ -389,74 +400,78 @@ class RequestStatusBadge extends StatelessWidget {
 }
 
 class MessageTile extends StatelessWidget {
-  const MessageTile({super.key, required this.preview});
+  const MessageTile({super.key, required this.preview, this.onTap});
 
   final MessagePreview preview;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return SynorGlassPanel(
-      radius: SynorRadii.xl,
-      padding: const EdgeInsets.all(16),
-      backgroundColor: synorIsDark(context) ? SynorColors.white5 : Colors.white,
-      child: Row(
-        children: [
-          AvatarCircle(
-            assetPath: preview.avatarAsset,
-            fallbackIcon: preview.fallbackIcon ?? LucideIcons.user,
-            size: 48,
-            backgroundColor: preview.avatarAsset == null
-                ? (synorIsDark(context)
-                      ? SynorColors.indigo500.withValues(alpha: 0.2)
-                      : SynorColors.indigo100)
-                : null,
-            foregroundColor: synorIsDark(context)
-                ? SynorColors.indigo400
-                : SynorColors.indigo600,
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        preview.name,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: synorPrimaryText(context),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+    return PressableScale(
+      onTap: onTap,
+      child: SynorGlassPanel(
+        radius: SynorRadii.xl,
+        padding: const EdgeInsets.all(16),
+        backgroundColor: synorIsDark(context) ? SynorColors.white5 : Colors.white,
+        child: Row(
+          children: [
+            AvatarCircle(
+              assetPath: preview.avatarAsset,
+              fallbackIcon: preview.fallbackIcon ?? LucideIcons.user,
+              size: 48,
+              backgroundColor: preview.avatarAsset == null
+                  ? (synorIsDark(context)
+                        ? SynorColors.indigo500.withValues(alpha: 0.2)
+                        : SynorColors.indigo100)
+                  : null,
+              foregroundColor: synorIsDark(context)
+                  ? SynorColors.indigo400
+                  : SynorColors.indigo600,
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          context.l10n.messageNameLabel(preview.name),
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: synorPrimaryText(context),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      preview.timestamp,
-                      style: TextStyle(
-                        color: synorIsDark(context)
-                            ? SynorColors.neutral500
-                            : SynorColors.slate400,
-                        fontSize: 12,
+                      const SizedBox(width: 8),
+                      Text(
+                        context.l10n.messageTimestampLabel(preview.timestamp),
+                        style: TextStyle(
+                          color: synorIsDark(context)
+                              ? SynorColors.neutral500
+                              : SynorColors.slate400,
+                          fontSize: 12,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  preview.preview,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: synorSecondaryText(context),
-                    fontSize: 14,
+                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 4),
+                  Text(
+                    context.l10n.messagePreviewLabel(preview.preview),
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: synorSecondaryText(context),
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

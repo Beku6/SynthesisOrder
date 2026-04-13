@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -37,8 +39,19 @@ dependencies:
   flutter_lucide: ^1.8.2
   flutter_svg: ^2.2.0
   file_picker: ^10.3.10
-  flutter_riverpod: ^3.3.1
+  flutter_riverpod: ^2.6.1
+  intl: ^0.20.2
   shared_preferences: ^2.5.4
+  supabase_flutter: ^2.12.2
+  url_launcher: ^6.3.2
+  flutter_local_notifications: ^21.0.0
+  video_player: ^2.11.1
+  image_picker: ^1.2.1
+  cached_network_image: ^3.4.1
+  flutter_animate: ^4.5.2
+  timezone: ^0.11.0
+  # Removed flutter_timezone due to build conflicts
+
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +71,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -89,8 +103,6 @@ flutter:
 flutter_native_splash:
   color: "#FAFAFA"
   image: assets/images/branding/synor_logo_dark.jpg
-  branding: assets/images/branding/native_bekoo_branding_dark.png
-  branding_bottom_padding: 40
   android: true
   ios: true
   web: false

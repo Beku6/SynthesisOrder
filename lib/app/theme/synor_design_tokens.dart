@@ -135,6 +135,11 @@ abstract final class SynorGradients {
     end: Alignment.bottomRight,
     colors: [SynorColors.indigo50, SynorColors.purple50],
   );
+  static const destructive = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [Colors.redAccent, Colors.red],
+  );
 }
 
 abstract final class SynorSpacing {

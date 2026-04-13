@@ -1,7 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 
 import '../../app/theme/synor_design_tokens.dart';
+import '../../l10n/app_localization_x.dart';
+import '../../l10n/l10n.dart';
 import '../models/app_models.dart';
 import 'animated_icons.dart';
 import 'base_layout.dart';
@@ -20,7 +23,7 @@ class LessonCard extends StatelessWidget {
       actions: [
         QuickActionButton(
           icon: LucideIcons.bell,
-          label: 'Alert',
+          label: context.l10n.lesson_actionAlert,
           onTap: onAlertTap,
           backgroundColor: synorIsDark(context)
               ? SynorColors.indigo500.withValues(alpha: 0.2)
@@ -29,14 +32,14 @@ class LessonCard extends StatelessWidget {
               ? SynorColors.indigo400
               : SynorColors.indigo600,
         ),
-        const QuickActionButton(
+        QuickActionButton(
           icon: LucideIcons.file_text,
-          label: 'Notes',
+          label: context.l10n.lesson_actionNotes,
           onTap: noop,
         ),
-        const QuickActionButton(
+        QuickActionButton(
           icon: LucideIcons.ellipsis,
-          label: 'More',
+          label: context.l10n.lesson_actionMore,
           onTap: noop,
         ),
       ],
@@ -77,7 +80,7 @@ class LessonCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Text(
-                    lesson.title,
+                    context.l10n.lessonTitleLabel(lesson.title),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -99,16 +102,23 @@ class LessonCard extends StatelessWidget {
                               size: 18,
                               color: synorSecondaryText(context),
                             ),
-                            text: lesson.time,
+                            text: lesson.resolvedTime,
                             emphasize: true,
                           ),
                           const SizedBox(height: 14),
                           InfoRow(
                             icon: LucideIcons.map_pin,
-                            text: lesson.location,
+                            text: context.l10n.lessonLocationLabel(
+                              lesson.location,
+                            ),
                           ),
                           const SizedBox(height: 14),
-                          InfoRow(icon: LucideIcons.user, text: lesson.teacher),
+                          InfoRow(
+                            icon: LucideIcons.user,
+                            text: context.l10n.lessonTeacherLabel(
+                              lesson.teacher,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -119,36 +129,32 @@ class LessonCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          lesson.isStarted
-                              ? SynorStatusChip(
-                                  label: 'In progress',
-                                  backgroundColor: synorIsDark(context)
-                                      ? SynorColors.emerald500.withValues(
-                                          alpha: 0.1,
-                                        )
-                                      : SynorColors.emerald50,
-                                  foregroundColor: synorIsDark(context)
-                                      ? SynorColors.emerald400
-                                      : SynorColors.emerald600,
-                                  borderColor: synorIsDark(context)
-                                      ? SynorColors.emerald500.withValues(
-                                          alpha: 0.2,
-                                        )
-                                      : SynorColors.emerald100,
+                          lesson.isOngoing
+                              ? LessonCountdownChip(
+                                  lesson: lesson,
+                                  iconColor: SynorColors.emerald400,
+                                  textColor: SynorColors.emerald400,
+                                  backgroundColor: SynorColors.emerald500.withValues(
+                                    alpha: 0.1,
+                                  ),
+                                  borderColor: SynorColors.emerald500.withValues(
+                                    alpha: 0.2,
+                                  ),
                                 )
                               : LessonCountdownChip(
-                                  label: lesson.countdown,
+                                  lesson: lesson,
                                   iconColor: palette.badgeIconColor,
                                   textColor: palette.badgeTextColor,
                                   backgroundColor: palette.badgeBackground,
                                   borderColor: palette.borderInner,
-                                  isAnimated: !lesson.isStarted,
                                 ),
                           if (lesson.alertLabel != null)
                             PressableScale(
                               onTap: onAlertTap,
                               child: SynorStatusChip(
-                                label: lesson.alertLabel!,
+                                label: context.l10n.quickAlertPresetLabel(
+                                  lesson.alertLabel!,
+                                ),
                                 icon: LucideIcons.bell,
                                 backgroundColor: synorIsDark(context)
                                     ? SynorColors.indigo500.withValues(
@@ -232,7 +238,7 @@ class TimelineLessonCard extends StatelessWidget {
             actions: [
               QuickActionButton(
                 icon: LucideIcons.bell,
-                label: 'Alert',
+                label: context.l10n.lesson_actionAlert,
                 onTap: onAlertTap,
                 backgroundColor: synorIsDark(context)
                     ? SynorColors.indigo500.withValues(alpha: 0.2)
@@ -241,14 +247,14 @@ class TimelineLessonCard extends StatelessWidget {
                     ? SynorColors.indigo400
                     : SynorColors.indigo600,
               ),
-              const QuickActionButton(
+              QuickActionButton(
                 icon: LucideIcons.file_text,
-                label: 'Notes',
+                label: context.l10n.lesson_actionNotes,
                 onTap: noop,
               ),
-              const QuickActionButton(
+              QuickActionButton(
                 icon: LucideIcons.ellipsis,
-                label: 'More',
+                label: context.l10n.lesson_actionMore,
                 onTap: noop,
               ),
             ],
@@ -267,7 +273,7 @@ class TimelineLessonCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          lesson.title,
+                          context.l10n.lessonTitleLabel(lesson.title),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -280,26 +286,21 @@ class TimelineLessonCard extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          lesson.isStarted
-                              ? SynorStatusChip(
-                                  label: 'In progress',
-                                  backgroundColor: synorIsDark(context)
-                                      ? SynorColors.emerald500.withValues(
-                                          alpha: 0.1,
-                                        )
-                                      : SynorColors.emerald50,
-                                  foregroundColor: synorIsDark(context)
-                                      ? SynorColors.emerald400
-                                      : SynorColors.emerald600,
-                                  borderColor: synorIsDark(context)
-                                      ? SynorColors.emerald500.withValues(
-                                          alpha: 0.2,
-                                        )
-                                      : SynorColors.emerald100,
+                          lesson.isOngoing
+                              ? LessonCountdownChip(
+                                  lesson: lesson,
+                                  iconColor: SynorColors.emerald400,
+                                  textColor: SynorColors.emerald400,
+                                  backgroundColor: SynorColors.emerald500.withValues(
+                                    alpha: 0.1,
+                                  ),
+                                  borderColor: SynorColors.emerald500.withValues(
+                                    alpha: 0.2,
+                                  ),
                                   compact: true,
                                 )
                               : LessonCountdownChip(
-                                  label: lesson.countdown,
+                                  lesson: lesson,
                                   iconColor: synorIsDark(context)
                                       ? SynorColors.neutral500
                                       : SynorColors.slate400,
@@ -313,14 +314,15 @@ class TimelineLessonCard extends StatelessWidget {
                                       ? SynorColors.white10
                                       : SynorColors.slate200,
                                   compact: true,
-                                  isAnimated: !lesson.isStarted,
                                 ),
                           if (lesson.alertLabel != null) ...[
                             const SizedBox(height: 8),
                             PressableScale(
                               onTap: onAlertTap,
                               child: SynorStatusChip(
-                                label: lesson.alertLabel!,
+                                label: context.l10n.quickAlertPresetLabel(
+                                  lesson.alertLabel!,
+                                ),
                                 icon: LucideIcons.bell,
                                 backgroundColor: synorIsDark(context)
                                     ? SynorColors.indigo500.withValues(
@@ -350,13 +352,19 @@ class TimelineLessonCard extends StatelessWidget {
                       size: 18,
                       color: synorSecondaryText(context),
                     ),
-                    text: lesson.time,
+                    text: lesson.resolvedTime,
                     emphasize: true,
                   ),
                   const SizedBox(height: 12),
-                  InfoRow(icon: LucideIcons.map_pin, text: lesson.location),
+                  InfoRow(
+                    icon: LucideIcons.map_pin,
+                    text: context.l10n.lessonLocationLabel(lesson.location),
+                  ),
                   const SizedBox(height: 12),
-                  InfoRow(icon: LucideIcons.user, text: lesson.teacher),
+                  InfoRow(
+                    icon: LucideIcons.user,
+                    text: context.l10n.lessonTeacherLabel(lesson.teacher),
+                  ),
                 ],
               ),
             ),
@@ -459,14 +467,14 @@ class QuickActionButton extends StatelessWidget {
           if (identical(onTap, noop)) {
             showSynorToast(
               context,
-              message: label == 'Notes'
-                  ? 'Lesson notes are not attached yet'
-                  : 'More lesson actions land in the next phase',
-              subtitle: label == 'Notes'
-                  ? 'Swipe for alerts, or open the Study Hub for materials.'
-                  : 'Current production polish is focused on alerts and scheduling.',
+              message: label == context.l10n.lesson_actionNotes
+                  ? context.l10n.lesson_notesUnavailableTitle
+                  : context.l10n.lesson_moreUnavailableTitle,
+              subtitle: label == context.l10n.lesson_actionNotes
+                  ? context.l10n.lesson_notesUnavailableSubtitle
+                  : context.l10n.lesson_moreUnavailableSubtitle,
               icon: icon,
-              accentColor: label == 'Notes'
+              accentColor: label == context.l10n.lesson_actionNotes
                   ? SynorColors.indigo500
                   : SynorColors.slate500,
             );
@@ -627,34 +635,90 @@ LessonPalette lessonPalette(BuildContext context, LessonColorVariant variant) {
   };
 }
 
-class LessonCountdownChip extends StatelessWidget {
+class LessonCountdownChip extends StatefulWidget {
   const LessonCountdownChip({
     super.key,
-    required this.label,
+    required this.lesson,
     required this.iconColor,
     required this.textColor,
     required this.backgroundColor,
     required this.borderColor,
-    required this.isAnimated,
     this.compact = false,
   });
 
-  final String label;
+  final Lesson lesson;
   final Color iconColor;
   final Color textColor;
   final Color backgroundColor;
   final Color borderColor;
-  final bool isAnimated;
   final bool compact;
 
   @override
+  State<LessonCountdownChip> createState() => _LessonCountdownChipState();
+}
+
+class _LessonCountdownChipState extends State<LessonCountdownChip> {
+  Timer? _timer;
+  late String _label;
+
+  @override
+  void initState() {
+    super.initState();
+    _label = widget.lesson.resolvedCountdown;
+    _startTimer();
+  }
+
+  @override
+  void didUpdateWidget(LessonCountdownChip oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Refresh label when widget updates from parent
+    _label = widget.lesson.resolvedCountdown;
+    
+    // If the lesson changed or was restarted, reset the timer
+    if (oldWidget.lesson.id != widget.lesson.id || 
+        oldWidget.lesson.isFinished != widget.lesson.isFinished) {
+      _startTimer();
+    }
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    if (widget.lesson.isFinished) return;
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+      
+      final newLabel = widget.lesson.resolvedCountdown;
+      if (newLabel != _label) {
+        setState(() {
+          _label = newLabel;
+        });
+      }
+      
+      if (widget.lesson.isFinished) {
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final iconSize = compact ? 12.0 : 16.0;
-    final horizontalPadding = compact ? 8.0 : 12.0;
-    final verticalPadding = compact ? 4.0 : 6.0;
-    final gap = compact ? 6.0 : 8.0;
-    final radius = compact ? 8.0 : 12.0;
-    final fontSize = compact ? 10.0 : 14.0;
+    final iconSize = widget.compact ? 12.0 : 16.0;
+    final horizontalPadding = widget.compact ? 8.0 : 12.0;
+    final verticalPadding = widget.compact ? 4.0 : 6.0;
+    final gap = widget.compact ? 6.0 : 8.0;
+    final radius = widget.compact ? 8.0 : 12.0;
+    final fontSize = widget.compact ? 10.0 : 14.0;
+    final isOngoing = widget.lesson.isOngoing;
 
     return AnimatedContainer(
       duration: SynorMotion.theme,
@@ -664,34 +728,79 @@ class LessonCountdownChip extends StatelessWidget {
         vertical: verticalPadding,
       ),
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(radius),
-        border: Border.all(color: borderColor),
+        border: Border.all(color: widget.borderColor),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AnimatedHourglassIcon(
-            timeLeft: label,
-            isActive: isAnimated,
-            size: iconSize,
-            color: iconColor,
-          ),
+          isOngoing
+              ? PulseAnimation(
+                  child: Icon(
+                    LucideIcons.play,
+                    size: iconSize,
+                    color: widget.iconColor,
+                  ),
+                )
+              : AnimatedHourglassIcon(
+                  timeLeft: _label,
+                  isActive: true,
+                  size: iconSize,
+                  color: widget.iconColor,
+                ),
           SizedBox(width: gap),
           AnimatedDefaultTextStyle(
             duration: SynorMotion.theme,
             curve: SynorMotion.themeCurve,
             style: TextStyle(
-              color: textColor,
+              color: widget.textColor,
               fontSize: fontSize,
               fontWeight: FontWeight.w600,
               height: 1.0,
             ),
-            child: Text(label),
+            child: Text(isOngoing ? 'LIVE  $_label' : _label),
           ),
         ],
       ),
     );
+  }
+}
+
+class PulseAnimation extends StatefulWidget {
+  const PulseAnimation({super.key, required this.child});
+  final Widget child;
+
+  @override
+  State<PulseAnimation> createState() => _PulseAnimationState();
+}
+
+class _PulseAnimationState extends State<PulseAnimation>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.didUpdateWidget(widget);
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    )..repeat(reverse: true);
+    _animation = Tween<double>(begin: 0.6, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(opacity: _animation, child: widget.child);
   }
 }
 

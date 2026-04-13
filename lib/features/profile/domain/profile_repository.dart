@@ -8,4 +8,6 @@ abstract class ProfileRepository {
   Future<ProfileData> updateCoverAsset(String assetPath);
 
   Future<ProfileData> updateCustomCover(Uint8List bytes);
+
+  Future<ProfileData> updateBio(String bio);
 }

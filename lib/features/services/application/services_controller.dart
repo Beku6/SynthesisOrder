@@ -4,11 +4,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../shared/models/app_models.dart';
-import '../data/in_memory_services_repository.dart';
+import '../../../app/data/supabase_client_provider.dart';
+import '../data/supabase_services_repository.dart';
 import '../domain/services_repository.dart';
 
 final servicesRepositoryProvider = Provider<ServicesRepository>((ref) {
-  return InMemoryServicesRepository();
+  return SupabaseServicesRepository(ref.watch(supabaseClientProvider));
 });
 
 @immutable
@@ -18,7 +19,7 @@ class ServicesState {
     required this.requests,
     this.activeView = ServiceView.main,
     this.searchQuery = '',
-    this.housingIssueType = 'Plumbing',
+    this.housingIssueType = 'services.issue.plumbing',
     this.housingDescription = '',
     this.supportSubject = '',
     this.supportMessage = '',
@@ -36,20 +37,6 @@ class ServicesState {
   final String supportMessage;
   final ServiceRequest? selectedRequest;
   final String? successMessage;
-
-  List<ServiceCategoryData> get filteredCategories {
-    final query = searchQuery.trim().toLowerCase();
-    if (query.isEmpty) {
-      return categories;
-    }
-    return categories
-        .where(
-          (service) =>
-              service.title.toLowerCase().contains(query) ||
-              service.subtitle.toLowerCase().contains(query),
-        )
-        .toList();
-  }
 
   bool get canSubmitHousing => housingDescription.trim().isNotEmpty;
 
@@ -182,7 +169,7 @@ class ServicesController extends AsyncNotifier<ServicesState> {
       (current) => current.copyWith(
         activeView: ServiceView.main,
         searchQuery: '',
-        housingIssueType: 'Plumbing',
+        housingIssueType: 'services.issue.plumbing',
         housingDescription: '',
         supportSubject: '',
         supportMessage: '',
@@ -194,12 +181,12 @@ class ServicesController extends AsyncNotifier<ServicesState> {
 
   Future<void> requestDocument(String title) async {
     final request = await _repository.requestDocument(title);
-    _showSuccess('$title requested successfully', request: request);
+    _showSuccess('services.success.documentRequested:$title', request: request);
   }
 
   Future<void> createPaymentRequest() async {
     final request = await _repository.createPaymentRequest();
-    _showSuccess('Payment initiated', request: request);
+    _showSuccess('services.success.paymentInitiated', request: request);
   }
 
   Future<void> submitHousingRequest() async {
@@ -215,10 +202,12 @@ class ServicesController extends AsyncNotifier<ServicesState> {
       ),
     );
     _showSuccess(
-      'Maintenance request submitted',
+      'services.success.maintenanceSubmitted',
       request: request,
-      transform: (value) =>
-          value.copyWith(housingIssueType: 'Plumbing', housingDescription: ''),
+      transform: (value) => value.copyWith(
+        housingIssueType: 'services.issue.plumbing',
+        housingDescription: '',
+      ),
     );
   }
 
@@ -235,7 +224,7 @@ class ServicesController extends AsyncNotifier<ServicesState> {
       ),
     );
     _showSuccess(
-      'Support ticket created',
+      'services.success.supportCreated',
       request: request,
       transform: (value) =>
           value.copyWith(supportSubject: '', supportMessage: ''),

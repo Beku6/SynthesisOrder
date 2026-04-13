@@ -5,6 +5,10 @@ abstract class AppPreferencesRepository {
 
   Future<void> writeThemeMode(ThemeMode mode);
 
+  String? readLocaleCode();
+
+  Future<void> writeLocaleCode(String code);
+
   bool readOnboardingCompleted();
 
   Future<void> writeOnboardingCompleted(bool value);

@@ -5,13 +5,18 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../app/application/app_session_controller.dart';
+import '../../../app/router/app_route_controller.dart';
 import '../../../app/theme/synor_design_tokens.dart';
-import '../../../shared/data/mock_data.dart';
+import '../../../l10n/app_localization_x.dart';
+import '../../../l10n/l10n.dart';
 import '../../../shared/models/app_models.dart';
 import '../../../shared/widgets/synor_widgets.dart';
+import '../application/cover_template_provider.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({
     super.key,
     required this.profile,
@@ -24,6 +29,7 @@ class ProfileScreen extends StatefulWidget {
     required this.onOpenSettings,
     required this.onCloseSettings,
     required this.onSignOut,
+    required this.onUpdateBio,
   });
 
   final ProfileData profile;
@@ -31,6 +37,7 @@ class ProfileScreen extends StatefulWidget {
   final VoidCallback onToggleTheme;
   final ValueChanged<String> onUpdateCover;
   final ValueChanged<Uint8List> onUploadCover;
+  final ValueChanged<String> onUpdateBio;
   final VoidCallback onOpenMessages;
   final bool showSettings;
   final VoidCallback onOpenSettings;
@@ -38,10 +45,10 @@ class ProfileScreen extends StatefulWidget {
   final VoidCallback onSignOut;
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _isCoverPickerOpen = false;
   bool _connectionRequested = false;
 
@@ -64,8 +71,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (bytes == null || bytes.isEmpty) {
       showSynorToast(
         context,
-        message: 'Cover upload failed',
-        subtitle: 'The selected image could not be loaded.',
+        message: context.l10n.profile_coverUploadFailed,
+        subtitle: context.l10n.profile_coverUploadFailedSubtitle,
         icon: LucideIcons.circle_alert,
         accentColor: SynorColors.rose500,
       );
@@ -74,8 +81,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (file.size > 5 * 1024 * 1024) {
       showSynorToast(
         context,
-        message: 'Image is too large',
-        subtitle: 'Choose a JPG, PNG, or GIF under 5MB.',
+        message: context.l10n.profile_coverTooLarge,
+        subtitle: context.l10n.profile_coverTooLargeSubtitle,
         icon: LucideIcons.image_off,
         accentColor: SynorColors.rose500,
       );
@@ -89,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
     showSynorToast(
       context,
-      message: 'Cover updated',
+      message: context.l10n.profile_coverUpdated,
       subtitle: file.name,
       icon: LucideIcons.image_plus,
       accentColor: SynorColors.emerald500,
@@ -103,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (!mounted) return;
     showSynorToast(
       context,
-      message: 'Profile link copied',
+      message: context.l10n.profile_profileLinkCopied,
       subtitle: widget.profile.username,
       icon: LucideIcons.share_2,
     );
@@ -116,8 +123,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (!mounted) return;
     showSynorToast(
       context,
-      message: 'Profile code copied',
-      subtitle: 'Ready to paste into a campus kiosk or chat.',
+      message: context.l10n.profile_profileCodeCopied,
+      subtitle: context.l10n.profile_profileCodeCopiedSubtitle,
       icon: LucideIcons.qr_code,
     );
   }
@@ -129,8 +136,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     showSynorToast(
       context,
       message: _connectionRequested
-          ? 'Connection request sent'
-          : 'Connection request removed',
+          ? context.l10n.profile_connectionRequestSent
+          : context.l10n.profile_connectionRequestRemoved,
       subtitle: widget.profile.name,
       icon: _connectionRequested ? LucideIcons.user_check : LucideIcons.user_x,
       accentColor: _connectionRequested
@@ -139,17 +146,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void _showStatusUpdateHint() {
-    showSynorToast(
-      context,
-      message: 'Status updated',
-      subtitle: 'Your active study signal stays visible on the profile card.',
-      icon: LucideIcons.sparkles,
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
+    final coverTemplates = ref.watch(coverTemplatesProvider);
     return Stack(
       children: [
         ListView(
@@ -165,10 +166,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     _buildIdentitySection(context),
                     const SizedBox(height: 28),
                     _buildQuickActions(context),
-                    const SizedBox(height: 28),
-                    _buildStatusSection(context),
-                    const SizedBox(height: 20),
-                    _buildStatsSection(context),
                     const SizedBox(height: 24),
                     _buildActivitySection(context),
                     const SizedBox(height: 24),
@@ -227,6 +224,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ? KeyedSubtree(
                       key: const ValueKey('cover-picker-overlay'),
                       child: _CoverPickerOverlay(
+                        coverTemplates: coverTemplates,
                         selectedCover: widget.profile.coverAsset,
                         hasCustomCover: widget.profile.customCoverBytes != null,
                         onClose: () {
@@ -242,7 +240,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           });
                           showSynorToast(
                             context,
-                            message: 'Cover updated',
+                            message: context.l10n.profile_coverUpdated,
                             subtitle: assetPath.split('/').last,
                             icon: LucideIcons.image,
                             accentColor: SynorColors.indigo500,
@@ -313,37 +311,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withValues(alpha: 0.3),
-                            borderRadius: BorderRadius.circular(999),
-                            border: Border.all(color: SynorColors.white10),
-                            boxShadow: SynorShadows.soft,
-                          ),
-                          child: const Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                LucideIcons.award,
-                                size: 14,
-                                color: SynorColors.amber400,
-                              ),
-                              SizedBox(width: 6),
-                              Text(
-                                'Top 5% Student',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                         const Spacer(),
                         _CoverAction(
                           icon: LucideIcons.share_2,
@@ -473,82 +440,162 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-        const SizedBox(height: 6),
-        Text(
-          '${widget.profile.username} • ${widget.profile.university}',
-          style: TextStyle(
-            color: synorSecondaryText(context),
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+        if (widget.profile.university != null)
+          Text(
+            '${widget.profile.username} • ${widget.profile.university}',
+            style: TextStyle(
+              color: synorSecondaryText(context),
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          )
+        else
+          Text(
+            widget.profile.username,
+            style: TextStyle(
+              color: synorSecondaryText(context),
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
         const SizedBox(height: 18),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 8,
           runSpacing: 8,
           children: [
-            _ProfileTag(
-              icon: LucideIcons.brain,
-              label: widget.profile.program,
-              color: SynorColors.indigo500,
-            ),
-            _ProfileTag(
-              icon: LucideIcons.graduation_cap,
-              label: widget.profile.yearLabel,
-            ),
+            if (widget.profile.program != null)
+              _ProfileTag(
+                icon: LucideIcons.brain,
+                label: context.l10n.profileProgramLabel(widget.profile.program!),
+                color: SynorColors.indigo500,
+              ),
+            if (widget.profile.yearLabel != null)
+              _ProfileTag(
+                icon: LucideIcons.graduation_cap,
+                label: context.l10n.profileYearLabel(widget.profile.yearLabel!),
+              ),
+            if (widget.profile.gpa != null)
+              _ProfileTag(
+                icon: LucideIcons.calculator,
+                label: '${context.l10n.profile_currentGpa}: ${widget.profile.gpa!.toStringAsFixed(2)}',
+                color: SynorColors.emerald500,
+              ),
             _ProfileTag(
               icon: LucideIcons.users,
-              label: widget.profile.groupLabel,
+              label: context.l10n.profileGroupLabel(widget.profile.groupLabel),
             ),
           ],
         ),
         const SizedBox(height: 24),
-        Stack(
-          children: [
-            Positioned(
-              left: 0,
-              top: -8,
-              child: Text(
-                '"',
-                style: TextStyle(
-                  color: synorIsDark(context)
-                      ? SynorColors.white5
-                      : SynorColors.slate200,
-                  fontSize: 44,
-                  fontFamily: 'Georgia',
+        PressableScale(
+          onTap: () async {
+            final currentBio = widget.profile.bio ?? '';
+            final controller = TextEditingController(text: currentBio);
+            final newBio = await showDialog<String>(
+              context: context,
+              builder: (dialogContext) {
+                return AlertDialog(
+                  backgroundColor: synorIsDark(context) ? SynorColors.surfaceBlack : Colors.white,
+                  title: Text(
+                    'Edit Bio',
+                    style: TextStyle(color: synorPrimaryText(context)),
+                  ),
+                  content: TextField(
+                    controller: controller,
+                    maxLines: 4,
+                    maxLength: 160,
+                    style: TextStyle(color: synorPrimaryText(context)),
+                    decoration: InputDecoration(
+                      hintText: 'Write something about yourself...',
+                      hintStyle: TextStyle(color: synorSecondaryText(context)),
+                      filled: true,
+                      fillColor: synorIsDark(context) ? SynorColors.white5 : SynorColors.slate50,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(dialogContext).pop(),
+                      child: Text('Cancel', style: TextStyle(color: synorSecondaryText(context))),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: SynorColors.indigo500,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                      onPressed: () => Navigator.of(dialogContext).pop(controller.text),
+                      child: const Text('Save'),
+                    ),
+                  ],
+                );
+              },
+            );
+
+            if (newBio != null && newBio != currentBio && context.mounted) {
+              widget.onUpdateBio(newBio.trim().isEmpty ? '' : newBio.trim());
+              showSynorToast(
+                context,
+                message: 'Bio Updated',
+                icon: LucideIcons.circle_check_big,
+                accentColor: SynorColors.indigo500,
+              );
+            }
+          },
+          child: Stack(
+            children: [
+              Positioned(
+                left: 0,
+                top: -8,
+                child: Text(
+                  '"',
+                  style: TextStyle(
+                    color: synorIsDark(context)
+                        ? SynorColors.white5
+                        : SynorColors.slate200,
+                    fontSize: 44,
+                    fontFamily: 'Georgia',
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
-              child: Text(
-                widget.profile.bio,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: synorSecondaryText(context),
-                  fontSize: 14,
-                  height: 1.6,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w500,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 8),
+                child: Text(
+                  (widget.profile.bio == null || widget.profile.bio!.isEmpty)
+                      ? 'Tap to add your biography...'
+                      : widget.profile.bio!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: (widget.profile.bio == null || widget.profile.bio!.isEmpty)
+                        ? synorSecondaryText(context).withValues(alpha: 0.6)
+                        : synorSecondaryText(context),
+                    fontSize: 14,
+                    height: 1.6,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              right: 0,
-              bottom: -14,
-              child: Text(
-                '"',
-                style: TextStyle(
-                  color: synorIsDark(context)
-                      ? SynorColors.white5
-                      : SynorColors.slate200,
-                  fontSize: 44,
-                  fontFamily: 'Georgia',
+              Positioned(
+                right: 0,
+                bottom: -14,
+                child: Text(
+                  '"',
+                  style: TextStyle(
+                    color: synorIsDark(context)
+                        ? SynorColors.white5
+                        : SynorColors.slate200,
+                    fontSize: 44,
+                    fontFamily: 'Georgia',
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
@@ -559,7 +606,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         Expanded(
           child: _ActionButton(
-            label: _connectionRequested ? 'Connected' : 'Connect',
+            label: _connectionRequested
+                ? context.l10n.profile_connected
+                : context.l10n.profile_connect,
             icon: LucideIcons.user_plus,
             filled: true,
             onTap: _toggleConnection,
@@ -568,7 +617,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         const SizedBox(width: 12),
         Expanded(
           child: _ActionButton(
-            label: 'Message',
+            label: context.l10n.profile_message,
             icon: LucideIcons.message_square,
             onTap: widget.onOpenMessages,
           ),
@@ -582,226 +631,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildStatusSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Text(
-              'Current Status',
-              style: TextStyle(
-                color: synorPrimaryText(context),
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const Spacer(),
-            PressableScale(
-              onTap: _showStatusUpdateHint,
-              child: Text(
-                'Update',
-                style: TextStyle(
-                  color: synorIsDark(context)
-                      ? SynorColors.indigo400
-                      : SynorColors.indigo600,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 14),
-        Container(
-          padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            gradient: synorIsDark(context)
-                ? LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      SynorColors.indigo500.withValues(alpha: 0.14),
-                      SynorColors.purple500.withValues(alpha: 0.1),
-                    ],
-                  )
-                : SynorGradients.profileSignal,
-            borderRadius: BorderRadius.circular(SynorRadii.card),
-            border: Border.all(
-              color: synorIsDark(context)
-                  ? SynorColors.indigo500.withValues(alpha: 0.18)
-                  : SynorColors.indigo100,
-            ),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: synorIsDark(context)
-                      ? SynorColors.white10
-                      : Colors.white,
-                ),
-                child: Icon(
-                  LucideIcons.book_open,
-                  color: synorIsDark(context)
-                      ? SynorColors.indigo400
-                      : SynorColors.indigo600,
-                ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: const BoxDecoration(
-                            color: SynorColors.emerald500,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          'IN LECTURE',
-                          style: TextStyle(
-                            color: synorIsDark(context)
-                                ? SynorColors.indigo300
-                                : SynorColors.indigo700,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'Databases',
-                      style: TextStyle(
-                        color: synorPrimaryText(context),
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Room B-204',
-                      style: TextStyle(color: synorSecondaryText(context)),
-                    ),
-                  ],
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    '27m',
-                    style: TextStyle(
-                      color: synorIsDark(context)
-                          ? SynorColors.indigo400
-                          : SynorColors.indigo600,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  Text(
-                    'LEFT',
-                    style: TextStyle(
-                      color: synorIsDark(context)
-                          ? SynorColors.indigo500
-                          : SynorColors.indigo400,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 14),
-        SynorHorizontalViewportBleed(
-          height: 44,
-          child: SizedBox(
-            height: 44,
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: SynorSpacing.xxl),
-              scrollDirection: Axis.horizontal,
-              children: const [
-                _SignalChip(icon: LucideIcons.coffee, label: 'Coffee break'),
-                SizedBox(width: 8),
-                _SignalChip(
-                  icon: LucideIcons.users,
-                  label: 'Looking for study group',
-                  active: true,
-                ),
-                SizedBox(width: 8),
-                _SignalChip(
-                  icon: LucideIcons.file_text,
-                  label: 'Sharing notes',
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
 
-  Widget _buildStatsSection(BuildContext context) {
-    return Row(
-      children: const [
-        Expanded(
-          child: _StatCard(
-            icon: LucideIcons.award,
-            iconColor: SynorColors.emerald500,
-            title: '3.8',
-            subtitle: 'Current GPA',
-          ),
-        ),
-        SizedBox(width: 12),
-        Expanded(
-          child: _StatCard(
-            icon: LucideIcons.circle_check_big,
-            iconColor: SynorColors.blue500,
-            title: '92%',
-            subtitle: 'Attendance',
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildActivitySection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        _SectionHeader(title: 'Recent Activity', actionLabel: 'View All'),
-        SizedBox(height: 14),
+      children: [
+        _SectionHeader(
+          title: context.l10n.profile_recentActivity,
+          actionLabel: context.l10n.profile_viewAll,
+        ),
+        const SizedBox(height: 14),
         _ActivityCard(
           icon: LucideIcons.file_text,
           color: SynorColors.indigo500,
-          title: 'Shared Notes: Databases',
-          subtitle:
-              'Compiled all the SQL queries and normalization rules we covered.',
-          meta: '2h ago',
+          title: context.l10n.profile_recentSharedNotesTitle,
+          subtitle: context.l10n.profile_recentSharedNotesSubtitle,
+          meta: context.l10n.profile_hoursAgo(2),
           showReactions: true,
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         _ActivityCard(
           icon: LucideIcons.users,
           color: SynorColors.purple500,
-          title: 'Joined Study Group',
-          subtitle: 'Advanced Algorithms Prep Group',
-          meta: 'Yesterday',
+          title: context.l10n.profile_recentJoinedGroupTitle,
+          subtitle: context.l10n.profile_recentJoinedGroupSubtitle,
+          meta: context.l10n.profile_yesterday,
         ),
       ],
     );
@@ -810,28 +665,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildServicesSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        _SectionHeader(title: 'Student Services'),
-        SizedBox(height: 12),
+      children: [
+        _SectionHeader(title: context.l10n.profile_studentServices),
+        const SizedBox(height: 12),
         _RowGroup(
           children: [
             _ProfileRow(
               icon: LucideIcons.file_badge,
               iconColor: SynorColors.indigo500,
-              title: 'Certificates & Documents',
-              subtitle: 'Transcripts, study certificates',
+              title: context.l10n.profile_servicesDocuments,
+              subtitle: context.l10n.profile_servicesDocumentsSubtitle,
             ),
             _ProfileRow(
               icon: LucideIcons.credit_card,
               iconColor: SynorColors.emerald500,
-              title: 'Finance & Payments',
-              subtitle: 'Tuition, dormitory fees',
+              title: context.l10n.profile_servicesFinance,
+              subtitle: context.l10n.profile_servicesFinanceSubtitle,
             ),
             _ProfileRow(
               icon: LucideIcons.building,
               iconColor: SynorColors.rose500,
-              title: 'Housing & Dormitory',
-              subtitle: 'Requests, rules, status',
+              title: context.l10n.profile_servicesHousing,
+              subtitle: context.l10n.profile_servicesHousingSubtitle,
             ),
           ],
         ),
@@ -843,17 +698,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _SectionHeader(title: 'Settings'),
+        _SectionHeader(title: context.l10n.profile_settings),
         const SizedBox(height: 12),
         _RowGroup(
           children: [
-            const _ProfileRow(
+            _ProfileRow(
               icon: LucideIcons.shield,
-              title: 'Privacy & Security',
+              title: context.l10n.profile_privacySecurity,
             ),
             _ProfileToggleRow(
               icon: widget.isDarkMode ? LucideIcons.moon : LucideIcons.sun,
-              title: 'Dark Mode',
+              title: context.l10n.profile_darkMode,
               value: widget.isDarkMode,
               onTap: widget.onToggleTheme,
             ),
@@ -891,7 +746,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             const SizedBox(width: 10),
             Text(
-              'Log Out',
+              context.l10n.profile_logOut,
               style: TextStyle(
                 color: synorIsDark(context)
                     ? SynorColors.rose400
@@ -1046,123 +901,7 @@ class _ActionButton extends StatelessWidget {
   }
 }
 
-class _SignalChip extends StatelessWidget {
-  const _SignalChip({
-    required this.icon,
-    required this.label,
-    this.active = false,
-  });
 
-  final IconData icon;
-  final String label;
-  final bool active;
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = synorIsDark(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
-        color: active
-            ? (isDark ? Colors.white : SynorColors.slate900)
-            : (isDark ? SynorColors.white5 : Colors.white),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: active
-              ? Colors.transparent
-              : (isDark ? SynorColors.white10 : SynorColors.slate200),
-        ),
-      ),
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            size: 16,
-            color: active
-                ? (isDark ? Colors.black : Colors.white)
-                : synorSecondaryText(context),
-          ),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: TextStyle(
-              color: active
-                  ? (isDark ? Colors.black : Colors.white)
-                  : synorSecondaryText(context),
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StatCard extends StatelessWidget {
-  const _StatCard({
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.subtitle,
-  });
-
-  final IconData icon;
-  final Color iconColor;
-  final String title;
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return SynorGlassPanel(
-      radius: SynorRadii.card,
-      padding: const EdgeInsets.all(16),
-      backgroundColor: synorIsDark(context) ? SynorColors.white5 : Colors.white,
-      child: Row(
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: iconColor.withValues(
-                alpha: synorIsDark(context) ? 0.12 : 0.08,
-              ),
-            ),
-            child: Icon(icon, color: iconColor),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: synorPrimaryText(context),
-                    fontSize: 22,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                Text(
-                  subtitle,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: synorSecondaryText(context),
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class _SectionHeader extends StatelessWidget {
   const _SectionHeader({required this.title, this.actionLabel});
@@ -1353,16 +1092,18 @@ class _ProfileRow extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.iconColor,
+    this.onTap,
   });
 
   final IconData icon;
   final String title;
   final String? subtitle;
   final Color? iconColor;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    final content = Padding(
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
@@ -1415,6 +1156,10 @@ class _ProfileRow extends StatelessWidget {
         ],
       ),
     );
+    if (onTap == null) {
+      return content;
+    }
+    return PressableScale(onTap: onTap!, child: content);
   }
 }
 
@@ -1497,7 +1242,7 @@ class _ProfileToggleRow extends StatelessWidget {
   }
 }
 
-class _SettingsOverlay extends StatelessWidget {
+class _SettingsOverlay extends ConsumerWidget {
   const _SettingsOverlay({
     required this.profile,
     required this.isDarkMode,
@@ -1513,7 +1258,8 @@ class _SettingsOverlay extends StatelessWidget {
   final VoidCallback onSignOut;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final locale = ref.watch(appSessionControllerProvider).locale;
     return Material(
       color: synorIsDark(context)
           ? SynorColors.appBlack
@@ -1551,7 +1297,7 @@ class _SettingsOverlay extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  'Settings',
+                  context.l10n.profile_settings,
                   style: TextStyle(
                     color: synorPrimaryText(context),
                     fontSize: 20,
@@ -1592,12 +1338,13 @@ class _SettingsOverlay extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 4),
-                            Text(
-                              profile.program,
-                              style: TextStyle(
-                                color: synorSecondaryText(context),
+                            if (profile.program != null)
+                              Text(
+                                context.l10n.profileProgramLabel(profile.program!),
+                                style: TextStyle(
+                                  color: synorSecondaryText(context),
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),
@@ -1622,43 +1369,67 @@ class _SettingsOverlay extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                const _SettingsCaption(label: 'Preferences'),
+                _SettingsCaption(label: context.l10n.profile_preferences),
                 const SizedBox(height: 12),
                 _RowGroup(
                   children: [
                     _ProfileToggleRow(
                       icon: isDarkMode ? LucideIcons.moon : LucideIcons.sun,
-                      title: 'Dark Mode',
+                      title: context.l10n.profile_darkMode,
                       value: isDarkMode,
                       onTap: onToggleTheme,
                     ),
-                    const _ProfileRow(
+                    _ProfileRow(
                       icon: LucideIcons.globe,
                       iconColor: SynorColors.emerald500,
-                      title: 'Language',
-                      subtitle: 'English',
+                      title: context.l10n.profile_language,
+                      subtitle: context.l10n.localeLabel(locale),
+                      onTap: () async {
+                        final selected = await showModalBottomSheet<Locale>(
+                          context: context,
+                          backgroundColor: Colors.transparent,
+                          builder: (sheetContext) =>
+                              _LanguagePickerSheet(currentLocale: locale),
+                        );
+                        if (!context.mounted || selected == null) {
+                          return;
+                        }
+                        ref
+                            .read(appRouteControllerProvider)
+                            .setLocale(selected);
+                        showSynorToast(
+                          context,
+                          message: context.l10n.profile_languageChanged,
+                          subtitle: context.l10n
+                              .profile_languageChangedSubtitle(
+                                context.l10n.localeLabel(selected),
+                              ),
+                          icon: LucideIcons.languages,
+                          accentColor: SynorColors.indigo500,
+                        );
+                      },
                     ),
-                    const _ProfileRow(
+                    _ProfileRow(
                       icon: LucideIcons.bell,
                       iconColor: SynorColors.rose500,
-                      title: 'Notifications',
+                      title: context.l10n.profile_notifications,
                     ),
                   ],
                 ),
                 const SizedBox(height: 24),
-                const _SettingsCaption(label: 'Security'),
+                _SettingsCaption(label: context.l10n.profile_security),
                 const SizedBox(height: 12),
-                const _RowGroup(
+                _RowGroup(
                   children: [
                     _ProfileRow(
                       icon: LucideIcons.shield,
                       iconColor: SynorColors.amber500,
-                      title: 'Password & Security',
+                      title: context.l10n.profile_passwordSecurity,
                     ),
                     _ProfileRow(
                       icon: LucideIcons.lock,
                       iconColor: SynorColors.blue500,
-                      title: 'Privacy Settings',
+                      title: context.l10n.profile_privacySettings,
                     ),
                   ],
                 ),
@@ -1685,7 +1456,7 @@ class _SettingsOverlay extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          'Log Out',
+                          context.l10n.profile_logOut,
                           style: TextStyle(
                             color: synorIsDark(context)
                                 ? SynorColors.rose400
@@ -1725,8 +1496,123 @@ class _SettingsCaption extends StatelessWidget {
   }
 }
 
+class _LanguagePickerSheet extends StatelessWidget {
+  const _LanguagePickerSheet({required this.currentLocale});
+
+  final Locale currentLocale;
+
+  @override
+  Widget build(BuildContext context) {
+    final options = [
+      const Locale('en'),
+      const Locale('ru'),
+      const Locale('kk'),
+    ];
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: const SynorModalScrim(opacity: 0.6),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            decoration: BoxDecoration(
+              color: synorIsDark(context)
+                  ? SynorColors.surfaceBlack
+                  : Colors.white,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(28),
+              ),
+            ),
+            child: SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 20, 24, 24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SynorBottomSheetHandle(),
+                    const SizedBox(height: 8),
+                    Text(
+                      context.l10n.profile_language,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    ...options.map((locale) {
+                      final selected =
+                          locale.languageCode == currentLocale.languageCode;
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: PressableScale(
+                          onTap: () => Navigator.of(context).pop(locale),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 16,
+                            ),
+                            decoration: BoxDecoration(
+                              color: selected
+                                  ? (synorIsDark(context)
+                                        ? SynorColors.indigo500.withValues(
+                                            alpha: 0.12,
+                                          )
+                                        : SynorColors.indigo50)
+                                  : (synorIsDark(context)
+                                        ? SynorColors.white5
+                                        : SynorColors.slate50),
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(
+                                color: selected
+                                    ? (synorIsDark(context)
+                                          ? SynorColors.indigo500.withValues(
+                                              alpha: 0.28,
+                                            )
+                                          : SynorColors.indigo200)
+                                    : (synorIsDark(context)
+                                          ? SynorColors.white10
+                                          : SynorColors.slate200),
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    context.l10n.localeLabel(locale),
+                                    style: TextStyle(
+                                      color: synorPrimaryText(context),
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                if (selected)
+                                  Icon(
+                                    LucideIcons.circle_check_big,
+                                    color: synorIsDark(context)
+                                        ? SynorColors.indigo300
+                                        : SynorColors.indigo600,
+                                    size: 18,
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _CoverPickerOverlay extends StatelessWidget {
   const _CoverPickerOverlay({
+    required this.coverTemplates,
     required this.selectedCover,
     required this.hasCustomCover,
     required this.onClose,
@@ -1734,6 +1620,7 @@ class _CoverPickerOverlay extends StatelessWidget {
     required this.onSelect,
   });
 
+  final List<CoverTemplate> coverTemplates;
   final String selectedCover;
   final bool hasCustomCover;
   final VoidCallback onClose;
@@ -1788,7 +1675,7 @@ class _CoverPickerOverlay extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Edit Cover',
+                            context.l10n.profile_editCover,
                             style: TextStyle(
                               color: synorPrimaryText(context),
                               fontSize: 20,
@@ -1819,7 +1706,7 @@ class _CoverPickerOverlay extends StatelessWidget {
                       _UploadCard(isSelected: hasCustomCover, onTap: onUpload),
                       const SizedBox(height: 24),
                       Text(
-                        'Choose from templates',
+                        context.l10n.profile_chooseFromTemplates,
                         style: TextStyle(
                           color: synorPrimaryText(context),
                           fontSize: 14,
@@ -1831,7 +1718,7 @@ class _CoverPickerOverlay extends StatelessWidget {
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: SynorMockData.coverTemplates.length,
+                        itemCount: coverTemplates.length,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
@@ -1840,7 +1727,7 @@ class _CoverPickerOverlay extends StatelessWidget {
                               childAspectRatio: 4 / 3,
                             ),
                         itemBuilder: (context, index) {
-                          final template = SynorMockData.coverTemplates[index];
+                          final template = coverTemplates[index];
                           final selected = template.assetPath == selectedCover;
                           return PressableScale(
                             onTap: () => onSelect(template.assetPath),
@@ -1953,7 +1840,9 @@ class _UploadCard extends StatelessWidget {
               ),
               const SizedBox(height: 14),
               Text(
-                isSelected ? 'Using uploaded cover' : 'Upload from device',
+                isSelected
+                    ? context.l10n.profile_usingUploadedCover
+                    : context.l10n.profile_uploadFromDevice,
                 style: TextStyle(
                   color: synorPrimaryText(context),
                   fontWeight: FontWeight.w700,
@@ -1962,8 +1851,8 @@ class _UploadCard extends StatelessWidget {
               const SizedBox(height: 6),
               Text(
                 isSelected
-                    ? 'Tap to replace with another image'
-                    : 'JPG, PNG or GIF (max. 5MB)',
+                    ? context.l10n.profile_replaceUploadedCover
+                    : context.l10n.profile_uploadRequirements,
                 style: TextStyle(
                   color: synorSecondaryText(context),
                   fontSize: 12,

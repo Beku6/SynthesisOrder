@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../app/assets/synor_assets.dart';
 import '../../app/theme/synor_design_tokens.dart';
+import '../../l10n/l10n.dart';
 
 enum SynorBrandAsset { synorLogo, bekooWordmark }
 
@@ -128,7 +129,7 @@ class SynorBrandFooterLockup extends StatelessWidget {
             color: textColor,
             height: 1,
           ),
-          child: const Text('from'),
+          child: Text(context.l10n.branding_from),
         ),
         SizedBox(height: spacing),
         BekooWordmark(height: wordmarkHeight),

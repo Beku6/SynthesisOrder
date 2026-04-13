@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import '../../users/domain/user_models.dart';
+
 @immutable
 class SignInDraft {
   const SignInDraft({this.email = '', this.password = ''});
@@ -19,6 +21,7 @@ class SignInDraft {
 class SignUpDraft {
   const SignUpDraft({
     this.step = 1,
+    this.role = UserRole.student,
     this.fullName = '',
     this.email = '',
     this.password = '',
@@ -26,13 +29,14 @@ class SignUpDraft {
     this.faculty = '',
     this.courseYear = '',
     this.group = '',
-    this.campusPreference = 'Main Building',
+    this.campusPreference = 'campus.main',
     this.deepFocusEnabled = true,
     this.smartNotificationsEnabled = true,
     this.calendarSyncEnabled = true,
   });
 
   final int step;
+  final UserRole role;
   final String fullName;
   final String email;
   final String password;
@@ -47,6 +51,7 @@ class SignUpDraft {
 
   SignUpDraft copyWith({
     int? step,
+    UserRole? role,
     String? fullName,
     String? email,
     String? password,
@@ -61,6 +66,7 @@ class SignUpDraft {
   }) {
     return SignUpDraft(
       step: step ?? this.step,
+      role: role ?? this.role,
       fullName: fullName ?? this.fullName,
       email: email ?? this.email,
       password: password ?? this.password,
@@ -75,4 +81,19 @@ class SignUpDraft {
       calendarSyncEnabled: calendarSyncEnabled ?? this.calendarSyncEnabled,
     );
   }
+}
+
+@immutable
+class AuthSubmissionResult {
+  const AuthSubmissionResult({
+    required this.userId,
+    required this.hasSession,
+    this.requiresEmailVerification = false,
+    this.email,
+  });
+
+  final String? userId;
+  final bool hasSession;
+  final bool requiresEmailVerification;
+  final String? email;
 }

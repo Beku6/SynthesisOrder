@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../app/router/app_route_controller.dart';
 import '../../../app/theme/synor_design_tokens.dart';
-import '../../../shared/data/mock_data.dart';
+import '../../../l10n/app_localization_x.dart';
+import '../../../l10n/l10n.dart';
 import '../../../shared/models/app_models.dart';
 import '../../../shared/widgets/synor_widgets.dart';
+import '../../notifications/presentation/notification_widgets.dart';
+import '../application/home_content_provider.dart';
+import '../domain/home_content_repository.dart';
+import 'story_creation_sheet.dart';
+import 'story_viewer_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({
     super.key,
     required this.lessons,
@@ -26,23 +34,38 @@ class HomeScreen extends StatefulWidget {
   final ValueChanged<int> onAlertTap;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   static const _pageInset = SynorSpacing.xxl;
 
   String _searchQuery = '';
-  String _activeFilter = SynorMockData.homeFilters.first;
+  late String _activeFilter;
 
-  List<Lesson> get _visibleLessons {
+  @override
+  void initState() {
+    super.initState();
+    // Default filter if uninitialized or async loading
+    _activeFilter = 'lessons';
+  }
+
+  List<Lesson> _visibleLessons(String activeFilter) {
     Iterable<Lesson> items = widget.lessons;
-    switch (_activeFilter) {
+    switch (activeFilter) {
       case 'missed':
         items = items.where((lesson) => lesson.isStarted);
         break;
       case 'tomorrow':
-        items = items.where((lesson) => {2, 3}.contains(lesson.id));
+        final now = DateTime.now();
+        final tomorrow = DateTime(now.year, now.month, now.day + 1);
+        items = items.where((lesson) {
+          final start = lesson.startTime;
+          if (start == null) return false;
+          return start.year == tomorrow.year &&
+              start.month == tomorrow.month &&
+              start.day == tomorrow.day;
+        });
         break;
       case 'all':
       case 'lessons':
@@ -53,30 +76,46 @@ class _HomeScreenState extends State<HomeScreen> {
       final query = _searchQuery.toLowerCase();
       items = items.where(
         (lesson) =>
-            lesson.title.toLowerCase().contains(query) ||
-            lesson.location.toLowerCase().contains(query) ||
-            lesson.teacher.toLowerCase().contains(query),
+            context.l10n
+                .lessonTitleLabel(lesson.title)
+                .toLowerCase()
+                .contains(query) ||
+            context.l10n
+                .lessonLocationLabel(lesson.location)
+                .toLowerCase()
+                .contains(query) ||
+            context.l10n
+                .lessonTeacherLabel(lesson.teacher)
+                .toLowerCase()
+                .contains(query),
       );
     }
     return items.toList();
   }
 
-  String get _emptyMessage {
+  String _emptyMessage(String activeFilter) {
     if (_searchQuery.isNotEmpty) {
-      return 'No lessons match "$_searchQuery" in the current filter.';
+      return context.l10n.home_emptySearchMessage(_searchQuery);
     }
-    if (_activeFilter == 'missed') {
-      return 'No missed or in-progress lessons right now.';
+    if (activeFilter == 'missed') {
+      return context.l10n.home_emptyMissedMessage;
     }
-    if (_activeFilter == 'tomorrow') {
-      return 'Tomorrow looks clear for now.';
+    if (activeFilter == 'tomorrow') {
+      return context.l10n.home_emptyTomorrowMessage;
     }
-    return 'No lessons available in this view.';
+    return context.l10n.home_emptyDefaultMessage;
   }
 
   @override
   Widget build(BuildContext context) {
-    final visibleLessons = _visibleLessons;
+    final router = ref.read(appRouteControllerProvider);
+    final homeContentAsync = ref.watch(homeContentProvider);
+    final homeContent = homeContentAsync.valueOrNull ?? HomeContent(stories: [], filters: ['lessons', 'all', 'missed', 'tomorrow']);
+    final filters = homeContent.filters;
+    final activeFilter = filters.contains(_activeFilter)
+        ? _activeFilter
+        : (filters.isNotEmpty ? filters.first : 'lessons');
+    final visibleLessons = _visibleLessons(activeFilter);
     return Stack(
       children: [
         const Positioned.fill(child: SynorNoiseOverlay(opacity: 0.06)),
@@ -97,6 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const Spacer(),
+                const SynorNotificationBell(),
+                const SizedBox(width: 12),
                 PressableScale(
                   onTap: () {
                     HapticFeedback.lightImpact();
@@ -167,13 +208,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                   child: SynorSearchField(
-                    hintText: 'Search...',
+                    hintText: context.l10n.home_searchPlaceholder,
                     prefixIcon: LucideIcons.search,
-                    onChanged: (value) {
-                      setState(() {
-                        _searchQuery = value.trim();
-                      });
-                    },
+                    readOnly: true,
+                    onTap: router.goToSearch,
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -199,10 +237,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(horizontal: _pageInset),
                   scrollDirection: Axis.horizontal,
-                  itemCount: SynorMockData.stories.length,
+                  itemCount: homeContent.stories.length,
                   separatorBuilder: (_, _) => const SizedBox(width: 16),
-                  itemBuilder: (context, index) =>
-                      StoryCard(story: SynorMockData.stories[index]),
+                  itemBuilder: (context, index) {
+                    final story = homeContent.stories[index];
+                    return StoryCard(
+                      story: story,
+                      onTap: () {
+                        if (story.isAddStory) {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (context) => const StoryCreationSheet(),
+                          );
+                        } else if (story.stories.isNotEmpty) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => StoryViewerScreen(
+                                bundles: homeContent.stories
+                                    .where((s) => !s.isAddStory)
+                                    .toList(),
+                                initialBundleIndex: homeContent.stories
+                                    .where((s) => !s.isAddStory)
+                                    .toList()
+                                    .indexOf(story),
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  },
                 ),
               ),
             ),
@@ -215,11 +282,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(horizontal: _pageInset),
                   scrollDirection: Axis.horizontal,
-                  itemCount: SynorMockData.homeFilters.length,
+                  itemCount: filters.length,
                   separatorBuilder: (_, _) => const SizedBox(width: 10),
                   itemBuilder: (context, index) {
-                    final filter = SynorMockData.homeFilters[index];
-                    final active = filter == _activeFilter;
+                    final filter = filters[index];
+                    final active = filter == activeFilter;
                     return PressableScale(
                       onTap: () {
                         setState(() {
@@ -276,7 +343,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                           ),
-                          child: Text(filter),
+                          child: Text(context.l10n.homeFilterLabel(filter)),
                         ),
                       ),
                     );
@@ -288,8 +355,8 @@ class _HomeScreenState extends State<HomeScreen> {
             if (visibleLessons.isEmpty)
               SynorInlineStateCard(
                 icon: LucideIcons.search_x,
-                title: 'Nothing to show',
-                message: _emptyMessage,
+                title: context.l10n.home_emptyTitle,
+                message: _emptyMessage(activeFilter),
                 accentColor: SynorColors.indigo500,
               )
             else

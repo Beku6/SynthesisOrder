@@ -5,8 +5,11 @@ import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/theme/synor_design_tokens.dart';
+import '../../../l10n/app_localization_x.dart';
+import '../../../l10n/l10n.dart';
 import '../application/auth_controller.dart';
 import '../domain/auth_models.dart';
+import '../../users/domain/user_models.dart';
 import '../../../shared/widgets/synor_widgets.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -21,24 +24,9 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen>
     with SingleTickerProviderStateMixin {
   static const _slides = [
-    (
-      'Your academic life, finally organized.',
-      'Synor keeps your schedule, tasks, reminders, and study flow in one place.',
-      LucideIcons.calendar,
-      SynorColors.indigo400,
-    ),
-    (
-      'Schedule, study, and routine — in one flow.',
-      'Everything you need to succeed, seamlessly integrated.',
-      LucideIcons.circle_check,
-      SynorColors.violet400,
-    ),
-    (
-      'Less chaos. More control.',
-      'Focus on what matters. We\'ll handle the rest.',
-      LucideIcons.bell,
-      SynorColors.blue400,
-    ),
+    (LucideIcons.calendar, SynorColors.indigo400),
+    (LucideIcons.circle_check, SynorColors.violet400),
+    (LucideIcons.bell, SynorColors.blue400),
   ];
 
   late final AnimationController _floatController;
@@ -71,7 +59,27 @@ class _OnboardingScreenState extends State<OnboardingScreen>
 
   @override
   Widget build(BuildContext context) {
-    final slide = _slides[_step];
+    final slides = [
+      (
+        context.l10n.auth_onboardingTitle1,
+        context.l10n.auth_onboardingSubtitle1,
+        LucideIcons.calendar,
+        SynorColors.indigo400,
+      ),
+      (
+        context.l10n.auth_onboardingTitle2,
+        context.l10n.auth_onboardingSubtitle2,
+        LucideIcons.circle_check,
+        SynorColors.violet400,
+      ),
+      (
+        context.l10n.auth_onboardingTitle3,
+        context.l10n.auth_onboardingSubtitle3,
+        LucideIcons.bell,
+        SynorColors.blue400,
+      ),
+    ];
+    final slide = slides[_step];
     return SynorAuthBackground(
       showBottomGlow: true,
       child: SafeArea(
@@ -82,8 +90,8 @@ class _OnboardingScreenState extends State<OnboardingScreen>
               right: 24,
               child: PressableScale(
                 onTap: widget.onComplete,
-                child: const Text(
-                  'Skip',
+                child: Text(
+                  context.l10n.common_skip,
                   style: TextStyle(
                     color: SynorColors.neutral400,
                     fontSize: 14,
@@ -240,7 +248,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
-                        _slides.length,
+                        slides.length,
                         (index) => AnimatedContainer(
                           duration: SynorMotion.medium,
                           width: index == _step ? 32 : 8,
@@ -257,9 +265,9 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                     ),
                     const SizedBox(height: 24),
                     SynorPrimaryButton(
-                      label: _step == _slides.length - 1
-                          ? 'Get Started'
-                          : 'Continue',
+                      label: _step == slides.length - 1
+                          ? context.l10n.common_getStarted
+                          : context.l10n.common_continue,
                       icon: LucideIcons.arrow_right,
                       onTap: _next,
                     ),
@@ -311,10 +319,22 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
 
   Future<void> _submit() async {
     final success = await ref.read(signInControllerProvider.notifier).submit();
-    if (!mounted || success) {
+    if (!mounted) {
+      return;
+    }
+    if (success) {
       return;
     }
     final state = ref.read(signInControllerProvider);
+    if (state.generalError != null) {
+      showSynorToast(
+        context,
+        message: context.l10n.auth_signInFailedTitle,
+        subtitle: _resolveAuthMessage(context, state.generalError!),
+        icon: LucideIcons.circle_alert,
+        accentColor: SynorColors.rose500,
+      );
+    }
     if (state.emailError != null) {
       _emailFocus.requestFocus();
       return;
@@ -326,6 +346,19 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
 
   Future<void> _submitGoogle() async {
     await ref.read(signInControllerProvider.notifier).submitWithGoogle();
+    if (!mounted) {
+      return;
+    }
+    final error = ref.read(signInControllerProvider).generalError;
+    if (error != null) {
+      showSynorToast(
+        context,
+        message: context.l10n.auth_googleUnavailableTitle,
+        subtitle: _resolveAuthMessage(context, error),
+        icon: LucideIcons.circle_alert,
+        accentColor: SynorColors.rose500,
+      );
+    }
   }
 
   Future<void> _handleForgotPassword() async {
@@ -341,7 +374,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     }
     showSynorToast(
       context,
-      message: 'Recovery link sent',
+      message: context.l10n.auth_recoveryLinkSentTitle,
       subtitle: email,
       icon: LucideIcons.mail_check,
       accentColor: SynorColors.indigo500,
@@ -368,8 +401,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                   children: [
                     const SynorBrandLogo(size: 64),
                     const SizedBox(height: 24),
-                    const Text(
-                      'Welcome back',
+                    Text(
+                      context.l10n.auth_welcomeBack,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 32,
@@ -378,8 +411,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      'Sign in to access your schedule, study hub, and smart routine.',
+                    Text(
+                      context.l10n.auth_signInSubtitle,
                       style: TextStyle(
                         color: SynorColors.neutral400,
                         fontSize: 16,
@@ -391,8 +424,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       controller: _emailController,
                       focusNode: _emailFocus,
                       icon: LucideIcons.mail,
-                      hintText: 'Student ID / Email',
-                      errorText: state.emailError,
+                      hintText: context.l10n.auth_studentIdOrEmail,
+                      errorText: _mapAuthError(context, state.emailError),
                       textInputAction: TextInputAction.next,
                       onChanged: ref
                           .read(signInControllerProvider.notifier)
@@ -404,9 +437,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       controller: _passwordController,
                       focusNode: _passwordFocus,
                       icon: LucideIcons.lock,
-                      hintText: 'Password',
+                      hintText: context.l10n.auth_password,
                       obscureText: true,
-                      errorText: state.passwordError,
+                      errorText: _mapAuthError(context, state.passwordError),
                       textInputAction: TextInputAction.done,
                       onChanged: ref
                           .read(signInControllerProvider.notifier)
@@ -418,8 +451,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       alignment: Alignment.centerRight,
                       child: PressableScale(
                         onTap: _handleForgotPassword,
-                        child: const Text(
-                          'Forgot password?',
+                        child: Text(
+                          context.l10n.auth_forgotPassword,
                           style: TextStyle(
                             color: SynorColors.indigo400,
                             fontSize: 14,
@@ -429,17 +462,19 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     ),
                     const SizedBox(height: 24),
                     SynorPrimaryButton(
-                      label: state.isSubmitting ? 'Signing In...' : 'Sign In',
+                      label: state.isSubmitting
+                          ? context.l10n.auth_signingIn
+                          : context.l10n.auth_signIn,
                       onTap: state.isSubmitting ? () {} : _submit,
                     ),
                     const SizedBox(height: 20),
                     Row(
-                      children: const [
+                      children: [
                         Expanded(child: Divider(color: SynorColors.white10)),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16),
                           child: Text(
-                            'or',
+                            context.l10n.common_or,
                             style: TextStyle(
                               color: SynorColors.neutral500,
                               fontSize: 14,
@@ -467,8 +502,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                             const SizedBox(width: 12),
                             Text(
                               state.isGoogleSubmitting
-                                  ? 'Connecting...'
-                                  : 'Continue with Google',
+                                  ? context.l10n.auth_connecting
+                                  : context.l10n.auth_continueWithGoogle,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -487,8 +522,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  const Text(
-                    'New here? ',
+                  Text(
+                    '${context.l10n.auth_newHere} ',
                     style: TextStyle(
                       color: SynorColors.neutral400,
                       fontSize: 16,
@@ -496,8 +531,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                   ),
                   PressableScale(
                     onTap: widget.onSignUp,
-                    child: const Text(
-                      'Create account',
+                    child: Text(
+                      context.l10n.auth_createAccount,
                       style: TextStyle(
                         color: SynorColors.indigo400,
                         fontSize: 16,
@@ -634,6 +669,25 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
 
   Future<void> _next() async {
     await ref.read(signUpControllerProvider.notifier).completeCurrentStep();
+    if (!mounted) {
+      return;
+    }
+    final error = ref.read(signUpControllerProvider).generalError;
+    if (error != null) {
+      showSynorToast(
+        context,
+        message: error.startsWith('Account created')
+            ? context.l10n.auth_signUpCompleteTitle
+            : context.l10n.auth_signUpFailedTitle,
+        subtitle: _resolveAuthMessage(context, error),
+        icon: error.startsWith('Account created')
+            ? LucideIcons.badge_check
+            : LucideIcons.circle_alert,
+        accentColor: error.startsWith('Account created')
+            ? SynorColors.emerald500
+            : SynorColors.rose500,
+      );
+    }
   }
 
   void _prev(int step) {
@@ -731,6 +785,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       onFullNameChanged: controller.updateFullName,
                       onEmailChanged: controller.updateEmail,
                       onPasswordChanged: controller.updatePassword,
+                      onRoleChanged: controller.updateRole,
                       onUniversityChanged: controller.updateUniversity,
                       onFacultyChanged: controller.updateFaculty,
                       onCourseYearChanged: controller.updateCourseYear,
@@ -750,10 +805,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 maxWidth: 400,
                 child: SynorPrimaryButton(
                   label: state.isSubmitting
-                      ? 'Completing...'
+                      ? context.l10n.auth_completing
                       : state.draft.step == 4
-                      ? 'Complete Setup'
-                      : 'Continue',
+                      ? context.l10n.auth_completeSetup
+                      : context.l10n.common_continue,
                   icon: LucideIcons.arrow_right,
                   onTap: _next,
                 ),
@@ -764,6 +819,56 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
       ),
     );
   }
+}
+
+String? _mapAuthError(BuildContext context, String? message) {
+  if (message == null) {
+    return null;
+  }
+  return _resolveAuthMessage(context, message);
+}
+
+String _resolveAuthMessage(BuildContext context, String message) {
+  final l10n = context.l10n;
+  if (message == 'Enter your student email or ID.') {
+    return l10n.auth_validationEnterStudentEmailOrId;
+  }
+  if (message == 'Enter a valid email address.') {
+    return l10n.auth_validationValidEmail;
+  }
+  if (message == 'Enter your password.') {
+    return l10n.auth_validationEnterPassword;
+  }
+  if (message == 'Password must be at least 6 characters.') {
+    return l10n.auth_validationPasswordLength;
+  }
+  if (message == 'Unable to restore your session. Please try again.') {
+    return l10n.auth_errorRestoreSession;
+  }
+  if (message == 'Sign in failed. Please check your credentials.') {
+    return l10n.auth_errorSignInFailed;
+  }
+  if (message == 'Google sign in is not available right now.') {
+    return l10n.auth_errorGoogleUnavailable;
+  }
+  if (message == 'Enter your email first to recover access.') {
+    return l10n.auth_errorEnterEmailRecovery;
+  }
+  if (message.startsWith('Account created. Check ') &&
+      message.endsWith(' to verify your email, then sign in.')) {
+    final email = message
+        .replaceFirst('Account created. Check ', '')
+        .replaceFirst(' to verify your email, then sign in.', '');
+    return l10n.auth_errorSignUpVerification(email);
+  }
+  if (message ==
+      'Account created, but the session is not ready yet. Please sign in.') {
+    return l10n.auth_errorSignUpSessionNotReady;
+  }
+  if (message == 'Could not complete sign up. Please try again.') {
+    return l10n.auth_errorSignUpFailed;
+  }
+  return message;
 }
 
 class _SignUpStepContent extends StatelessWidget {
@@ -780,6 +885,7 @@ class _SignUpStepContent extends StatelessWidget {
     required this.onFullNameChanged,
     required this.onEmailChanged,
     required this.onPasswordChanged,
+    required this.onRoleChanged,
     required this.onUniversityChanged,
     required this.onFacultyChanged,
     required this.onCourseYearChanged,
@@ -801,6 +907,7 @@ class _SignUpStepContent extends StatelessWidget {
   final ValueChanged<String> onFullNameChanged;
   final ValueChanged<String> onEmailChanged;
   final ValueChanged<String> onPasswordChanged;
+  final ValueChanged<UserRole> onRoleChanged;
   final ValueChanged<String> onUniversityChanged;
   final ValueChanged<String> onFacultyChanged;
   final ValueChanged<String> onCourseYearChanged;
@@ -816,27 +923,39 @@ class _SignUpStepContent extends StatelessWidget {
       1 => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _StepHeader(
-            title: 'Create your account',
-            subtitle: 'Let\'s start with your basic identity.',
+          _StepHeader(
+            title: context.l10n.auth_createAccountTitle,
+            subtitle: context.l10n.auth_identitySubtitle,
           ),
+          SynorSegmentedControl<UserRole>(
+            values: UserRole.values,
+            selected: draft.role,
+            compact: true,
+            labelBuilder: (value) => switch (value) {
+              UserRole.student => context.l10n.auth_roleStudent,
+              UserRole.teacher => context.l10n.auth_roleTeacher,
+            },
+            onChanged: onRoleChanged,
+            backgroundColor: SynorColors.white5,
+          ),
+          const SizedBox(height: 16),
           _AuthField(
             controller: fullNameController,
             onChanged: onFullNameChanged,
             icon: LucideIcons.user,
-            hintText: 'Full Name',
+            hintText: context.l10n.auth_fullName,
           ),
           const SizedBox(height: 16),
           _AuthField(
             controller: emailController,
             onChanged: onEmailChanged,
             icon: LucideIcons.mail,
-            hintText: 'Email Address',
+            hintText: context.l10n.auth_emailAddress,
           ),
           const SizedBox(height: 16),
           _AuthField(
             icon: LucideIcons.lock,
-            hintText: 'Create Password',
+            hintText: context.l10n.auth_createPassword,
             obscureText: true,
             controller: passwordController,
             onChanged: onPasswordChanged,
@@ -846,63 +965,75 @@ class _SignUpStepContent extends StatelessWidget {
       2 => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _StepHeader(
-            title: 'Academic setup',
-            subtitle: 'Tell us where and what you study.',
+          _StepHeader(
+            title: draft.role == UserRole.student
+                ? context.l10n.auth_academicSetupTitle
+                : context.l10n.auth_teachingSetupTitle,
+            subtitle: draft.role == UserRole.student
+                ? context.l10n.auth_academicSetupSubtitle
+                : context.l10n.auth_teachingSetupSubtitle,
           ),
           _AuthField(
             icon: LucideIcons.building_2,
-            hintText: 'University',
+            hintText: context.l10n.auth_university,
             controller: universityController,
             onChanged: onUniversityChanged,
           ),
           const SizedBox(height: 16),
           _AuthField(
             icon: LucideIcons.graduation_cap,
-            hintText: 'Faculty / Department',
+            hintText: context.l10n.auth_facultyDepartment,
             controller: facultyController,
             onChanged: onFacultyChanged,
           ),
           const SizedBox(height: 16),
-          Row(
-            children: [
-              Expanded(
-                child: _CompactAuthField(
-                  hintText: 'Course Year',
-                  controller: courseYearController,
-                  onChanged: onCourseYearChanged,
+          if (draft.role == UserRole.student)
+            Row(
+              children: [
+                Expanded(
+                  child: _CompactAuthField(
+                    hintText: context.l10n.auth_courseYear,
+                    controller: courseYearController,
+                    onChanged: onCourseYearChanged,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: _CompactAuthField(
-                  hintText: 'Group',
-                  controller: groupController,
-                  onChanged: onGroupChanged,
+                const SizedBox(width: 16),
+                Expanded(
+                  child: _CompactAuthField(
+                    hintText: context.l10n.auth_group,
+                    controller: groupController,
+                    onChanged: onGroupChanged,
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            )
+          else
+            _CompactAuthField(
+              hintText: context.l10n.auth_primaryGroup,
+              controller: groupController,
+              onChanged: onGroupChanged,
+            ),
         ],
       ),
       3 => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _StepHeader(
-            title: 'Personalize your flow',
-            subtitle:
-                'This helps Synor personalize your schedule, reminders, and study experience.',
+          _StepHeader(
+            title: context.l10n.auth_personalizeTitle,
+            subtitle: context.l10n.auth_personalizeSubtitle,
           ),
           _PreferenceTile(
-            title: 'Campus Preferences',
-            subtitle: draft.campusPreference,
+            title: context.l10n.auth_campusPreferences,
+            subtitle: context.l10n.campusLabel(draft.campusPreference),
             icon: LucideIcons.map_pin,
             onTap: onCycleCampus,
           ),
           const SizedBox(height: 16),
           _PreferenceToggleTile(
-            title: 'Study Mode',
-            subtitle: draft.deepFocusEnabled ? 'Deep Focus' : 'Flexible',
+            title: context.l10n.auth_studyMode,
+            subtitle: draft.deepFocusEnabled
+                ? context.l10n.auth_studyModeDeepFocus
+                : context.l10n.auth_studyModeFlexible,
             value: draft.deepFocusEnabled,
             onTap: onToggleStudyMode,
           ),
@@ -911,13 +1042,13 @@ class _SignUpStepContent extends StatelessWidget {
       _ => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _StepHeader(
-            title: 'Turn on smart features',
-            subtitle: 'Enable these to get the full Synor experience.',
+          _StepHeader(
+            title: context.l10n.auth_smartFeaturesTitle,
+            subtitle: context.l10n.auth_smartFeaturesSubtitle,
           ),
           _FeatureToggleTile(
-            title: 'Smart Notifications',
-            subtitle: 'Get alerts for classes & tasks',
+            title: context.l10n.auth_smartNotifications,
+            subtitle: context.l10n.auth_smartNotificationsSubtitle,
             icon: LucideIcons.bell,
             color: SynorColors.indigo400,
             value: draft.smartNotificationsEnabled,
@@ -925,8 +1056,8 @@ class _SignUpStepContent extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           _FeatureToggleTile(
-            title: 'Calendar Sync',
-            subtitle: 'Connect your personal calendar',
+            title: context.l10n.auth_calendarSync,
+            subtitle: context.l10n.auth_calendarSyncSubtitle,
             icon: LucideIcons.calendar_sync,
             color: SynorColors.violet400,
             value: draft.calendarSyncEnabled,

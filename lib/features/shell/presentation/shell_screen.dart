@@ -5,11 +5,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app/router/app_route_controller.dart';
 import '../../../app/theme/synor_design_tokens.dart';
 import '../../../core/async/synor_async_state_view.dart';
+import '../../../l10n/app_localization_x.dart';
+import '../../../l10n/l10n.dart';
 import '../../../shared/models/app_models.dart';
 import '../../../shared/widgets/synor_widgets.dart';
 import '../../alarm/presentation/alarm_screen.dart';
 import '../../home/presentation/home_screen.dart';
 import '../../lessons/application/lesson_controller.dart';
+import '../../messages/presentation/chat_room_screen.dart';
+import '../../search/presentation/global_search_overlay.dart';
+import '../../teacher/presentation/attendance_screen.dart';
 import '../../messages/presentation/messages_screen.dart';
 import '../../profile/application/profile_controller.dart';
 import '../../profile/presentation/profile_screen.dart';
@@ -18,6 +23,9 @@ import '../../reminders/domain/reminders_repository.dart';
 import '../../schedule/presentation/schedule_screen.dart';
 import '../../services/presentation/services_screen.dart';
 import '../../studies/presentation/studies_screen.dart';
+import '../../teacher/presentation/teacher_dashboard_screen.dart';
+import '../../users/application/current_user_controller.dart';
+import '../../users/domain/user_models.dart';
 import '../application/shell_navigation_controller.dart';
 
 class SynorAppShell extends ConsumerWidget {
@@ -39,6 +47,7 @@ class SynorAppShell extends ConsumerWidget {
       shellNavigationControllerProvider.notifier,
     );
     final router = ref.read(appRouteControllerProvider);
+    final currentUserAsync = ref.watch(currentUserControllerProvider);
     final lessonsAsync = ref.watch(lessonControllerProvider);
     final profileAsync = ref.watch(profileControllerProvider);
     final quickAlertsAsync = ref.watch(quickAlertPresetsProvider);
@@ -50,64 +59,81 @@ class SynorAppShell extends ConsumerWidget {
       router: router,
     );
 
+    ref.listen(currentUserControllerProvider, (_, next) {
+      next.whenData((user) {
+        if (user != null) {
+          navigationController.ensureLandingTabForUser(user);
+        }
+      });
+    });
+
     return Stack(
       children: [
         const Positioned.fill(child: SynorNoiseOverlay(opacity: 0.05)),
-        SynorAsyncStateView<List<Lesson>>(
-          value: lessonsAsync,
-          loadingTitle: 'Loading schedule',
-          loadingMessage: 'Preparing lessons and quick alerts...',
+        SynorAsyncStateView<SynorUser?>(
+          value: currentUserAsync,
+          loadingTitle: context.l10n.shell_loadingWorkspaceTitle,
+          loadingMessage: context.l10n.shell_loadingWorkspaceMessage,
           loadingBuilder: (_) => const SynorShellLoadingSkeleton(),
-          onRetry: () => ref.read(lessonControllerProvider.notifier).reload(),
-          data: (lessons) => SynorAsyncStateView<ProfileData>(
-            value: profileAsync,
-            loadingTitle: 'Loading profile',
-            loadingMessage: 'Preparing your student profile...',
+          onRetry: () =>
+              ref.read(currentUserControllerProvider.notifier).reload(),
+          data: (currentUser) => SynorAsyncStateView<List<Lesson>>(
+            value: lessonsAsync,
+            loadingTitle: context.l10n.shell_loadingScheduleTitle,
+            loadingMessage: context.l10n.shell_loadingScheduleMessage,
             loadingBuilder: (_) => const SynorShellLoadingSkeleton(),
-            onRetry: () =>
-                ref.read(profileControllerProvider.notifier).reload(),
-            data: (profile) => Stack(
-              children: [
-                AnimatedSwitcher(
-                  duration: SynorMotion.page,
-                  reverseDuration: SynorMotion.page,
-                  layoutBuilder: synorStackedLayoutBuilder(
-                    fit: StackFit.expand,
-                  ),
-                  transitionBuilder: synorFadeSlideTransitionBuilder(
-                    begin: const Offset(0, 0.018),
-                  ),
-                  child: _buildTabScreen(
-                    key: ValueKey(navigation.currentTab),
-                    context: context,
-                    navigation: navigation,
-                    lessons: lessons,
-                    profile: profile,
-                    ref: ref,
-                    router: router,
-                  ),
-                ),
-                Positioned.fill(
-                  child: IgnorePointer(
-                    ignoring: shellOverlay == null,
-                    child: AnimatedSwitcher(
-                      duration: SynorMotion.overlay,
-                      reverseDuration: SynorMotion.overlay,
-                      layoutBuilder: synorStackedLayoutBuilder(
-                        fit: StackFit.expand,
-                      ),
-                      transitionBuilder: synorFadeSlideTransitionBuilder(
-                        begin: const Offset(0.028, 0),
-                      ),
-                      child:
-                          shellOverlay ??
-                          const SizedBox.shrink(
-                            key: ValueKey('shell-overlay-none'),
-                          ),
+            onRetry: () => ref.read(lessonControllerProvider.notifier).reload(),
+            data: (lessons) => SynorAsyncStateView<ProfileData>(
+              value: profileAsync,
+              loadingTitle: context.l10n.shell_loadingProfileTitle,
+              loadingMessage: context.l10n.shell_loadingProfileMessage,
+              loadingBuilder: (_) => const SynorShellLoadingSkeleton(),
+              onRetry: () =>
+                  ref.read(profileControllerProvider.notifier).reload(),
+              data: (profile) => Stack(
+                children: [
+                  AnimatedSwitcher(
+                    duration: SynorMotion.page,
+                    reverseDuration: SynorMotion.page,
+                    layoutBuilder: synorStackedLayoutBuilder(
+                      fit: StackFit.expand,
+                    ),
+                    transitionBuilder: synorFadeSlideTransitionBuilder(
+                      begin: const Offset(0, 0.018),
+                    ),
+                    child: _buildTabScreen(
+                      key: ValueKey(navigation.currentTab),
+                      context: context,
+                      navigation: navigation,
+                      currentUser: currentUser,
+                      lessons: lessons,
+                      profile: profile,
+                      ref: ref,
+                      router: router,
                     ),
                   ),
-                ),
-              ],
+                  Positioned.fill(
+                    child: IgnorePointer(
+                      ignoring: shellOverlay == null,
+                      child: AnimatedSwitcher(
+                        duration: SynorMotion.overlay,
+                        reverseDuration: SynorMotion.overlay,
+                        layoutBuilder: synorStackedLayoutBuilder(
+                          fit: StackFit.expand,
+                        ),
+                        transitionBuilder: synorFadeSlideTransitionBuilder(
+                          begin: const Offset(0.028, 0),
+                        ),
+                        child:
+                            shellOverlay ??
+                            const SizedBox.shrink(
+                              key: ValueKey('shell-overlay-none'),
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -154,8 +180,9 @@ class SynorAppShell extends ConsumerWidget {
                   ? KeyedSubtree(
                       key: ValueKey('quick-alert-${navigation.alertTargetId}'),
                       child: _QuickAlertSheet(
-                        lesson: lessonsAsync.requireValue.firstWhere(
+                        lesson: lessonsAsync.value!.firstWhere(
                           (lesson) => lesson.id == navigation.alertTargetId,
+                          orElse: () => lessonsAsync.value!.first,
                         ),
                         presetsAsync: quickAlertsAsync,
                         onClose: navigationController.closeAlert,
@@ -191,21 +218,33 @@ class SynorAppShell extends ConsumerWidget {
     required WidgetRef ref,
     required ShellNavigationState navigation,
     required AppRouteController router,
+    required SynorUser? currentUser,
     required List<Lesson> lessons,
     required ProfileData profile,
   }) {
     return switch (navigation.currentTab) {
-      ShellTab.home => HomeScreen(
-        key: key,
-        lessons: lessons,
-        isDarkMode: isDarkMode,
-        onToggleTheme: onToggleTheme,
-        onOpenAlarm: router.goToAlarm,
-        onOpenMessages: router.goToMessages,
-        onAlertTap: ref
-            .read(shellNavigationControllerProvider.notifier)
-            .openAlert,
-      ),
+      ShellTab.home =>
+        currentUser != null && currentUser.isTeacher
+            ? TeacherDashboardScreen(
+                key: key,
+                user: currentUser,
+                lessons: lessons,
+                isDarkMode: isDarkMode,
+                onToggleTheme: onToggleTheme,
+                onOpenMessages: router.goToMessages,
+                onOpenAlarm: router.goToAlarm,
+              )
+            : HomeScreen(
+                key: key,
+                lessons: lessons,
+                isDarkMode: isDarkMode,
+                onToggleTheme: onToggleTheme,
+                onOpenAlarm: router.goToAlarm,
+                onOpenMessages: router.goToMessages,
+                onAlertTap: ref
+                    .read(shellNavigationControllerProvider.notifier)
+                    .openAlert,
+              ),
       ShellTab.schedule => ScheduleScreen(
         key: key,
         mode: navigation.scheduleMode,
@@ -240,6 +279,9 @@ class SynorAppShell extends ConsumerWidget {
               .read(profileControllerProvider.notifier)
               .updateCustomCover(imageBytes);
         },
+        onUpdateBio: (bio) {
+          ref.read(profileControllerProvider.notifier).updateBio(bio);
+        },
         onOpenMessages: router.goToMessages,
         showSettings: navigation.overlay == ShellOverlay.profileSettings,
         onOpenSettings: router.goToProfileSettings,
@@ -262,6 +304,32 @@ class SynorAppShell extends ConsumerWidget {
             ? SynorColors.appBlack
             : SynorColors.lightBackground,
         child: MessagesScreen(onBack: router.closeOverlay),
+      ),
+      ShellOverlay.chatRoom => Material(
+        key: key,
+        color: synorIsDark(context)
+            ? SynorColors.appBlack
+            : SynorColors.lightBackground,
+        child: ChatRoomScreen(
+          roomId: navigation.chatRoomId ?? '',
+          // We could fetch room name or pass it via navigation
+          roomName: 'Messages', 
+        ),
+      ),
+      ShellOverlay.attendance => Material(
+        key: key,
+        color: synorIsDark(context)
+            ? SynorColors.appBlack
+            : SynorColors.lightBackground,
+        child: AttendanceScreen(
+          lessonId: navigation.attendanceContext?.lessonId ?? 0,
+          groupId: navigation.attendanceContext?.groupId ?? 0,
+          lessonTitle: navigation.attendanceContext?.title ?? '',
+          onBack: router.closeAttendance,
+        ),
+      ),
+      ShellOverlay.search => GlobalSearchOverlay(
+        onClose: router.closeSearch,
       ),
       ShellOverlay.alarm => Material(
         key: key,
@@ -355,7 +423,7 @@ class _QuickAlertSheet extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Quick Alert',
+                              context.l10n.quickAlert_title,
                               style: TextStyle(
                                 color: synorPrimaryText(context),
                                 fontSize: 20,
@@ -364,7 +432,7 @@ class _QuickAlertSheet extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              lesson.title,
+                              context.l10n.lessonTitleLabel(lesson.title),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -378,7 +446,7 @@ class _QuickAlertSheet extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    'SMART SUGGESTIONS',
+                    context.l10n.quickAlert_suggestions.toUpperCase(),
                     style: TextStyle(
                       color: synorSecondaryText(context),
                       fontSize: 12,
@@ -415,7 +483,9 @@ class _QuickAlertSheet extends StatelessWidget {
                                     const SizedBox(width: 12),
                                     Expanded(
                                       child: Text(
-                                        preset.label,
+                                        context.l10n.quickAlertPresetLabel(
+                                          preset.label,
+                                        ),
                                         style: TextStyle(
                                           color: synorPrimaryText(context),
                                           fontWeight: FontWeight.w600,
@@ -448,7 +518,7 @@ class _QuickAlertSheet extends StatelessWidget {
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: Text(
-                          'Quick alerts are unavailable.',
+                          context.l10n.quickAlert_unavailable,
                           style: TextStyle(
                             color: synorSecondaryText(context),
                             fontWeight: FontWeight.w600,
@@ -458,7 +528,7 @@ class _QuickAlertSheet extends StatelessWidget {
                     ],
                   ),
                   PressableScale(
-                    onTap: () => onApply('45 min before'),
+                    onTap: () => onApply('quickAlert.preset.custom45Min'),
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -472,7 +542,7 @@ class _QuickAlertSheet extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Custom Time',
+                          context.l10n.quickAlert_customTime,
                           style: TextStyle(
                             color: synorSecondaryText(context),
                             fontWeight: FontWeight.w700,
@@ -496,7 +566,7 @@ class _QuickAlertSheet extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            'Remove Alert',
+                            context.l10n.quickAlert_remove,
                             style: TextStyle(
                               color: synorIsDark(context)
                                   ? SynorColors.rose400

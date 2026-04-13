@@ -14,15 +14,37 @@ class LocalRemindersRepository implements RemindersRepository {
   final SharedPreferences _preferences;
 
   static const _alarmConfigKey = 'reminders.alarm_configuration';
+  static const _savedAlarmsKey = 'reminders.saved_alarms';
 
   static const _presets = [
-    AlertPreset(label: '5 min before', kind: AlertPresetKind.relative),
-    AlertPreset(label: '10 min before', kind: AlertPresetKind.relative),
-    AlertPreset(label: '20 min before', kind: AlertPresetKind.relative),
-    AlertPreset(label: '30 min before', kind: AlertPresetKind.relative),
-    AlertPreset(label: '1 hour before', kind: AlertPresetKind.relative),
-    AlertPreset(label: 'Leave on time', kind: AlertPresetKind.commute),
-    AlertPreset(label: 'Wake up before class', kind: AlertPresetKind.wakeUp),
+    AlertPreset(
+      label: 'quickAlert.preset.5Min',
+      kind: AlertPresetKind.relative,
+    ),
+    AlertPreset(
+      label: 'quickAlert.preset.10Min',
+      kind: AlertPresetKind.relative,
+    ),
+    AlertPreset(
+      label: 'quickAlert.preset.20Min',
+      kind: AlertPresetKind.relative,
+    ),
+    AlertPreset(
+      label: 'quickAlert.preset.30Min',
+      kind: AlertPresetKind.relative,
+    ),
+    AlertPreset(
+      label: 'quickAlert.preset.1Hour',
+      kind: AlertPresetKind.relative,
+    ),
+    AlertPreset(
+      label: 'quickAlert.preset.leaveOnTime',
+      kind: AlertPresetKind.commute,
+    ),
+    AlertPreset(
+      label: 'quickAlert.preset.wakeUpBeforeClass',
+      kind: AlertPresetKind.wakeUp,
+    ),
   ];
 
   @override
@@ -38,7 +60,7 @@ class LocalRemindersRepository implements RemindersRepository {
     if (raw == null) {
       return const AlarmConfiguration(
         mode: AlarmMode.personal,
-        academicType: 'Wake up',
+        academicType: 'alarm.type.wakeUp',
         hours: 7,
         minutes: 30,
       );
@@ -48,7 +70,7 @@ class LocalRemindersRepository implements RemindersRepository {
       mode: json['mode'] == 'academic'
           ? AlarmMode.academic
           : AlarmMode.personal,
-      academicType: json['academicType'] as String? ?? 'Wake up',
+      academicType: json['academicType'] as String? ?? 'alarm.type.wakeUp',
       hours: json['hours'] as int? ?? 7,
       minutes: json['minutes'] as int? ?? 30,
     );
@@ -79,5 +101,23 @@ class LocalRemindersRepository implements RemindersRepository {
         minutes: draft.minutes,
       ),
     );
+  }
+
+  @override
+  List<SavedAlarm> fetchSavedAlarms() {
+    final raw = _preferences.getString(_savedAlarmsKey);
+    if (raw == null) {
+      return [];
+    }
+    final List<dynamic> list = jsonDecode(raw);
+    return list
+        .map((e) => SavedAlarm.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  @override
+  Future<void> saveSavedAlarms(List<SavedAlarm> alarms) async {
+    final raw = jsonEncode(alarms.map((e) => e.toJson()).toList());
+    await _preferences.setString(_savedAlarmsKey, raw);
   }
 }

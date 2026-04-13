@@ -1,5 +1,29 @@
 # Synor Migration Log
 
+## 2026-04-01
+- Completed the first production backend transition slice around Supabase authentication, role-aware sessions, and repository-backed lesson/material data.
+- Added Supabase bootstrap/config wiring in `lib/app/data/supabase_client_provider.dart` and `lib/main.dart`; runtime now reads `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and optional `SUPABASE_AUTH_CALLBACK_URL` from dart-defines.
+- Replaced the local auth implementation with `SupabaseAuthRepository` in `lib/features/auth/data/supabase_auth_repository.dart` and moved the app session to listen to real Supabase auth state changes.
+- Extended sign-up to capture role metadata (`student` / `teacher`) and routed successful auth back into Riverpod session state.
+- Added backend user domain/data/application layers under `lib/features/users` and moved current-user role/bootstrap logic into `currentUserControllerProvider`.
+- Added Supabase lesson access under `lib/features/lessons/data/supabase_lesson_repository.dart` with repository-level permission enforcement for student, teacher, and super-teacher behavior.
+- Added Supabase materials access under `lib/features/materials` with upload enforcement scoped to lessons managed by the current teacher or super teacher.
+- Added the teacher dashboard in `lib/features/teacher/presentation/teacher_dashboard_screen.dart`, including repository-backed lesson creation/editing through the existing Synor UI language.
+- Rebuilt the Schedule screen on real `DateTime` lesson data instead of the old static export assumptions.
+- Connected Study Hub to real materials data and added teacher material upload / student download behavior in `lib/features/studies/presentation/studies_screen.dart`.
+- Cleaned direct mock-data usage out of presentation by introducing repository/provider-backed content for Home stories/filters, Messages, and Profile cover templates.
+- Deleted the old shared `lib/shared/data/mock_data.dart` bundle and inlined legacy local constants into repository/data-layer classes where a backend slice does not exist yet.
+- Added Supabase schema, trigger, storage, and RLS definitions in `supabase/migrations/20260401_000001_synor_core.sql`.
+- Added environment/setup documentation in `docs/synor_supabase_setup.md`.
+- Stabilized the Riverpod test harness for the new backend-aware architecture with fake repositories in `test/test_helpers/synor_app_tester.dart`.
+- Updated runtime smoke tests to respect the new student-first landing behavior (Schedule first, Home on explicit tab switch).
+- Verified the backend transition slice with `flutter analyze` and `flutter test`.
+- Remaining backend limitations after this slice:
+  - Services still use a local repository and are not Supabase-backed yet.
+  - Reminders/quick-alert presets remain local and are not synced to backend storage.
+  - Messages content is repository-backed but still local, not yet connected to a real messaging backend.
+  - Home stories/feed chrome remain repository-backed local content because they are presentation chrome, not domain data.
+
 ## 2026-03-26
 - Added a shared skeleton loading system so async-backed screens no longer fall back to generic centered "Loading..." cards during normal bootstrap.
 - Introduced reusable shimmer/skeleton primitives in `lib/shared/widgets/skeleton.dart` and exported them through `lib/shared/widgets/synor_widgets.dart`.
@@ -194,3 +218,16 @@
 ## Fidelity Exceptions
 - The exported `graduation` cover image source returned `404` on 2026-03-25, so the Flutter app uses a visually similar local replacement.
 - Hover-only desktop affordances from the export are adapted for touch where necessary, most notably the Profile cover-edit action.
+
+## Localization
+- Added production `gen-l10n` setup with `flutter_localizations`, `intl`, `l10n.yaml`, and generated local imports from `lib/l10n/app_localizations.dart`.
+- Created and wired three ARB files: `lib/l10n/app_en.arb`, `lib/l10n/app_ru.arb`, and `lib/l10n/app_kk.arb`.
+- Localized 437 user-facing string keys from the English base ARB across English, Russian, and Kazakh.
+- `MaterialApp` now uses `AppLocalizations.delegate`, `GlobalMaterialLocalizations.delegate`, `GlobalWidgetsLocalizations.delegate`, `GlobalCupertinoLocalizations.delegate`, and the supported locales `en`, `ru`, and `kk`.
+- Locale state is now part of `AppSessionState` in `lib/app/application/app_session_controller.dart` and is persisted through `lib/app/data/local_app_preferences_repository.dart` under `app.locale_code`.
+- Added instant language switching in the Profile settings language picker inside `lib/features/profile/presentation/profile_screen.dart`.
+- Added localization helpers in `lib/l10n/app_localization_x.dart` so seeded lesson titles, messages, cover template names, request titles, request descriptions, alert presets, campuses, alarm types, and issue types resolve to localized labels instead of leaking raw internal values.
+- Replaced hardcoded UI display text across Auth, Home, Schedule, Studies, Services, Messages, Alarm, Teacher Dashboard, Profile, shared feedback, and shared tiles with `context.l10n...` accessors.
+- Normalized remaining internal runtime seeds away from visible English strings to stable ids for quick-alert presets, campus values, alarm academic types, services issue types, service success events, and service category/request titles where needed for scalable localization.
+- Final widget-text regex audit leaves only numeric values and stable internal ids in data/repository layers; no direct user-facing hardcoded display strings remain in the UI layer.
+- Verification completed with `flutter gen-l10n`, `dart format lib test`, `flutter analyze`, and `flutter test`.

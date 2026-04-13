@@ -1,11 +1,17 @@
 import 'auth_models.dart';
 
 abstract class AuthRepository {
-  Future<void> signIn(SignInDraft draft);
+  String? get currentUserId;
+
+  Stream<String?> authStateChanges();
+
+  Future<AuthSubmissionResult> signIn(SignInDraft draft);
 
   Future<void> signInWithGoogle();
 
   Future<void> sendRecoveryLink(String identity);
 
-  Future<void> completeSignUp(SignUpDraft draft);
+  Future<AuthSubmissionResult> completeSignUp(SignUpDraft draft);
+
+  Future<void> signOut();
 }

@@ -1,9 +1,10 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../features/auth/application/auth_controller.dart';
 import '../../features/services/application/services_controller.dart';
 import '../../features/shell/application/shell_navigation_controller.dart';
+import '../../l10n/l10n.dart';
 import '../../shared/models/app_models.dart';
 import '../application/app_session_controller.dart';
 import 'synor_routes.dart';
@@ -36,6 +37,9 @@ final synorRouteStateProvider = Provider<SynorRouteState>((ref) {
       .maybeWhen(data: (value) => value, orElse: () => null);
   final path = switch (shell.overlay) {
     ShellOverlay.messages => SynorRoutes.messages,
+    ShellOverlay.chatRoom => SynorRoutes.messages, // Same base path, overlay handles specifics
+    ShellOverlay.attendance => SynorRoutes.home, // Or appropriate fallback
+    ShellOverlay.search => SynorRoutes.home,
     ShellOverlay.alarm => SynorRoutes.alarm,
     ShellOverlay.profileSettings => SynorRoutes.profileSettings,
     ShellOverlay.none =>
@@ -75,16 +79,23 @@ class AppRouteController {
     ref.read(appSessionControllerProvider.notifier).openSignIn();
   }
 
-  void signOut() {
+  Future<void> signOut() async {
     ref.read(signInControllerProvider.notifier).reset();
     ref.read(signUpControllerProvider.notifier).reset();
     ref.read(shellNavigationControllerProvider.notifier).reset();
     ref.read(servicesControllerProvider.notifier).resetToMain();
-    ref.read(appSessionControllerProvider.notifier).signOut();
+    await ref.read(appSessionControllerProvider.notifier).signOut();
   }
 
   void toggleTheme() {
     ref.read(appSessionControllerProvider.notifier).toggleTheme();
+  }
+
+  void setLocale(Locale locale) {
+    if (!synorSupportedLocales.contains(locale)) {
+      return;
+    }
+    ref.read(appSessionControllerProvider.notifier).setLocale(locale);
   }
 
   void goToTab(ShellTab tab) {
@@ -103,6 +114,30 @@ class AppRouteController {
 
   void goToMessages() {
     ref.read(shellNavigationControllerProvider.notifier).openMessages();
+  }
+
+  void goToChatRoom(String roomId) {
+    ref.read(shellNavigationControllerProvider.notifier).openChatRoom(roomId);
+  }
+
+  void closeChatRoom() {
+    ref.read(shellNavigationControllerProvider.notifier).closeChatRoom();
+  }
+
+  void goToAttendance(int lessonId, int groupId, String title) {
+    ref.read(shellNavigationControllerProvider.notifier).openAttendance(lessonId, groupId, title);
+  }
+
+  void closeAttendance() {
+    ref.read(shellNavigationControllerProvider.notifier).closeAttendance();
+  }
+
+  void goToSearch() {
+    ref.read(shellNavigationControllerProvider.notifier).openSearch();
+  }
+
+  void closeSearch() {
+    ref.read(shellNavigationControllerProvider.notifier).closeSearch();
   }
 
   void goToAlarm() {

@@ -1,0 +1,1858 @@
+{
+    "@@locale":  "ru",
+    "app_name":  "Synor",
+    "@app_name":  {
+                      "description":  "Localized text for \u0027app_name\u0027."
+                  },
+    "branding_from":  "from",
+    "@branding_from":  {
+                           "description":  "Localized text for \u0027branding_from\u0027."
+                       },
+    "common_languageEnglish":  "English",
+    "@common_languageEnglish":  {
+                                    "description":  "Localized text for \u0027common_languageEnglish\u0027."
+                                },
+    "common_languageRussian":  "Русский",
+    "@common_languageRussian":  {
+                                    "description":  "Localized text for \u0027common_languageRussian\u0027."
+                                },
+    "common_languageKazakh":  "Қазақша",
+    "@common_languageKazakh":  {
+                                   "description":  "Localized text for \u0027common_languageKazakh\u0027."
+                               },
+    "schedule_weekLessonCount":  "{count, plural, one{# урок} few{# урока} many{# уроков} other{# урока}}",
+    "@schedule_weekLessonCount":  {
+                                      "placeholders":  {
+                                                           "count":  {
+                                                                         "type":  "int"
+                                                                     }
+                                                       },
+                                      "description":  "Localized text for \u0027schedule_weekLessonCount\u0027."
+                                  },
+    "common_skip":  "Пропустить",
+    "@common_skip":  {
+                         "description":  "Localized text for \u0027common_skip\u0027."
+                     },
+    "common_continue":  "Продолжить",
+    "@common_continue":  {
+                             "description":  "Localized text for \u0027common_continue\u0027."
+                         },
+    "common_getStarted":  "Начать",
+    "@common_getStarted":  {
+                               "description":  "Localized text for \u0027common_getStarted\u0027."
+                           },
+    "common_or":  "или",
+    "@common_or":  {
+                       "description":  "Localized text for \u0027common_or\u0027."
+                   },
+    "common_close":  "Закрыть",
+    "@common_close":  {
+                          "description":  "Localized text for \u0027common_close\u0027."
+                      },
+    "common_upload":  "Загрузить",
+    "@common_upload":  {
+                           "description":  "Localized text for \u0027common_upload\u0027."
+                       },
+    "common_viewAll":  "Посмотреть все",
+    "@common_viewAll":  {
+                            "description":  "Localized text for \u0027common_viewAll\u0027."
+                        },
+    "common_tryAgain":  "Попробуйте еще раз",
+    "@common_tryAgain":  {
+                             "description":  "Localized text for \u0027common_tryAgain\u0027."
+                         },
+    "common_success":  "Успех",
+    "@common_success":  {
+                            "description":  "Localized text for \u0027common_success\u0027."
+                        },
+    "auth_onboardingTitle1":  "Твоя академическая жизнь наконец-то организована.",
+    "@auth_onboardingTitle1":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle1\u0027."
+                               },
+    "auth_onboardingSubtitle1":  "Synor хранит ваше расписание, задачи, напоминания и ход обучения в одном месте.",
+    "@auth_onboardingSubtitle1":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle1\u0027."
+                                  },
+    "auth_onboardingTitle2":  "Расписание, учеба и рутина — в одном потоке.",
+    "@auth_onboardingTitle2":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle2\u0027."
+                               },
+    "auth_onboardingSubtitle2":  "Все, что вам нужно для успеха, легко интегрировано.",
+    "@auth_onboardingSubtitle2":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle2\u0027."
+                                  },
+    "auth_onboardingTitle3":  "Меньше хаоса. Больше контроля.",
+    "@auth_onboardingTitle3":  {
+                                   "description":  "Localized text for \u0027auth_onboardingTitle3\u0027."
+                               },
+    "auth_onboardingSubtitle3":  "Сосредоточьтесь на том, что важно. Мы позаботимся обо всем остальном.",
+    "@auth_onboardingSubtitle3":  {
+                                      "description":  "Localized text for \u0027auth_onboardingSubtitle3\u0027."
+                                  },
+    "auth_welcomeBack":  "С возвращением",
+    "@auth_welcomeBack":  {
+                              "description":  "Localized text for \u0027auth_welcomeBack\u0027."
+                          },
+    "auth_signInSubtitle":  "Войдите в систему, чтобы получить доступ к своему расписанию, учебному центру и умному распорядку дня.",
+    "@auth_signInSubtitle":  {
+                                 "description":  "Localized text for \u0027auth_signInSubtitle\u0027."
+                             },
+    "auth_studentIdOrEmail":  "Студенческий билет / адрес электронной почты",
+    "@auth_studentIdOrEmail":  {
+                                   "description":  "Localized text for \u0027auth_studentIdOrEmail\u0027."
+                               },
+    "auth_password":  "Пароль",
+    "@auth_password":  {
+                           "description":  "Localized text for \u0027auth_password\u0027."
+                       },
+    "auth_forgotPassword":  "Забыли пароль?",
+    "@auth_forgotPassword":  {
+                                 "description":  "Localized text for \u0027auth_forgotPassword\u0027."
+                             },
+    "auth_signingIn":  "Вход в систему...",
+    "@auth_signingIn":  {
+                            "description":  "Localized text for \u0027auth_signingIn\u0027."
+                        },
+    "auth_signIn":  "Войти",
+    "@auth_signIn":  {
+                         "description":  "Localized text for \u0027auth_signIn\u0027."
+                     },
+    "auth_connecting":  "Подключение...",
+    "@auth_connecting":  {
+                             "description":  "Localized text for \u0027auth_connecting\u0027."
+                         },
+    "auth_continueWithGoogle":  "Продолжить с Google",
+    "@auth_continueWithGoogle":  {
+                                     "description":  "Localized text for \u0027auth_continueWithGoogle\u0027."
+                                 },
+    "auth_newHere":  "Впервые здесь?",
+    "@auth_newHere":  {
+                          "description":  "Localized text for \u0027auth_newHere\u0027."
+                      },
+    "auth_createAccount":  "Создать учетную запись",
+    "@auth_createAccount":  {
+                                "description":  "Localized text for \u0027auth_createAccount\u0027."
+                            },
+    "auth_createAccountTitle":  "Создайте свою учетную запись",
+    "@auth_createAccountTitle":  {
+                                     "description":  "Localized text for \u0027auth_createAccountTitle\u0027."
+                                 },
+    "auth_identitySubtitle":  "Начнем с вашей основной личности.",
+    "@auth_identitySubtitle":  {
+                                   "description":  "Localized text for \u0027auth_identitySubtitle\u0027."
+                               },
+    "auth_roleStudent":  "Студент",
+    "@auth_roleStudent":  {
+                              "description":  "Localized text for \u0027auth_roleStudent\u0027."
+                          },
+    "auth_roleTeacher":  "Учитель",
+    "@auth_roleTeacher":  {
+                              "description":  "Localized text for \u0027auth_roleTeacher\u0027."
+                          },
+    "auth_fullName":  "Полное имя",
+    "@auth_fullName":  {
+                           "description":  "Localized text for \u0027auth_fullName\u0027."
+                       },
+    "auth_emailAddress":  "Адрес электронной почты",
+    "@auth_emailAddress":  {
+                               "description":  "Localized text for \u0027auth_emailAddress\u0027."
+                           },
+    "auth_createPassword":  "Создать пароль",
+    "@auth_createPassword":  {
+                                 "description":  "Localized text for \u0027auth_createPassword\u0027."
+                             },
+    "auth_academicSetupTitle":  "Академическая установка",
+    "@auth_academicSetupTitle":  {
+                                     "description":  "Localized text for \u0027auth_academicSetupTitle\u0027."
+                                 },
+    "auth_teachingSetupTitle":  "Учебная установка",
+    "@auth_teachingSetupTitle":  {
+                                     "description":  "Localized text for \u0027auth_teachingSetupTitle\u0027."
+                                 },
+    "auth_academicSetupSubtitle":  "Расскажите, где и чему вы учитесь.",
+    "@auth_academicSetupSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_academicSetupSubtitle\u0027."
+                                    },
+    "auth_teachingSetupSubtitle":  "Расскажите, где вы преподаете и какой группой руководите.",
+    "@auth_teachingSetupSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_teachingSetupSubtitle\u0027."
+                                    },
+    "auth_university":  "Университет",
+    "@auth_university":  {
+                             "description":  "Localized text for \u0027auth_university\u0027."
+                         },
+    "auth_facultyDepartment":  "Факультет / Кафедра",
+    "@auth_facultyDepartment":  {
+                                    "description":  "Localized text for \u0027auth_facultyDepartment\u0027."
+                                },
+    "auth_courseYear":  "Год курса",
+    "@auth_courseYear":  {
+                             "description":  "Localized text for \u0027auth_courseYear\u0027."
+                         },
+    "auth_group":  "Группа",
+    "@auth_group":  {
+                        "description":  "Localized text for \u0027auth_group\u0027."
+                    },
+    "auth_primaryGroup":  "Основная группа",
+    "@auth_primaryGroup":  {
+                               "description":  "Localized text for \u0027auth_primaryGroup\u0027."
+                           },
+    "auth_personalizeTitle":  "Персонализируйте свой поток",
+    "@auth_personalizeTitle":  {
+                                   "description":  "Localized text for \u0027auth_personalizeTitle\u0027."
+                               },
+    "auth_personalizeSubtitle":  "Это помогает Synor персонализировать ваше расписание, напоминания и учебу.",
+    "@auth_personalizeSubtitle":  {
+                                      "description":  "Localized text for \u0027auth_personalizeSubtitle\u0027."
+                                  },
+    "auth_campusPreferences":  "Настройки кампуса",
+    "@auth_campusPreferences":  {
+                                    "description":  "Localized text for \u0027auth_campusPreferences\u0027."
+                                },
+    "auth_studyMode":  "Режим обучения",
+    "@auth_studyMode":  {
+                            "description":  "Localized text for \u0027auth_studyMode\u0027."
+                        },
+    "auth_studyModeDeepFocus":  "Глубокий фокус",
+    "@auth_studyModeDeepFocus":  {
+                                     "description":  "Localized text for \u0027auth_studyModeDeepFocus\u0027."
+                                 },
+    "auth_studyModeFlexible":  "Гибкий",
+    "@auth_studyModeFlexible":  {
+                                    "description":  "Localized text for \u0027auth_studyModeFlexible\u0027."
+                                },
+    "auth_smartFeaturesTitle":  "Включите умные функции",
+    "@auth_smartFeaturesTitle":  {
+                                     "description":  "Localized text for \u0027auth_smartFeaturesTitle\u0027."
+                                 },
+    "auth_smartFeaturesSubtitle":  "Включите их, чтобы получить все возможности Synor.",
+    "@auth_smartFeaturesSubtitle":  {
+                                        "description":  "Localized text for \u0027auth_smartFeaturesSubtitle\u0027."
+                                    },
+    "auth_smartNotifications":  "Умные уведомления",
+    "@auth_smartNotifications":  {
+                                     "description":  "Localized text for \u0027auth_smartNotifications\u0027."
+                                 },
+    "auth_smartNotificationsSubtitle":  "Получайте оповещения о занятиях и задачах",
+    "@auth_smartNotificationsSubtitle":  {
+                                             "description":  "Localized text for \u0027auth_smartNotificationsSubtitle\u0027."
+                                         },
+    "auth_calendarSync":  "Синхронизация календаря",
+    "@auth_calendarSync":  {
+                               "description":  "Localized text for \u0027auth_calendarSync\u0027."
+                           },
+    "auth_calendarSyncSubtitle":  "Подключите свой личный календарь",
+    "@auth_calendarSyncSubtitle":  {
+                                       "description":  "Localized text for \u0027auth_calendarSyncSubtitle\u0027."
+                                   },
+    "auth_completing":  "Завершение...",
+    "@auth_completing":  {
+                             "description":  "Localized text for \u0027auth_completing\u0027."
+                         },
+    "auth_completeSetup":  "Полная установка",
+    "@auth_completeSetup":  {
+                                "description":  "Localized text for \u0027auth_completeSetup\u0027."
+                            },
+    "auth_validationEnterStudentEmailOrId":  "Введите адрес электронной почты или идентификатор вашего студента.",
+    "@auth_validationEnterStudentEmailOrId":  {
+                                                  "description":  "Localized text for \u0027auth_validationEnterStudentEmailOrId\u0027."
+                                              },
+    "auth_validationValidEmail":  "Введите действительный адрес электронной почты.",
+    "@auth_validationValidEmail":  {
+                                       "description":  "Localized text for \u0027auth_validationValidEmail\u0027."
+                                   },
+    "auth_validationEnterPassword":  "Введите свой пароль.",
+    "@auth_validationEnterPassword":  {
+                                          "description":  "Localized text for \u0027auth_validationEnterPassword\u0027."
+                                      },
+    "auth_validationPasswordLength":  "Пароль должен быть не менее 6 символов.",
+    "@auth_validationPasswordLength":  {
+                                           "description":  "Localized text for \u0027auth_validationPasswordLength\u0027."
+                                       },
+    "auth_errorRestoreSession":  "Невозможно восстановить сеанс. Пожалуйста, попробуйте еще раз.",
+    "@auth_errorRestoreSession":  {
+                                      "description":  "Localized text for \u0027auth_errorRestoreSession\u0027."
+                                  },
+    "auth_errorSignInFailed":  "Войти не удалось. Пожалуйста, проверьте свои учетные данные.",
+    "@auth_errorSignInFailed":  {
+                                    "description":  "Localized text for \u0027auth_errorSignInFailed\u0027."
+                                },
+    "auth_errorGoogleUnavailable":  "Вход в Google сейчас недоступен.",
+    "@auth_errorGoogleUnavailable":  {
+                                         "description":  "Localized text for \u0027auth_errorGoogleUnavailable\u0027."
+                                     },
+    "auth_errorEnterEmailRecovery":  "Сначала введите свой адрес электронной почты, чтобы восстановить доступ.",
+    "@auth_errorEnterEmailRecovery":  {
+                                          "description":  "Localized text for \u0027auth_errorEnterEmailRecovery\u0027."
+                                      },
+    "auth_errorSignUpVerification":  "Аккаунт создан. Проверьте {email}, чтобы подтвердить свой адрес электронной почты, а затем войдите в систему.",
+    "@auth_errorSignUpVerification":  {
+                                          "placeholders":  {
+                                                               "email":  {
+                                                                             "type":  "String"
+                                                                         }
+                                                           },
+                                          "description":  "Localized text for \u0027auth_errorSignUpVerification\u0027."
+                                      },
+    "auth_errorSignUpSessionNotReady":  "Аккаунт создан, но сессия еще не готова. Пожалуйста, войдите в систему.",
+    "@auth_errorSignUpSessionNotReady":  {
+                                             "description":  "Localized text for \u0027auth_errorSignUpSessionNotReady\u0027."
+                                         },
+    "auth_errorSignUpFailed":  "Не удалось завершить регистрацию. Пожалуйста, попробуйте еще раз.",
+    "@auth_errorSignUpFailed":  {
+                                    "description":  "Localized text for \u0027auth_errorSignUpFailed\u0027."
+                                },
+    "auth_signInFailedTitle":  "Войти не удалось",
+    "@auth_signInFailedTitle":  {
+                                    "description":  "Localized text for \u0027auth_signInFailedTitle\u0027."
+                                },
+    "auth_googleUnavailableTitle":  "Вход в Google недоступен",
+    "@auth_googleUnavailableTitle":  {
+                                         "description":  "Localized text for \u0027auth_googleUnavailableTitle\u0027."
+                                     },
+    "auth_recoveryLinkSentTitle":  "Ссылка для восстановления отправлена",
+    "@auth_recoveryLinkSentTitle":  {
+                                        "description":  "Localized text for \u0027auth_recoveryLinkSentTitle\u0027."
+                                    },
+    "auth_signUpCompleteTitle":  "Регистрация завершена",
+    "@auth_signUpCompleteTitle":  {
+                                      "description":  "Localized text for \u0027auth_signUpCompleteTitle\u0027."
+                                  },
+    "auth_signUpFailedTitle":  "Зарегистрироваться не удалось",
+    "@auth_signUpFailedTitle":  {
+                                    "description":  "Localized text for \u0027auth_signUpFailedTitle\u0027."
+                                },
+    "auth_campusMainBuilding":  "Главное здание",
+    "@auth_campusMainBuilding":  {
+                                     "description":  "Localized text for \u0027auth_campusMainBuilding\u0027."
+                                 },
+    "auth_campusSouthCampus":  "Южный кампус",
+    "@auth_campusSouthCampus":  {
+                                    "description":  "Localized text for \u0027auth_campusSouthCampus\u0027."
+                                },
+    "auth_campusRemoteStudy":  "Дистанционное обучение",
+    "@auth_campusRemoteStudy":  {
+                                    "description":  "Localized text for \u0027auth_campusRemoteStudy\u0027."
+                                },
+    "home_searchPlaceholder":  "Искать...",
+    "@home_searchPlaceholder":  {
+                                    "description":  "Localized text for \u0027home_searchPlaceholder\u0027."
+                                },
+    "home_filterLessons":  "уроки",
+    "@home_filterLessons":  {
+                                "description":  "Localized text for \u0027home_filterLessons\u0027."
+                            },
+    "home_filterAll":  "все",
+    "@home_filterAll":  {
+                            "description":  "Localized text for \u0027home_filterAll\u0027."
+                        },
+    "home_filterMissed":  "пропустил",
+    "@home_filterMissed":  {
+                               "description":  "Localized text for \u0027home_filterMissed\u0027."
+                           },
+    "home_filterTomorrow":  "завтра",
+    "@home_filterTomorrow":  {
+                                 "description":  "Localized text for \u0027home_filterTomorrow\u0027."
+                             },
+    "home_emptyTitle":  "Нечего показывать",
+    "@home_emptyTitle":  {
+                             "description":  "Localized text for \u0027home_emptyTitle\u0027."
+                         },
+    "home_emptySearchMessage":  "В текущем фильтре нет уроков, соответствующих «{query}».",
+    "@home_emptySearchMessage":  {
+                                     "placeholders":  {
+                                                          "query":  {
+                                                                        "type":  "String"
+                                                                    }
+                                                      },
+                                     "description":  "Localized text for \u0027home_emptySearchMessage\u0027."
+                                 },
+    "home_emptyMissedMessage":  "На данный момент нет пропущенных или незавершенных уроков.",
+    "@home_emptyMissedMessage":  {
+                                     "description":  "Localized text for \u0027home_emptyMissedMessage\u0027."
+                                 },
+    "home_emptyTomorrowMessage":  "Завтрашний день пока выглядит ясным.",
+    "@home_emptyTomorrowMessage":  {
+                                       "description":  "Localized text for \u0027home_emptyTomorrowMessage\u0027."
+                                   },
+    "home_emptyDefaultMessage":  "В этом представлении нет доступных уроков.",
+    "@home_emptyDefaultMessage":  {
+                                      "description":  "Localized text for \u0027home_emptyDefaultMessage\u0027."
+                                  },
+    "home_addStoryLabel":  "Ваши истории",
+    "@home_addStoryLabel":  {
+                                "description":  "Localized text for \u0027home_addStoryLabel\u0027."
+                            },
+    "home_lightMode":  "Светлый режим",
+    "@home_lightMode":  {
+                            "description":  "Localized text for \u0027home_lightMode\u0027."
+                        },
+    "home_darkMode":  "Темный режим",
+    "@home_darkMode":  {
+                           "description":  "Localized text for \u0027home_darkMode\u0027."
+                       },
+    "lesson_actionAlert":  "Оповещение",
+    "@lesson_actionAlert":  {
+                                "description":  "Localized text for \u0027lesson_actionAlert\u0027."
+                            },
+    "lesson_actionNotes":  "Примечания",
+    "@lesson_actionNotes":  {
+                                "description":  "Localized text for \u0027lesson_actionNotes\u0027."
+                            },
+    "lesson_actionMore":  "Подробнее",
+    "@lesson_actionMore":  {
+                               "description":  "Localized text for \u0027lesson_actionMore\u0027."
+                           },
+    "lesson_inProgress":  "В процессе",
+    "@lesson_inProgress":  {
+                               "description":  "Localized text for \u0027lesson_inProgress\u0027."
+                           },
+    "lesson_notesUnavailableTitle":  "Конспекты уроков еще не прикреплены.",
+    "@lesson_notesUnavailableTitle":  {
+                                          "description":  "Localized text for \u0027lesson_notesUnavailableTitle\u0027."
+                                      },
+    "lesson_notesUnavailableSubtitle":  "Проведите пальцем по экрану, чтобы просмотреть оповещения, или откройте Study Hub для получения материалов.",
+    "@lesson_notesUnavailableSubtitle":  {
+                                             "description":  "Localized text for \u0027lesson_notesUnavailableSubtitle\u0027."
+                                         },
+    "lesson_moreUnavailableTitle":  "На следующем этапе появятся дополнительные действия урока.",
+    "@lesson_moreUnavailableTitle":  {
+                                         "description":  "Localized text for \u0027lesson_moreUnavailableTitle\u0027."
+                                     },
+    "lesson_moreUnavailableSubtitle":  "Текущая доработка производства сосредоточена на оповещениях и планировании.",
+    "@lesson_moreUnavailableSubtitle":  {
+                                            "description":  "Localized text for \u0027lesson_moreUnavailableSubtitle\u0027."
+                                        },
+    "messages_title":  "Сообщения",
+    "@messages_title":  {
+                            "description":  "Localized text for \u0027messages_title\u0027."
+                        },
+    "messages_loadingTitle":  "Загрузка сообщений",
+    "@messages_loadingTitle":  {
+                                   "description":  "Localized text for \u0027messages_loadingTitle\u0027."
+                               },
+    "messages_loadingMessage":  "Подготовка последних разговоров...",
+    "@messages_loadingMessage":  {
+                                     "description":  "Localized text for \u0027messages_loadingMessage\u0027."
+                                 },
+    "schedule_title":  "Расписание",
+    "@schedule_title":  {
+                            "description":  "Localized text for \u0027schedule_title\u0027."
+                        },
+    "schedule_searchPlaceholder":  "Поиск уроков или событий",
+    "@schedule_searchPlaceholder":  {
+                                        "description":  "Localized text for \u0027schedule_searchPlaceholder\u0027."
+                                    },
+    "schedule_modeDay":  "День",
+    "@schedule_modeDay":  {
+                              "description":  "Localized text for \u0027schedule_modeDay\u0027."
+                          },
+    "schedule_modeWeek":  "неделя",
+    "@schedule_modeWeek":  {
+                               "description":  "Localized text for \u0027schedule_modeWeek\u0027."
+                           },
+    "schedule_modeMonth":  "Месяц",
+    "@schedule_modeMonth":  {
+                                "description":  "Localized text for \u0027schedule_modeMonth\u0027."
+                            },
+    "schedule_noLessonsTitle":  "Уроков не запланировано",
+    "@schedule_noLessonsTitle":  {
+                                     "description":  "Localized text for \u0027schedule_noLessonsTitle\u0027."
+                                 },
+    "schedule_noLessonsMessage":  "Этот день ясен в вашем текущем расписании.",
+    "@schedule_noLessonsMessage":  {
+                                       "description":  "Localized text for \u0027schedule_noLessonsMessage\u0027."
+                                   },
+    "schedule_noLessonsForDay":  "На этот день уроков не запланировано.",
+    "@schedule_noLessonsForDay":  {
+                                      "description":  "Localized text for \u0027schedule_noLessonsForDay\u0027."
+                                  },
+    "schedule_upcoming":  "Предстоящие",
+    "@schedule_upcoming":  {
+                               "description":  "Localized text for \u0027schedule_upcoming\u0027."
+                           },
+    "schedule_noMonthEvents":  "На этот месяц мероприятий не запланировано.",
+    "@schedule_noMonthEvents":  {
+                                    "description":  "Localized text for \u0027schedule_noMonthEvents\u0027."
+                                },
+    "teacher_dashboardTitle":  "Панель учителя",
+    "@teacher_dashboardTitle":  {
+                                    "description":  "Localized text for \u0027teacher_dashboardTitle\u0027."
+                                },
+    "teacher_teachingSpace":  "Ваше учебное пространство",
+    "@teacher_teachingSpace":  {
+                                   "description":  "Localized text for \u0027teacher_teachingSpace\u0027."
+                               },
+    "teacher_superAccess":  "Супер Доступ",
+    "@teacher_superAccess":  {
+                                 "description":  "Localized text for \u0027teacher_superAccess\u0027."
+                             },
+    "teacher_teacher":  "Учитель",
+    "@teacher_teacher":  {
+                             "description":  "Localized text for \u0027teacher_teacher\u0027."
+                         },
+    "teacher_upcomingLessons":  "Предстоящие уроки",
+    "@teacher_upcomingLessons":  {
+                                     "description":  "Localized text for \u0027teacher_upcomingLessons\u0027."
+                                 },
+    "teacher_materials":  "Материалы",
+    "@teacher_materials":  {
+                               "description":  "Localized text for \u0027teacher_materials\u0027."
+                           },
+    "teacher_createLesson":  "Создать урок",
+    "@teacher_createLesson":  {
+                                  "description":  "Localized text for \u0027teacher_createLesson\u0027."
+                              },
+    "teacher_managedSchedule":  "Управляемый график",
+    "@teacher_managedSchedule":  {
+                                     "description":  "Localized text for \u0027teacher_managedSchedule\u0027."
+                                 },
+    "teacher_noLessonsTitle":  "Уроков пока нет",
+    "@teacher_noLessonsTitle":  {
+                                    "description":  "Localized text for \u0027teacher_noLessonsTitle\u0027."
+                                },
+    "teacher_noLessonsMessage":  "Создайте свой первый урок, чтобы начать заполнять расписание.",
+    "@teacher_noLessonsMessage":  {
+                                      "description":  "Localized text for \u0027teacher_noLessonsMessage\u0027."
+                                  },
+    "teacher_incompleteLessonTitle":  "Подробности урока неполные.",
+    "@teacher_incompleteLessonTitle":  {
+                                           "description":  "Localized text for \u0027teacher_incompleteLessonTitle\u0027."
+                                       },
+    "teacher_incompleteLessonSubtitle":  "Установите тему, комнату, группу и действительный временной диапазон.",
+    "@teacher_incompleteLessonSubtitle":  {
+                                              "description":  "Localized text for \u0027teacher_incompleteLessonSubtitle\u0027."
+                                          },
+    "teacher_lessonCreated":  "Урок создан",
+    "@teacher_lessonCreated":  {
+                                   "description":  "Localized text for \u0027teacher_lessonCreated\u0027."
+                               },
+    "teacher_lessonUpdated":  "Урок обновлен",
+    "@teacher_lessonUpdated":  {
+                                   "description":  "Localized text for \u0027teacher_lessonUpdated\u0027."
+                               },
+    "teacher_lessonSaveFailed":  "Не удалось сохранить урок",
+    "@teacher_lessonSaveFailed":  {
+                                      "description":  "Localized text for \u0027teacher_lessonSaveFailed\u0027."
+                                  },
+    "teacher_createLessonTitle":  "Создать урок",
+    "@teacher_createLessonTitle":  {
+                                       "description":  "Localized text for \u0027teacher_createLessonTitle\u0027."
+                                   },
+    "teacher_editLessonTitle":  "Редактировать урок",
+    "@teacher_editLessonTitle":  {
+                                     "description":  "Localized text for \u0027teacher_editLessonTitle\u0027."
+                                 },
+    "teacher_subjectHint":  "Тема",
+    "@teacher_subjectHint":  {
+                                 "description":  "Localized text for \u0027teacher_subjectHint\u0027."
+                             },
+    "teacher_roomHint":  "Комната",
+    "@teacher_roomHint":  {
+                              "description":  "Localized text for \u0027teacher_roomHint\u0027."
+                          },
+    "teacher_selectGroup":  "Выберите группу",
+    "@teacher_selectGroup":  {
+                                 "description":  "Localized text for \u0027teacher_selectGroup\u0027."
+                             },
+    "teacher_start":  "Старт",
+    "@teacher_start":  {
+                           "description":  "Localized text for \u0027teacher_start\u0027."
+                       },
+    "teacher_end":  "Конец",
+    "@teacher_end":  {
+                         "description":  "Localized text for \u0027teacher_end\u0027."
+                     },
+    "teacher_saving":  "Сохранение...",
+    "@teacher_saving":  {
+                            "description":  "Localized text for \u0027teacher_saving\u0027."
+                        },
+    "teacher_saveLesson":  "Сохранить урок",
+    "@teacher_saveLesson":  {
+                                "description":  "Localized text for \u0027teacher_saveLesson\u0027."
+                            },
+    "services_title":  "Услуги",
+    "@services_title":  {
+                            "description":  "Localized text for \u0027services_title\u0027."
+                        },
+    "services_searchPlaceholder":  "Поисковые сервисы...",
+    "@services_searchPlaceholder":  {
+                                        "description":  "Localized text for \u0027services_searchPlaceholder\u0027."
+                                    },
+    "services_noResults":  "Не найдено ни одной службы, соответствующей \"{query}\"",
+    "@services_noResults":  {
+                                "placeholders":  {
+                                                     "query":  {
+                                                                   "type":  "String"
+                                                               }
+                                                 },
+                                "description":  "Localized text for \u0027services_noResults\u0027."
+                            },
+    "services_recentRequests":  "Недавние запросы",
+    "@services_recentRequests":  {
+                                     "description":  "Localized text for \u0027services_recentRequests\u0027."
+                                 },
+    "services_availableToRequest":  "Доступно по запросу",
+    "@services_availableToRequest":  {
+                                         "description":  "Localized text for \u0027services_availableToRequest\u0027."
+                                     },
+    "services_documents":  "Документы",
+    "@services_documents":  {
+                                "description":  "Localized text for \u0027services_documents\u0027."
+                            },
+    "services_documentsSubtitle":  "Сертификаты и ссылки",
+    "@services_documentsSubtitle":  {
+                                        "description":  "Localized text for \u0027services_documentsSubtitle\u0027."
+                                    },
+    "services_payments":  "Платежи",
+    "@services_payments":  {
+                               "description":  "Localized text for \u0027services_payments\u0027."
+                           },
+    "services_paymentsSubtitle":  "Стоимость обучения и общежития",
+    "@services_paymentsSubtitle":  {
+                                       "description":  "Localized text for \u0027services_paymentsSubtitle\u0027."
+                                   },
+    "services_housing":  "Жилье",
+    "@services_housing":  {
+                              "description":  "Localized text for \u0027services_housing\u0027."
+                          },
+    "services_housingSubtitle":  "Запросы на общежитие",
+    "@services_housingSubtitle":  {
+                                      "description":  "Localized text for \u0027services_housingSubtitle\u0027."
+                                  },
+    "services_support":  "Поддержка",
+    "@services_support":  {
+                              "description":  "Localized text for \u0027services_support\u0027."
+                          },
+    "services_supportSubtitle":  "ИТ и академическая помощь",
+    "@services_supportSubtitle":  {
+                                      "description":  "Localized text for \u0027services_supportSubtitle\u0027."
+                                  },
+    "services_documentEnrollmentCertificate":  "Свидетельство о регистрации",
+    "@services_documentEnrollmentCertificate":  {
+                                                    "description":  "Localized text for \u0027services_documentEnrollmentCertificate\u0027."
+                                                },
+    "services_documentEnrollmentCertificateSubtitle":  "Подтверждение статуса студента",
+    "@services_documentEnrollmentCertificateSubtitle":  {
+                                                            "description":  "Localized text for \u0027services_documentEnrollmentCertificateSubtitle\u0027."
+                                                        },
+    "services_documentOfficialTranscript":  "Официальная стенограмма",
+    "@services_documentOfficialTranscript":  {
+                                                 "description":  "Localized text for \u0027services_documentOfficialTranscript\u0027."
+                                             },
+    "services_documentOfficialTranscriptSubtitle":  "Академическая справка с оценками",
+    "@services_documentOfficialTranscriptSubtitle":  {
+                                                         "description":  "Localized text for \u0027services_documentOfficialTranscriptSubtitle\u0027."
+                                                     },
+    "services_documentMilitaryDeferment":  "Военная отсрочка",
+    "@services_documentMilitaryDeferment":  {
+                                                "description":  "Localized text for \u0027services_documentMilitaryDeferment\u0027."
+                                            },
+    "services_documentMilitaryDefermentSubtitle":  "За освобождение от военной службы",
+    "@services_documentMilitaryDefermentSubtitle":  {
+                                                        "description":  "Localized text for \u0027services_documentMilitaryDefermentSubtitle\u0027."
+                                                    },
+    "services_currentBalance":  "Текущий баланс",
+    "@services_currentBalance":  {
+                                     "description":  "Localized text for \u0027services_currentBalance\u0027."
+                                 },
+    "services_allFeesPaid":  "Все комиссии оплачены",
+    "@services_allFeesPaid":  {
+                                  "description":  "Localized text for \u0027services_allFeesPaid\u0027."
+                              },
+    "services_upcomingFees":  "Предстоящие сборы",
+    "@services_upcomingFees":  {
+                                   "description":  "Localized text for \u0027services_upcomingFees\u0027."
+                               },
+    "services_springSemester2026":  "Весенний семестр 2026 г.",
+    "@services_springSemester2026":  {
+                                         "description":  "Localized text for \u0027services_springSemester2026\u0027."
+                                     },
+    "services_tuitionFee":  "Стоимость обучения",
+    "@services_tuitionFee":  {
+                                 "description":  "Localized text for \u0027services_tuitionFee\u0027."
+                             },
+    "services_dueIn45Days":  "Срок погашения через 45 дней (10 мая 2026 г.)",
+    "@services_dueIn45Days":  {
+                                  "description":  "Localized text for \u0027services_dueIn45Days\u0027."
+                              },
+    "services_payNow":  "Оплатить сейчас",
+    "@services_payNow":  {
+                             "description":  "Localized text for \u0027services_payNow\u0027."
+                         },
+    "services_dormitoryTitle":  "Общежитие №3",
+    "@services_dormitoryTitle":  {
+                                     "description":  "Localized text for \u0027services_dormitoryTitle\u0027."
+                                 },
+    "services_dormitoryRoom":  "Комната 412 • 4 этаж",
+    "@services_dormitoryRoom":  {
+                                    "description":  "Localized text for \u0027services_dormitoryRoom\u0027."
+                                },
+    "services_maintenanceRequest":  "Запрос на техническое обслуживание",
+    "@services_maintenanceRequest":  {
+                                         "description":  "Localized text for \u0027services_maintenanceRequest\u0027."
+                                     },
+    "services_issueType":  "Тип проблемы",
+    "@services_issueType":  {
+                                "description":  "Localized text for \u0027services_issueType\u0027."
+                            },
+    "services_issueTypePlumbing":  "Сантехника",
+    "@services_issueTypePlumbing":  {
+                                        "description":  "Localized text for \u0027services_issueTypePlumbing\u0027."
+                                    },
+    "services_issueTypeElectrical":  "Электрика",
+    "@services_issueTypeElectrical":  {
+                                          "description":  "Localized text for \u0027services_issueTypeElectrical\u0027."
+                                      },
+    "services_issueTypeFurniture":  "Мебель",
+    "@services_issueTypeFurniture":  {
+                                         "description":  "Localized text for \u0027services_issueTypeFurniture\u0027."
+                                     },
+    "services_issueTypeOther":  "Другое",
+    "@services_issueTypeOther":  {
+                                     "description":  "Localized text for \u0027services_issueTypeOther\u0027."
+                                 },
+    "services_description":  "Описание",
+    "@services_description":  {
+                                  "description":  "Localized text for \u0027services_description\u0027."
+                              },
+    "services_describeIssue":  "Опишите проблему...",
+    "@services_describeIssue":  {
+                                    "description":  "Localized text for \u0027services_describeIssue\u0027."
+                                },
+    "services_submitRequest":  "Отправить запрос",
+    "@services_submitRequest":  {
+                                    "description":  "Localized text for \u0027services_submitRequest\u0027."
+                                },
+    "services_itHelpdesk":  "ИТ-служба поддержки",
+    "@services_itHelpdesk":  {
+                                 "description":  "Localized text for \u0027services_itHelpdesk\u0027."
+                             },
+    "services_itHelpdeskSubtitle":  "Технические проблемы",
+    "@services_itHelpdeskSubtitle":  {
+                                         "description":  "Localized text for \u0027services_itHelpdeskSubtitle\u0027."
+                                     },
+    "services_itHelpdeskRequest":  "Запрос в службу ИТ-поддержки",
+    "@services_itHelpdeskRequest":  {
+                                        "description":  "Localized text for \u0027services_itHelpdeskRequest\u0027."
+                                    },
+    "services_academic":  "Академический",
+    "@services_academic":  {
+                               "description":  "Localized text for \u0027services_academic\u0027."
+                           },
+    "services_academicSubtitle":  "Контакты консультанта",
+    "@services_academicSubtitle":  {
+                                       "description":  "Localized text for \u0027services_academicSubtitle\u0027."
+                                   },
+    "services_academicAdvisorContact":  "Контакты академического консультанта",
+    "@services_academicAdvisorContact":  {
+                                             "description":  "Localized text for \u0027services_academicAdvisorContact\u0027."
+                                         },
+    "services_newTicket":  "Новый билет",
+    "@services_newTicket":  {
+                                "description":  "Localized text for \u0027services_newTicket\u0027."
+                            },
+    "services_subject":  "Тема",
+    "@services_subject":  {
+                              "description":  "Localized text for \u0027services_subject\u0027."
+                          },
+    "services_briefSummary":  "Краткое содержание...",
+    "@services_briefSummary":  {
+                                   "description":  "Localized text for \u0027services_briefSummary\u0027."
+                               },
+    "services_message":  "Сообщение",
+    "@services_message":  {
+                              "description":  "Localized text for \u0027services_message\u0027."
+                          },
+    "services_howCanWeHelp":  "Как мы можем вам помочь?",
+    "@services_howCanWeHelp":  {
+                                   "description":  "Localized text for \u0027services_howCanWeHelp\u0027."
+                               },
+    "services_sendMessage":  "Отправить сообщение",
+    "@services_sendMessage":  {
+                                  "description":  "Localized text for \u0027services_sendMessage\u0027."
+                              },
+    "services_allRequests":  "Все запросы",
+    "@services_allRequests":  {
+                                  "description":  "Localized text for \u0027services_allRequests\u0027."
+                              },
+    "services_status":  "Статус",
+    "@services_status":  {
+                             "description":  "Localized text for \u0027services_status\u0027."
+                         },
+    "services_date":  "Дата",
+    "@services_date":  {
+                           "description":  "Localized text for \u0027services_date\u0027."
+                       },
+    "request_statusReady":  "Готово",
+    "@request_statusReady":  {
+                                 "description":  "Localized text for \u0027request_statusReady\u0027."
+                             },
+    "request_statusPending":  "Ожидается",
+    "@request_statusPending":  {
+                                   "description":  "Localized text for \u0027request_statusPending\u0027."
+                               },
+    "request_statusProcessing":  "Обработка",
+    "@request_statusProcessing":  {
+                                      "description":  "Localized text for \u0027request_statusProcessing\u0027."
+                                  },
+    "request_statusOpen":  "Открыть",
+    "@request_statusOpen":  {
+                                "description":  "Localized text for \u0027request_statusOpen\u0027."
+                            },
+    "request_statusInProgress":  "В процессе",
+    "@request_statusInProgress":  {
+                                      "description":  "Localized text for \u0027request_statusInProgress\u0027."
+                                  },
+    "services_loadingTitle":  "Загрузка услуг",
+    "@services_loadingTitle":  {
+                                   "description":  "Localized text for \u0027services_loadingTitle\u0027."
+                               },
+    "services_loadingMessage":  "Подготовка студенческих услуг и недавних запросов...",
+    "@services_loadingMessage":  {
+                                     "description":  "Localized text for \u0027services_loadingMessage\u0027."
+                                 },
+    "services_requestId":  "Идентификатор: REQ-{id}",
+    "@services_requestId":  {
+                                "placeholders":  {
+                                                     "id":  {
+                                                                "type":  "String"
+                                                            }
+                                                 },
+                                "description":  "Localized text for \u0027services_requestId\u0027."
+                            },
+    "services_successDocumentRequested":  "Запрос на \"{title}\" успешно отправлен",
+    "@services_successDocumentRequested":  {
+                                               "placeholders":  {
+                                                                    "title":  {
+                                                                                  "type":  "String"
+                                                                              }
+                                                                },
+                                               "description":  "Localized text for \u0027services_successDocumentRequested\u0027."
+                                           },
+    "services_successPaymentInitiated":  "Платеж инициирован",
+    "@services_successPaymentInitiated":  {
+                                              "description":  "Localized text for \u0027services_successPaymentInitiated\u0027."
+                                          },
+    "services_successMaintenanceSubmitted":  "Запрос на обслуживание отправлен",
+    "@services_successMaintenanceSubmitted":  {
+                                                  "description":  "Localized text for \u0027services_successMaintenanceSubmitted\u0027."
+                                              },
+    "services_successSupportCreated":  "Запрос в службу поддержки создан.",
+    "@services_successSupportCreated":  {
+                                            "description":  "Localized text for \u0027services_successSupportCreated\u0027."
+                                        },
+    "profile_settings":  "Настройки",
+    "@profile_settings":  {
+                              "description":  "Localized text for \u0027profile_settings\u0027."
+                          },
+    "profile_preferences":  "Предпочтения",
+    "@profile_preferences":  {
+                                 "description":  "Localized text for \u0027profile_preferences\u0027."
+                             },
+    "profile_security":  "Безопасность",
+    "@profile_security":  {
+                              "description":  "Localized text for \u0027profile_security\u0027."
+                          },
+    "profile_privacySecurity":  "Конфиденциальность и безопасность",
+    "@profile_privacySecurity":  {
+                                     "description":  "Localized text for \u0027profile_privacySecurity\u0027."
+                                 },
+    "profile_darkMode":  "Темный режим",
+    "@profile_darkMode":  {
+                              "description":  "Localized text for \u0027profile_darkMode\u0027."
+                          },
+    "profile_language":  "Язык",
+    "@profile_language":  {
+                              "description":  "Localized text for \u0027profile_language\u0027."
+                          },
+    "profile_notifications":  "Уведомления",
+    "@profile_notifications":  {
+                                   "description":  "Localized text for \u0027profile_notifications\u0027."
+                               },
+    "profile_passwordSecurity":  "Пароль и безопасность",
+    "@profile_passwordSecurity":  {
+                                      "description":  "Localized text for \u0027profile_passwordSecurity\u0027."
+                                  },
+    "profile_privacySettings":  "Настройки конфиденциальности",
+    "@profile_privacySettings":  {
+                                     "description":  "Localized text for \u0027profile_privacySettings\u0027."
+                                 },
+    "profile_logOut":  "Выйти",
+    "@profile_logOut":  {
+                            "description":  "Localized text for \u0027profile_logOut\u0027."
+                        },
+    "profile_connected":  "Подключено",
+    "@profile_connected":  {
+                               "description":  "Localized text for \u0027profile_connected\u0027."
+                           },
+    "profile_connect":  "Подключиться",
+    "@profile_connect":  {
+                             "description":  "Localized text for \u0027profile_connect\u0027."
+                         },
+    "profile_message":  "Сообщение",
+    "@profile_message":  {
+                             "description":  "Localized text for \u0027profile_message\u0027."
+                         },
+    "profile_currentStatus":  "Текущий статус",
+    "@profile_currentStatus":  {
+                                   "description":  "Localized text for \u0027profile_currentStatus\u0027."
+                               },
+    "profile_update":  "Обновить",
+    "@profile_update":  {
+                            "description":  "Localized text for \u0027profile_update\u0027."
+                        },
+    "profile_statusInLecture":  "НА ЛЕКЦИИ",
+    "@profile_statusInLecture":  {
+                                     "description":  "Localized text for \u0027profile_statusInLecture\u0027."
+                                 },
+    "profile_statusLeft":  "ВЛЕВО",
+    "@profile_statusLeft":  {
+                                "description":  "Localized text for \u0027profile_statusLeft\u0027."
+                            },
+    "profile_statusCoffeeBreak":  "Кофе-брейк",
+    "@profile_statusCoffeeBreak":  {
+                                       "description":  "Localized text for \u0027profile_statusCoffeeBreak\u0027."
+                                   },
+    "profile_statusStudyGroup":  "Ищу учебную группу",
+    "@profile_statusStudyGroup":  {
+                                      "description":  "Localized text for \u0027profile_statusStudyGroup\u0027."
+                                  },
+    "profile_statusSharingNotes":  "Обмен заметками",
+    "@profile_statusSharingNotes":  {
+                                        "description":  "Localized text for \u0027profile_statusSharingNotes\u0027."
+                                    },
+    "profile_recentActivity":  "Недавняя активность",
+    "@profile_recentActivity":  {
+                                    "description":  "Localized text for \u0027profile_recentActivity\u0027."
+                                },
+    "profile_studentServices":  "Студенческие услуги",
+    "@profile_studentServices":  {
+                                     "description":  "Localized text for \u0027profile_studentServices\u0027."
+                                 },
+    "profile_servicesDocuments":  "Сертификаты и документы",
+    "@profile_servicesDocuments":  {
+                                       "description":  "Localized text for \u0027profile_servicesDocuments\u0027."
+                                   },
+    "profile_servicesDocumentsSubtitle":  "Транскрипты, сертификаты об обучении",
+    "@profile_servicesDocumentsSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_servicesDocumentsSubtitle\u0027."
+                                           },
+    "profile_servicesFinance":  "Финансы и платежи",
+    "@profile_servicesFinance":  {
+                                     "description":  "Localized text for \u0027profile_servicesFinance\u0027."
+                                 },
+    "profile_servicesFinanceSubtitle":  "Стоимость обучения, проживания в общежитии",
+    "@profile_servicesFinanceSubtitle":  {
+                                             "description":  "Localized text for \u0027profile_servicesFinanceSubtitle\u0027."
+                                         },
+    "profile_servicesHousing":  "Жилье и общежитие",
+    "@profile_servicesHousing":  {
+                                     "description":  "Localized text for \u0027profile_servicesHousing\u0027."
+                                 },
+    "profile_servicesHousingSubtitle":  "Запросы, правила, статус",
+    "@profile_servicesHousingSubtitle":  {
+                                             "description":  "Localized text for \u0027profile_servicesHousingSubtitle\u0027."
+                                         },
+    "profile_coverUploadFailed":  "Не удалось загрузить обложку",
+    "@profile_coverUploadFailed":  {
+                                       "description":  "Localized text for \u0027profile_coverUploadFailed\u0027."
+                                   },
+    "profile_coverUploadFailedSubtitle":  "Не удалось загрузить выбранное изображение.",
+    "@profile_coverUploadFailedSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_coverUploadFailedSubtitle\u0027."
+                                           },
+    "profile_coverTooLarge":  "Изображение слишком велико",
+    "@profile_coverTooLarge":  {
+                                   "description":  "Localized text for \u0027profile_coverTooLarge\u0027."
+                               },
+    "profile_coverTooLargeSubtitle":  "Выберите JPG, PNG или GIF размером менее 5 МБ.",
+    "@profile_coverTooLargeSubtitle":  {
+                                           "description":  "Localized text for \u0027profile_coverTooLargeSubtitle\u0027."
+                                       },
+    "profile_coverUpdated":  "Обложка обновлена",
+    "@profile_coverUpdated":  {
+                                  "description":  "Localized text for \u0027profile_coverUpdated\u0027."
+                              },
+    "profile_profileLinkCopied":  "Ссылка на профиль скопирована.",
+    "@profile_profileLinkCopied":  {
+                                       "description":  "Localized text for \u0027profile_profileLinkCopied\u0027."
+                                   },
+    "profile_profileCodeCopied":  "Код профиля скопирован.",
+    "@profile_profileCodeCopied":  {
+                                       "description":  "Localized text for \u0027profile_profileCodeCopied\u0027."
+                                   },
+    "profile_profileCodeCopiedSubtitle":  "Готово для вставки в киоск кампуса или в чат.",
+    "@profile_profileCodeCopiedSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_profileCodeCopiedSubtitle\u0027."
+                                           },
+    "profile_connectionRequestSent":  "Запрос на подключение отправлен",
+    "@profile_connectionRequestSent":  {
+                                           "description":  "Localized text for \u0027profile_connectionRequestSent\u0027."
+                                       },
+    "profile_connectionRequestRemoved":  "Запрос на подключение удален.",
+    "@profile_connectionRequestRemoved":  {
+                                              "description":  "Localized text for \u0027profile_connectionRequestRemoved\u0027."
+                                          },
+    "profile_statusUpdated":  "Статус обновлен",
+    "@profile_statusUpdated":  {
+                                   "description":  "Localized text for \u0027profile_statusUpdated\u0027."
+                               },
+    "profile_statusUpdatedSubtitle":  "Ваш активный сигнал исследования остается видимым на карточке профиля.",
+    "@profile_statusUpdatedSubtitle":  {
+                                           "description":  "Localized text for \u0027profile_statusUpdatedSubtitle\u0027."
+                                       },
+    "profile_viewAll":  "Посмотреть все",
+    "@profile_viewAll":  {
+                             "description":  "Localized text for \u0027profile_viewAll\u0027."
+                         },
+    "profile_statusSubject":  "Базы данных",
+    "@profile_statusSubject":  {
+                                   "description":  "Localized text for \u0027profile_statusSubject\u0027."
+                               },
+    "profile_statusRoom":  "Комната Б-204",
+    "@profile_statusRoom":  {
+                                "description":  "Localized text for \u0027profile_statusRoom\u0027."
+                            },
+    "profile_recentSharedNotesTitle":  "Общие заметки: Базы данных",
+    "@profile_recentSharedNotesTitle":  {
+                                            "description":  "Localized text for \u0027profile_recentSharedNotesTitle\u0027."
+                                        },
+    "profile_recentSharedNotesSubtitle":  "Скомпилированы все рассмотренные нами SQL-запросы и правила нормализации.",
+    "@profile_recentSharedNotesSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_recentSharedNotesSubtitle\u0027."
+                                           },
+    "profile_recentJoinedGroupTitle":  "Присоединился к исследовательской группе",
+    "@profile_recentJoinedGroupTitle":  {
+                                            "description":  "Localized text for \u0027profile_recentJoinedGroupTitle\u0027."
+                                        },
+    "profile_recentJoinedGroupSubtitle":  "Группа подготовки расширенных алгоритмов",
+    "@profile_recentJoinedGroupSubtitle":  {
+                                               "description":  "Localized text for \u0027profile_recentJoinedGroupSubtitle\u0027."
+                                           },
+    "profile_hoursAgo":  "{count} ч назад",
+    "@profile_hoursAgo":  {
+                              "placeholders":  {
+                                                   "count":  {
+                                                                 "type":  "int"
+                                                             }
+                                               },
+                              "description":  "Localized text for \u0027profile_hoursAgo\u0027."
+                          },
+    "profile_yesterday":  "Вчера",
+    "@profile_yesterday":  {
+                               "description":  "Localized text for \u0027profile_yesterday\u0027."
+                           },
+    "profile_editCover":  "Редактировать обложку",
+    "@profile_editCover":  {
+                               "description":  "Localized text for \u0027profile_editCover\u0027."
+                           },
+    "profile_chooseFromTemplates":  "Выбирайте из шаблонов",
+    "@profile_chooseFromTemplates":  {
+                                         "description":  "Localized text for \u0027profile_chooseFromTemplates\u0027."
+                                     },
+    "profile_uploadFromDevice":  "Загрузить с устройства",
+    "@profile_uploadFromDevice":  {
+                                      "description":  "Localized text for \u0027profile_uploadFromDevice\u0027."
+                                  },
+    "profile_usingUploadedCover":  "Использование загруженной обложки",
+    "@profile_usingUploadedCover":  {
+                                        "description":  "Localized text for \u0027profile_usingUploadedCover\u0027."
+                                    },
+    "profile_replaceUploadedCover":  "Нажмите, чтобы заменить другим изображением",
+    "@profile_replaceUploadedCover":  {
+                                          "description":  "Localized text for \u0027profile_replaceUploadedCover\u0027."
+                                      },
+    "profile_uploadRequirements":  "JPG, PNG или GIF (макс. 5 МБ)",
+    "@profile_uploadRequirements":  {
+                                        "description":  "Localized text for \u0027profile_uploadRequirements\u0027."
+                                    },
+    "profile_topStudent":  "Лучшие 5% студентов",
+    "@profile_topStudent":  {
+                                "description":  "Localized text for \u0027profile_topStudent\u0027."
+                            },
+    "profile_currentGpa":  "Текущий средний балл",
+    "@profile_currentGpa":  {
+                                "description":  "Localized text for \u0027profile_currentGpa\u0027."
+                            },
+    "profile_attendance":  "посещаемость",
+    "@profile_attendance":  {
+                                "description":  "Localized text for \u0027profile_attendance\u0027."
+                            },
+    "profile_languageChanged":  "Язык обновлен",
+    "@profile_languageChanged":  {
+                                     "description":  "Localized text for \u0027profile_languageChanged\u0027."
+                                 },
+    "profile_languageChangedSubtitle":  "{language}",
+    "@profile_languageChangedSubtitle":  {
+                                             "placeholders":  {
+                                                                  "language":  {
+                                                                                   "type":  "String"
+                                                                               }
+                                                              },
+                                             "description":  "Localized text for \u0027profile_languageChangedSubtitle\u0027."
+                                         },
+    "teacher_superTeacher":  "Супер Учитель",
+    "@teacher_superTeacher":  {
+                                  "description":  "Localized text for \u0027teacher_superTeacher\u0027."
+                              },
+    "teacher_lightMode":  "Светлый режим",
+    "@teacher_lightMode":  {
+                               "description":  "Localized text for \u0027teacher_lightMode\u0027."
+                           },
+    "teacher_darkMode":  "Темный режим",
+    "@teacher_darkMode":  {
+                              "description":  "Localized text for \u0027teacher_darkMode\u0027."
+                          },
+    "teacher_subjectLine":  "{date} • {time}",
+    "@teacher_subjectLine":  {
+                                 "placeholders":  {
+                                                      "date":  {
+                                                                   "type":  "String"
+                                                               },
+                                                      "time":  {
+                                                                   "type":  "String"
+                                                               }
+                                                  },
+                                 "description":  "Localized text for \u0027teacher_subjectLine\u0027."
+                             },
+    "alarm_title":  "Умная сигнализация",
+    "@alarm_title":  {
+                         "description":  "Localized text for \u0027alarm_title\u0027."
+                     },
+    "alarm_subtitle":  "Никогда не пропускайте занятия или сроки",
+    "@alarm_subtitle":  {
+                            "description":  "Localized text for \u0027alarm_subtitle\u0027."
+                        },
+    "alarm_modePersonal":  "Персональный",
+    "@alarm_modePersonal":  {
+                                "description":  "Localized text for \u0027alarm_modePersonal\u0027."
+                            },
+    "alarm_modeAcademic":  "Академический",
+    "@alarm_modeAcademic":  {
+                                "description":  "Localized text for \u0027alarm_modeAcademic\u0027."
+                            },
+    "alarm_alertType":  "Тип оповещения",
+    "@alarm_alertType":  {
+                             "description":  "Localized text for \u0027alarm_alertType\u0027."
+                         },
+    "alarm_typeWakeUp":  "Просыпайся",
+    "@alarm_typeWakeUp":  {
+                              "description":  "Localized text for \u0027alarm_typeWakeUp\u0027."
+                          },
+    "alarm_typeExamPrep":  "Подготовка к экзамену",
+    "@alarm_typeExamPrep":  {
+                                "description":  "Localized text for \u0027alarm_typeExamPrep\u0027."
+                            },
+    "alarm_typeAssignment":  "Задание",
+    "@alarm_typeAssignment":  {
+                                  "description":  "Localized text for \u0027alarm_typeAssignment\u0027."
+                              },
+    "alarm_typeLecture":  "Лекция",
+    "@alarm_typeLecture":  {
+                               "description":  "Localized text for \u0027alarm_typeLecture\u0027."
+                           },
+    "alarm_setAlarm":  "Установить будильник",
+    "@alarm_setAlarm":  {
+                            "description":  "Localized text for \u0027alarm_setAlarm\u0027."
+                        },
+    "alarm_setFor":  "Будильник установлен для {time}",
+    "@alarm_setFor":  {
+                          "placeholders":  {
+                                               "time":  {
+                                                            "type":  "String"
+                                                        }
+                                           },
+                          "description":  "Localized text for \u0027alarm_setFor\u0027."
+                      },
+    "alarm_activePersonal":  "Персональный сигнал тревоги активен.",
+    "@alarm_activePersonal":  {
+                                  "description":  "Localized text for \u0027alarm_activePersonal\u0027."
+                              },
+    "alarm_activeAcademic":  "Тип академического оповещения: {type}",
+    "@alarm_activeAcademic":  {
+                                  "placeholders":  {
+                                                       "type":  {
+                                                                    "type":  "String"
+                                                                }
+                                                   },
+                                  "description":  "Localized text for \u0027alarm_activeAcademic\u0027."
+                              },
+    "quickAlert_title":  "Быстрое оповещение",
+    "@quickAlert_title":  {
+                              "description":  "Localized text for \u0027quickAlert_title\u0027."
+                          },
+    "quickAlert_suggestions":  "Умные предложения",
+    "@quickAlert_suggestions":  {
+                                    "description":  "Localized text for \u0027quickAlert_suggestions\u0027."
+                                },
+    "quickAlert_unavailable":  "Быстрые оповещения недоступны.",
+    "@quickAlert_unavailable":  {
+                                    "description":  "Localized text for \u0027quickAlert_unavailable\u0027."
+                                },
+    "quickAlert_customTime":  "Пользовательское время",
+    "@quickAlert_customTime":  {
+                                   "description":  "Localized text for \u0027quickAlert_customTime\u0027."
+                               },
+    "quickAlert_remove":  "Удалить оповещение",
+    "@quickAlert_remove":  {
+                               "description":  "Localized text for \u0027quickAlert_remove\u0027."
+                           },
+    "quickAlert_customPreset":  "за 45 минут до",
+    "@quickAlert_customPreset":  {
+                                     "description":  "Localized text for \u0027quickAlert_customPreset\u0027."
+                                 },
+    "quickAlert_preset5Min":  "за 5 минут до",
+    "@quickAlert_preset5Min":  {
+                                   "description":  "Localized text for \u0027quickAlert_preset5Min\u0027."
+                               },
+    "quickAlert_preset10Min":  "за 10 минут до",
+    "@quickAlert_preset10Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset10Min\u0027."
+                                },
+    "quickAlert_preset20Min":  "за 20 минут до",
+    "@quickAlert_preset20Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset20Min\u0027."
+                                },
+    "quickAlert_preset30Min":  "за 30 минут до",
+    "@quickAlert_preset30Min":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset30Min\u0027."
+                                },
+    "quickAlert_preset1Hour":  "за 1 час до",
+    "@quickAlert_preset1Hour":  {
+                                    "description":  "Localized text for \u0027quickAlert_preset1Hour\u0027."
+                                },
+    "quickAlert_presetLeaveOnTime":  "Уйти вовремя",
+    "@quickAlert_presetLeaveOnTime":  {
+                                          "description":  "Localized text for \u0027quickAlert_presetLeaveOnTime\u0027."
+                                      },
+    "quickAlert_presetWakeUpBeforeClass":  "Проснуться перед уроком",
+    "@quickAlert_presetWakeUpBeforeClass":  {
+                                                "description":  "Localized text for \u0027quickAlert_presetWakeUpBeforeClass\u0027."
+                                            },
+    "shell_loadingWorkspaceTitle":  "Загрузка рабочей области",
+    "@shell_loadingWorkspaceTitle":  {
+                                         "description":  "Localized text for \u0027shell_loadingWorkspaceTitle\u0027."
+                                     },
+    "shell_loadingWorkspaceMessage":  "Восстановление роли и разрешений...",
+    "@shell_loadingWorkspaceMessage":  {
+                                           "description":  "Localized text for \u0027shell_loadingWorkspaceMessage\u0027."
+                                       },
+    "shell_loadingScheduleTitle":  "График загрузки",
+    "@shell_loadingScheduleTitle":  {
+                                        "description":  "Localized text for \u0027shell_loadingScheduleTitle\u0027."
+                                    },
+    "shell_loadingScheduleMessage":  "Подготовка уроков и быстрых оповещений...",
+    "@shell_loadingScheduleMessage":  {
+                                          "description":  "Localized text for \u0027shell_loadingScheduleMessage\u0027."
+                                      },
+    "shell_loadingProfileTitle":  "Загрузка профиля",
+    "@shell_loadingProfileTitle":  {
+                                       "description":  "Localized text for \u0027shell_loadingProfileTitle\u0027."
+                                   },
+    "shell_loadingProfileMessage":  "Подготовка профиля студента...",
+    "@shell_loadingProfileMessage":  {
+                                         "description":  "Localized text for \u0027shell_loadingProfileMessage\u0027."
+                                     },
+    "studies_title":  "Учебный центр",
+    "@studies_title":  {
+                           "description":  "Localized text for \u0027studies_title\u0027."
+                       },
+    "studies_searchTitle":  "Поиск исследования",
+    "@studies_searchTitle":  {
+                                 "description":  "Localized text for \u0027studies_searchTitle\u0027."
+                             },
+    "studies_searchSubtitle":  "На следующем этапе поиск по всему исследованию выйдет за рамки статического экспорта.",
+    "@studies_searchSubtitle":  {
+                                    "description":  "Localized text for \u0027studies_searchSubtitle\u0027."
+                                },
+    "studies_syncedLessons":  "{count} синхронизированных занятий",
+    "@studies_syncedLessons":  {
+                                   "placeholders":  {
+                                                        "count":  {
+                                                                      "type":  "int"
+                                                                  }
+                                                    },
+                                   "description":  "Localized text for \u0027studies_syncedLessons\u0027."
+                               },
+    "studies_materialsAvailable":  "Доступно материалов: {count}",
+    "@studies_materialsAvailable":  {
+                                        "placeholders":  {
+                                                             "count":  {
+                                                                           "type":  "int"
+                                                                       }
+                                                         },
+                                        "description":  "Localized text for \u0027studies_materialsAvailable\u0027."
+                                    },
+    "studies_syncingLessons":  "Синхронизация уроков",
+    "@studies_syncingLessons":  {
+                                    "description":  "Localized text for \u0027studies_syncingLessons\u0027."
+                                },
+    "studies_syncingMaterials":  "Синхронизация материалов",
+    "@studies_syncingMaterials":  {
+                                      "description":  "Localized text for \u0027studies_syncingMaterials\u0027."
+                                  },
+    "studies_modeToday":  "Сегодня",
+    "@studies_modeToday":  {
+                               "description":  "Localized text for \u0027studies_modeToday\u0027."
+                           },
+    "studies_modeStudy":  "Исследование",
+    "@studies_modeStudy":  {
+                               "description":  "Localized text for \u0027studies_modeStudy\u0027."
+                           },
+    "studies_modeExams":  "Экзамены",
+    "@studies_modeExams":  {
+                               "description":  "Localized text for \u0027studies_modeExams\u0027."
+                           },
+    "studies_materials":  "Материалы",
+    "@studies_materials":  {
+                               "description":  "Localized text for \u0027studies_materials\u0027."
+                           },
+    "studies_noLessonsAvailable":  "Нет доступных уроков",
+    "@studies_noLessonsAvailable":  {
+                                        "description":  "Localized text for \u0027studies_noLessonsAvailable\u0027."
+                                    },
+    "studies_noLessonsAvailableSubtitle":  "Прежде чем загружать материалы, создайте урок.",
+    "@studies_noLessonsAvailableSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_noLessonsAvailableSubtitle\u0027."
+                                            },
+    "studies_upload":  "Загрузить",
+    "@studies_upload":  {
+                            "description":  "Localized text for \u0027studies_upload\u0027."
+                        },
+    "studies_noMaterialsTeacherTitle":  "Материалы пока не загружены",
+    "@studies_noMaterialsTeacherTitle":  {
+                                             "description":  "Localized text for \u0027studies_noMaterialsTeacherTitle\u0027."
+                                         },
+    "studies_noMaterialsTeacherMessage":  "Загрузите первый ресурс урока для заполнения Study Hub.",
+    "@studies_noMaterialsTeacherMessage":  {
+                                               "description":  "Localized text for \u0027studies_noMaterialsTeacherMessage\u0027."
+                                           },
+    "studies_noMaterialsStudentTitle":  "Материалов пока нет",
+    "@studies_noMaterialsStudentTitle":  {
+                                             "description":  "Localized text for \u0027studies_noMaterialsStudentTitle\u0027."
+                                         },
+    "studies_noMaterialsStudentMessage":  "Здесь появятся материалы, которыми поделились ваши преподаватели.",
+    "@studies_noMaterialsStudentMessage":  {
+                                               "description":  "Localized text for \u0027studies_noMaterialsStudentMessage\u0027."
+                                           },
+    "studies_materialsUnavailable":  "Материалы недоступны",
+    "@studies_materialsUnavailable":  {
+                                          "description":  "Localized text for \u0027studies_materialsUnavailable\u0027."
+                                      },
+    "studies_continueStudying":  "Продолжить обучение",
+    "@studies_continueStudying":  {
+                                      "description":  "Localized text for \u0027studies_continueStudying\u0027."
+                                  },
+    "studies_assignments":  "Задания",
+    "@studies_assignments":  {
+                                 "description":  "Localized text for \u0027studies_assignments\u0027."
+                             },
+    "studies_seeAll":  "Посмотреть все",
+    "@studies_seeAll":  {
+                            "description":  "Localized text for \u0027studies_seeAll\u0027."
+                        },
+    "studies_overdue":  "Просрочено",
+    "@studies_overdue":  {
+                             "description":  "Localized text for \u0027studies_overdue\u0027."
+                         },
+    "studies_inProgress":  "В процессе",
+    "@studies_inProgress":  {
+                                "description":  "Localized text for \u0027studies_inProgress\u0027."
+                            },
+    "studies_dueInDays":  "Срок погашения через {count} дн.",
+    "@studies_dueInDays":  {
+                               "placeholders":  {
+                                                    "count":  {
+                                                                  "type":  "int"
+                                                              }
+                                                },
+                               "description":  "Localized text for \u0027studies_dueInDays\u0027."
+                           },
+    "studies_subjects":  "Предметы",
+    "@studies_subjects":  {
+                              "description":  "Localized text for \u0027studies_subjects\u0027."
+                          },
+    "studies_priorityToday":  "Приоритет на сегодня",
+    "@studies_priorityToday":  {
+                                   "description":  "Localized text for \u0027studies_priorityToday\u0027."
+                               },
+    "studies_continueWorking":  "Продолжить работу",
+    "@studies_continueWorking":  {
+                                     "description":  "Localized text for \u0027studies_continueWorking\u0027."
+                                 },
+    "studies_todayClasses":  "Сегодняшние занятия",
+    "@studies_todayClasses":  {
+                                  "description":  "Localized text for \u0027studies_todayClasses\u0027."
+                              },
+    "studies_upcomingExams":  "Предстоящие экзамены",
+    "@studies_upcomingExams":  {
+                                   "description":  "Localized text for \u0027studies_upcomingExams\u0027."
+                               },
+    "studies_midterm":  "Среднесрочный",
+    "@studies_midterm":  {
+                             "description":  "Localized text for \u0027studies_midterm\u0027."
+                         },
+    "studies_inDays":  "Через {count} дней",
+    "@studies_inDays":  {
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "type":  "int"
+                                                           }
+                                             },
+                            "description":  "Localized text for \u0027studies_inDays\u0027."
+                        },
+    "studies_aiWeakTopicsReview":  "Обзор слабых тем AI",
+    "@studies_aiWeakTopicsReview":  {
+                                        "description":  "Localized text for \u0027studies_aiWeakTopicsReview\u0027."
+                                    },
+    "studies_invalidMaterialLink":  "Неверная ссылка на материал",
+    "@studies_invalidMaterialLink":  {
+                                         "description":  "Localized text for \u0027studies_invalidMaterialLink\u0027."
+                                     },
+    "studies_couldNotOpenMaterial":  "Не удалось открыть материал",
+    "@studies_couldNotOpenMaterial":  {
+                                          "description":  "Localized text for \u0027studies_couldNotOpenMaterial\u0027."
+                                      },
+    "studies_uploadFailed":  "Загрузка не удалась",
+    "@studies_uploadFailed":  {
+                                  "description":  "Localized text for \u0027studies_uploadFailed\u0027."
+                              },
+    "studies_uploadFailedSubtitle":  "Не удалось загрузить выбранный файл.",
+    "@studies_uploadFailedSubtitle":  {
+                                          "description":  "Localized text for \u0027studies_uploadFailedSubtitle\u0027."
+                                      },
+    "studies_materialIncomplete":  "Сведения о материале неполные.",
+    "@studies_materialIncomplete":  {
+                                        "description":  "Localized text for \u0027studies_materialIncomplete\u0027."
+                                    },
+    "studies_materialIncompleteSubtitle":  "Выберите урок, выберите файл и добавьте название.",
+    "@studies_materialIncompleteSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_materialIncompleteSubtitle\u0027."
+                                            },
+    "studies_materialUploaded":  "Материал загружен",
+    "@studies_materialUploaded":  {
+                                      "description":  "Localized text for \u0027studies_materialUploaded\u0027."
+                                  },
+    "studies_uploadMaterial":  "Загрузить материал",
+    "@studies_uploadMaterial":  {
+                                    "description":  "Localized text for \u0027studies_uploadMaterial\u0027."
+                                },
+    "studies_materialTitle":  "Название материала",
+    "@studies_materialTitle":  {
+                                   "description":  "Localized text for \u0027studies_materialTitle\u0027."
+                               },
+    "studies_selectLesson":  "Выбрать урок",
+    "@studies_selectLesson":  {
+                                  "description":  "Localized text for \u0027studies_selectLesson\u0027."
+                              },
+    "studies_chooseFile":  "Выбрать файл",
+    "@studies_chooseFile":  {
+                                "description":  "Localized text for \u0027studies_chooseFile\u0027."
+                            },
+    "studies_uploading":  "Загрузка...",
+    "@studies_uploading":  {
+                               "description":  "Localized text for \u0027studies_uploading\u0027."
+                           },
+    "studies_continueCardMathTitle":  "Продвинутая математика",
+    "@studies_continueCardMathTitle":  {
+                                           "description":  "Localized text for \u0027studies_continueCardMathTitle\u0027."
+                                       },
+    "studies_continueCardMathSubtitle":  "2 новых примечания • Требуется проверка",
+    "@studies_continueCardMathSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_continueCardMathSubtitle\u0027."
+                                          },
+    "studies_continueCardPhysicsTitle":  "Физика",
+    "@studies_continueCardPhysicsTitle":  {
+                                              "description":  "Localized text for \u0027studies_continueCardPhysicsTitle\u0027."
+                                          },
+    "studies_continueCardPhysicsSubtitle":  "1 новый файл • Глава 4",
+    "@studies_continueCardPhysicsSubtitle":  {
+                                                 "description":  "Localized text for \u0027studies_continueCardPhysicsSubtitle\u0027."
+                                             },
+    "studies_continueCardProgrammingTitle":  "Программирование",
+    "@studies_continueCardProgrammingTitle":  {
+                                                  "description":  "Localized text for \u0027studies_continueCardProgrammingTitle\u0027."
+                                              },
+    "studies_continueCardProgrammingSubtitle":  "Запись лекции",
+    "@studies_continueCardProgrammingSubtitle":  {
+                                                     "description":  "Localized text for \u0027studies_continueCardProgrammingSubtitle\u0027."
+                                                 },
+    "studies_assignmentCalculusTitle":  "Задание 3 по математическому анализу",
+    "@studies_assignmentCalculusTitle":  {
+                                             "description":  "Localized text for \u0027studies_assignmentCalculusTitle\u0027."
+                                         },
+    "studies_assignmentCalculusSubtitle":  "Высшая математика",
+    "@studies_assignmentCalculusSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_assignmentCalculusSubtitle\u0027."
+                                            },
+    "studies_assignmentPythonTitle":  "Python-проект",
+    "@studies_assignmentPythonTitle":  {
+                                           "description":  "Localized text for \u0027studies_assignmentPythonTitle\u0027."
+                                       },
+    "studies_assignmentPythonSubtitle":  "Веб-программирование",
+    "@studies_assignmentPythonSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_assignmentPythonSubtitle\u0027."
+                                          },
+    "studies_subjectProgrammingFundamentals":  "Основы программирования",
+    "@studies_subjectProgrammingFundamentals":  {
+                                                    "description":  "Localized text for \u0027studies_subjectProgrammingFundamentals\u0027."
+                                                },
+    "studies_subjectProfessorUrazimbetov":  "Проф. Уразимбетов М.",
+    "@studies_subjectProfessorUrazimbetov":  {
+                                                 "description":  "Localized text for \u0027studies_subjectProfessorUrazimbetov\u0027."
+                                             },
+    "studies_subjectAiSummaryAvailable":  "Доступна сводка AI",
+    "@studies_subjectAiSummaryAvailable":  {
+                                               "description":  "Localized text for \u0027studies_subjectAiSummaryAvailable\u0027."
+                                           },
+    "studies_subjectNextTomorrow0900":  "Далее: Завтра 09:00",
+    "@studies_subjectNextTomorrow0900":  {
+                                             "description":  "Localized text for \u0027studies_subjectNextTomorrow0900\u0027."
+                                         },
+    "studies_subjectFiveMaterials":  "5 материалов",
+    "@studies_subjectFiveMaterials":  {
+                                          "description":  "Localized text for \u0027studies_subjectFiveMaterials\u0027."
+                                      },
+    "studies_subjectTwoAssignments":  "2 задания",
+    "@studies_subjectTwoAssignments":  {
+                                           "description":  "Localized text for \u0027studies_subjectTwoAssignments\u0027."
+                                       },
+    "studies_subjectDatabaseManagement":  "Управление базой данных",
+    "@studies_subjectDatabaseManagement":  {
+                                               "description":  "Localized text for \u0027studies_subjectDatabaseManagement\u0027."
+                                           },
+    "studies_subjectProfessorNurlan":  "Нурлан К.",
+    "@studies_subjectProfessorNurlan":  {
+                                            "description":  "Localized text for \u0027studies_subjectProfessorNurlan\u0027."
+                                        },
+    "studies_subjectTwoWeakTopics":  "2 слабые темы для рассмотрения",
+    "@studies_subjectTwoWeakTopics":  {
+                                          "description":  "Localized text for \u0027studies_subjectTwoWeakTopics\u0027."
+                                      },
+    "studies_subjectNextToday1000":  "Далее: Сегодня 10:00",
+    "@studies_subjectNextToday1000":  {
+                                          "description":  "Localized text for \u0027studies_subjectNextToday1000\u0027."
+                                      },
+    "studies_subjectThreeMaterials":  "3 материала",
+    "@studies_subjectThreeMaterials":  {
+                                           "description":  "Localized text for \u0027studies_subjectThreeMaterials\u0027."
+                                       },
+    "studies_subjectOneAssignment":  "1 задание",
+    "@studies_subjectOneAssignment":  {
+                                          "description":  "Localized text for \u0027studies_subjectOneAssignment\u0027."
+                                      },
+    "studies_priorityCalculusTitle":  "Задание 3 по математическому анализу",
+    "@studies_priorityCalculusTitle":  {
+                                           "description":  "Localized text for \u0027studies_priorityCalculusTitle\u0027."
+                                       },
+    "studies_priorityCalculusSubtitle":  "Срок сегодня в 23:59. Вы выполнили 60% заданий.",
+    "@studies_priorityCalculusSubtitle":  {
+                                              "description":  "Localized text for \u0027studies_priorityCalculusSubtitle\u0027."
+                                          },
+    "studies_priorityCalculusMeta":  "Высшая математика • Выходит сегодня вечером в 23:59",
+    "@studies_priorityCalculusMeta":  {
+                                          "description":  "Localized text for \u0027studies_priorityCalculusMeta\u0027."
+                                      },
+    "studies_todayClassWebProgrammingTitle":  "Веб-программирование",
+    "@studies_todayClassWebProgrammingTitle":  {
+                                                   "description":  "Localized text for \u0027studies_todayClassWebProgrammingTitle\u0027."
+                                               },
+    "studies_todayClassWebProgrammingSubtitle":  "Толе би №86 • Уразимбетов М.",
+    "@studies_todayClassWebProgrammingSubtitle":  {
+                                                      "description":  "Localized text for \u0027studies_todayClassWebProgrammingSubtitle\u0027."
+                                                  },
+    "studies_todayClassDatabaseManagementTitle":  "Управление базой данных",
+    "@studies_todayClassDatabaseManagementTitle":  {
+                                                       "description":  "Localized text for \u0027studies_todayClassDatabaseManagementTitle\u0027."
+                                                   },
+    "studies_todayClassDatabaseManagementSubtitle":  "Онлайн • Нурлан К.",
+    "@studies_todayClassDatabaseManagementSubtitle":  {
+                                                          "description":  "Localized text for \u0027studies_todayClassDatabaseManagementSubtitle\u0027."
+                                                      },
+    "studies_examAdvancedMathTitle":  "Высшая математика",
+    "@studies_examAdvancedMathTitle":  {
+                                           "description":  "Localized text for \u0027studies_examAdvancedMathTitle\u0027."
+                                       },
+    "studies_examCoverage":  "Охватывает главы 1–4. Принесите калькулятор.",
+    "@studies_examCoverage":  {
+                                  "description":  "Localized text for \u0027studies_examCoverage\u0027."
+                              },
+    "studies_readyPercent":  "40% готовности",
+    "@studies_readyPercent":  {
+                                  "description":  "Localized text for \u0027studies_readyPercent\u0027."
+                              },
+    "studies_weakTopicIntegralsTitle":  "Интегралы",
+    "@studies_weakTopicIntegralsTitle":  {
+                                             "description":  "Localized text for \u0027studies_weakTopicIntegralsTitle\u0027."
+                                         },
+    "studies_weakTopicIntegralsSubtitle":  "Математика • 3 ошибки",
+    "@studies_weakTopicIntegralsSubtitle":  {
+                                                "description":  "Localized text for \u0027studies_weakTopicIntegralsSubtitle\u0027."
+                                            },
+    "studies_weakTopicSqlJoinsTitle":  "SQL-соединения",
+    "@studies_weakTopicSqlJoinsTitle":  {
+                                            "description":  "Localized text for \u0027studies_weakTopicSqlJoinsTitle\u0027."
+                                        },
+    "studies_weakTopicSqlJoinsSubtitle":  "Базы данных • 2 ошибки",
+    "@studies_weakTopicSqlJoinsSubtitle":  {
+                                               "description":  "Localized text for \u0027studies_weakTopicSqlJoinsSubtitle\u0027."
+                                           },
+    "common_online":  "Онлайн",
+    "@common_online":  {
+                           "description":  "Localized text for \u0027common_online\u0027."
+                       },
+    "common_justNow":  "только что",
+    "@common_justNow":  {
+                            "description":  "Localized text for \u0027common_justNow\u0027."
+                        },
+    "common_mondayShort":  "Пн.",
+    "@common_mondayShort":  {
+                                "description":  "Localized text for \u0027common_mondayShort\u0027."
+                            },
+    "lesson_subjectPhysicsLab":  "Физическая лаборатория",
+    "@lesson_subjectPhysicsLab":  {
+                                      "description":  "Localized text for \u0027lesson_subjectPhysicsLab\u0027."
+                                  },
+    "lesson_subjectWebProgrammingPython":  "Веб-программирование и Python",
+    "@lesson_subjectWebProgrammingPython":  {
+                                                "description":  "Localized text for \u0027lesson_subjectWebProgrammingPython\u0027."
+                                            },
+    "lesson_subjectAlgorithmsMathematics":  "Алгоритмы и математика",
+    "@lesson_subjectAlgorithmsMathematics":  {
+                                                 "description":  "Localized text for \u0027lesson_subjectAlgorithmsMathematics\u0027."
+                                             },
+    "lesson_subjectDatabaseManagementSystems":  "Системы управления базами данных",
+    "@lesson_subjectDatabaseManagementSystems":  {
+                                                     "description":  "Localized text for \u0027lesson_subjectDatabaseManagementSystems\u0027."
+                                                 },
+    "lesson_locationMainBuildingRoom201":  "Главное здание, комната 201",
+    "@lesson_locationMainBuildingRoom201":  {
+                                                "description":  "Localized text for \u0027lesson_locationMainBuildingRoom201\u0027."
+                                            },
+    "lesson_locationToleBi86":  "Толе би №86",
+    "@lesson_locationToleBi86":  {
+                                     "description":  "Localized text for \u0027lesson_locationToleBi86\u0027."
+                                 },
+    "lesson_locationKazybekBi30":  "Казыбек би №30",
+    "@lesson_locationKazybekBi30":  {
+                                        "description":  "Localized text for \u0027lesson_locationKazybekBi30\u0027."
+                                    },
+    "lesson_teacherProfessorIvanov":  "Проф. Иванов",
+    "@lesson_teacherProfessorIvanov":  {
+                                           "description":  "Localized text for \u0027lesson_teacherProfessorIvanov\u0027."
+                                       },
+    "messages_senderUniversityAdmin":  "Администратор университета",
+    "@messages_senderUniversityAdmin":  {
+                                            "description":  "Localized text for \u0027messages_senderUniversityAdmin\u0027."
+                                        },
+    "messages_previewProjectMeeting":  "Эй, мы все еще встречаемся по поводу проекта?",
+    "@messages_previewProjectMeeting":  {
+                                            "description":  "Localized text for \u0027messages_previewProjectMeeting\u0027."
+                                        },
+    "messages_previewThanksNotes":  "Спасибо за заметки!",
+    "@messages_previewThanksNotes":  {
+                                         "description":  "Localized text for \u0027messages_previewThanksNotes\u0027."
+                                     },
+    "messages_previewScheduleUpdated":  "Ваше расписание обновлено.",
+    "@messages_previewScheduleUpdated":  {
+                                             "description":  "Localized text for \u0027messages_previewScheduleUpdated\u0027."
+                                         },
+    "profile_programSoftwareEngineering":  "Программная инженерия",
+    "@profile_programSoftwareEngineering":  {
+                                                "description":  "Localized text for \u0027profile_programSoftwareEngineering\u0027."
+                                            },
+    "profile_programStudentSchedule":  "Расписание студентов",
+    "@profile_programStudentSchedule":  {
+                                            "description":  "Localized text for \u0027profile_programStudentSchedule\u0027."
+                                        },
+    "profile_programTeachingStaff":  "Преподавательский состав",
+    "@profile_programTeachingStaff":  {
+                                          "description":  "Localized text for \u0027profile_programTeachingStaff\u0027."
+                                      },
+    "profile_yearSecond":  "2-й год",
+    "@profile_yearSecond":  {
+                                "description":  "Localized text for \u0027profile_yearSecond\u0027."
+                            },
+    "profile_yearStudent":  "Студент",
+    "@profile_yearStudent":  {
+                                 "description":  "Localized text for \u0027profile_yearStudent\u0027."
+                             },
+    "profile_yearTeacher":  "Учитель",
+    "@profile_yearTeacher":  {
+                                 "description":  "Localized text for \u0027profile_yearTeacher\u0027."
+                             },
+    "profile_defaultBio":  "Увлечен фронтендом, искусственным интеллектом и созданием вещей. Всегда готов к хакатону!",
+    "@profile_defaultBio":  {
+                                "description":  "Localized text for \u0027profile_defaultBio\u0027."
+                            },
+    "profile_liveStudentBio":  "Студенческий поток связан с живыми расписаниями, напоминаниями и общими материалами.",
+    "@profile_liveStudentBio":  {
+                                    "description":  "Localized text for \u0027profile_liveStudentBio\u0027."
+                                },
+    "profile_liveTeacherBio":  "Панель учителя, подключенная к вашим живым занятиям и материалам.",
+    "@profile_liveTeacherBio":  {
+                                    "description":  "Localized text for \u0027profile_liveTeacherBio\u0027."
+                                },
+    "profile_liveSuperTeacherBio":  "Суперучитель с полным доступом к управлению расписанием.",
+    "@profile_liveSuperTeacherBio":  {
+                                         "description":  "Localized text for \u0027profile_liveSuperTeacherBio\u0027."
+                                     },
+    "profile_groupNotAssigned":  "Группа не назначена",
+    "@profile_groupNotAssigned":  {
+                                      "description":  "Localized text for \u0027profile_groupNotAssigned\u0027."
+                                  },
+    "profile_coverTemplateCampus":  "Кампус",
+    "@profile_coverTemplateCampus":  {
+                                         "description":  "Localized text for \u0027profile_coverTemplateCampus\u0027."
+                                     },
+    "profile_coverTemplateLibrary":  "Библиотека",
+    "@profile_coverTemplateLibrary":  {
+                                          "description":  "Localized text for \u0027profile_coverTemplateLibrary\u0027."
+                                      },
+    "profile_coverTemplateGraduation":  "выпускной",
+    "@profile_coverTemplateGraduation":  {
+                                             "description":  "Localized text for \u0027profile_coverTemplateGraduation\u0027."
+                                         },
+    "profile_coverTemplateArchitecture":  "Архитектура",
+    "@profile_coverTemplateArchitecture":  {
+                                               "description":  "Localized text for \u0027profile_coverTemplateArchitecture\u0027."
+                                           },
+    "profile_coverTemplateAbstractTech":  "Абстрактная технология",
+    "@profile_coverTemplateAbstractTech":  {
+                                               "description":  "Localized text for \u0027profile_coverTemplateAbstractTech\u0027."
+                                           },
+    "profile_coverTemplateScience":  "Наука",
+    "@profile_coverTemplateScience":  {
+                                          "description":  "Localized text for \u0027profile_coverTemplateScience\u0027."
+                                      },
+    "services_requestMaintenancePrefix":  "Техническое обслуживание: {issueType}",
+    "@services_requestMaintenancePrefix":  {
+                                               "placeholders":  {
+                                                                    "issueType":  {
+                                                                                      "type":  "String"
+                                                                                  }
+                                                                },
+                                               "description":  "Localized text for \u0027services_requestMaintenancePrefix\u0027."
+                                           },
+    "services_requestSupportPrefix":  "Поддержка: {subject}",
+    "@services_requestSupportPrefix":  {
+                                           "placeholders":  {
+                                                                "subject":  {
+                                                                                "type":  "String"
+                                                                            }
+                                                            },
+                                           "description":  "Localized text for \u0027services_requestSupportPrefix\u0027."
+                                       },
+    "services_requestEnrollmentCertificate":  "Свидетельство о регистрации",
+    "@services_requestEnrollmentCertificate":  {
+                                                   "description":  "Localized text for \u0027services_requestEnrollmentCertificate\u0027."
+                                               },
+    "services_requestDormitoryRepair":  "Ремонт общежития",
+    "@services_requestDormitoryRepair":  {
+                                             "description":  "Localized text for \u0027services_requestDormitoryRepair\u0027."
+                                         },
+    "services_requestTuitionFeePayment":  "Оплата обучения",
+    "@services_requestTuitionFeePayment":  {
+                                               "description":  "Localized text for \u0027services_requestTuitionFeePayment\u0027."
+                                           },
+    "services_requestDescriptionVisaApplication":  "Обратился за визой.",
+    "@services_requestDescriptionVisaApplication":  {
+                                                        "description":  "Localized text for \u0027services_requestDescriptionVisaApplication\u0027."
+                                                    },
+    "services_requestDescriptionLeakingPipe":  "Течет труба в ванной.",
+    "@services_requestDescriptionLeakingPipe":  {
+                                                    "description":  "Localized text for \u0027services_requestDescriptionLeakingPipe\u0027."
+                                                },
+    "services_requestDescriptionViaSynorServices":  "Запрошено через Synor Services.",
+    "@services_requestDescriptionViaSynorServices":  {
+                                                         "description":  "Localized text for \u0027services_requestDescriptionViaSynorServices\u0027."
+                                                     },
+    "services_requestDescriptionPaymentSpring2026":  "Оплата 450 000 ₸ за весенний семестр 2026 года.",
+    "@services_requestDescriptionPaymentSpring2026":  {
+                                                          "description":  "Localized text for \u0027services_requestDescriptionPaymentSpring2026\u0027."
+                                                      },
+    "services_requestDormitoryRoom412":  "Общежитие №3, комната 412. {description}",
+    "@services_requestDormitoryRoom412":  {
+                                              "placeholders":  {
+                                                                   "description":  {
+                                                                                       "type":  "String"
+                                                                                   }
+                                                               },
+                                              "description":  "Localized text for \u0027services_requestDormitoryRoom412\u0027."
+                                          },
+    "services_dateOct12":  "12 октября",
+    "@services_dateOct12":  {
+                                "description":  "Localized text for \u0027services_dateOct12\u0027."
+                            },
+    "services_dateOct10":  "10 октября",
+    "@services_dateOct10":  {
+                                "description":  "Localized text for \u0027services_dateOct10\u0027."
+                            },
+    "services_zeroBalanceAmount":  "0 ₸",
+    "@services_zeroBalanceAmount":  {
+                                        "description":  "Localized text for \u0027services_zeroBalanceAmount\u0027."
+                                    },
+    "services_tuitionAmount":  "450 000 ₸",
+    "@services_tuitionAmount":  {
+                                    "description":  "Localized text for \u0027services_tuitionAmount\u0027."
+                                },
+    "error_authenticatedUserRequired":  "Требуется авторизованный пользователь.",
+    "@error_authenticatedUserRequired":  {
+                                             "description":  "Localized text for \u0027error_authenticatedUserRequired\u0027."
+                                         },
+    "error_authenticatedProfileRequired":  "Требуется аутентифицированный профиль пользователя.",
+    "@error_authenticatedProfileRequired":  {
+                                                "description":  "Localized text for \u0027error_authenticatedProfileRequired\u0027."
+                                            },
+    "error_lessonIdRequired":  "Для обновлений требуется идентификатор урока.",
+    "@error_lessonIdRequired":  {
+                                    "description":  "Localized text for \u0027error_lessonIdRequired\u0027."
+                                },
+    "error_lessonEditPermission":  "У вас нет разрешения на редактирование этого урока.",
+    "@error_lessonEditPermission":  {
+                                        "description":  "Localized text for \u0027error_lessonEditPermission\u0027."
+                                    },
+    "error_onlyTeachersManageLessons":  "Управлять уроками могут только учителя.",
+    "@error_onlyTeachersManageLessons":  {
+                                             "description":  "Localized text for \u0027error_onlyTeachersManageLessons\u0027."
+                                         },
+    "error_onlyTeachersUploadMaterials":  "Загружать материалы могут только преподаватели.",
+    "@error_onlyTeachersUploadMaterials":  {
+                                               "description":  "Localized text for \u0027error_onlyTeachersUploadMaterials\u0027."
+                                           },
+    "error_onlyUploadManagedLessons":  "You can only upload materials for lessons you manage.",
+    "@error_onlyUploadManagedLessons":  {
+                                            "description":  "Localized text for \u0027error_onlyUploadManagedLessons\u0027."
+                                        },
+    "error_missingSupabaseConfig":  "Отсутствует конфигурация Supabase. Запустите приложение с помощью SUPABASE_URL и SUPABASE_ANON_KEY.",
+    "@error_missingSupabaseConfig":  {
+                                         "description":  "Localized text for \u0027error_missingSupabaseConfig\u0027."
+                                     },
+    "async_loadingTitle":  "Загрузка",
+    "@async_loadingTitle":  {
+                                "description":  "Localized text for \u0027async_loadingTitle\u0027."
+                            },
+    "async_loadingMessage":  "Подготовка данных...",
+    "@async_loadingMessage":  {
+                                  "description":  "Localized text for \u0027async_loadingMessage\u0027."
+                              },
+    "async_errorTitle":  "Что-то пошло не так",
+    "@async_errorTitle":  {
+                              "description":  "Localized text for \u0027async_errorTitle\u0027."
+                          },
+    "notifications_title": "Уведомления",
+    "notifications_markAllAsRead": "Прочитать всё",
+    "notifications_empty": "Уведомлений пока нет",
+    "alarm_repeat": "Повтор",
+    "alarm_snooze": "Повтор сигнала",
+    "alarm_label": "Название",
+    "alarm_everyDay": "Каждый день",
+    "alarm_once": "Один раз",
+    "alarm_weekdays": "Будни",
+    "alarm_weekends": "Выходные",
+    "alarm_delete": "Удалить будильник",
+    "alarm_save": "Сохранить",
+    "alarm_add": "Добавить будильник",
+    "alarm_edit": "Изменить"
+}

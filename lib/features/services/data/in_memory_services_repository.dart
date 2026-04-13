@@ -1,20 +1,37 @@
-import '../../../shared/data/mock_data.dart';
 import '../../../shared/data/mock_latency.dart';
 import '../../../shared/models/app_models.dart';
+import '../../../app/theme/synor_design_tokens.dart';
 import '../domain/services_repository.dart';
 
 class InMemoryServicesRepository implements ServicesRepository {
-  List<ServiceRequest> _requests = SynorMockData.requests();
+  List<ServiceRequest> _requests = const [
+    ServiceRequest(
+      id: 1,
+      title: 'request.enrollmentCertificate',
+      date: 'date.oct12',
+      status: RequestStatus.ready,
+      type: RequestType.document,
+      description: 'request.description.visaApplication',
+    ),
+    ServiceRequest(
+      id: 2,
+      title: 'request.dormitoryRepair',
+      date: 'date.oct10',
+      status: RequestStatus.inProgress,
+      type: RequestType.housing,
+      description: 'request.description.leakingPipe',
+    ),
+  ];
 
   @override
   Future<ServiceRequest> createPaymentRequest() async {
     final request = ServiceRequest(
       id: DateTime.now().millisecondsSinceEpoch,
-      title: 'Tuition Fee Payment',
-      date: 'Just now',
+      title: 'request.tuitionFeePayment',
+      date: 'date.justNow',
       status: RequestStatus.processing,
       type: RequestType.payment,
-      description: 'Payment of 450,000 в‚ё for Spring Semester 2026.',
+      description: 'request.description.paymentSpring2026',
     );
     _requests = [request, ..._requests];
     return request;
@@ -22,10 +39,32 @@ class InMemoryServicesRepository implements ServicesRepository {
 
   @override
   Future<List<ServiceCategoryData>> fetchCategories() async {
-    return SynorMockLatency.resolve(
-      SynorMockData.serviceCategories,
-      duration: SynorMockLatency.services,
-    );
+    return SynorMockLatency.resolve(const [
+      ServiceCategoryData(
+        id: ServiceView.documents,
+        title: 'services.documents',
+        subtitle: 'services.documentsSubtitle',
+        color: SynorColors.indigo500,
+      ),
+      ServiceCategoryData(
+        id: ServiceView.payments,
+        title: 'services.payments',
+        subtitle: 'services.paymentsSubtitle',
+        color: SynorColors.emerald500,
+      ),
+      ServiceCategoryData(
+        id: ServiceView.housing,
+        title: 'services.housing',
+        subtitle: 'services.housingSubtitle',
+        color: SynorColors.amber500,
+      ),
+      ServiceCategoryData(
+        id: ServiceView.support,
+        title: 'services.support',
+        subtitle: 'services.supportSubtitle',
+        color: SynorColors.rose500,
+      ),
+    ], duration: SynorMockLatency.services);
   }
 
   @override
@@ -37,10 +76,10 @@ class InMemoryServicesRepository implements ServicesRepository {
     final request = ServiceRequest(
       id: DateTime.now().millisecondsSinceEpoch,
       title: title,
-      date: 'Just now',
+      date: 'date.justNow',
       status: RequestStatus.pending,
       type: RequestType.document,
-      description: 'Requested via Synor Services.',
+      description: 'request.description.viaSynorServices',
     );
     _requests = [request, ..._requests];
     return request;
@@ -50,11 +89,11 @@ class InMemoryServicesRepository implements ServicesRepository {
   Future<ServiceRequest> submitHousingRequest(HousingRequestDraft draft) async {
     final request = ServiceRequest(
       id: DateTime.now().millisecondsSinceEpoch,
-      title: 'Maintenance: ${draft.issueType}',
-      date: 'Just now',
+      title: 'request.maintenance:${draft.issueType}',
+      date: 'date.justNow',
       status: RequestStatus.pending,
       type: RequestType.housing,
-      description: 'Dormitory #3, Room 412. ${draft.description.trim()}',
+      description: 'request.dormitoryRoom412:${draft.description.trim()}',
     );
     _requests = [request, ..._requests];
     return request;
@@ -64,8 +103,8 @@ class InMemoryServicesRepository implements ServicesRepository {
   Future<ServiceRequest> submitSupportTicket(SupportTicketDraft draft) async {
     final request = ServiceRequest(
       id: DateTime.now().millisecondsSinceEpoch,
-      title: 'Support: ${draft.subject.trim()}',
-      date: 'Just now',
+      title: 'request.support:${draft.subject.trim()}',
+      date: 'date.justNow',
       status: RequestStatus.open,
       type: RequestType.support,
       description: draft.message.trim(),
